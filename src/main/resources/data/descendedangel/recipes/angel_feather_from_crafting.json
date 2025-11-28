@@ -1,0 +1,25 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "ACA",
+    "ABA",
+    "ACA"
+  ],
+  "key":
+  {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "minecraft:feather"
+    },
+    "C":{
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "result": {
+    "item": "descendedangel:angel_feather",
+    "count": 1
+  }
+}

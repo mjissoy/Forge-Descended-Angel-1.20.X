@@ -16,6 +16,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.normlroyal.descendedangel.item.ModCreativeModTabs;
+import net.normlroyal.descendedangel.item.ModItems;
 import org.slf4j.Logger;
 
 @Mod(DescendedAngel.MOD_ID)
@@ -27,6 +29,10 @@ public class DescendedAngel
     public DescendedAngel(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
+
+        ModCreativeModTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -42,7 +48,9 @@ public class DescendedAngel
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.ANGELFEATHER);
+        }
     }
 
     @SubscribeEvent
