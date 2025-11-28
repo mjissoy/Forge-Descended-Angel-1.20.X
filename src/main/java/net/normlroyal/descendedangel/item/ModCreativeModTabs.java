@@ -19,6 +19,7 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.angel_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.ANGELFEATHER.get());
+                        output.accept(ModItems.HALO.get());
                     })
                     .build());
 
