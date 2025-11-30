@@ -20,6 +20,7 @@ public class ModCreativeModTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.ANGELFEATHER.get());
                         output.accept(ModItems.HALO.get());
+                        output.accept(ModItems.THRONEHALO.get());
                     })
                     .build());
 

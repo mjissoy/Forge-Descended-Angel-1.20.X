@@ -17,6 +17,9 @@ public class ModItems {
     public static final RegistryObject<Item> HALO = ITEMS.register("angel_halo",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> THRONEHALO = ITEMS.register("throne_halo",
+            () -> new Item(new Item.Properties()));
+
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);
     }
