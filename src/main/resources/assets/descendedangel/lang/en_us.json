@@ -1,7 +1,15 @@
 {
   "item.descendedangel.angel_feather" : "Angel Feather",
-  "item.descendedangel.angel_halo" : "Angel Halo",
   "item.descendedangel.throne_halo" : "Throne Halo",
+  "item.descendedangel.halo_t1" : "Halo",
+  "item.descendedangel.halo_t2" : "Archangel Halo",
+  "item.descendedangel.halo_t3" : "Principality Halo",
+  "item.descendedangel.halo_t4" : "Power Halo",
+  "item.descendedangel.halo_t5" : "Virtue Halo",
+  "item.descendedangel.halo_t6" : "Dominion Halo",
+  "item.descendedangel.halo_t7" : "Cherubim Halo",
+  "item.descendedangel.halo_t8" : "Throne Halo",
+  "item.descendedangel.halo_t9" : "Seraphim Halo",
 
   "creativetab.angel_tab" : "Descended Angel Mod"
 }

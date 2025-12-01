@@ -3,7 +3,6 @@ package net.normlroyal.descendedangel.item;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -19,8 +18,17 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.angel_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.ANGELFEATHER.get());
-                        output.accept(ModItems.HALO.get());
-                        output.accept(ModItems.THRONEHALO.get());
+
+                        output.accept(ModItems.HALO_T1.get());
+                        output.accept(ModItems.HALO_T2.get());
+                        output.accept(ModItems.HALO_T3.get());
+                        output.accept(ModItems.HALO_T4.get());
+                        output.accept(ModItems.HALO_T5.get());
+                        output.accept(ModItems.HALO_T6.get());
+                        output.accept(ModItems.HALO_T7.get());
+                        output.accept(ModItems.HALO_T8.get());
+                        output.accept(ModItems.HALO_T9.get());
+
                     })
                     .build());
 
