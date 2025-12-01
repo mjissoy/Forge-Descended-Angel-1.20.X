@@ -22,7 +22,6 @@ public class ModEvents {
         LivingEntity target = event.getEntity();
         if (target.getMobType() != MobType.UNDEAD) return;
 
-        // Find the halo curio, if any
         var opt = CuriosApi.getCuriosHelper()
                 .findFirstCurio(player, stack -> stack.getItem() instanceof TieredHaloItem);
 
@@ -32,8 +31,7 @@ public class ModEvents {
         TieredHaloItem haloItem = (TieredHaloItem) haloStack.getItem();
         int tier = haloItem.getTier();
 
-        // Example scaling: +5% damage per tier
-        float bonusMultiplier = 1.0F + (0.05F * tier); // tier 1 = 1.05x, tier 9 = 1.45x
+        float bonusMultiplier = 1.0F + (0.1F * tier);
         event.setAmount(event.getAmount() * bonusMultiplier);
     }
 }

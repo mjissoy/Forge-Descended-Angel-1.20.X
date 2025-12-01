@@ -11,5 +11,7 @@
   "item.descendedangel.halo_t8" : "Throne Halo",
   "item.descendedangel.halo_t9" : "Seraphim Halo",
 
-  "creativetab.angel_tab" : "Descended Angel Mod"
+  "creativetab.angel_tab" : "Descended Angel Mod",
+  "tooltip.descendedangel.halo.when_worn": "When worn:",
+  "tooltip.descendedangel.halo.undead_damage": "+%s%% Damage vs Undead"
 }
