@@ -4,6 +4,7 @@ import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -33,5 +34,28 @@ public class ModEvents {
 
         float bonusMultiplier = 1.0F + (0.1F * tier);
         event.setAmount(event.getAmount() * bonusMultiplier);
+    }
+
+    @SubscribeEvent
+    public static void onLivingHeal(LivingHealEvent event) {
+        LivingEntity entity = event.getEntity();
+        if (!(entity instanceof Player player)) {
+            return;
+        }
+        var opt = CuriosApi.getCuriosHelper()
+                .findFirstCurio(player, stack -> stack.getItem() instanceof TieredHaloItem);
+
+        if (opt.isEmpty()) {
+            return;
+        }
+
+        TieredHaloItem halo = (TieredHaloItem) opt.get().stack().getItem();
+        int tier = halo.getTier();
+
+
+        float healMultiplier = 1.0F + (0.1F * tier);
+
+        float original = event.getAmount();
+        event.setAmount(original * healMultiplier);
     }
 }

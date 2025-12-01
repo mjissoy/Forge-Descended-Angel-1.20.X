@@ -88,6 +88,11 @@ public class TieredHaloItem extends Item implements ICurioItem {
                 Component.translatable("tooltip.descendedangel.halo.undead_damage", bonusPercent)
                         .withStyle(ChatFormatting.YELLOW)
         );
+
+        tooltip.add(
+                Component.translatable("tooltip.descendedangel.halo.healing_bonus", bonusPercent)
+                        .withStyle(ChatFormatting.YELLOW)
+        );
     }
 
 }
