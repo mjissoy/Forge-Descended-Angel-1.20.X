@@ -35,7 +35,8 @@ public class HaloCurioRenderer implements ICurioRenderer {
 
 
         double yOffset = entity.getBbHeight() - 2.55;
-        poseStack.translate(0.0D, yOffset, 0.0D);
+        double zOffset = entity.getBbWidth() + 0.005;
+        poseStack.translate(0.0D, yOffset, zOffset);
 
 
         float time = ageInTicks + partialTicks;
