@@ -15,14 +15,17 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        CuriosRendererRegistry.register(ModItems.HALO_T1.get(), HaloCurioRenderer::new);
-        CuriosRendererRegistry.register(ModItems.HALO_T2.get(), HaloCurioRenderer::new);
-        CuriosRendererRegistry.register(ModItems.HALO_T3.get(), HaloCurioRenderer::new);
-        CuriosRendererRegistry.register(ModItems.HALO_T4.get(), HaloCurioRenderer::new);
-        CuriosRendererRegistry.register(ModItems.HALO_T5.get(), HaloCurioRenderer::new);
-        CuriosRendererRegistry.register(ModItems.HALO_T6.get(), HaloCurioRenderer::new);
-        CuriosRendererRegistry.register(ModItems.HALO_T7.get(), HaloCurioRenderer::new);
-        CuriosRendererRegistry.register(ModItems.HALO_T8.get(), HaloCurioRenderer::new);
-        CuriosRendererRegistry.register(ModItems.HALO_T9.get(), HaloCurioRenderer::new);
+        event.enqueueWork(() -> {
+            // Curios halo renderers
+            CuriosRendererRegistry.register(ModItems.HALO_T1.get(), HaloCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.HALO_T2.get(), HaloCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.HALO_T3.get(), HaloCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.HALO_T4.get(), HaloCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.HALO_T5.get(), HaloCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.HALO_T6.get(), HaloCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.HALO_T7.get(), HaloCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.HALO_T8.get(), HaloCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.HALO_T9.get(), HaloCurioRenderer::new);
+        });
     }
 }

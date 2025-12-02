@@ -2,5 +2,11 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "descendedangel:item/basic_halo"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": { "custom_model_data": 1 },
+      "model": "descendedangel:item/halo_t1_geo"
+    }
+  ]
 }

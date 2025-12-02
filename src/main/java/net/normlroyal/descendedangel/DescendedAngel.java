@@ -19,6 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.normlroyal.descendedangel.item.ModCreativeModTabs;
 import net.normlroyal.descendedangel.item.ModItems;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
 
 @Mod(DescendedAngel.MOD_ID)
 public class DescendedAngel
@@ -31,6 +32,7 @@ public class DescendedAngel
         IEventBus modEventBus = context.getModEventBus();
 
         ModCreativeModTabs.register(modEventBus);
+        GeckoLib.initialize();
 
         ModItems.register(modEventBus);
 

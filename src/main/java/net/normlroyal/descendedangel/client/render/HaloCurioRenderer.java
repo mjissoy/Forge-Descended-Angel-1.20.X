@@ -34,7 +34,7 @@ public class HaloCurioRenderer implements ICurioRenderer {
         poseStack.pushPose();
 
 
-        double yOffset = entity.getBbHeight() - 2.5D; // tweak -0.2D to move halo up/down
+        double yOffset = entity.getBbHeight() - 3.0D; // tweak -0.2D to move halo up/down
         poseStack.translate(0.0D, yOffset, 0.0D);
 
 
@@ -45,7 +45,7 @@ public class HaloCurioRenderer implements ICurioRenderer {
         Minecraft.getInstance().getItemRenderer().renderStatic(
                 entity,
                 stack,
-                ItemDisplayContext.NONE,
+                ItemDisplayContext.HEAD,
                 false,
                 poseStack,
                 buffers,
