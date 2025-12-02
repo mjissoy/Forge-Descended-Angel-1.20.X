@@ -113,7 +113,6 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        // no animations yet – leave empty for now
     }
 
     // Forge hook to attach the GeoItemRenderer

@@ -28,7 +28,6 @@ public class HaloItemModel extends GeoModel<TieredHaloItem> {
 
     @Override
     public ResourceLocation getAnimationResource(TieredHaloItem object) {
-        // later: "animations/halo_tX.animation.json" per tier if you want
         return null;
     }
 }
