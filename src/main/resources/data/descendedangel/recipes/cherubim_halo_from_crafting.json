@@ -1,0 +1,25 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "CAC",
+    "ABA",
+    "CAC"
+  ],
+  "key":
+  {
+    "A": {
+      "item": "minecraft:netherite_block"
+    },
+    "B": {
+      "item": "descendedangel:halo_t6"
+    },
+    "C": {
+      "item": "minecraft:dragon_breath"
+    }
+  },
+  "result": {
+    "item": "descendedangel:halo_t7",
+    "count": 1
+  }
+}

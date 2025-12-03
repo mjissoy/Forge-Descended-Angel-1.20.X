@@ -1,0 +1,22 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A": {
+      "item": "minecraft:diamond_block"
+    },
+    "B": {
+      "item": "descendedangel:halo_t3"
+    }
+  },
+  "result": {
+    "item": "descendedangel:halo_t4",
+    "count": 1
+  }
+}
