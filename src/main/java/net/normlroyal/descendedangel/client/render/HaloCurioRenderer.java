@@ -34,7 +34,7 @@ public class HaloCurioRenderer implements ICurioRenderer {
         poseStack.pushPose();
 
 
-        double yOffset = entity.getBbHeight() - 2.55;
+        double yOffset = entity.getBbHeight() - 3.0;
         double zOffset = entity.getBbWidth() + 0.005;
         poseStack.translate(0.0D, yOffset, zOffset);
 
