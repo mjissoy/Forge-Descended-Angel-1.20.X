@@ -1,0 +1,22 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "CCC",
+    "CBC",
+    "CCC"
+  ],
+  "key":
+  {
+    "B": {
+      "item": "descendedangel:halo_t5"
+    },
+    "C": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "descendedangel:halo_t6",
+    "count": 1
+  }
+}

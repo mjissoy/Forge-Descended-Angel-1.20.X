@@ -1,0 +1,25 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "ACA",
+    "ABA",
+    "ACA"
+  ],
+  "key":
+  {
+    "A": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "B": {
+      "item": "descendedangel:halo_t7"
+    },
+    "C": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "descendedangel:halo_t8",
+    "count": 1
+  }
+}
