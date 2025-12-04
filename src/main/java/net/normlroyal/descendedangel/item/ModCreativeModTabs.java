@@ -18,6 +18,9 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.angel_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.ANGELFEATHER.get());
+                        output.accept(ModItems.DEMONHEART.get());
+                        output.accept(ModItems.VOIDTEAR.get());
+                        output.accept(ModItems.SPATIALCORE.get());
 
                         output.accept(ModItems.HALO_T1.get());
                         output.accept(ModItems.HALO_T2.get());

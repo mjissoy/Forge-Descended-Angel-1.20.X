@@ -2,7 +2,7 @@
   "type":"minecraft:crafting_shaped",
   "category" : "misc",
   "pattern": [
-    "AAA",
+    "ACA",
     "ABA",
     "AAA"
   ],
@@ -13,7 +13,10 @@
     },
     "B": {
       "item": "descendedangel:halo_t3"
-    }
+    },
+    "C": {
+    "item": "descendedangel:demon_heart"
+  }
   },
   "result": {
     "item": "descendedangel:halo_t4",

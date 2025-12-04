@@ -2,7 +2,7 @@
   "type":"minecraft:crafting_shaped",
   "category" : "misc",
   "pattern": [
-    "CAC",
+    "CDC",
     "ABA",
     "CAC"
   ],
@@ -16,6 +16,9 @@
     },
     "C": {
       "item": "minecraft:dragon_breath"
+    },
+    "D": {
+      "item": "descendedangel:spatial_core"
     }
   },
   "result": {

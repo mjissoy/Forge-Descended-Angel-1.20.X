@@ -16,6 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.normlroyal.descendedangel.events.ModEvents;
 import net.normlroyal.descendedangel.item.ModCreativeModTabs;
 import net.normlroyal.descendedangel.item.ModItems;
 import org.slf4j.Logger;
@@ -40,6 +41,7 @@ public class DescendedAngel
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

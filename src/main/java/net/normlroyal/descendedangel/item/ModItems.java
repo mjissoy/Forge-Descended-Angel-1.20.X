@@ -12,7 +12,14 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, DescendedAngel.MOD_ID);
 
+    //Items
     public static final RegistryObject<Item> ANGELFEATHER = ITEMS.register("angel_feather",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> VOIDTEAR = ITEMS.register("void_tear",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DEMONHEART = ITEMS.register("demon_heart",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SPATIALCORE = ITEMS.register("spatial_core",
             () -> new Item(new Item.Properties()));
 
     //Halos
@@ -34,6 +41,8 @@ public class ModItems {
             () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 8));
     public static final RegistryObject<Item> HALO_T9 = ITEMS.register("halo_t9",
             () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 9));
+
+    //Wings
 
 
     public static void register(IEventBus eventbus) {

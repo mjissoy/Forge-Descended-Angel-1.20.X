@@ -3,7 +3,7 @@
   "category" : "misc",
   "pattern": [
     "ACA",
-    "ABA",
+    "DBD",
     "ACA"
   ],
   "key":
@@ -16,6 +16,9 @@
     },
     "C":{
       "item": "minecraft:glowstone_dust"
+    },
+    "D":{
+      "item": "descendedangel:void_tear"
     }
   },
   "result": {
