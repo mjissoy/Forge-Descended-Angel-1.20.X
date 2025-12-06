@@ -1,0 +1,28 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "ACA",
+    "DBD",
+    "ACA"
+  ],
+  "key":
+  {
+    "A": {
+      "item": "minecraft:blaze_powder"
+    },
+    "B": {
+      "item": "descendedangel:void_tear"
+    },
+    "C":{
+      "item": "minecraft:lava_bucket"
+    },
+    "D":{
+      "item": "minecraft:soul_sand"
+    }
+  },
+  "result": {
+    "item": "descendedangel:demon_heart",
+    "count": 1
+  }
+}
