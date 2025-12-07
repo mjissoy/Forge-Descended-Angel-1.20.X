@@ -58,7 +58,7 @@ public class ModEvents {
         int tier = halo.getTier();
 
 
-        float healMultiplier = 1.0F + (0.1F * tier);
+        float healMultiplier = 1.0F + (0.05F * tier);
 
         float original = event.getAmount();
         event.setAmount(original * healMultiplier);
