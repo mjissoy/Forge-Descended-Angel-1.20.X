@@ -17,5 +17,19 @@
   "creativetab.angel_tab" : "Descended Angel Mod",
   "tooltip.descendedangel.halo.when_worn": "When worn:",
   "tooltip.descendedangel.halo.undead_damage": "+%s%% Damage vs Undead",
-  "tooltip.descendedangel.halo.healing_bonus": "+%s%% Healing Received"
+  "tooltip.descendedangel.halo.healing_bonus": "+%s%% Healing Received",
+
+  "tooltip.descendedangel.halo.hold_shift": "Hold [SHIFT] for lore.",
+
+  "tooltip.descendedangel.halo_t1.lore": "A new light ignites the world.",
+  "tooltip.descendedangel.halo_t2.lore": "The foundation of a new order.",
+  "tooltip.descendedangel.halo_t3.lore": "Rules bind your higher existence.",
+  "tooltip.descendedangel.halo_t4.lore": "Light now courses through every remnant of your being.",
+  "tooltip.descendedangel.halo_t5.lore": "Willpower shapes light into its truest form.",
+  "tooltip.descendedangel.halo_t6.lore": "Illuminate the darkness with your transcendent light.",
+  "tooltip.descendedangel.halo_t7.lore": "You stand as a Gateway for the Lord.",
+  "tooltip.descendedangel.halo_t8.lore": "With You the Lord begins to move.",
+  "tooltip.descendedangel.halo_t9.lore": "An attendant of the Lord, You behold His utmost radiance."
+
+
 }

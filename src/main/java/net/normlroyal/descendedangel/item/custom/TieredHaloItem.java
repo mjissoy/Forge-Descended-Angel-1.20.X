@@ -3,6 +3,7 @@ package net.normlroyal.descendedangel.item.custom;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -87,22 +88,36 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
 
 
         int bonusPercent = tier * 10;
+        int healbonusPercent = tier * 5;
 
-        tooltip.add(Component.empty()); // blank line
+        if (Screen.hasShiftDown()) {
+
+            tooltip.add(
+                    Component.translatable("tooltip.descendedangel.halo_t" + tier + ".lore")
+                            .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
+            );
+        } else {
+            tooltip.add(
+                    Component.translatable("tooltip.descendedangel.halo.hold_shift")
+                            .withStyle(ChatFormatting.DARK_GRAY)
+            );
+        }
+
+        tooltip.add(Component.empty());
 
         tooltip.add(
                 Component.translatable("tooltip.descendedangel.halo.when_worn")
-                        .withStyle(ChatFormatting.GRAY)
+                        .withStyle(ChatFormatting.DARK_GRAY)
         );
 
         tooltip.add(
                 Component.translatable("tooltip.descendedangel.halo.undead_damage", bonusPercent)
-                        .withStyle(ChatFormatting.YELLOW)
+                        .withStyle(ChatFormatting.BLUE)
         );
 
         tooltip.add(
-                Component.translatable("tooltip.descendedangel.halo.healing_bonus", bonusPercent)
-                        .withStyle(ChatFormatting.YELLOW)
+                Component.translatable("tooltip.descendedangel.halo.healing_bonus", healbonusPercent)
+                        .withStyle(ChatFormatting.BLUE)
         );
     }
 
