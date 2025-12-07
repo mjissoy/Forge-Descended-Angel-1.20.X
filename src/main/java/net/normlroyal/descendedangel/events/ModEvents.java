@@ -14,6 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.ModItems;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -37,7 +38,9 @@ public class ModEvents {
         TieredHaloItem haloItem = (TieredHaloItem) haloStack.getItem();
         int tier = haloItem.getTier();
 
-        float bonusMultiplier = 1.0F + (0.1F * tier);
+        double dmgPerTier = ModConfigs.COMMON.HALO_UNDEAD_DAMAGE_BONUS_PER_TIER.get();
+        float bonusMultiplier = 1.0F + (float)(dmgPerTier * tier);
+
         event.setAmount(event.getAmount() * bonusMultiplier);
     }
 
@@ -58,7 +61,8 @@ public class ModEvents {
         int tier = halo.getTier();
 
 
-        float healMultiplier = 1.0F + (0.05F * tier);
+        double healPerTier = ModConfigs.COMMON.HALO_HEAL_BONUS_PER_TIER.get();
+        float healMultiplier = 1.0F + (float)(healPerTier * tier);
 
         float original = event.getAmount();
         event.setAmount(original * healMultiplier);
@@ -76,7 +80,8 @@ public class ModEvents {
         if (!(entity instanceof Mob mob)) return;
         if (mob.getType().getCategory() != MobCategory.MONSTER) return;
 
-        if (entity.getRandom().nextFloat() < 0.01f) {
+        double dropChance = ModConfigs.COMMON.VOID_TEAR_DROP_CHANCE.get();
+        if (entity.getRandom().nextDouble() < dropChance) {
             ItemStack stack = new ItemStack(ModItems.VOIDTEAR.get());
 
             ItemEntity drop = new ItemEntity(

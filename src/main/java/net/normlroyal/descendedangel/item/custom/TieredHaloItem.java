@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.normlroyal.descendedangel.config.ModConfigs;
 import org.jetbrains.annotations.Nullable;
 
 import software.bernie.geckolib.animatable.GeoItem;
@@ -87,8 +88,11 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
         super.appendHoverText(stack, level, tooltip, flag);
 
 
-        int bonusPercent = tier * 10;
-        int healbonusPercent = tier * 5;
+        double healPerTier = ModConfigs.COMMON.HALO_HEAL_BONUS_PER_TIER.get();
+        double dmgPerTier  = ModConfigs.COMMON.HALO_UNDEAD_DAMAGE_BONUS_PER_TIER.get();
+
+        int healPercent = (int) Math.round(healPerTier * tier * 100.0);
+        int dmgPercent  = (int) Math.round(dmgPerTier  * tier * 100.0);
 
         if (Screen.hasShiftDown()) {
 
@@ -111,12 +115,12 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
         );
 
         tooltip.add(
-                Component.translatable("tooltip.descendedangel.halo.undead_damage", bonusPercent)
+                Component.translatable("tooltip.descendedangel.halo.undead_damage", dmgPercent)
                         .withStyle(ChatFormatting.BLUE)
         );
 
         tooltip.add(
-                Component.translatable("tooltip.descendedangel.halo.healing_bonus", healbonusPercent)
+                Component.translatable("tooltip.descendedangel.halo.healing_bonus", healPercent)
                         .withStyle(ChatFormatting.BLUE)
         );
     }
