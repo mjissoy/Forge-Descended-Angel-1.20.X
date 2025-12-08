@@ -9,13 +9,13 @@
   "key":
   {
     "A": {
-      "item": "minecraft:blaze_powder"
+      "item": "minecraft:blaze_rod"
     },
     "B": {
       "item": "descendedangel:void_tear"
     },
     "C":{
-      "item": "minecraft:lava_bucket"
+      "item": "minecraft:soul_sand"
     },
     "D":{
       "item": "minecraft:soul_sand"
