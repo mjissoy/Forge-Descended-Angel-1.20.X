@@ -15,6 +15,8 @@ public class ModItems {
     //Items
     public static final RegistryObject<Item> ANGELFEATHER = ITEMS.register("angel_feather",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REALANGELFEATHER = ITEMS.register("angel_feather_real",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> VOIDTEAR = ITEMS.register("void_tear",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> DEMONHEART = ITEMS.register("demon_heart",
