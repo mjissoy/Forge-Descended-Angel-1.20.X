@@ -52,8 +52,18 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
     ) {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
 
-        double extraHealth = 2 + (tier - 1) * tier;
-        double extraArmor = 5 + (tier - 1) * tier;
+        double t = tier;
+
+        double extraHealth = ModConfigs.COMMON.HALO_HEALTH_BASE.get()
+                + ModConfigs.COMMON.HALO_HEALTH_MULTI.get() * (t - 1) * t;
+
+        double extraArmor = ModConfigs.COMMON.HALO_ARMOR_BASE.get()
+                + ModConfigs.COMMON.HALO_ARMOR_MULTI.get() * (t - 1) * t;
+
+        double global = ModConfigs.COMMON.HALO_EFFECTIVENESS_MULTIPLIER.get();
+        extraHealth *= global;
+        extraArmor  *= global;
+
 
         builder.put(
                 Attributes.MAX_HEALTH,

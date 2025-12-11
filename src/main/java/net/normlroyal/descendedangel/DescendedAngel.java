@@ -35,7 +35,12 @@ public class DescendedAngel
         ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON_SPEC);
+
+        ModLoadingContext.get().registerConfig(
+                ModConfig.Type.SERVER,
+                ModConfigs.COMMON_SPEC,
+                MOD_ID + "-server.toml"
+        );
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
