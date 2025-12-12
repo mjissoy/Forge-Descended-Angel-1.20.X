@@ -19,6 +19,8 @@
   "tooltip.descendedangel.halo.when_worn": "When worn:",
   "tooltip.descendedangel.halo.undead_damage": "+%s%% Damage vs Undead",
   "tooltip.descendedangel.halo.healing_bonus": "+%s%% Healing Received",
+  "tooltip.descendedangel.halo.armor_bonus": "+%s Armor",
+  "tooltip.descendedangel.halo.health_bonus": "+%s Health",
 
   "tooltip.descendedangel.halo.hold_shift": "Hold [SHIFT] for lore.",
 

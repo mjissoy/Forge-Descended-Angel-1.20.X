@@ -16,8 +16,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.ModItems;
-import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
-import top.theillusivec4.curios.api.CuriosApi;
+import net.normlroyal.descendedangel.util.HaloUtils;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvents {
@@ -29,14 +28,9 @@ public class ModEvents {
         LivingEntity target = event.getEntity();
         if (target.getMobType() != MobType.UNDEAD) return;
 
-        var opt = CuriosApi.getCuriosHelper()
-                .findFirstCurio(player, stack -> stack.getItem() instanceof TieredHaloItem);
 
-        if (opt.isEmpty()) return;
-
-        ItemStack haloStack = opt.get().stack();
-        TieredHaloItem haloItem = (TieredHaloItem) haloStack.getItem();
-        int tier = haloItem.getTier();
+        int tier = HaloUtils.getEquippedHaloTier(player);
+        if (tier <= 0) return;
 
         double dmgPerTier = ModConfigs.COMMON.HALO_UNDEAD_DAMAGE_BONUS_PER_TIER.get();
         float bonusMultiplier = 1.0F + (float)(dmgPerTier * tier);
@@ -50,16 +44,9 @@ public class ModEvents {
         if (!(entity instanceof Player player)) {
             return;
         }
-        var opt = CuriosApi.getCuriosHelper()
-                .findFirstCurio(player, stack -> stack.getItem() instanceof TieredHaloItem);
 
-        if (opt.isEmpty()) {
-            return;
-        }
-
-        TieredHaloItem halo = (TieredHaloItem) opt.get().stack().getItem();
-        int tier = halo.getTier();
-
+        int tier = HaloUtils.getEquippedHaloTier(player);
+        if (tier <= 0) return;
 
         double healPerTier = ModConfigs.COMMON.HALO_HEAL_BONUS_PER_TIER.get();
         float healMultiplier = 1.0F + (float)(healPerTier * tier);

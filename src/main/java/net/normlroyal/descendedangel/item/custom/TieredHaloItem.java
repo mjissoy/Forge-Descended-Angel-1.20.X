@@ -64,7 +64,6 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
         extraHealth *= global;
         extraArmor  *= global;
 
-
         builder.put(
                 Attributes.MAX_HEALTH,
                 new AttributeModifier(
@@ -98,11 +97,19 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
         super.appendHoverText(stack, level, tooltip, flag);
 
 
-        double healPerTier = ModConfigs.COMMON.HALO_HEAL_BONUS_PER_TIER.get();
-        double dmgPerTier  = ModConfigs.COMMON.HALO_UNDEAD_DAMAGE_BONUS_PER_TIER.get();
+        double healPerTierper = ModConfigs.COMMON.HALO_HEAL_BONUS_PER_TIER.get() * 100.0;
+        double dmgPerTierper = ModConfigs.COMMON.HALO_UNDEAD_DAMAGE_BONUS_PER_TIER.get() * 100.0;
 
-        int healPercent = (int) Math.round(healPerTier * tier * 100.0);
-        int dmgPercent  = (int) Math.round(dmgPerTier  * tier * 100.0);
+        double healthBase  = ModConfigs.COMMON.HALO_HEALTH_BASE.get();
+        double healthMulti = ModConfigs.COMMON.HALO_HEALTH_MULTI.get();
+        double armorBase   = ModConfigs.COMMON.HALO_ARMOR_BASE.get();
+        double armorMulti  = ModConfigs.COMMON.HALO_ARMOR_MULTI.get();
+
+        double extraHealth = (healthBase + healthMulti * (tier - 1) * tier);
+        double extraArmor  = (armorBase  + armorMulti  * (tier - 1) * tier);
+        double healbon  = healPerTierper * tier;
+        double undbon  = dmgPerTierper * tier;
+
 
         if (Screen.hasShiftDown()) {
 
@@ -121,18 +128,21 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
 
         tooltip.add(
                 Component.translatable("tooltip.descendedangel.halo.when_worn")
-                        .withStyle(ChatFormatting.DARK_GRAY)
-        );
+                        .withStyle(ChatFormatting.DARK_GRAY));
+        tooltip.add(
+                Component.translatable("tooltip.descendedangel.halo.health_bonus", extraHealth)
+                        .withStyle(ChatFormatting.BLUE));
+        tooltip.add(
+                Component.translatable("tooltip.descendedangel.halo.armor_bonus", extraArmor)
+                        .withStyle(ChatFormatting.BLUE));
 
         tooltip.add(
-                Component.translatable("tooltip.descendedangel.halo.undead_damage", dmgPercent)
-                        .withStyle(ChatFormatting.BLUE)
-        );
+                Component.translatable("tooltip.descendedangel.halo.undead_damage", undbon)
+                        .withStyle(ChatFormatting.BLUE));
 
         tooltip.add(
-                Component.translatable("tooltip.descendedangel.halo.healing_bonus", healPercent)
-                        .withStyle(ChatFormatting.BLUE)
-        );
+                Component.translatable("tooltip.descendedangel.halo.healing_bonus", healbon)
+                        .withStyle(ChatFormatting.BLUE));
     }
 
     @Override
@@ -144,7 +154,6 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
     }
 
-    // Forge hook to attach the GeoItemRenderer
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {

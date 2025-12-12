@@ -23,7 +23,7 @@ import software.bernie.geckolib.GeckoLib;
 public class DescendedAngel
 {
     public static final String MOD_ID = "descendedangel";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public DescendedAngel(FMLJavaModLoadingContext context)
     {
