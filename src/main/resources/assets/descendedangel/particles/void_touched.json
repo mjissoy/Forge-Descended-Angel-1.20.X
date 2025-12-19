@@ -1,5 +1,3 @@
 {
-  "textures": [
-    "descendedangel:particle/void_touched"
-  ]
+  "textures": ["descendedangel:void_touched"]
 }

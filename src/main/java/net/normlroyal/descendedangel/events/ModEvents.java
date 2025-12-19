@@ -86,11 +86,11 @@ public class ModEvents {
         if (!(e instanceof Monster)) return;
 
         if (!e.getPersistentData().getBoolean(VOID_TOUCHED)) return;
-        if ((e.tickCount % 10) != 0) return;
+        if ((e.tickCount % 20) != 0) return;
 
     level.sendParticles(ModParticles.VOID_TOUCHED.get(),
                 e.getX(), e.getY() + 1.0, e.getZ(),
-                5, 0.3, 0.5, 0.3, 0.01);
+            5, 0.25, 0.4, 0.25, 0.005);
     }
 
     // Void Tear drops from void_touched mobs

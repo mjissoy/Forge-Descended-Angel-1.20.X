@@ -11,16 +11,20 @@ public class VoidTouchedParticle extends TextureSheetParticle {
                                   double xd, double yd, double zd, SpriteSet sprites) {
         super(level, x, y, z, xd, yd, zd);
 
-        this.quadSize *= 1.10f;
+        this.quadSize *= 0.5f;
 
-        this.lifetime = 30 + level.random.nextInt(15);
+        this.lifetime = 20 + level.random.nextInt(25);
         this.gravity = 0.0f;
         this.friction = 0.90f;
+        this.xd *= 0.2;
+        this.yd *= 0.2;
+        this.zd *= 0.2;
 
+        float t = level.random.nextFloat();
 
-        this.rCol = 0.10f;
-        this.gCol = 0.10f;
-        this.bCol = 0.20f;
+        this.rCol = 0.18f + 0.07f * t;
+        this.gCol = 0.18f + 0.07f * t;
+        this.bCol = 0.30f + 0.15f * t;
 
         this.alpha = 0.9f;
 
@@ -30,9 +34,17 @@ public class VoidTouchedParticle extends TextureSheetParticle {
     @Override
     public void tick() {
         super.tick();
-        if (this.age > this.lifetime - 10) {
-            this.alpha *= 0.85f;
+
+        this.yd += 0.002;
+
+        if (this.age > this.lifetime * 0.7f) {
+            this.alpha *= 0.92f;
         }
+    }
+
+    @Override
+    protected int getLightColor(float partialTick) {
+        return 0xF000F0;
     }
 
     @Override
