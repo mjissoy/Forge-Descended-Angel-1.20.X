@@ -1,0 +1,16 @@
+{
+  "display": {
+    "icon": { "item": "descendedangel:angel_feather_real" },
+    "title": { "text": "Metatron's Advice" },
+    "description": { "text": "A couple Angelic How-To's" },
+    "background": "minecraft:textures/gui/advancements/backgrounds/end.png",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

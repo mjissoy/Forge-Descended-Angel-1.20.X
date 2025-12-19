@@ -1,0 +1,21 @@
+{
+  "parent": "descendedangel:main/root",
+  "display": {
+    "icon": { "item": "descendedangel:void_tear" },
+    "title": { "text": "Purify the Void-Touched" },
+    "description": { "text": "Obtain a Droplet of The Void" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "void_drop": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["descendedangel:void_tear"] }
+        ]
+      }
+    }
+  }
+}

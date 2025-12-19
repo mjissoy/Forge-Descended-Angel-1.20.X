@@ -17,7 +17,7 @@ public class ModConfigs {
 
         public final ForgeConfigSpec.DoubleValue HALO_HEAL_BONUS_PER_TIER;
         public final ForgeConfigSpec.DoubleValue HALO_UNDEAD_DAMAGE_BONUS_PER_TIER;
-        public final ForgeConfigSpec.DoubleValue VOID_TEAR_DROP_CHANCE;
+        public final ForgeConfigSpec.DoubleValue voidTouchedSpawnChance;
 
         public final ForgeConfigSpec.DoubleValue HALO_HEALTH_BASE;
         public final ForgeConfigSpec.DoubleValue HALO_HEALTH_MULTI;
@@ -37,9 +37,9 @@ public class ModConfigs {
                     .comment("Extra damage vs undead per halo tier (e.g. 0.10 = +10% per tier).")
                     .defineInRange("haloUndeadDamageBonusPerTier", 0.10D, 0.0D, 10.0D);
 
-            VOID_TEAR_DROP_CHANCE = builder
-                    .comment("Chance for hostile mobs killed by a player to drop a Void Drop (e.g. 0.01 = 1%).")
-                    .defineInRange("voidTearDropChance", 0.01D, 0.0D, 1.0D);
+            voidTouchedSpawnChance = builder
+                    .comment("Chance for hostile mobs to spawn with Void Touched (e.g. 0.02 = 2%)")
+                    .defineInRange("voidTouchedSpawnChance", 0.02D, 0.0D, 1.0D);
 
             HALO_HEALTH_BASE = builder
                     .comment("Base health added by halos (before tier scaling). Default: 2")

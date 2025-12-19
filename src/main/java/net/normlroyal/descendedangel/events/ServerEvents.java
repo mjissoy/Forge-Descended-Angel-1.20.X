@@ -15,7 +15,7 @@ public class ServerEvents {
 
         double healPerTier   = common.HALO_HEAL_BONUS_PER_TIER.get();
         double dmgPerTier    = common.HALO_UNDEAD_DAMAGE_BONUS_PER_TIER.get();
-        double voidTearChance = common.VOID_TEAR_DROP_CHANCE.get();
+        double voidTouchedChance = common.voidTouchedSpawnChance.get();
 
         double healthBase    = common.HALO_HEALTH_BASE.get();
         double healthMulti   = common.HALO_HEALTH_MULTI.get();
@@ -25,11 +25,11 @@ public class ServerEvents {
 
         DescendedAngel.LOGGER.info(
                 "[Descended Angel] Loaded halo config: " +
-                        "healPerTier={} , undeadDmgPerTier={} , voidTearChance={} , " +
+                        "healPerTier={} , undeadDmgPerTier={} , voidTouchedChance={} , " +
                         "healthBase={} , healthMulti={} , armorBase={} , armorMulti={} , globalMult={}",
                 healPerTier,
                 dmgPerTier,
-                voidTearChance,
+                voidTouchedChance,
                 healthBase,
                 healthMulti,
                 armorBase,

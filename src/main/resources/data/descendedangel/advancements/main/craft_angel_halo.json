@@ -1,0 +1,19 @@
+{
+  "parent": "descendedangel:main/craft_art_angel_feather",
+  "display": {
+    "icon": { "item": "descendedangel:halo_t1" },
+    "title": { "text": "An Angel's Grace" },
+    "description": { "text": "Craft a Halo befitting an Angel" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "craft_halo": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "descendedangel:angel_halo_from_crafting"
+      }
+    }
+  }
+}
