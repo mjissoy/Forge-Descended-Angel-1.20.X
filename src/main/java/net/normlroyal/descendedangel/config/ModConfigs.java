@@ -38,8 +38,8 @@ public class ModConfigs {
                     .defineInRange("haloUndeadDamageBonusPerTier", 0.10D, 0.0D, 10.0D);
 
             voidTouchedSpawnChance = builder
-                    .comment("Chance for hostile mobs to spawn with Void Touched (e.g. 0.02 = 2%)")
-                    .defineInRange("voidTouchedSpawnChance", 0.02D, 0.0D, 1.0D);
+                    .comment("Chance for hostile mobs to spawn with Void Touched (e.g. 0.05 = 5%)")
+                    .defineInRange("voidTouchedSpawnChance", 0.05D, 0.0D, 1.0D);
 
             HALO_HEALTH_BASE = builder
                     .comment("Base health added by halos (before tier scaling). Default: 2")
