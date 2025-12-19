@@ -1,8 +1,8 @@
 {
   "display": {
     "icon": { "item": "descendedangel:angel_feather_real" },
-    "title": { "text": "Metatron's Advice" },
-    "description": { "text": "A couple Angelic How-To's" },
+    "title": { "text": "Angelic How-To's" },
+    "description": { "text": "A small guide curated by Heavens' own Metatron" },
     "background": "minecraft:textures/gui/advancements/backgrounds/end.png",
     "show_toast": false,
     "announce_to_chat": false,
