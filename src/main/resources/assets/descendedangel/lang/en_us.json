@@ -15,6 +15,10 @@
   "item.descendedangel.halo_t8" : "Throne Halo",
   "item.descendedangel.halo_t9" : "Seraphim Halo",
 
+  "item.descendedangel.wing_t1" : "Two Wings",
+  "item.descendedangel.wing_t2" : "Four Wings",
+  "item.descendedangel.wing_t3" : "Six Wings",
+
   "creativetab.angel_tab" : "Descended Angel Mod",
   "tooltip.descendedangel.halo.when_worn": "When worn:",
   "tooltip.descendedangel.halo.undead_damage": "+%s%% Damage vs Undead",
@@ -32,7 +36,10 @@
   "tooltip.descendedangel.halo_t6.lore": "Illuminate the darkness with your transcendent light.",
   "tooltip.descendedangel.halo_t7.lore": "You stand as a Gateway for the Lord.",
   "tooltip.descendedangel.halo_t8.lore": "With You the Lord begins to move.",
-  "tooltip.descendedangel.halo_t9.lore": "An attendant of the Lord, You behold His utmost radiance."
+  "tooltip.descendedangel.halo_t9.lore": "An attendant of the Lord, You behold His utmost radiance.",
 
+  "key.categories.descendedangel": "Descended Angel",
+  "key.descendedangel.t3_speed_up": "Increase Six Wing Flight Speed",
+  "key.descendedangel.t3_speed_down": "Decrease Six Wing Flight Speed"
 
 }

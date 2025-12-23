@@ -31,7 +31,7 @@ import java.util.function.Consumer;
 
 public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
 
-    private final int tier; // 1..9
+    private final int tier;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 

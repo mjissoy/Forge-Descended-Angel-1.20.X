@@ -7,6 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
+import net.normlroyal.descendedangel.item.custom.TieredWingItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -45,7 +46,12 @@ public class ModItems {
             () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 9));
 
     //Wings
-
+    public static final RegistryObject<Item> WING_T1 = ITEMS.register("wing_t1",
+            () -> new TieredWingItem(1, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> WING_T2 = ITEMS.register("wing_t2",
+            () -> new TieredWingItem(2, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> WING_T3 = ITEMS.register("wing_t3",
+            () -> new TieredWingItem(3, new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

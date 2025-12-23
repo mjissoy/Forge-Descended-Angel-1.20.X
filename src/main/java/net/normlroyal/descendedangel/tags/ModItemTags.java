@@ -12,4 +12,9 @@ public class ModItemTags {
             Registries.ITEM,
             new ResourceLocation(DescendedAngel.MOD_ID, "halos")
     );
+
+    public static final TagKey<Item> WINGS = TagKey.create(
+            Registries.ITEM,
+            new ResourceLocation(DescendedAngel.MOD_ID, "wings")
+    );
 }
