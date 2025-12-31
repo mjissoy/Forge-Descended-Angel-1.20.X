@@ -6,8 +6,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.item.custom.BasicWingItem;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
-import net.normlroyal.descendedangel.item.custom.TieredWingItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -23,6 +23,10 @@ public class ModItems {
     public static final RegistryObject<Item> DEMONHEART = ITEMS.register("demon_heart",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SPATIALCORE = ITEMS.register("spatial_core",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SACREDOREINGOT = ITEMS.register("sacred_ore_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SACREDORERAW = ITEMS.register("sacred_ore_raw",
             () -> new Item(new Item.Properties()));
 
     // Halos
@@ -45,13 +49,15 @@ public class ModItems {
     public static final RegistryObject<Item> HALO_T9 = ITEMS.register("halo_t9",
             () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 9));
 
-    //Wings
+    // Wings
     public static final RegistryObject<Item> WING_T1 = ITEMS.register("wing_t1",
-            () -> new TieredWingItem(1, new Item.Properties().stacksTo(1)));
+            () -> new BasicWingItem( new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WING_T2 = ITEMS.register("wing_t2",
-            () -> new TieredWingItem(2, new Item.Properties().stacksTo(1)));
+            () -> new BasicWingItem( new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WING_T3 = ITEMS.register("wing_t3",
-            () -> new TieredWingItem(3, new Item.Properties().stacksTo(1)));
+            () -> new BasicWingItem( new Item.Properties().stacksTo(1)));
+
+    // Trinkets
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

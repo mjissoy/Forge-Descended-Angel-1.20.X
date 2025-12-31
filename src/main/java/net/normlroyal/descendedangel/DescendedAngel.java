@@ -16,7 +16,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.ModCreativeModTabs;
 import net.normlroyal.descendedangel.item.ModItems;
-import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.particle.ModParticles;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
@@ -35,7 +34,6 @@ public class DescendedAngel
         GeckoLib.initialize();
 
         ModItems.register(modEventBus);
-        ModNetwork.register();
 
         modEventBus.addListener(this::commonSetup);
 
