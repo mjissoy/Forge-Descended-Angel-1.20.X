@@ -7,5 +7,5 @@
   "ingredient": {
     "item": "descendedangel:sacred_ore_raw"
   },
-  "result": "minecraft:sacred_ore_ingot"
+  "result": "descendedangel:sacred_ore_ingot"
 }
