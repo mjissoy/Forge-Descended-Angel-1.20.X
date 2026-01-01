@@ -1,0 +1,19 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A": {
+      "item": "descendedangel:raw_sacred_ore"
+    }
+  },
+  "result": {
+    "item": "descendedangel:raw_sacred_ore_block",
+    "count": 1
+  }
+}

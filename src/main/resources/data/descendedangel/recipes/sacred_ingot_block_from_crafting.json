@@ -1,0 +1,19 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A": {
+      "item": "descendedangel:sacred_ore_ingot"
+    }
+  },
+  "result": {
+    "item": "descendedangel:sacred_ingot_block",
+    "count": 1
+  }
+}

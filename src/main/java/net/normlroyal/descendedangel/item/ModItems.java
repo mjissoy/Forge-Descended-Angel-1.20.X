@@ -13,7 +13,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, DescendedAngel.MOD_ID);
 
-    // Other Items
+    // Materials
     public static final RegistryObject<Item> ANGELFEATHER = ITEMS.register("angel_feather",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> REALANGELFEATHER = ITEMS.register("angel_feather_real",
@@ -24,6 +24,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SPATIALCORE = ITEMS.register("spatial_core",
             () -> new Item(new Item.Properties()));
+
+    // Ores
     public static final RegistryObject<Item> SACREDOREINGOT = ITEMS.register("sacred_ore_ingot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SACREDORERAW = ITEMS.register("sacred_ore_raw",

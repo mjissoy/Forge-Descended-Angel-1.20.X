@@ -8,6 +8,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.block.ModBlocks;
 
 public class ModCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS =
@@ -19,8 +20,13 @@ public class ModCreativeModTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.ANGELFEATHER.get());
                         output.accept(ModItems.REALANGELFEATHER.get());
+
+                        output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModItems.SACREDOREINGOT.get());
                         output.accept(ModItems.SACREDORERAW.get());
+                        output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
+                        output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
+
                         output.accept(ModItems.DEMONHEART.get());
                         output.accept(ModItems.VOIDTEAR.get());
                         output.accept(ModItems.SPATIALCORE.get());
