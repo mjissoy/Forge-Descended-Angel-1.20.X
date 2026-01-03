@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "descendedangel:sacred_ore_block"
+              "name": "descendedangel:sacred_ore"
             },
             {
               "type": "minecraft:item",
@@ -47,7 +47,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "descendedangel:raw_sacred_ore"
+              "name": "descendedangel:sacred_ore_raw"
             }
           ]
         }
@@ -55,5 +55,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "descendedangel:blocks/sacred_ore_block"
+  "random_sequence": "descendedangel:blocks/sacred_ore"
 }

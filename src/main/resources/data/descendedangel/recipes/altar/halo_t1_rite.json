@@ -1,0 +1,26 @@
+{
+  "type": "descendedangel:altar_rite",
+
+  "display_type": "altar.descendedangel.ascendance",
+  "required_halo_tier": 0,
+
+  "core": {
+    "item": "descendedangel:angel_feather"
+  },
+
+  "ring": [
+    { "item": "descendedangel:void_tear" },
+    { "item": "minecraft:gold_ingot" },
+    { "item": "minecraft:gold_ingot" },
+    { "item": "minecraft:gold_ingot" },
+    { "item": "descendedangel:void_tear" },
+    { "item": "minecraft:gold_ingot" },
+    { "item": "minecraft:gold_ingot" },
+    { "item": "minecraft:gold_ingot" }
+  ],
+
+  "result": {
+    "item": "descendedangel:halo_t1",
+    "count": 1
+  }
+}

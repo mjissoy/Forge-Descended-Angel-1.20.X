@@ -1,0 +1,26 @@
+{
+  "type": "descendedangel:altar_rite",
+
+  "display_type": "altar.descendedangel.ascendance",
+  "required_halo_tier": 6,
+
+  "core": {
+    "item": "descendedangel:halo_t6"
+  },
+
+  "ring": [
+    { "item": "descendedangel:void_tear" },
+    { "item": "minecraft:netherite_ingot" },
+    { "item": "minecraft:nether_star" },
+    { "item": "minecraft:netherite_ingot" },
+    { "item": "descendedangel:void_tear" },
+    { "item": "minecraft:netherite_ingot" },
+    { "item": "minecraft:nether_star" },
+    { "item": "minecraft:netherite_ingot" }
+  ],
+
+  "result": {
+    "item": "descendedangel:halo_t7",
+    "count": 1
+  }
+}

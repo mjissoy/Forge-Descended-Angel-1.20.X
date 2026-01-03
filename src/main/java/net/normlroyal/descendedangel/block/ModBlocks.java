@@ -12,6 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.block.altar.AltarBlock;
 import net.normlroyal.descendedangel.item.ModItems;
 
 import java.util.function.Supplier;
@@ -28,6 +29,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> SACRED_ORE = registerBlock("sacred_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
                     .strength(5f).requiresCorrectToolForDrops(), UniformInt.of(5, 10)));
+
+    public static final RegistryObject<Block> ALTAR = registerBlock("altar",
+            () -> new AltarBlock(BlockBehaviour.Properties.of()
+                    .strength(-1.0F, 3600000.0F) // bedrock-like
+                    .noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

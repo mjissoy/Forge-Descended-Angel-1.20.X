@@ -11,6 +11,12 @@
   "block.descendedangel.raw_sacred_ore_block": "Raw Sacred Ore Block",
   "block.descendedangel.sacred_ore": "Sacred Ore",
 
+  "container.descendedangel.altar": "Altar",
+  "altar.descendedangel.ascendance": "Ascendance",
+  "altar.descendedangel.sanctification": "Sanctification",
+  "altar.descendedangel.purification": "Purification",
+  "altar.descendedangel.transcendence": "Transcendence",
+
 
   "item.descendedangel.halo_t1" : "Halo",
   "item.descendedangel.halo_t2" : "Archangel Halo",

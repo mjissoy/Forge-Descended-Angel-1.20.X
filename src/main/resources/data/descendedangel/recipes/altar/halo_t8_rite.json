@@ -1,0 +1,26 @@
+{
+  "type": "descendedangel:altar_rite",
+
+  "display_type": "altar.descendedangel.ascendance",
+  "required_halo_tier": 7,
+
+  "core": {
+    "item": "descendedangel:halo_t7"
+  },
+
+  "ring": [
+    { "item": "descendedangel:spatial_core" },
+    { "item": "minecraft:netherite_block" },
+    { "item": "minecraft:dragon_breath" },
+    { "item": "minecraft:netherite_block" },
+    { "item": "descendedangel:spatial_core" },
+    { "item": "minecraft:netherite_block" },
+    { "item": "minecraft:dragon_breath" },
+    { "item": "minecraft:netherite_block" }
+  ],
+
+  "result": {
+    "item": "descendedangel:halo_t8",
+    "count": 1
+  }
+}

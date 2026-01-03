@@ -27,6 +27,9 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
                         output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
 
+
+                        output.accept(ModBlocks.ALTAR.get());
+
                         output.accept(ModItems.DEMONHEART.get());
                         output.accept(ModItems.VOIDTEAR.get());
                         output.accept(ModItems.SPATIALCORE.get());

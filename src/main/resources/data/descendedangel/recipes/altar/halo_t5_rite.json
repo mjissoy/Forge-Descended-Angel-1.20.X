@@ -1,0 +1,26 @@
+{
+  "type": "descendedangel:altar_rite",
+
+  "display_type": "altar.descendedangel.ascendance",
+  "required_halo_tier": 4,
+
+  "core": {
+    "item": "descendedangel:halo_t4"
+  },
+
+  "ring": [
+    { "item": "descendedangel:demon_heart" },
+    { "item": "minecraft:diamond_block" },
+    { "item": "descendedangel:void_tear" },
+    { "item": "minecraft:netherite_ingot" },
+    { "item": "descendedangel:demon_heart" },
+    { "item": "minecraft:diamond_block" },
+    { "item": "descendedangel:void_tear" },
+    { "item": "minecraft:netherite_ingot" }
+  ],
+
+  "result": {
+    "item": "descendedangel:halo_t5",
+    "count": 1
+  }
+}

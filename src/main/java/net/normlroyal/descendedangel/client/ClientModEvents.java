@@ -1,10 +1,13 @@
 package net.normlroyal.descendedangel.client;
 
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.block.ModBlockEntities;
+import net.normlroyal.descendedangel.client.render.AltarRenderer;
 import net.normlroyal.descendedangel.client.render.HaloCurioRenderer;
 import net.normlroyal.descendedangel.item.ModItems;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
@@ -26,6 +29,9 @@ public class ClientModEvents {
             CuriosRendererRegistry.register(ModItems.HALO_T7.get(), HaloCurioRenderer::new);
             CuriosRendererRegistry.register(ModItems.HALO_T8.get(), HaloCurioRenderer::new);
             CuriosRendererRegistry.register(ModItems.HALO_T9.get(), HaloCurioRenderer::new);
+
+            // Altar Block Renderer
+            BlockEntityRenderers.register(ModBlockEntities.ALTAR.get(), AltarRenderer::new);
         });
     }
 }

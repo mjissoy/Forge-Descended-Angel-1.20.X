@@ -2,6 +2,7 @@
   "type": "minecraft:ore",
   "config": {
     "size": 3,
+    "discard_chance_on_air_exposure": 0.0,
     "targets": [
       {
         "target": {
@@ -9,7 +10,7 @@
           "tag": "minecraft:deepslate_ore_replaceables"
         },
         "state": {
-          "Name": "descendedangel:sacred_ore_block"
+          "Name": "descendedangel:sacred_ore"
         }
       }
     ]
