@@ -1,0 +1,127 @@
+package net.normlroyal.descendedangel.integration.jei;
+
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.item.ModItems;
+import net.normlroyal.descendedangel.recipe.AltarRiteRecipe;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
+
+    private static ResourceLocation rl(String path) {
+        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, path);
+    }
+
+    private static final ResourceLocation BG = rl("textures/gui/altar_workbench.png");
+
+    private final IDrawable background;
+    private final IDrawable icon;
+
+    public AltarRiteCategory(IGuiHelper guiHelper) {
+        // width/height must match your png size
+        this.background = guiHelper.createDrawable(BG, 0, 0, 176, 115);
+        this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModItems.REALANGELFEATHER.get()));
+    }
+
+    @Override
+    public mezz.jei.api.recipe.RecipeType<AltarRiteRecipe> getRecipeType() {
+        return DescendedAngelJeiPlugin.ALTAR_RITE;
+    }
+
+    @Override
+    public Component getTitle() {
+        return Component.translatable("jei.descendedangel.altar_rite");
+    }
+
+    @Override
+    public IDrawable getBackground() {
+        return background;
+    }
+
+    @Override
+    public IDrawable getIcon() {
+        return icon;
+    }
+
+    @Override
+    public void setRecipe(IRecipeLayoutBuilder builder, AltarRiteRecipe recipe, mezz.jei.api.recipe.IFocusGroup focuses) {
+
+        int[][] ringPos = new int[][]{
+                {82, 28},  // 0 top
+                {105, 38}, // 1 top-right
+                {115, 61}, // 2 right
+                {105, 84}, // 3 bottom-right
+                {82, 94},  // 4 bottom
+                {58, 84},  // 5 bottom-left
+                {48, 61},  // 6 left
+                {58, 38}   // 7 top-left
+        };
+
+        List<net.minecraft.world.item.crafting.Ingredient> ring = recipe.getRing();
+        for (int i = 0; i < 8; i++) {
+            builder.addSlot(RecipeIngredientRole.INPUT, ringPos[i][0], ringPos[i][1])
+                    .addIngredients(ring.get(i));
+        }
+
+        // Core (your CORE_SLOT position)
+        builder.addSlot(RecipeIngredientRole.INPUT, 82, 61)
+                .addIngredients(recipe.getCore());
+
+        // Output (pick a nice spot on the right)
+        var level = Minecraft.getInstance().level;
+        ItemStack out = (level != null)
+                ? recipe.getResultItem(level.registryAccess()).copy()
+                : recipe.getResult().copy();
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 140, 61)
+                .addItemStack(out);
+
+        int min = recipe.requiredHaloTier();
+        int max = 9;
+
+        var halos = new ArrayList<ItemStack>();
+        for (int t = min; t <= max; t++) {
+            halos.add(getHaloStackForTier(t));
+        }
+
+        builder.addSlot(RecipeIngredientRole.CATALYST, 82, 7)
+                .addItemStacks(halos)
+                .addTooltipCallback((view, tooltip) -> {
+                    tooltip.clear();
+                    tooltip.add(Component.literal("Requires Halo Tier: " + min));
+                    tooltip.add(Component.literal("Any tier " + min + "–" + max + " works"));
+                });
+    }
+
+    @Override
+    public void draw(AltarRiteRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        guiGraphics.drawString(Minecraft.getInstance().font, recipe.displayComponent(), 6, 6, 0x404040, false);
+    }
+
+    private static ItemStack getHaloStackForTier(int tier) {
+        return switch (tier) {
+            case 1 -> new ItemStack(ModItems.HALO_T1.get());
+            case 2 -> new ItemStack(ModItems.HALO_T2.get());
+            case 3 -> new ItemStack(ModItems.HALO_T3.get());
+            case 4 -> new ItemStack(ModItems.HALO_T4.get());
+            case 5 -> new ItemStack(ModItems.HALO_T5.get());
+            case 6 -> new ItemStack(ModItems.HALO_T6.get());
+            case 7 -> new ItemStack(ModItems.HALO_T7.get());
+            case 8 -> new ItemStack(ModItems.HALO_T8.get());
+            case 9 -> new ItemStack(ModItems.HALO_T9.get());
+            default -> new ItemStack(ModItems.HALO_T1.get());
+        };
+    }
+}

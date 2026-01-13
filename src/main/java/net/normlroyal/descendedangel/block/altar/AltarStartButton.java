@@ -41,7 +41,7 @@ public class AltarStartButton extends AbstractWidget {
         int state = stateSupplier.getAsInt();
         Component msg = textSupplier.get();
 
-        // Enabled only if can start
+        // Enabled only if it can start
         this.active = (state == AltarBlockEntity.STATE_CAN_START);
         this.visible = true; // always draw it
 

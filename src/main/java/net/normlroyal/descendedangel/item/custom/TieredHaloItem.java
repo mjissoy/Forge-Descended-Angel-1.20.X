@@ -100,13 +100,6 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
         double healPerTierper = ModConfigs.COMMON.HALO_HEAL_BONUS_PER_TIER.get() * 100.0;
         double dmgPerTierper = ModConfigs.COMMON.HALO_UNDEAD_DAMAGE_BONUS_PER_TIER.get() * 100.0;
 
-        double healthBase  = ModConfigs.COMMON.HALO_HEALTH_BASE.get();
-        double healthMulti = ModConfigs.COMMON.HALO_HEALTH_MULTI.get();
-        double armorBase   = ModConfigs.COMMON.HALO_ARMOR_BASE.get();
-        double armorMulti  = ModConfigs.COMMON.HALO_ARMOR_MULTI.get();
-
-        double extraHealth = (healthBase + healthMulti * (tier - 1) * tier);
-        double extraArmor  = (armorBase  + armorMulti  * (tier - 1) * tier);
         double healbon  = healPerTierper * tier;
         double undbon  = dmgPerTierper * tier;
 
@@ -129,13 +122,6 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
         tooltip.add(
                 Component.translatable("tooltip.descendedangel.halo.when_worn")
                         .withStyle(ChatFormatting.DARK_GRAY));
-        tooltip.add(
-                Component.translatable("tooltip.descendedangel.halo.health_bonus", extraHealth)
-                        .withStyle(ChatFormatting.BLUE));
-        tooltip.add(
-                Component.translatable("tooltip.descendedangel.halo.armor_bonus", extraArmor)
-                        .withStyle(ChatFormatting.BLUE));
-
         tooltip.add(
                 Component.translatable("tooltip.descendedangel.halo.undead_damage", undbon)
                         .withStyle(ChatFormatting.BLUE));

@@ -42,11 +42,6 @@ public class AltarRiteRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public boolean matches(SimpleContainer container, Level level) {
-        System.out.println("Checking altar recipe match");
-        for (int i = 0; i < 8; i++) {
-            System.out.println(i + ": " + container.getItem(i));
-        }
-        System.out.println("Core: " + container.getItem(8));
 
         if (!core.test(container.getItem(8))) return false;
 

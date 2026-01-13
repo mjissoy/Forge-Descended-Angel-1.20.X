@@ -7,7 +7,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.item.custom.BasicWingItem;
+import net.normlroyal.descendedangel.item.custom.NecklaceCuriosItem;
+import net.normlroyal.descendedangel.item.custom.RingCuriosItem;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
+import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
+import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -60,6 +64,14 @@ public class ModItems {
             () -> new BasicWingItem( new Item.Properties().stacksTo(1)));
 
     // Trinkets
+    public static final RegistryObject<Item> HOLY_RING = ITEMS.register("holy_ring",
+            () -> new RingCuriosItem(RingVariants.HOLY, new Item.Properties()));
+    public static final RegistryObject<Item> CLOUD_RING = ITEMS.register("cloud_ring",
+            () -> new RingCuriosItem(RingVariants.CLOUD, new Item.Properties()));
+    public static final RegistryObject<Item> HOLY_NECKLACE = ITEMS.register("holy_necklace",
+            () -> new NecklaceCuriosItem(NecklaceVariants.HOLY, new Item.Properties()));
+
+    // Other Items
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

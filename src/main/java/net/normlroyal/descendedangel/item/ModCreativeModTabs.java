@@ -27,7 +27,6 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
                         output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
 
-
                         output.accept(ModBlocks.ALTAR.get());
 
                         output.accept(ModItems.DEMONHEART.get());
@@ -47,6 +46,12 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.WING_T1.get());
                         output.accept(ModItems.WING_T2.get());
                         output.accept(ModItems.WING_T3.get());
+
+                        output.accept(ModItems.HOLY_RING.get());
+                        output.accept(ModItems.CLOUD_RING.get());
+                        output.accept(ModItems.HOLY_NECKLACE.get());
+                        output.accept(ModItems.ANGELIC_BOOSTER.get());
+
 
                     })
                     .build());

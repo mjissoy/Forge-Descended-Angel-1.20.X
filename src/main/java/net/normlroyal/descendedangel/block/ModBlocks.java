@@ -14,6 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.altar.AltarBlock;
 import net.normlroyal.descendedangel.item.ModItems;
+import net.normlroyal.descendedangel.item.custom.AltarItem;
 
 import java.util.function.Supplier;
 
@@ -42,7 +43,12 @@ public class ModBlocks {
     }
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        return ModItems.ITEMS.register(name, () -> {
+            if (name.equals("altar")) {
+                return new AltarItem(block.get(), new Item.Properties());
+            }
+            return new BlockItem(block.get(), new Item.Properties());
+        });
     }
 
     public static void register(IEventBus eventBus) {

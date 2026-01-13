@@ -1,7 +1,6 @@
 package net.normlroyal.descendedangel.client.model;
 
 import net.minecraft.resources.ResourceLocation;
-import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
 import software.bernie.geckolib.model.GeoModel;
 

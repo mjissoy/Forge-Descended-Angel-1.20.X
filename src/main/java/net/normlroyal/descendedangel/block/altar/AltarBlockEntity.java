@@ -45,31 +45,21 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         protected void onContentsChanged(int slot) {
             setChanged();
 
-            if (level != null && !level.isClientSide && !crafting) {
+            if (level != null && !level.isClientSide) {
                 updateRiteUiFromInputs();
-                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
             }
         }
     };
 
     private void updateRiteUiFromInputs() {
+        if (level == null) return;
+
         if (crafting) {
-            if (riteState != STATE_NONE || !startButtonText.getString().equals("Crafting...")) {
-                setRiteUi(STATE_NONE, Component.literal("Crafting..."));
-            }
+            setRiteUiIfChanged(STATE_NONE, Component.literal("Crafting..."));
             return;
         }
 
-        if (level == null) return;
-
         SimpleContainer c = buildRecipeContainer();
-
-        System.out.println("---- ALTAR INPUTS ----");
-        for (int i = 0; i < 8; i++) {
-            System.out.println("ring[" + i + "] = " + items.getStackInSlot(i));
-        }
-        System.out.println("core = " + items.getStackInSlot(CORE_SLOT));
-        System.out.println("----------------------");
 
         var recipeOpt = level.getRecipeManager()
                 .getRecipeFor(ModRecipeTypes.ALTAR_RITE.get(), c, level);
@@ -77,7 +67,7 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         if (recipeOpt.isEmpty()) {
             if (riteState != STATE_NONE ||
                     !startButtonText.getString().equals("Insert Items")) {
-                setRiteUi(STATE_NONE, Component.literal("Insert Items"));
+                setRiteUiIfChanged(STATE_NONE, Component.literal("Insert Items"));
             }
             return;
         }
@@ -88,11 +78,11 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         if (required > 0) {
             int authorityTier = getAuthorityTierForRite();
             if (authorityTier < required) {
-                setRiteUi(STATE_HALO_BAD, Component.literal("Halo Rank Insufficient"));
+                setRiteUiIfChanged(STATE_HALO_BAD, Component.literal("Halo Rank Insufficient"));
                 return;
             }
         }
-        setRiteUi(STATE_CAN_START, Component.literal("Start ").append(recipe.displayComponent()));
+        setRiteUiIfChanged(STATE_CAN_START, Component.literal("Start ").append(recipe.displayComponent()));
     }
 
     private SimpleContainer buildRecipeContainer() {
@@ -187,10 +177,6 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         CompoundTag tag = super.getUpdateTag();
         tag.putInt("RiteState", riteState);
         tag.putString("StartBtn", Component.Serializer.toJson(startButtonText));
-        tag.putBoolean("Crafting", crafting);
-        tag.putInt("Progress", progress);
-        tag.putInt("MaxProgress", maxProgress);
-        if (activeRecipeId != null) tag.putString("ActiveRecipe", activeRecipeId.toString());
         return tag;
     }
 
@@ -199,12 +185,6 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         super.handleUpdateTag(tag);
 
         this.riteState = tag.getInt("RiteState");
-        this.crafting = tag.getBoolean("Crafting");
-        this.progress = tag.getInt("Progress");
-        this.maxProgress = tag.getInt("MaxProgress");
-        this.activeRecipeId = tag.contains("ActiveRecipe")
-                ? new ResourceLocation(tag.getString("ActiveRecipe"))
-                : null;
 
         if (tag.contains("StartBtn")) {
             Component c = Component.Serializer.fromJson(tag.getString("StartBtn"));
@@ -224,15 +204,23 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
     public int getRiteState() { return riteState; }
     public Component getStartButtonText() { return startButtonText; }
 
-    public void setRiteUi(int state, Component text) {
-        this.riteState = state;
-        this.startButtonText = (text == null) ? Component.empty() : text;
+    private void setRiteUiIfChanged(int state, Component text) {
+        Component safe = (text == null) ? Component.empty() : text;
 
+        if (this.riteState == state && Component.Serializer.toJson(this.startButtonText)
+                .equals(Component.Serializer.toJson(safe))) {
+            return; // no change, no sync spam
+        }
+
+        this.riteState = state;
+        this.startButtonText = safe;
         setChanged();
+
         if (level != null && !level.isClientSide) {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
     }
+
 
     public void tryStartRite(ServerPlayer player) {
         if (level == null || level.isClientSide) return;
@@ -254,7 +242,7 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         if (required > 0) {
             int authorityTier = getAuthorityTierForRite();
             if (authorityTier < required) {
-                setRiteUi(STATE_HALO_BAD, Component.literal("Halo Rank Insufficient"));
+                setRiteUiIfChanged(STATE_HALO_BAD, Component.literal("Halo Rank Insufficient"));
                 return;
             }
         }
@@ -266,7 +254,6 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
 
         updateRiteUiFromInputs();
         setChanged();
-        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
     }
 
     private final AnimatableInstanceCache geoCache =
@@ -329,11 +316,13 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
 
         for (int i = 0; i < 8; i++) {
             ItemStack stack = items.getStackInSlot(i);
-            if (!stack.isEmpty()) {
-                stack.shrink(1);
-                if (stack.isEmpty()) {
-                    items.setStackInSlot(i, ItemStack.EMPTY);
-                }
+            if (stack.isEmpty()) continue;
+
+            ItemStack remainder = stack.getCraftingRemainingItem();
+            stack.shrink(1);
+
+            if (stack.isEmpty()) {
+                items.setStackInSlot(i, remainder.isEmpty() ? ItemStack.EMPTY : remainder.copy());
             }
         }
 
@@ -361,15 +350,6 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
     public void setClientProgress(int p) { this.progress = p; }
     public void setClientMaxProgress(int m) { this.maxProgress = m; }
     public void setClientCrafting(boolean c) { this.crafting = c; }
-
-    private boolean hasRequiredHalo(int requiredTier) {
-        if (requiredTier <= 0) return true;
-
-        ItemStack halo = items.getStackInSlot(HALO_SLOT);
-        if (!(halo.getItem() instanceof TieredHaloItem h)) return false;
-
-        return h.getTier() >= requiredTier;
-    }
 
     private static int haloTierOf(ItemStack stack) {
         if (stack.getItem() instanceof TieredHaloItem h) return h.getTier();

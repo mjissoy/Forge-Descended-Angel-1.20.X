@@ -10,7 +10,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
 import net.normlroyal.descendedangel.block.altar.AltarBlockEntity;
 
 public class AltarMenu extends AbstractContainerMenu {
@@ -36,12 +35,10 @@ public class AltarMenu extends AbstractContainerMenu {
 
             @Override
             public void set(int index, int value) {
-                if (be.getLevel() != null && be.getLevel().isClientSide) {
-                    switch (index) {
-                        case 0 -> be.setClientProgress(value);
-                        case 1 -> be.setClientMaxProgress(value);
-                        case 2 -> be.setClientCrafting(value != 0);
-                    }
+                switch (index) {
+                    case 0 -> be.setClientProgress(value);
+                    case 1 -> be.setClientMaxProgress(value);
+                    case 2 -> be.setClientCrafting(value != 0);
                 }
             }
 
@@ -161,10 +158,5 @@ public class AltarMenu extends AbstractContainerMenu {
     public int getProgress() { return data.get(0); }
     public int getMaxProgress() { return data.get(1); }
     public boolean isCrafting() { return data.get(2) != 0; }
-
-    @Override
-    public void broadcastChanges() {
-        super.broadcastChanges();
-    }
 
 }

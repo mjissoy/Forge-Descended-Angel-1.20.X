@@ -12,6 +12,8 @@
   "block.descendedangel.sacred_ore": "Sacred Ore",
 
   "container.descendedangel.altar": "Altar",
+  "block.descendedangel.altar": "Altar",
+  "jei.descendedangel.altar_rite": "Altar Rite",
   "altar.descendedangel.ascendance": "Ascendance",
   "altar.descendedangel.sanctification": "Sanctification",
   "altar.descendedangel.purification": "Purification",
@@ -32,15 +34,19 @@
   "item.descendedangel.wing_t2" : "Four Wings",
   "item.descendedangel.wing_t3" : "Six Wings",
 
+  "item.descendedangel.holy_necklace" : "Holy Necklace",
+
+  "item.descendedangel.holy_ring" : "Holy Ring",
+  "item.descendedangel.cloud_ring" : "Storm Ring",
+  "tooltip.descendedangel.cloud_ring.lore": "Born of the Wrath of Heaven, forged by the Dominions.",
+
   "creativetab.angel_tab" : "Descended Angel Mod",
   "tooltip.descendedangel.halo.when_worn": "When worn:",
   "tooltip.descendedangel.halo.undead_damage": "+%s%% Damage vs Undead",
   "tooltip.descendedangel.halo.healing_bonus": "+%s%% Healing Received",
-  "tooltip.descendedangel.halo.armor_bonus": "+%s Armor",
-  "tooltip.descendedangel.halo.health_bonus": "+%s Health",
+
 
   "tooltip.descendedangel.halo.hold_shift": "Hold [SHIFT] for lore.",
-
   "tooltip.descendedangel.halo_t1.lore": "A new light ignites the world.",
   "tooltip.descendedangel.halo_t2.lore": "The foundation of a new order.",
   "tooltip.descendedangel.halo_t3.lore": "Rules bind your higher existence.",

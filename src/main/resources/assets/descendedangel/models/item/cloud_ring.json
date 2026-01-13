@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "descendedangel:item/throne_halo"
+    "layer0": "descendedangel:item/cloud_ring"
   }
 }

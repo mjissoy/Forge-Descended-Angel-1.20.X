@@ -1,0 +1,22 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "category" : "misc",
+  "pattern": [
+    "AAA",
+    "AAA",
+    " B "
+  ],
+  "key":
+  {
+    "A": {
+      "item": "minecraft:iron_nugget"
+    },
+    "B": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "descendedangel:holy_necklace",
+    "count": 1
+  }
+}
