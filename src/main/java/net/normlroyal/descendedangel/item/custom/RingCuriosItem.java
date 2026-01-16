@@ -28,6 +28,7 @@ public class RingCuriosItem extends Item implements ICurioItem {
         this.variant = variant;
     }
 
+
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(
             SlotContext slotContext, UUID uuid, ItemStack stack) {
