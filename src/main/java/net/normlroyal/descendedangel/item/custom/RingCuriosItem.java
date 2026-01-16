@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -31,6 +32,10 @@ public class RingCuriosItem extends Item implements ICurioItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(
             SlotContext slotContext, UUID uuid, ItemStack stack) {
 
+        double effectiveness = ModConfigs.COMMON.Rings_Effectiveness.get();
+        double crMOVSP = ModConfigs.COMMON.CloudRing_MOVSpeedBoost.get();
+        double crATKSP = ModConfigs.COMMON.CloudRing_ATKSpeedBoost.get();
+
         if (variant == RingVariants.HOLY) {
             return ImmutableMultimap.of();
         }
@@ -39,10 +44,10 @@ public class RingCuriosItem extends Item implements ICurioItem {
             return ImmutableMultimap.of(
                     Attributes.MOVEMENT_SPEED,
                     new AttributeModifier(uuid, "descendedangel:cloud_ring_speed",
-                            0.20, AttributeModifier.Operation.MULTIPLY_TOTAL),
+                            effectiveness*crMOVSP, AttributeModifier.Operation.MULTIPLY_TOTAL),
                     Attributes.ATTACK_SPEED,
                     new AttributeModifier(uuid, "descendedangel:cloud_ring_attackspeed",
-                            0.1, AttributeModifier.Operation.MULTIPLY_TOTAL)
+                            effectiveness*crATKSP, AttributeModifier.Operation.MULTIPLY_TOTAL)
             );
         }
 

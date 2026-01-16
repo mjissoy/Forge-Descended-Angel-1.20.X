@@ -26,12 +26,12 @@ public class ModConfigs {
 
         public final ForgeConfigSpec.DoubleValue voidTouchedSpawnChance;
 
-        public final ForgeConfigSpec.DoubleValue ANGEL_BOOSTER_BASE_DASH_BLOCKS;
-        public final ForgeConfigSpec.DoubleValue ANGEL_BOOSTER_MAX_DASH_BLOCKS;
-        public final ForgeConfigSpec.IntValue ANGEL_BOOSTER_CHARGE_TIME_TICKS;
-        public final ForgeConfigSpec.IntValue ANGEL_BOOSTER_BASE_COOLDOWN_TICKS;
-        public final ForgeConfigSpec.IntValue ANGEL_BOOSTER_MAX_COOLDOWN_TICKS;
-        public final ForgeConfigSpec.DoubleValue ANGEL_BOOSTER_VERTICAL_BOOST;
+        public final ForgeConfigSpec.DoubleValue CloudRing_MOVSpeedBoost;
+        public final ForgeConfigSpec.DoubleValue CloudRing_ATKSpeedBoost;
+        public final ForgeConfigSpec.DoubleValue Rings_Effectiveness;
+
+        public final ForgeConfigSpec.DoubleValue MessengerPendant_LuckBoost;
+        public final ForgeConfigSpec.DoubleValue Necklaces_Effectiveness;
 
 
         public Common(ForgeConfigSpec.Builder builder) {
@@ -39,7 +39,6 @@ public class ModConfigs {
             builder.pop();
 
             builder.push("--Halo Settings--");
-
             HALO_HEAL_BONUS_PER_TIER = builder
                     .comment("Extra healing received per halo tier (e.g. 0.05 = +5% per tier).")
                     .defineInRange("haloHealingBonusPerTier", 0.05D, 0.0D, 10.0D);
@@ -64,34 +63,31 @@ public class ModConfigs {
             builder.pop();
 
             builder.push("--Void Settings--");
-
             voidTouchedSpawnChance = builder
                     .comment("Chance for hostile mobs to spawn with Void Touched (e.g. 0.05 = 5%)")
                     .defineInRange("voidTouchedSpawnChance", 0.05D, 0.0D, 1.0D);
             builder.pop();
 
-            builder.push("--Angel Booster Settings--");
-
-            ANGEL_BOOSTER_BASE_DASH_BLOCKS = builder
-                    .comment("Dash distance (blocks) when NOT charging (shift not held). Default: 3.0")
-                    .defineInRange("angelBoosterBaseDashBlocks", 3.0D, 0.1D, 100.0D);
-            ANGEL_BOOSTER_MAX_DASH_BLOCKS = builder
-                    .comment("Dash distance (blocks) at full charge (shift held). Default: 9.0")
-                    .defineInRange("angelBoosterMaxDashBlocks", 9.0D, 0.1D, 200.0D);
-            ANGEL_BOOSTER_CHARGE_TIME_TICKS = builder
-                    .comment("Ticks to reach full charge while holding right-click + shift. 20 ticks = 1 second. Default: 20")
-                    .defineInRange("angelBoosterChargeTimeTicks", 20, 1, 200);
-            ANGEL_BOOSTER_BASE_COOLDOWN_TICKS = builder
-                    .comment("Cooldown (ticks) when NOT charged. Default: 40 (2s)")
-                    .defineInRange("angelBoosterBaseCooldownTicks", 40, 0, 20000);
-            ANGEL_BOOSTER_MAX_COOLDOWN_TICKS = builder
-                    .comment("Cooldown (ticks) at full charge. Default: 120 (6s)")
-                    .defineInRange("angelBoosterMaxCooldownTicks", 120, 0, 20000);
-            ANGEL_BOOSTER_VERTICAL_BOOST = builder
-                    .comment("Extra vertical boost added to the dash (small value recommended). Default: 0.05")
-                    .defineInRange("angelBoosterVerticalBoost", 0.05D, -1.0D, 2.0D);
+            builder.push("--Ring Settings--");
+            CloudRing_ATKSpeedBoost = builder
+                    .comment("The increase in attack speed by the Storm Ring (e.g. 0.20 = +20%).")
+                    .defineInRange("cloudRingATKSpeed_multi", 0.20D, 0.0D, 10.0D);
+            CloudRing_MOVSpeedBoost = builder
+                    .comment("The increase in movement speed by the Storm Ring (e.g. 0.30 = +30%).")
+                    .defineInRange("cloudRingMOVSpeed_multi", 0.30D, 0.0D, 10.0D);
+            Rings_Effectiveness = builder
+                    .comment("Global multiplier for all Ring bonuses. < 1.0 = weaker ring, > 1.0 = stronger.")
+                    .defineInRange("ringEffectivenessMultiplier", 1.0D, 0.0D, 100.0D);
             builder.pop();
 
+            builder.push("--Necklace Settings--");
+            MessengerPendant_LuckBoost = builder
+                    .comment("The increase in luck by the Messenger Pendant (e.g. 0.50 = +50%).")
+                    .defineInRange("messengerPendant_luckboost", 0.50D, 0.0D, 10.0D);
+            Necklaces_Effectiveness = builder
+                    .comment("Global multiplier for all Necklace bonuses. < 1.0 = weaker necklace, > 1.0 = stronger.")
+                    .defineInRange("necklaceEffectivenessMultiplier", 1.0D, 0.0D, 100.0D);
+            builder.pop();
 
 
         }

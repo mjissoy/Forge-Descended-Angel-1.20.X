@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -31,6 +32,9 @@ public class NecklaceCuriosItem extends Item implements ICurioItem {
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(
             SlotContext slotContext, UUID uuid, ItemStack stack) {
 
+        double effectiveness = ModConfigs.COMMON.Necklaces_Effectiveness.get();
+        double mpluck = ModConfigs.COMMON.MessengerPendant_LuckBoost.get();
+
         if (variant == NecklaceVariants.HOLY) {
             return ImmutableMultimap.of();
         }
@@ -39,7 +43,7 @@ public class NecklaceCuriosItem extends Item implements ICurioItem {
             return ImmutableMultimap.of(
                     Attributes.LUCK,
                     new AttributeModifier(uuid, "descendedangel:messenger_necklace_luck",
-                            0.30, AttributeModifier.Operation.MULTIPLY_TOTAL)
+                            effectiveness*mpluck, AttributeModifier.Operation.MULTIPLY_TOTAL)
             );
         }
 
