@@ -38,8 +38,6 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
     public static final int HALO_SLOT  = 9;
     public static final int SLOT_COUNT = 10;
 
-    // Inventory
-
     private final ItemStackHandler items = new ItemStackHandler(SLOT_COUNT) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -209,7 +207,7 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
 
         if (this.riteState == state && Component.Serializer.toJson(this.startButtonText)
                 .equals(Component.Serializer.toJson(safe))) {
-            return; // no change, no sync spam
+            return;
         }
 
         this.riteState = state;
@@ -224,7 +222,7 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
 
     public void tryStartRite(ServerPlayer player) {
         if (level == null || level.isClientSide) return;
-        if (crafting) return; // already running
+        if (crafting) return;
 
         SimpleContainer c = buildRecipeContainer();
 

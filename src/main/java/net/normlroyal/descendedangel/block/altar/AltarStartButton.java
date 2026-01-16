@@ -41,33 +41,26 @@ public class AltarStartButton extends AbstractWidget {
         int state = stateSupplier.getAsInt();
         Component msg = textSupplier.get();
 
-        // Enabled only if it can start
         this.active = (state == AltarBlockEntity.STATE_CAN_START);
-        this.visible = true; // always draw it
+        this.visible = true;
 
 
         boolean hover = this.isHovered;
 
-        // Overlays (ARGB)
-        if (!this.active) {
-            // disabled overlay
-            g.fill(getX(), getY(), getX() + width, getY() + height, 0x33000000);
-        } else if (this.isHovered) {
-            // hover overlay
+        // Hover Overlay (ARGB)
+        if (this.isHovered) {
             g.fill(getX(), getY(), getX() + width, getY() + height, 0x22FFFFFF);
         }
 
-        // pressed overlay (when mouse down on it)
+        // Pressed Overlay (ARGB)
         if (this.active && this.isHovered && net.minecraft.client.Minecraft.getInstance().mouseHandler.isLeftPressed()) {
             g.fill(getX(), getY(), getX() + width, getY() + height, 0x33000000);
         }
 
         // Text
         String s = (msg == null) ? "" : msg.getString();
-        // color: bright gold when active, muted when not
         int color = this.active ? 0xFFE6C35A : 0xFFB7B0A0;
 
-        // Fit text to width by trimming
         int padding = 4;
         int maxW = width - padding * 2;
         var font = net.minecraft.client.Minecraft.getInstance().font;

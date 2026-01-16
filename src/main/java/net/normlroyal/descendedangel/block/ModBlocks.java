@@ -33,7 +33,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ALTAR = registerBlock("altar",
             () -> new AltarBlock(BlockBehaviour.Properties.of()
-                    .strength(-1.0F, 3600000.0F) // bedrock-like
+                    .strength(-1.0F, 3600000.0F)
                     .noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

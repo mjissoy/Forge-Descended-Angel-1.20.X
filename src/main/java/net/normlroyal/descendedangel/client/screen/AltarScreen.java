@@ -35,7 +35,6 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
                 menu.blockEntity::getStartButtonText,
                 menu.blockEntity::getRiteState,
                 () -> {
-                    // sends the vanilla container-button-click packet to server
                     if (minecraft != null && minecraft.gameMode != null) {
                         minecraft.gameMode.handleInventoryButtonClick(menu.containerId, AltarMenu.BTN_START_RITE);
                     }

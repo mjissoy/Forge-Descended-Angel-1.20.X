@@ -30,7 +30,6 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
     private final IDrawable icon;
 
     public AltarRiteCategory(IGuiHelper guiHelper) {
-        // width/height must match your png size
         this.background = guiHelper.createDrawable(BG, 0, 0, 177, 117);
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModItems.REALANGELFEATHER.get()));
     }
@@ -59,14 +58,14 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
     public void setRecipe(IRecipeLayoutBuilder builder, AltarRiteRecipe recipe, mezz.jei.api.recipe.IFocusGroup focuses) {
 
         int[][] ringPos = new int[][]{
-                {58, 28},  // 0 top
-                {80, 38}, // 1 top-right
-                {90, 61}, // 2 right
-                {80, 84}, // 3 bottom-right
-                {58, 94},  // 4 bottom
-                {36, 84},  // 5 bottom-left
-                {26, 61},  // 6 left
-                {36, 38}   // 7 top-left
+                {58, 28},  //  top
+                {80, 38}, //  top-right
+                {90, 61}, //  right
+                {80, 84}, //  bottom-right
+                {58, 94},  //  bottom
+                {36, 84},  //  bottom-left
+                {26, 61},  //  left
+                {36, 38}   //  top-left
         };
 
         List<net.minecraft.world.item.crafting.Ingredient> ring = recipe.getRing();

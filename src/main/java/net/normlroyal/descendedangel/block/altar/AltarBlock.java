@@ -30,7 +30,7 @@ public class AltarBlock extends BaseEntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new AltarBlockEntity(pos, state); // your BE class
+        return new AltarBlockEntity(pos, state);
     }
 
     @Override

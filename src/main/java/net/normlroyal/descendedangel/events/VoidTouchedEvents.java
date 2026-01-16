@@ -21,7 +21,6 @@ import net.normlroyal.descendedangel.particle.ModParticles;
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class VoidTouchedEvents {
 
-    // Spawn mobs in Void_Touched
     public static final String VOID_TOUCHED = "descendedangel:void_touched";
 
     @SubscribeEvent
@@ -38,7 +37,6 @@ public class VoidTouchedEvents {
         }
     }
 
-    // Void_touched Particles
     @SubscribeEvent
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
         LivingEntity e = event.getEntity();
@@ -54,7 +52,6 @@ public class VoidTouchedEvents {
                 5, 0.25, 0.4, 0.25, 0.005);
     }
 
-    // Void Tear drops from void_touched mobs
     @SubscribeEvent
     public static void onLivingDrops(LivingDropsEvent event) {
         LivingEntity dead = event.getEntity();
