@@ -24,14 +24,14 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
         return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, path);
     }
 
-    private static final ResourceLocation BG = rl("textures/gui/altar_workbench.png");
+    private static final ResourceLocation BG = rl("textures/gui/jei_altar_workbench.png");
 
     private final IDrawable background;
     private final IDrawable icon;
 
     public AltarRiteCategory(IGuiHelper guiHelper) {
         // width/height must match your png size
-        this.background = guiHelper.createDrawable(BG, 0, 0, 176, 115);
+        this.background = guiHelper.createDrawable(BG, 0, 0, 177, 117);
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModItems.REALANGELFEATHER.get()));
     }
 
@@ -59,14 +59,14 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
     public void setRecipe(IRecipeLayoutBuilder builder, AltarRiteRecipe recipe, mezz.jei.api.recipe.IFocusGroup focuses) {
 
         int[][] ringPos = new int[][]{
-                {82, 28},  // 0 top
-                {105, 38}, // 1 top-right
-                {115, 61}, // 2 right
-                {105, 84}, // 3 bottom-right
-                {82, 94},  // 4 bottom
-                {58, 84},  // 5 bottom-left
-                {48, 61},  // 6 left
-                {58, 38}   // 7 top-left
+                {58, 28},  // 0 top
+                {80, 38}, // 1 top-right
+                {90, 61}, // 2 right
+                {80, 84}, // 3 bottom-right
+                {58, 94},  // 4 bottom
+                {36, 84},  // 5 bottom-left
+                {26, 61},  // 6 left
+                {36, 38}   // 7 top-left
         };
 
         List<net.minecraft.world.item.crafting.Ingredient> ring = recipe.getRing();
@@ -75,17 +75,17 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
                     .addIngredients(ring.get(i));
         }
 
-        // Core (your CORE_SLOT position)
-        builder.addSlot(RecipeIngredientRole.INPUT, 82, 61)
+        // Centre
+        builder.addSlot(RecipeIngredientRole.INPUT, 57, 61)
                 .addIngredients(recipe.getCore());
 
-        // Output (pick a nice spot on the right)
+        // Output
         var level = Minecraft.getInstance().level;
         ItemStack out = (level != null)
                 ? recipe.getResultItem(level.registryAccess()).copy()
                 : recipe.getResult().copy();
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 140, 61)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 129, 61)
                 .addItemStack(out);
 
         int min = recipe.requiredHaloTier();
@@ -96,12 +96,11 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
             halos.add(getHaloStackForTier(t));
         }
 
-        builder.addSlot(RecipeIngredientRole.CATALYST, 82, 7)
+        builder.addSlot(RecipeIngredientRole.CATALYST, 58, 7)
                 .addItemStacks(halos)
                 .addTooltipCallback((view, tooltip) -> {
                     tooltip.clear();
-                    tooltip.add(Component.literal("Requires Halo Tier: " + min));
-                    tooltip.add(Component.literal("Any tier " + min + "–" + max + " works"));
+                    tooltip.add(Component.translatable("altar_jei.halo_t"+ min + ".name"));
                 });
     }
 

@@ -34,7 +34,10 @@
   "item.descendedangel.wing_t2" : "Four Wings",
   "item.descendedangel.wing_t3" : "Six Wings",
 
+
   "item.descendedangel.holy_necklace" : "Holy Necklace",
+  "item.descendedangel.messenger_pendant" : "Messenger's Pendant",
+  "tooltip.descendedangel.messenger_pendant.lore": "A gilded pendant once bestowed upon Sacred Gabriel.",
 
   "item.descendedangel.holy_ring" : "Holy Ring",
   "item.descendedangel.cloud_ring" : "Storm Ring",
@@ -57,8 +60,14 @@
   "tooltip.descendedangel.halo_t8.lore": "With You the Lord begins to move.",
   "tooltip.descendedangel.halo_t9.lore": "An attendant of the Lord, You behold His utmost radiance.",
 
-  "key.categories.descendedangel": "Descended Angel",
-  "key.descendedangel.t3_speed_up": "Increase Six Wing Flight Speed",
-  "key.descendedangel.t3_speed_down": "Decrease Six Wing Flight Speed"
+  "altar_jei.halo_t1.name": "Requires Angel Halo or higher",
+  "altar_jei.halo_t2.name": "Requires Archangel Halo or higher",
+  "altar_jei.halo_t3.name": "Requires Principality Halo or higher",
+  "altar_jei.halo_t4.name": "Requires Power Halo or higher",
+  "altar_jei.halo_t5.name": "Requires Virtue Halo or higher",
+  "altar_jei.halo_t6.name": "Requires Dominion Halo or higher",
+  "altar_jei.halo_t7.name": "Requires Cherubim Halo or higher",
+  "altar_jei.halo_t8.name": "Requires Throne Halo or higher",
+  "altar_jei.halo_t9.name": "Requires Seraphim Halo or higher"
 
 }

@@ -50,6 +50,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.HOLY_RING.get());
                         output.accept(ModItems.CLOUD_RING.get());
                         output.accept(ModItems.HOLY_NECKLACE.get());
+                        output.accept(ModItems.MESSENGER_PENDANT.get());
 
 
                     })

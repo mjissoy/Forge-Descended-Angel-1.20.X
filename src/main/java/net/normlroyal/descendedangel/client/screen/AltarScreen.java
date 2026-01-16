@@ -17,8 +17,8 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
 
     public AltarScreen(AltarMenu menu, Inventory playerInv, Component title) {
         super(menu, playerInv, title);
-        this.imageWidth = 176;
-        this.imageHeight = 256;
+        this.imageWidth = 177;
+        this.imageHeight = 240;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
         super.init();
 
         int x1 = leftPos + 47;
-        int y1 = topPos + 128;
+        int y1 = topPos + 121;
         int w  = 85;
         int h  = 17;
 
@@ -51,7 +51,7 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
 
         if (menu.isCrafting() && menu.getMaxProgress() > 0) {
             int x = leftPos + 82;
-            int y = topPos + 61;
+            int y = topPos + 53;
             int w = 18;
             int h = 18;
 

@@ -70,6 +70,8 @@ public class ModItems {
             () -> new RingCuriosItem(RingVariants.CLOUD, new Item.Properties()));
     public static final RegistryObject<Item> HOLY_NECKLACE = ITEMS.register("holy_necklace",
             () -> new NecklaceCuriosItem(NecklaceVariants.HOLY, new Item.Properties()));
+    public static final RegistryObject<Item> MESSENGER_PENDANT = ITEMS.register("messenger_pendant",
+            () -> new NecklaceCuriosItem(NecklaceVariants.MESSENGER, new Item.Properties()));
 
     // Other Items
 
