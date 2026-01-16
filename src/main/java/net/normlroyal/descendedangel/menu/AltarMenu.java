@@ -125,7 +125,7 @@ public class AltarMenu extends AbstractContainerMenu {
     }
 
     private void addPlayerInventory(Inventory playerInv) {
-        int yStart = 165;
+        int yStart = 158;
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 9; col++) {
                 this.addSlot(new Slot(playerInv, col + row * 9 + 9,
@@ -136,7 +136,7 @@ public class AltarMenu extends AbstractContainerMenu {
     }
 
     private void addPlayerHotbar(Inventory playerInv) {
-        int yHotbar = 223;
+        int yHotbar = 216;
         for (int col = 0; col < 9; col++) {
             this.addSlot(new Slot(playerInv, col, 9 + col * 18, yHotbar));
         }

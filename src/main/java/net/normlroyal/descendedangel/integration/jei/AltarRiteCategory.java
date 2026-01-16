@@ -58,11 +58,11 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
     public void setRecipe(IRecipeLayoutBuilder builder, AltarRiteRecipe recipe, mezz.jei.api.recipe.IFocusGroup focuses) {
 
         int[][] ringPos = new int[][]{
-                {58, 28},  //  top
-                {80, 38}, //  top-right
-                {90, 61}, //  right
-                {80, 84}, //  bottom-right
-                {58, 94},  //  bottom
+                {60, 28},  //  top
+                {83, 38}, //  top-right
+                {93, 61}, //  right
+                {83, 84}, //  bottom-right
+                {60, 94},  //  bottom
                 {36, 84},  //  bottom-left
                 {26, 61},  //  left
                 {36, 38}   //  top-left
@@ -75,7 +75,7 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
         }
 
         // Centre
-        builder.addSlot(RecipeIngredientRole.INPUT, 57, 61)
+        builder.addSlot(RecipeIngredientRole.INPUT, 60, 61)
                 .addIngredients(recipe.getCore());
 
         // Output
@@ -84,7 +84,7 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
                 ? recipe.getResultItem(level.registryAccess()).copy()
                 : recipe.getResult().copy();
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 129, 61)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 134, 61)
                 .addItemStack(out);
 
         int min = recipe.requiredHaloTier();
@@ -95,7 +95,7 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
             halos.add(getHaloStackForTier(t));
         }
 
-        builder.addSlot(RecipeIngredientRole.CATALYST, 58, 7)
+        builder.addSlot(RecipeIngredientRole.CATALYST, 60, 7)
                 .addItemStacks(halos)
                 .addTooltipCallback((view, tooltip) -> {
                     tooltip.clear();
@@ -104,8 +104,17 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
     }
 
     @Override
-    public void draw(AltarRiteRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        guiGraphics.drawString(Minecraft.getInstance().font, recipe.displayComponent(), 6, 6, 0x404040, false);
+    public void draw(AltarRiteRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics g, double mouseX, double mouseY) {
+        var font = Minecraft.getInstance().font;
+
+        Component text = recipe.displayComponent();
+        int w = font.width(text);
+
+        int bgWidth = 177;
+        int x = bgWidth - 6 - w;
+        int y = 6;
+
+        g.drawString(font, text, x, y, 0x404040, false);
     }
 
     private static ItemStack getHaloStackForTier(int tier) {

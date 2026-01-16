@@ -26,7 +26,7 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
         super.init();
 
         int x1 = leftPos + 47;
-        int y1 = topPos + 121;
+        int y1 = topPos + 126;
         int w  = 85;
         int h  = 17;
 
@@ -75,7 +75,7 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
     @Override
     protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
         graphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 0xFF6E5A2B, false);
-        graphics.drawString(this.font, this.playerInventoryTitle, 8, 154, 0xFF6E5A2B, false);
+        graphics.drawString(this.font, this.playerInventoryTitle, 8, 147, 0xFF6E5A2B, false);
     }
 
 }

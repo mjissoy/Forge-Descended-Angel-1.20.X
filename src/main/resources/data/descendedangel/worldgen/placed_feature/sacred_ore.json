@@ -8,7 +8,7 @@
       "type": "minecraft:height_range",
       "height": {
         "type": "minecraft:trapezoid",
-        "max_inclusive": { "absolute": -50 },
+        "max_inclusive": { "absolute": -45 },
         "min_inclusive": { "absolute": -64 }
       }
     },
