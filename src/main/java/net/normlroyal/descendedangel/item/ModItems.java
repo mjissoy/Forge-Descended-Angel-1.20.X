@@ -6,7 +6,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.item.custom.BasicWingItem;
 import net.normlroyal.descendedangel.item.custom.NecklaceCuriosItem;
 import net.normlroyal.descendedangel.item.custom.RingCuriosItem;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
@@ -56,12 +55,6 @@ public class ModItems {
             () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 9));
 
     // Wings
-    public static final RegistryObject<Item> WING_T1 = ITEMS.register("wing_t1",
-            () -> new BasicWingItem( new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> WING_T2 = ITEMS.register("wing_t2",
-            () -> new BasicWingItem( new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> WING_T3 = ITEMS.register("wing_t3",
-            () -> new BasicWingItem( new Item.Properties().stacksTo(1)));
 
     // Trinkets
     public static final RegistryObject<Item> HOLY_RING = ITEMS.register("holy_ring",

@@ -43,10 +43,6 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.HALO_T8.get());
                         output.accept(ModItems.HALO_T9.get());
 
-                        output.accept(ModItems.WING_T1.get());
-                        output.accept(ModItems.WING_T2.get());
-                        output.accept(ModItems.WING_T3.get());
-
                         output.accept(ModItems.HOLY_RING.get());
                         output.accept(ModItems.CLOUD_RING.get());
                         output.accept(ModItems.HOLY_NECKLACE.get());
