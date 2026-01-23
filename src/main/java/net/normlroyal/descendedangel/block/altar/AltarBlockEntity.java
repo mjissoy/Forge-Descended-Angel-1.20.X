@@ -182,7 +182,7 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
     public void handleUpdateTag(CompoundTag tag) {
         super.handleUpdateTag(tag);
 
-        this.riteState = tag.getInt("RiteState");
+        this.clientRiteState = tag.getInt("RiteState");
 
         if (tag.contains("StartBtn")) {
             Component c = Component.Serializer.fromJson(tag.getString("StartBtn"));
@@ -197,9 +197,16 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
     public static final int STATE_HALO_BAD = 2;
 
     private int riteState = STATE_NONE;
+    private int clientRiteState = STATE_NONE;
     private Component startButtonText = Component.empty();
 
-    public int getRiteState() { return riteState; }
+    public int getRiteState() {
+        if (level != null && level.isClientSide) return clientRiteState;
+        return riteState;
+    }
+    public void setRiteState(int state) {
+        this.riteState = state;
+    }
     public Component getStartButtonText() { return startButtonText; }
 
     private void setRiteUiIfChanged(int state, Component text) {
@@ -348,6 +355,9 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
     public void setClientProgress(int p) { this.progress = p; }
     public void setClientMaxProgress(int m) { this.maxProgress = m; }
     public void setClientCrafting(boolean c) { this.crafting = c; }
+    public void setClientRiteState(int state) {
+        this.clientRiteState = state;
+    }
 
     private static int haloTierOf(ItemStack stack) {
         if (stack.getItem() instanceof TieredHaloItem h) return h.getTier();
@@ -359,9 +369,5 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         int coreTier = haloTierOf(items.getStackInSlot(CORE_SLOT));
         return Math.max(slotTier, coreTier);
     }
-
-
-
-
 
 }

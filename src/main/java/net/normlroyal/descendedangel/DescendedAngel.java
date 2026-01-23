@@ -15,10 +15,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.normlroyal.descendedangel.block.ModBlockEntities;
 import net.normlroyal.descendedangel.block.ModBlocks;
+import net.normlroyal.descendedangel.item.custom.writings.WritTypeRegistry;
 import net.normlroyal.descendedangel.menu.ModMenus;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.ModCreativeModTabs;
 import net.normlroyal.descendedangel.item.ModItems;
+import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.particle.ModParticles;
 import net.normlroyal.descendedangel.recipe.ModRecipeSerializers;
 import net.normlroyal.descendedangel.recipe.ModRecipeTypes;
@@ -44,6 +46,7 @@ public class DescendedAngel
         ModMenus.register(modEventBus);
         ModRecipeSerializers.SERIALIZERS.register(modEventBus);
         ModRecipeTypes.TYPES.register(modEventBus);
+        ModNetwork.registerPackets();
 
         modEventBus.addListener(this::commonSetup);
 
@@ -62,6 +65,7 @@ public class DescendedAngel
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(WritTypeRegistry::registerDefaults);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)

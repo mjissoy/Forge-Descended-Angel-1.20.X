@@ -1,5 +1,6 @@
 package net.normlroyal.descendedangel.menu;
 
+import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,10 +12,15 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
 import net.normlroyal.descendedangel.block.altar.AltarBlockEntity;
+import org.slf4j.Logger;
+
 
 public class AltarMenu extends AbstractContainerMenu {
+    private static final Logger LOGGER = LogUtils.getLogger();
 
     private final ContainerData data;
+
+    public int getRiteState() { return data.get(3); }
 
     public final AltarBlockEntity blockEntity;
 
@@ -29,6 +35,7 @@ public class AltarMenu extends AbstractContainerMenu {
                     case 0 -> be.getProgress();
                     case 1 -> be.getMaxProgress();
                     case 2 -> be.isCrafting() ? 1 : 0;
+                    case 3 -> be.getRiteState();
                     default -> 0;
                 };
             }
@@ -39,12 +46,13 @@ public class AltarMenu extends AbstractContainerMenu {
                     case 0 -> be.setClientProgress(value);
                     case 1 -> be.setClientMaxProgress(value);
                     case 2 -> be.setClientCrafting(value != 0);
+                    case 3 -> be.setClientRiteState(value);
                 }
             }
 
             @Override
             public int getCount() {
-                return 3;
+                return 4;
             }
         };
 
@@ -148,7 +156,13 @@ public class AltarMenu extends AbstractContainerMenu {
     public boolean clickMenuButton(Player player, int id) {
         if (id == BTN_START_RITE) {
             if (!player.level().isClientSide) {
-                blockEntity.tryStartRite((ServerPlayer) player);
+                LOGGER.info("[Altar] Craft button received on server. Player={}, Pos={}",
+                        player.getGameProfile().getName(),
+                        blockEntity.getBlockPos()
+                );
+                        blockEntity.tryStartRite((ServerPlayer) player);
+            } else {
+            LOGGER.info("[Altar] Craft button clicked on client (GUI).");
             }
             return true;
         }

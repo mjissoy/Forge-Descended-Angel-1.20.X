@@ -1,0 +1,27 @@
+{
+  "type": "descendedangel:altar_rite",
+
+  "display_type": "altar.descendedangel.purification",
+  "required_halo_tier": 3,
+
+  "core": {
+    "item": "minecraft:book"
+  },
+
+  "ring": [
+    { "item": "minecraft:snow_block" },
+    { "empty" : "true" },
+    { "item": "descendedangel:void_tear" },
+    { "empty" : "true" },
+    { "item": "minecraft:heart_of_the_sea" },
+    { "empty" : "true" },
+    { "item": "descendedangel:void_tear" },
+    { "empty" : "true" }
+  ],
+
+  "result": {
+    "item": "descendedangel:sacred_writings",
+    "count": 1,
+    "nbt": "{descendedangel:{writ_id:\"descendedangel:rain\",uses:1}}"
+  }
+}

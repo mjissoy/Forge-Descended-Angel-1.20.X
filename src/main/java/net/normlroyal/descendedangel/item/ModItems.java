@@ -11,6 +11,7 @@ import net.normlroyal.descendedangel.item.custom.RingCuriosItem;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
 import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
 import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
+import net.normlroyal.descendedangel.item.custom.writings.SacredWritingsItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -67,6 +68,8 @@ public class ModItems {
             () -> new NecklaceCuriosItem(NecklaceVariants.MESSENGER, new Item.Properties()));
 
     // Other Items
+    public static final RegistryObject<Item> SACRED_WRITINGS = ITEMS.register("sacred_writings",
+            () -> new SacredWritingsItem(new Item.Properties()));
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

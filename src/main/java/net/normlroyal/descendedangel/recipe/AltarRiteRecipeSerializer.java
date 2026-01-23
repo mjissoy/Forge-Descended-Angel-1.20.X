@@ -21,12 +21,25 @@ public class AltarRiteRecipeSerializer implements RecipeSerializer<AltarRiteReci
         Ingredient core = Ingredient.fromJson(json.get("core"));
 
         JsonArray ringArr = json.getAsJsonArray("ring");
-        if (ringArr.size() != 8)
-            throw new JsonParseException("Altar ring must have exactly 8 ingredients");
+        if (ringArr.size() > 8)
+            throw new JsonParseException("Altar ring can have at most 8 ingredients");
 
-        List<Ingredient> ring = new ArrayList<>();
+        List<Ingredient> ring = new ArrayList<>(8);
         for (int i = 0; i < 8; i++) {
-            ring.add(Ingredient.fromJson(ringArr.get(i)));
+            if (i >= ringArr.size()) {
+                ring.add(Ingredient.EMPTY);
+                continue;
+            }
+            if (ringArr.get(i).isJsonObject()) {
+                JsonObject o = ringArr.get(i).getAsJsonObject();
+                if (GsonHelper.getAsBoolean(o, "empty", false)) {
+                    ring.add(Ingredient.EMPTY);
+                } else {
+                    ring.add(Ingredient.fromJson(o));
+                }
+            } else {
+                ring.add(Ingredient.fromJson(ringArr.get(i)));
+            }
         }
 
         ItemStack result = ShapedRecipe.itemStackFromJson(json.getAsJsonObject("result"));

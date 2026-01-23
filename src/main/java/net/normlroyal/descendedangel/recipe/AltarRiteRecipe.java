@@ -1,10 +1,15 @@
 package net.normlroyal.descendedangel.recipe;
 
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -42,26 +47,67 @@ public class AltarRiteRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public boolean matches(SimpleContainer container, Level level) {
-
-        if (!core.test(container.getItem(8))) return false;
+        if (!matchesIgnoringNBT(core, container.getItem(8))) {
+            return false;
+        }
 
         for (int i = 0; i < 8; i++) {
-            if (!ring.get(i).test(container.getItem(i))) {
+            Ingredient ing = ring.get(i);
+            ItemStack stack = container.getItem(i);
+
+            if (!matchesIgnoringNBT(ing, stack)) {
                 return false;
             }
         }
         return true;
+    }
 
+    private static boolean matchesIgnoringNBT(Ingredient ing, ItemStack stack) {
+        if (ing.isEmpty()) {
+            return stack.isEmpty();
+        }
+
+        if (stack.isEmpty()) {
+            return false;
+        }
+
+        for (ItemStack example : ing.getItems()) {
+            if (!example.isEmpty() && example.getItem() == stack.getItem()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public ItemStack assemble(SimpleContainer container, RegistryAccess access) {
-        return result.copy();
+        ItemStack out = result.copy();
+
+        ItemStack potionStack = ItemStack.EMPTY;
+        for (int i = 0; i < container.getContainerSize(); i++) {
+            ItemStack s = container.getItem(i);
+            if (!s.isEmpty() && PotionUtils.getPotion(s) != null && PotionUtils.getPotion(s) != net.minecraft.world.item.alchemy.Potions.EMPTY) {
+                potionStack = s;
+                break;
+            }
+        }
+
+        if (!potionStack.isEmpty()) {
+            Potion p = PotionUtils.getPotion(potionStack);
+            var potionKey = BuiltInRegistries.POTION.getKey(p);
+
+            CompoundTag tag = out.getOrCreateTag();
+            CompoundTag root = tag.contains("descendedangel", Tag.TAG_COMPOUND) ? tag.getCompound("descendedangel") : new CompoundTag();
+            root.putString("boost_potion", potionKey.toString());
+            tag.put("descendedangel", root);
+        }
+
+        return out;
     }
 
     @Override
     public ItemStack getResultItem(RegistryAccess access) {
-        return result;
+        return result.copy();
     }
 
     @Override public boolean canCraftInDimensions(int w, int h) { return true; }

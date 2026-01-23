@@ -33,7 +33,7 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
         this.addRenderableWidget(new AltarStartButton(
                 x1, y1, w, h,
                 menu.blockEntity::getStartButtonText,
-                menu.blockEntity::getRiteState,
+                menu::getRiteState,
                 () -> {
                     if (minecraft != null && minecraft.gameMode != null) {
                         minecraft.gameMode.handleInventoryButtonClick(menu.containerId, AltarMenu.BTN_START_RITE);
@@ -50,7 +50,7 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
 
         if (menu.isCrafting() && menu.getMaxProgress() > 0) {
             int x = leftPos + 82;
-            int y = topPos + 53;
+            int y = topPos + 61;
             int w = 18;
             int h = 18;
 

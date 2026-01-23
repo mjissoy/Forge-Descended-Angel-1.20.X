@@ -2,6 +2,8 @@ package net.normlroyal.descendedangel.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.List;
+
 public class ModConfigs {
 
     public static final ForgeConfigSpec COMMON_SPEC;
@@ -33,6 +35,11 @@ public class ModConfigs {
         public final ForgeConfigSpec.DoubleValue MessengerPendant_LuckBoost;
         public final ForgeConfigSpec.DoubleValue Necklaces_Effectiveness;
 
+        public final ForgeConfigSpec.BooleanValue ENABLE_SACRED_WRITINGS;
+        public final ForgeConfigSpec.ConfigValue<List<? extends String>> BLOCKED_WRITINGS;
+
+        public final ForgeConfigSpec.IntValue WEATHER_DURATION_TICKS;
+        public final ForgeConfigSpec.IntValue ENTITY_SPAWN_COUNT;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("Config Options");
@@ -89,6 +96,22 @@ public class ModConfigs {
                     .defineInRange("necklaceEffectivenessMultiplier", 1.0D, 0.0D, 100.0D);
             builder.pop();
 
+            builder.push("--Sacred Writing Settings--");
+            ENABLE_SACRED_WRITINGS = builder
+                    .comment("Enable/disable Sacred Writings")
+                    .define("enableSacredWritings", true);
+            BLOCKED_WRITINGS = builder
+                    .comment("List of blocked writ ids (e.g. \"descendedangel:spawn_villagers\")")
+                    .defineListAllowEmpty("blockedWritings", List.of(), o -> o instanceof String);
+            WEATHER_DURATION_TICKS = builder
+                    .comment("Duration of weather writings")
+                    .defineInRange("weather_writ_dura", 24000, 20, 1200000);
+            ENTITY_SPAWN_COUNT = builder
+                    .comment("Count of entities spawned")
+                    .defineInRange("entity_writ_spawn", 10, 1, 50);
+
+
+            builder.pop();
 
         }
     }

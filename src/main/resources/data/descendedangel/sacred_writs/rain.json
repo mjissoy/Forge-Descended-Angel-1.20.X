@@ -1,0 +1,13 @@
+{
+  "type": "descendedangel:weather",
+  "weather": "rain",
+  "duration": 24000,
+
+  "display": {
+    "name": "Scripture of Rain",
+    "tooltip": [
+      "Calls forth holy rain.",
+      "Duration: 1 day."
+    ]
+  }
+}
