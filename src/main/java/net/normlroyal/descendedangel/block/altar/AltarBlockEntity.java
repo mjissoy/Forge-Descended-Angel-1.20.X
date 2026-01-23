@@ -29,6 +29,8 @@ import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 
 public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAnimatable {
 
@@ -189,6 +191,19 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
             this.startButtonText = (c == null) ? Component.empty() : c;
         } else {
             this.startButtonText = Component.empty();
+        }
+    }
+
+    @Override
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        CompoundTag tag = pkt.getTag();
+        if (tag != null) {
+            handleUpdateTag(tag);
         }
     }
 

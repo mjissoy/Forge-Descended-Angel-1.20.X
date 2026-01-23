@@ -48,28 +48,34 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
 
         graphics.blit(TEXTURE, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-        if (menu.isCrafting() && menu.getMaxProgress() > 0) {
-            int x = leftPos + 82;
-            int y = topPos + 61;
-            int w = 18;
-            int h = 18;
-
-            float pct = (float) menu.getProgress() / (float) menu.getMaxProgress();
-            pct = Math.min(1f, Math.max(0f, pct));
-
-            int filled = (int) (h * pct);
-            int yStart = y + (h - filled);
-
-            graphics.fill(x, yStart, x + w, y + h, 0x80FFFFFF);
-        }
-
     }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         this.renderBackground(graphics);
         super.render(graphics, mouseX, mouseY, partialTick);
+
+        this.renderCoreOverlay(graphics);
+
         this.renderTooltip(graphics, mouseX, mouseY);
+    }
+
+    private void renderCoreOverlay(GuiGraphics graphics) {
+        if (!menu.isCrafting()) return;
+
+        int x = leftPos + 82;
+        int y = topPos + 61;
+        int w = 18;
+        int h = 18;
+
+        int max = Math.max(1, menu.getMaxProgress());
+        float pct = (float) menu.getProgress() / (float) max;
+        pct = Math.min(1f, Math.max(0f, pct));
+
+        int filled = Math.max(1, (int) (h * pct));
+        int yStart = y + (h - filled);
+
+        graphics.fill(x, yStart, x + w, y + h, 0x88D4AF37);
     }
 
     @Override
