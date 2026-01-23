@@ -1,0 +1,17 @@
+{
+  "type": "descendedangel:spawn_entity",
+  "entities": [
+    {"id" : "minecraft:villager", "weight" : 0.7 },
+    {"id" : "minecraft:iron_golem", "weight" : 0.1 },
+    "minecraft:wandering_trader"
+  ],
+  "count": 10,
+  "radius": 4.0,
+
+  "display": {
+    "name": "Scripture of Mass Summoning",
+    "tooltip": [
+      "Summons the inhabitants of a Village, from another world."
+    ]
+  }
+}
