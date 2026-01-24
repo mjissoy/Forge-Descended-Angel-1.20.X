@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
@@ -28,34 +29,7 @@ public class AltarMenu extends AbstractContainerMenu {
         super(ModMenus.ALTAR_MENU.get(), id);
         this.blockEntity = be;
 
-        this.data = new ContainerData() {
-            @Override
-            public int get(int index) {
-                return switch (index) {
-                    case 0 -> be.getProgress();
-                    case 1 -> be.getMaxProgress();
-                    case 2 -> be.isCrafting() ? 1 : 0;
-                    case 3 -> be.getRiteState();
-                    default -> 0;
-                };
-            }
-
-            @Override
-            public void set(int index, int value) {
-                switch (index) {
-                    case 0 -> be.setClientProgress(value);
-                    case 1 -> be.setClientMaxProgress(value);
-                    case 2 -> be.setClientCrafting(value != 0);
-                    case 3 -> be.setClientRiteState(value);
-                }
-            }
-
-            @Override
-            public int getCount() {
-                return 4;
-            }
-        };
-
+        this.data = new SimpleContainerData(4);
         this.addDataSlots(this.data);
 
         ItemStackHandler inv = be.getItems();
@@ -76,6 +50,17 @@ public class AltarMenu extends AbstractContainerMenu {
 
         addPlayerInventory(playerInv);
         addPlayerHotbar(playerInv);
+    }
+
+    @Override
+    public void broadcastChanges() {
+        super.broadcastChanges();
+        if (blockEntity != null && blockEntity.getLevel() != null && !blockEntity.getLevel().isClientSide) {
+            data.set(0, blockEntity.getProgress());
+            data.set(1, blockEntity.getMaxProgress());
+            data.set(2, blockEntity.isCrafting() ? 1 : 0);
+            data.set(3, blockEntity.getRiteState());
+        }
     }
 
     public AltarMenu(int id, Inventory playerInv, FriendlyByteBuf buf) {
@@ -172,5 +157,4 @@ public class AltarMenu extends AbstractContainerMenu {
     public int getProgress() { return data.get(0); }
     public int getMaxProgress() { return data.get(1); }
     public boolean isCrafting() { return data.get(2) != 0; }
-
 }

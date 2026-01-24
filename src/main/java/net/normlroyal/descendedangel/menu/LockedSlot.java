@@ -25,6 +25,11 @@ public class LockedSlot extends SlotItemHandler {
     }
 
     @Override
+    public int getMaxStackSize(ItemStack stack) {
+        return 1;
+    }
+
+    @Override
     public int getMaxStackSize() {
         return 1;
     }

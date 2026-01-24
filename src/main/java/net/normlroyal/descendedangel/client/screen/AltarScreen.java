@@ -63,8 +63,8 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
     private void renderCoreOverlay(GuiGraphics graphics) {
         if (!menu.isCrafting()) return;
 
-        int x = leftPos + 82;
-        int y = topPos + 61;
+        int x = leftPos + 81;
+        int y = topPos + 60;
         int w = 18;
         int h = 18;
 
@@ -75,7 +75,14 @@ public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
         int filled = Math.max(1, (int) (h * pct));
         int yStart = y + (h - filled);
 
-        graphics.fill(x, yStart, x + w, y + h, 0x88D4AF37);
+        graphics.pose().pushPose();
+        graphics.pose().translate(0, 0, 300);
+
+        RenderSystem.enableBlend();
+        graphics.fill(x, yStart, x + w, y + h, 0x88DDBC4C);
+        RenderSystem.disableBlend();
+
+        graphics.pose().popPose();
     }
 
     @Override

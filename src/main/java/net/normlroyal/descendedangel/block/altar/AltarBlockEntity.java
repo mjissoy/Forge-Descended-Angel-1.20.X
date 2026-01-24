@@ -367,9 +367,7 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
     }
 
-    public void setClientProgress(int p) { this.progress = p; }
-    public void setClientMaxProgress(int m) { this.maxProgress = m; }
-    public void setClientCrafting(boolean c) { this.crafting = c; }
+
     public void setClientRiteState(int state) {
         this.clientRiteState = state;
     }
