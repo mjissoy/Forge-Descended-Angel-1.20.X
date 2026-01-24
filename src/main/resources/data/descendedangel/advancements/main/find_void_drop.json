@@ -2,8 +2,8 @@
   "parent": "descendedangel:main/root",
   "display": {
     "icon": { "item": "descendedangel:void_tear" },
-    "title": { "text": "Purify the Void" },
-    "description": { "text": "Slay a Void Touched foe and take its Void Drop" },
+    "title": { "text": "The Void-Touched" },
+    "description": { "text": "Collect a Drop of the Void from Void-Touched foes." },
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
