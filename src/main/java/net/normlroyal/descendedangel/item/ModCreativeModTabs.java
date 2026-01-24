@@ -22,10 +22,10 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.REALANGELFEATHER.get());
 
                         output.accept(ModBlocks.SACRED_ORE.get());
-                        output.accept(ModItems.SACREDOREINGOT.get());
                         output.accept(ModItems.SACREDORERAW.get());
-                        output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
+                        output.accept(ModItems.SACREDOREINGOT.get());
                         output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
+                        output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
 
                         output.accept(ModBlocks.ALTAR.get());
 
@@ -45,8 +45,10 @@ public class ModCreativeModTabs {
 
                         output.accept(ModItems.HOLY_RING.get());
                         output.accept(ModItems.CLOUD_RING.get());
+                        output.accept(ModItems.FLAME_RING.get());
                         output.accept(ModItems.HOLY_NECKLACE.get());
                         output.accept(ModItems.MESSENGER_PENDANT.get());
+                        output.accept(ModItems.LIGHTNESS_NECKLACE.get());
 
                         output.accept(ModItems.SACRED_WRITINGS.get());
 

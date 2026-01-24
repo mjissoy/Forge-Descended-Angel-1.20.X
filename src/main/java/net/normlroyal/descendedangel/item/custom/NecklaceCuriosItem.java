@@ -14,18 +14,25 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
+import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
+import net.normlroyal.descendedangel.util.IVariantItem;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 import java.util.UUID;
 
-public class NecklaceCuriosItem extends Item implements ICurioItem {
+public class NecklaceCuriosItem extends Item implements ICurioItem, IVariantItem<NecklaceVariants> {
     private final NecklaceVariants variant;
 
     public NecklaceCuriosItem(NecklaceVariants variant, Properties props) {
         super(props);
         this.variant = variant;
+    }
+
+    @Override
+    public NecklaceVariants getVariant(ItemStack stack) {
+        return variant;
     }
 
     @Override
@@ -61,7 +68,6 @@ public class NecklaceCuriosItem extends Item implements ICurioItem {
 
         if (variant == NecklaceVariants.MESSENGER) {
             if (Screen.hasShiftDown()) {
-
                 tooltip.add(
                         Component.translatable("tooltip.descendedangel.messenger_pendant.lore")
                                 .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
@@ -72,6 +78,21 @@ public class NecklaceCuriosItem extends Item implements ICurioItem {
                                 .withStyle(ChatFormatting.DARK_GRAY)
                 );
             }
+        } else if (variant == NecklaceVariants.LIGHTNESS) {
+            if (Screen.hasShiftDown()) {
+                tooltip.add(
+                        Component.translatable("tooltip.descendedangel.nanos_lantern.lore")
+                                .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
+                );
+            } else {
+                tooltip.add(
+                        Component.translatable("tooltip.descendedangel.halo.hold_shift")
+                                .withStyle(ChatFormatting.DARK_GRAY)
+                );
+            }
+            tooltip.add(
+                    Component.translatable("tooltip.descendedangel.nanos_lantern.effect")
+                            .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
         }
     }
 }

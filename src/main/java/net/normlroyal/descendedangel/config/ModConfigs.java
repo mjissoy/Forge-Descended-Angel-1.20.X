@@ -94,6 +94,7 @@ public class ModConfigs {
             Necklaces_Effectiveness = builder
                     .comment("Global multiplier for all Necklace bonuses. < 1.0 = weaker necklace, > 1.0 = stronger.")
                     .defineInRange("necklaceEffectivenessMultiplier", 1.0D, 0.0D, 100.0D);
+
             builder.pop();
 
             builder.push("--Sacred Writing Settings--");

@@ -6,11 +6,13 @@
   "item.descendedangel.spatial_core" : "Core of Space",
   "item.descendedangel.sacred_writings" : "Sacred Text",
 
+
   "item.descendedangel.sacred_ore_ingot" : "Sacred Ingot",
   "item.descendedangel.sacred_ore_raw" : "Raw Sacred Ore",
   "block.descendedangel.sacred_ingot_block": "Sacred Ingot Block",
   "block.descendedangel.raw_sacred_ore_block": "Raw Sacred Ore Block",
   "block.descendedangel.sacred_ore": "Sacred Ore",
+
 
   "container.descendedangel.altar": "Altar",
   "block.descendedangel.altar": "Altar",
@@ -35,10 +37,17 @@
   "item.descendedangel.holy_necklace" : "Holy Necklace",
   "item.descendedangel.messenger_pendant" : "Messenger's Pendant",
   "tooltip.descendedangel.messenger_pendant.lore": "A gilded pendant once bestowed upon Sacred Gabriel.",
+  "item.descendedangel.nanos_lantern" : "Lantern of Nagel",
+  "tooltip.descendedangel.nanos_lantern.lore": "A blessed lantern prayed for by a Saint.",
+  "tooltip.descendedangel.nanos_lantern.effect": "Grants night vision.",
+
 
   "item.descendedangel.holy_ring" : "Holy Ring",
   "item.descendedangel.cloud_ring" : "Storm Ring",
   "tooltip.descendedangel.cloud_ring.lore": "Born of the Wrath of Heaven, forged by the Dominions.",
+  "item.descendedangel.flame_ring" : "Burning Ring",
+  "tooltip.descendedangel.flame_ring.lore": "Modeled after Sacred Michael's Sword, the Ring ignites the wearer's foes.",
+
 
   "creativetab.angel_tab" : "Descended Angel Mod",
   "tooltip.descendedangel.halo.when_worn": "When worn:",
@@ -56,6 +65,7 @@
   "tooltip.descendedangel.halo_t7.lore": "You stand as a Gateway for the Lord.",
   "tooltip.descendedangel.halo_t8.lore": "With You the Lord begins to move.",
   "tooltip.descendedangel.halo_t9.lore": "An attendant of the Lord, You behold His utmost radiance.",
+
 
   "altar_jei.halo_t1.name": "Requires Angel Halo or higher",
   "altar_jei.halo_t2.name": "Requires Archangel Halo or higher",

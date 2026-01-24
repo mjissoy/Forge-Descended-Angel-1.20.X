@@ -3,7 +3,7 @@ package net.normlroyal.descendedangel.network.writs;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkEvent;
-import net.normlroyal.descendedangel.events.ClientWritDisplayCache;
+import net.normlroyal.descendedangel.events.useful.ClientWritDisplayCache;
 import net.normlroyal.descendedangel.item.custom.writings.WritDisplay;
 
 import java.util.HashMap;

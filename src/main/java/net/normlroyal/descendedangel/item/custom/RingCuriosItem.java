@@ -14,13 +14,15 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
+import net.normlroyal.descendedangel.util.IVariantItem;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 import java.util.UUID;
 
-public class RingCuriosItem extends Item implements ICurioItem {
+public class RingCuriosItem extends Item implements ICurioItem, IVariantItem<RingVariants> {
+
     private final RingVariants variant;
 
     public RingCuriosItem(RingVariants variant, Properties props) {
@@ -28,6 +30,10 @@ public class RingCuriosItem extends Item implements ICurioItem {
         this.variant = variant;
     }
 
+    @Override
+    public RingVariants getVariant(ItemStack stack) {
+        return variant;
+    }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(
@@ -66,9 +72,20 @@ public class RingCuriosItem extends Item implements ICurioItem {
 
         if (variant == RingVariants.CLOUD) {
             if (Screen.hasShiftDown()) {
-
                 tooltip.add(
                         Component.translatable("tooltip.descendedangel.cloud_ring.lore")
+                                .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
+                );
+            } else {
+                tooltip.add(
+                        Component.translatable("tooltip.descendedangel.halo.hold_shift")
+                                .withStyle(ChatFormatting.DARK_GRAY)
+                );
+            }
+        } else if (variant == RingVariants.FLAME) {
+            if (Screen.hasShiftDown()) {
+                tooltip.add(
+                        Component.translatable("tooltip.descendedangel.flame_ring.lore")
                                 .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
                 );
             } else {

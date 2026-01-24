@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.events;
+package net.normlroyal.descendedangel.events.useful;
 
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

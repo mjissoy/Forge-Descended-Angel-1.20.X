@@ -57,15 +57,20 @@ public class ModItems {
 
     // Wings
 
+
     // Trinkets
     public static final RegistryObject<Item> HOLY_RING = ITEMS.register("holy_ring",
             () -> new RingCuriosItem(RingVariants.HOLY, new Item.Properties()));
     public static final RegistryObject<Item> CLOUD_RING = ITEMS.register("cloud_ring",
             () -> new RingCuriosItem(RingVariants.CLOUD, new Item.Properties()));
+    public static final RegistryObject<Item> FLAME_RING = ITEMS.register("flame_ring",
+            () -> new RingCuriosItem(RingVariants.FLAME, new Item.Properties()));
     public static final RegistryObject<Item> HOLY_NECKLACE = ITEMS.register("holy_necklace",
             () -> new NecklaceCuriosItem(NecklaceVariants.HOLY, new Item.Properties()));
     public static final RegistryObject<Item> MESSENGER_PENDANT = ITEMS.register("messenger_pendant",
             () -> new NecklaceCuriosItem(NecklaceVariants.MESSENGER, new Item.Properties()));
+    public static final RegistryObject<Item> LIGHTNESS_NECKLACE = ITEMS.register("nanos_lantern",
+            () -> new NecklaceCuriosItem(NecklaceVariants.LIGHTNESS, new Item.Properties()));
 
     // Other Items
     public static final RegistryObject<Item> SACRED_WRITINGS = ITEMS.register("sacred_writings",

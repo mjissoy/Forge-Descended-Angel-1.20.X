@@ -64,10 +64,13 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
         extraHealth *= global;
         extraArmor  *= global;
 
+        UUID healthUuid = UUID.nameUUIDFromBytes((uuid.toString() + ":halo_health").getBytes());
+        UUID armorUuid  = UUID.nameUUIDFromBytes((uuid.toString() + ":halo_armor").getBytes());
+
         builder.put(
                 Attributes.MAX_HEALTH,
                 new AttributeModifier(
-                        UUID.nameUUIDFromBytes(("halo_health_" + tier).getBytes()),
+                        healthUuid,
                         "halo_health_bonus_t" + tier,
                         extraHealth,
                         AttributeModifier.Operation.ADDITION
@@ -77,7 +80,7 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
         builder.put(
                 Attributes.ARMOR,
                 new AttributeModifier(
-                        UUID.nameUUIDFromBytes(("halo_armor_" + tier).getBytes()),
+                        armorUuid,
                         "halo_armor_bonus_t" + tier,
                         extraArmor,
                         AttributeModifier.Operation.ADDITION

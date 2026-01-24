@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.events;
+package net.normlroyal.descendedangel.events.useful;
 
 import net.minecraft.resources.ResourceLocation;
 import net.normlroyal.descendedangel.item.custom.writings.WritDisplay;
