@@ -2,18 +2,18 @@
   "type": "descendedangel:altar_rite",
 
   "display_type": "altar.descendedangel.purification",
-  "required_halo_tier": 3,
+  "required_halo_tier": 2,
 
   "core": {
     "item": "minecraft:book"
   },
 
   "ring": [
-    { "item": "minecraft:snow_block" },
+    { "item": "minecraft:snowball" },
     { "empty" : "true" },
     { "item": "descendedangel:void_tear" },
     { "empty" : "true" },
-    { "item": "minecraft:heart_of_the_sea" },
+    { "item": "minecraft:prismarine_shard" },
     { "empty" : "true" },
     { "item": "descendedangel:void_tear" },
     { "empty" : "true" }

@@ -1,0 +1,19 @@
+{
+  "parent": "descendedangel:main/craft_dominion_halo",
+  "display": {
+    "icon": { "item": "descendedangel:halo_t6" },
+    "title": { "text": "Graceful Domain" },
+    "description": { "text": "The Order of Heaven carves you a Dominion" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "craft_halo": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe": "descendedangel:halo_t6_rite"
+      }
+    }
+  }
+}

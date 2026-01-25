@@ -10,9 +10,9 @@
   },
   "criteria": {
     "craft_halo": {
-      "trigger": "minecraft:recipe_unlocked",
+      "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe": "descendedangel:angel_halo_from_crafting"
+        "recipe": "descendedangel:halo_t1_rite"
       }
     }
   }

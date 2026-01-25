@@ -15,6 +15,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.normlroyal.descendedangel.block.ModBlockEntities;
 import net.normlroyal.descendedangel.block.ModBlocks;
+import net.normlroyal.descendedangel.config.lootmodifier.ModLootModifiers;
 import net.normlroyal.descendedangel.item.custom.writings.WritTypeRegistry;
 import net.normlroyal.descendedangel.menu.ModMenus;
 import net.normlroyal.descendedangel.config.ModConfigs;
@@ -46,6 +47,7 @@ public class DescendedAngel
         ModMenus.register(modEventBus);
         ModRecipeSerializers.SERIALIZERS.register(modEventBus);
         ModRecipeTypes.TYPES.register(modEventBus);
+        ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
         ModNetwork.registerPackets();
 
         modEventBus.addListener(this::commonSetup);

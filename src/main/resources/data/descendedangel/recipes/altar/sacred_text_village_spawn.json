@@ -2,7 +2,7 @@
   "type": "descendedangel:altar_rite",
 
   "display_type": "altar.descendedangel.purification",
-  "required_halo_tier": 3,
+  "required_halo_tier": 6,
 
   "core": {
     "item": "minecraft:book"
@@ -10,13 +10,13 @@
 
   "ring": [
     { "item": "minecraft:emerald_block" },
-    { "empty" : "true" },
+    { "item": "minecraft:emerald_block" },
     { "item": "descendedangel:void_tear" },
     { "empty" : "true" },
-    { "item": "minecraft:bell" },
+    { "item": "minecraft:golden_carrot" },
     { "empty" : "true" },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" }
+    { "item": "minecraft:emerald_block" }
   ],
 
   "result": {

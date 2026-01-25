@@ -27,6 +27,8 @@ public class ModConfigs {
         public final ForgeConfigSpec.DoubleValue HALO_EFFECTIVENESS_MULTIPLIER;
 
         public final ForgeConfigSpec.DoubleValue voidTouchedSpawnChance;
+        public final ForgeConfigSpec.DoubleValue spatialCoreEndermanDropChance;
+        public final ForgeConfigSpec.DoubleValue spatialCoreEndCityChestChance;
 
         public final ForgeConfigSpec.DoubleValue CloudRing_MOVSpeedBoost;
         public final ForgeConfigSpec.DoubleValue CloudRing_ATKSpeedBoost;
@@ -73,6 +75,12 @@ public class ModConfigs {
             voidTouchedSpawnChance = builder
                     .comment("Chance for hostile mobs to spawn with Void Touched (e.g. 0.05 = 5%)")
                     .defineInRange("voidTouchedSpawnChance", 0.05D, 0.0D, 1.0D);
+            spatialCoreEndermanDropChance = builder
+                    .comment("Chance for Endermen to drop a Spatial Core on death. Default: 6%")
+                    .defineInRange("enderman_drop_chance", 0.06, 0.0, 1.0);
+            spatialCoreEndCityChestChance = builder
+                    .comment("Chance for a Spatial Core to appear in End City chests. Default: 25%")
+                    .defineInRange("end_city_chest_chance", 0.25, 0.0, 1.0);
             builder.pop();
 
             builder.push("--Ring Settings--");
