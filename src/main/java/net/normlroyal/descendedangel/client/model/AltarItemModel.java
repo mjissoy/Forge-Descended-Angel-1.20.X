@@ -9,12 +9,12 @@ public class AltarItemModel extends GeoModel<AltarItem> {
 
     @Override
     public ResourceLocation getModelResource(AltarItem animatable) {
-        return new ResourceLocation(DescendedAngel.MOD_ID, "geo/altar.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "geo/altar.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(AltarItem animatable) {
-        return new ResourceLocation(DescendedAngel.MOD_ID, "textures/block/altar.png");
+        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "textures/block/altar.png");
     }
 
     @Override

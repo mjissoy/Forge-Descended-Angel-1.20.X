@@ -1,5 +1,5 @@
 {
-  "parent": "descendedangel:main/craft_virtue_halo",
+  "parent": "descendedangel:main/craft_power_halo",
   "display": {
     "icon": { "item": "descendedangel:halo_t5" },
     "title": { "text": "Righteous Purity" },
@@ -12,7 +12,7 @@
     "craft_halo": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe": "descendedangel:halo_t5_rite"
+        "recipe_id": "descendedangel:altar/halo_t5_rite"
       }
     }
   }

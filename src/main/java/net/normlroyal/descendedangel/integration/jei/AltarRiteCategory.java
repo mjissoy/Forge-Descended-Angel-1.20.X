@@ -44,10 +44,6 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
         return Component.translatable("jei.descendedangel.altar_rite");
     }
 
-    @Override
-    public IDrawable getBackground() {
-        return background;
-    }
 
     @Override
     public IDrawable getIcon() {
@@ -105,6 +101,7 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
 
     @Override
     public void draw(AltarRiteRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics g, double mouseX, double mouseY) {
+        background.draw(g);
         var font = Minecraft.getInstance().font;
 
         Component text = recipe.displayComponent();

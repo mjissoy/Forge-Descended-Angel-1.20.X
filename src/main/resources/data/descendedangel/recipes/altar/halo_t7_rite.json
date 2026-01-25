@@ -9,14 +9,14 @@
   },
 
   "ring": [
-    { "item": "descendedangel:void_tear" },
-    { "item": "minecraft:netherite_ingot" },
+    { "item": "descendedangel:spatial_core" },
+    { "item": "minecraft:netherite_block" },
     { "item": "minecraft:nether_star" },
-    { "item": "minecraft:netherite_ingot" },
-    { "item": "descendedangel:void_tear" },
-    { "item": "minecraft:netherite_ingot" },
+    { "item": "descendedangel:sacred_ore_ingot" },
+    { "item": "descendedangel:spatial_core" },
+    { "item": "minecraft:netherite_block" },
     { "item": "minecraft:nether_star" },
-    { "item": "minecraft:netherite_ingot" }
+    { "item": "descendedangel:sacred_ore_ingot" }
   ],
 
   "result": {

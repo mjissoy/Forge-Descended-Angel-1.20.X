@@ -10,11 +10,11 @@ public class ModItemTags {
 
     public static final TagKey<Item> HALOS = TagKey.create(
             Registries.ITEM,
-            new ResourceLocation(DescendedAngel.MOD_ID, "halos")
+            ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "halos")
     );
 
     public static final TagKey<Item> WINGS = TagKey.create(
             Registries.ITEM,
-            new ResourceLocation(DescendedAngel.MOD_ID, "wings")
+            ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "wings")
     );
 }

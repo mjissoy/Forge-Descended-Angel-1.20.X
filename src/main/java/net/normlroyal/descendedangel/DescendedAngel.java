@@ -38,6 +38,12 @@ public class DescendedAngel
     {
         IEventBus modEventBus = context.getModEventBus();
 
+        context.registerConfig(
+                ModConfig.Type.SERVER,
+                ModConfigs.COMMON_SPEC,
+                MOD_ID + "-server.toml"
+        );
+
         ModCreativeModTabs.register(modEventBus);
         GeckoLib.initialize();
 
@@ -52,11 +58,7 @@ public class DescendedAngel
 
         modEventBus.addListener(this::commonSetup);
 
-        ModLoadingContext.get().registerConfig(
-                ModConfig.Type.SERVER,
-                ModConfigs.COMMON_SPEC,
-                MOD_ID + "-server.toml"
-        );
+
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

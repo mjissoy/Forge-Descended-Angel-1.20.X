@@ -1,5 +1,5 @@
 {
-  "parent": "descendedangel:main/craft_power_halo",
+  "parent": "descendedangel:main/craft_principality_halo",
   "display": {
     "icon": { "item": "descendedangel:halo_t4" },
     "title": { "text": "Authority by the Lord" },
@@ -12,7 +12,7 @@
     "craft_halo": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe": "descendedangel:halo_t4_rite"
+        "recipe_id": "descendedangel:altar/halo_t4_rite"
       }
     }
   }

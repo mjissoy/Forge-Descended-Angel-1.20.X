@@ -10,13 +10,13 @@
 
   "ring": [
     { "item": "descendedangel:spatial_core" },
-    { "item": "minecraft:netherite_block" },
+    { "item": "descendedangel:sacred_ingot_block" },
     { "item": "minecraft:dragon_breath" },
-    { "item": "minecraft:netherite_block" },
-    { "item": "descendedangel:spatial_core" },
-    { "item": "minecraft:netherite_block" },
+    { "item": "descendedangel:sacred_ingot_block" },
+    { "item": "minecraft:nether_star" },
+    { "item": "descendedangel:sacred_ingot_block" },
     { "item": "minecraft:dragon_breath" },
-    { "item": "minecraft:netherite_block" }
+    { "item": "descendedangel:sacred_ingot_block" }
   ],
 
   "result": {

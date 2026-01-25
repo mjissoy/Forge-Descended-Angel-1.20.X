@@ -10,13 +10,13 @@
 
   "ring": [
     { "item": "descendedangel:void_tear" },
-    { "item": "minecraft:netherite_ingot" },
+    { "item": "minecraft:netherite_block" },
     { "item": "descendedangel:demon_heart" },
-    { "item": "minecraft:netherite_ingot" },
+    { "item": "minecraft:netherite_block" },
     { "item": "descendedangel:void_tear" },
-    { "item": "minecraft:netherite_ingot" },
+    { "item": "minecraft:netherite_block" },
     { "item": "descendedangel:demon_heart" },
-    { "item": "minecraft:netherite_ingot" }
+    { "item": "minecraft:netherite_block" }
   ],
 
   "result": {

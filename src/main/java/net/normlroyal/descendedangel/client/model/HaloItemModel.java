@@ -9,7 +9,7 @@ public class HaloItemModel extends GeoModel<TieredHaloItem> {
     public ResourceLocation getModelResource(TieredHaloItem object) {
         int tier = object.getTier(); // 1..9
 
-        return new ResourceLocation(
+        return ResourceLocation.fromNamespaceAndPath(
                 "descendedangel",
                 "geo/halo_t" + tier + ".geo.json"
         );
@@ -19,7 +19,7 @@ public class HaloItemModel extends GeoModel<TieredHaloItem> {
     public ResourceLocation getTextureResource(TieredHaloItem object) {
         int tier = object.getTier();
 
-        return new ResourceLocation(
+        return ResourceLocation.fromNamespaceAndPath(
                 "descendedangel",
                 "textures/item/halo_t" + tier + ".png"
         );

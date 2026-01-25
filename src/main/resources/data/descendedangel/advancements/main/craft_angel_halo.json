@@ -12,7 +12,7 @@
     "craft_halo": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe": "descendedangel:halo_t1_rite"
+        "recipe_id": "descendedangel:altar/halo_t1_rite"
       }
     }
   }

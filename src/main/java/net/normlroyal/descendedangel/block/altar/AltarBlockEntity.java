@@ -130,7 +130,7 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         crafting = tag.getBoolean("Crafting");
         progress = tag.getInt("Progress");
         maxProgress = tag.getInt("MaxProgress");
-        activeRecipeId = tag.contains("ActiveRecipe") ? new ResourceLocation(tag.getString("ActiveRecipe")) : null;
+        activeRecipeId = tag.contains("ActiveRecipe") ? ResourceLocation.parse(tag.getString("ActiveRecipe")) : null;
     }
 
     @Override

@@ -15,10 +15,10 @@ public class WritTypeRegistry {
     private WritTypeRegistry() {}
 
     public static void registerDefaults() {
-        register(new ResourceLocation(DescendedAngel.MOD_ID, "weather"), new WeatherWritType());
-        register(new ResourceLocation(DescendedAngel.MOD_ID, "spawn_entity"), new SpawnEntityWritType());
-        register(new ResourceLocation(DescendedAngel.MOD_ID, "potion_boost"), new PotionBoostWritType());
-        register(new ResourceLocation(DescendedAngel.MOD_ID, "spawn_structure"), new SpawnEntityWritType());
+        register(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "weather"), new WeatherWritType());
+        register(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "spawn_entity"), new SpawnEntityWritType());
+        register(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "potion_boost"), new PotionBoostWritType());
+        register(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "spawn_structure"), new SpawnEntityWritType());
     }
 
     public static void register(ResourceLocation id, IWritType effect) {

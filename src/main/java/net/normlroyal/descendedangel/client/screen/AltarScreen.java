@@ -13,7 +13,7 @@ import net.normlroyal.descendedangel.menu.AltarMenu;
 public class AltarScreen extends AbstractContainerScreen<AltarMenu> {
 
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(DescendedAngel.MOD_ID, "textures/gui/altar_workbench.png");
+            ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "textures/gui/altar_workbench.png");
 
     public AltarScreen(AltarMenu menu, Inventory playerInv, Component title) {
         super(menu, playerInv, title);
