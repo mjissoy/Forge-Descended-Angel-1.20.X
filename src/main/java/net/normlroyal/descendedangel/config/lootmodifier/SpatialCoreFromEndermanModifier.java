@@ -48,7 +48,7 @@ public class SpatialCoreFromEndermanModifier extends LootModifier {
         Entity killer = context.getParamOrNull(LootContextParams.KILLER_ENTITY);
         if (killer instanceof LivingEntity livingKiller) {
             ItemStack weapon = livingKiller.getMainHandItem();
-            lootingLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MOB_LOOTING, weapon);
+            lootingLevel = weapon.getEnchantmentLevel(Enchantments.MOB_LOOTING);
         }
 
         double finalChance = baseChance + (lootingLevel * 0.04);
