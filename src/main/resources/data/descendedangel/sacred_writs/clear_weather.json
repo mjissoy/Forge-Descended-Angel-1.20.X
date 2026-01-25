@@ -1,0 +1,12 @@
+{
+  "type": "descendedangel:weather",
+  "weather": "clear",
+  "duration": 24000,
+
+  "display": {
+    "name": "Scripture of Clear Skies",
+    "tooltip": [
+      "Clears the Skies."
+    ]
+  }
+}

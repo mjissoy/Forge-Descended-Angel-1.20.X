@@ -1,0 +1,13 @@
+{
+  "type": "descendedangel:spawn_entity",
+  "entity": "minecraft:wither",
+  "count": 1,
+  "radius": 4.0,
+
+  "display": {
+    "name": "Scripture of §4Nether Trial§r",
+    "tooltip": [
+      "Summons the guardian of the §4Nether§r."
+    ]
+  }
+}

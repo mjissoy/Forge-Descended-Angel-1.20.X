@@ -2,26 +2,26 @@
   "type": "descendedangel:altar_rite",
 
   "display_type": "altar.descendedangel.imbuement",
-  "required_halo_tier": 2,
+  "required_halo_tier": 6,
 
   "core": {
     "item": "minecraft:book"
   },
 
   "ring": [
-    { "item": "minecraft:snowball" },
-    { "empty" : "true" },
+    { "item": "minecraft:wither_skeleton_skull" },
+    { "item": "minecraft:wither_skeleton_skull" },
     { "item": "descendedangel:void_tear" },
     { "empty" : "true" },
-    { "item": "minecraft:prismarine_shard" },
+    { "item": "minecraft:soul_sand" },
     { "empty" : "true" },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" }
+    { "item": "minecraft:wither_skeleton_skull" }
   ],
 
   "result": {
     "item": "descendedangel:sacred_writings",
     "count": 1,
-    "nbt": "{descendedangel:{writ_id:\"descendedangel:rain_weather\",uses:1}}"
+    "nbt": "{descendedangel:{writ_id:\"descendedangel:spawn_wither\",uses:3}}"
   }
 }

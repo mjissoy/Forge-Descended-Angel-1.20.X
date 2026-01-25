@@ -9,11 +9,11 @@
   },
 
   "ring": [
-    { "item": "minecraft:snowball" },
+    { "item": "minecraft:bucket" },
     { "empty" : "true" },
     { "item": "descendedangel:void_tear" },
     { "empty" : "true" },
-    { "item": "minecraft:prismarine_shard" },
+    { "item": "minecraft:kelp" },
     { "empty" : "true" },
     { "item": "descendedangel:void_tear" },
     { "empty" : "true" }
@@ -22,6 +22,6 @@
   "result": {
     "item": "descendedangel:sacred_writings",
     "count": 1,
-    "nbt": "{descendedangel:{writ_id:\"descendedangel:rain_weather\",uses:1}}"
+    "nbt": "{descendedangel:{writ_id:\"descendedangel:clear_weather\",uses:3}}"
   }
 }
