@@ -42,6 +42,7 @@ public class ModConfigs {
 
         public final ForgeConfigSpec.IntValue WEATHER_DURATION_TICKS;
         public final ForgeConfigSpec.IntValue ENTITY_SPAWN_COUNT;
+        public final ForgeConfigSpec.BooleanValue ENABLE_SPAWN_STRUCTURE_WRITS;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("Config Options");
@@ -118,6 +119,9 @@ public class ModConfigs {
             ENTITY_SPAWN_COUNT = builder
                     .comment("Count of entities spawned")
                     .defineInRange("entity_writ_spawn", 10, 1, 50);
+            ENABLE_SPAWN_STRUCTURE_WRITS = builder
+                    .comment("Enable/disable structure spawning Sacred Writings")
+                    .define("enableSacredWritings", true);
 
 
             builder.pop();

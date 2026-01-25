@@ -1,0 +1,13 @@
+{
+  "type": "descendedangel:spawn_structure",
+  "mode": "command",
+  "structure": "minecraft:ruined_portal",
+  "offset": [0, 0, 24],
+
+  "display": {
+    "name": "Scripture of §cDescent§r",
+    "tooltip": [
+      "Calls forth a doorway to the land surrounding §l§o§4Hell§r."
+    ]
+  }
+}

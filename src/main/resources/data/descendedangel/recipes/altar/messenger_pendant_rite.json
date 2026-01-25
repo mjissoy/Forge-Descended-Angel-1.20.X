@@ -1,7 +1,7 @@
 {
   "type": "descendedangel:altar_rite",
 
-  "display_type": "altar.descendedangel.sanctification",
+  "display_type": "altar.descendedangel.consecration",
   "required_halo_tier": 5,
 
   "core": {

@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.normlroyal.descendedangel.events.useful.ClientWritDisplayCache;
 import org.slf4j.Logger;
 
 import java.util.*;
@@ -53,7 +54,6 @@ public class SacredWritReloadListener extends SimpleJsonResourceReloadListener {
 
                 JsonObject obj = e.getValue().getAsJsonObject();
 
-                // Minimal validation: require a "type" string
                 if (!obj.has("type") || !obj.get("type").isJsonPrimitive()) {
                     bad++;
                     LOGGER.warn("[SacredWrits] Skipping {} because it has no valid 'type' field.", id);
@@ -97,6 +97,7 @@ public class SacredWritReloadListener extends SimpleJsonResourceReloadListener {
         }
 
         DISPLAYS = Collections.unmodifiableMap(dispNext);
+        ClientWritDisplayCache.setAll(DISPLAYS);
 
     }
 

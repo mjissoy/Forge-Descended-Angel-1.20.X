@@ -82,7 +82,7 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
                 return;
             }
         }
-        setRiteUiIfChanged(STATE_CAN_START, Component.literal("Start ").append(recipe.displayComponent()));
+        setRiteUiIfChanged(STATE_CAN_START, recipe.displayComponent());
     }
 
     private SimpleContainer buildRecipeContainer() {

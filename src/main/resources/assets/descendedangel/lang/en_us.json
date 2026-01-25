@@ -17,10 +17,9 @@
   "container.descendedangel.altar": "Altar",
   "block.descendedangel.altar": "Altar",
   "jei.descendedangel.altar_rite": "Altar Rite",
-  "altar.descendedangel.ascendance": "Ascendance",
-  "altar.descendedangel.sanctification": "Sanctification",
-  "altar.descendedangel.purification": "Purification",
-  "altar.descendedangel.transcendence": "Transcendence",
+  "altar.descendedangel.ascendance": "Ascend",
+  "altar.descendedangel.consecration": "Consecrate",
+  "altar.descendedangel.imbuement": "Imbue",
 
 
   "item.descendedangel.halo_t1" : "Halo",

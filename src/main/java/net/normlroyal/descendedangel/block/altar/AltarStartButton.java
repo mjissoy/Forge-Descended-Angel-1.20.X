@@ -25,7 +25,6 @@ public class AltarStartButton extends AbstractWidget {
 
     @Override
     public void onClick(double mouseX, double mouseY) {
-        System.out.println("[AltarStartButton] Clicked. state=" + stateSupplier.getAsInt());
         int state = stateSupplier.getAsInt();
         if (state == AltarBlockEntity.STATE_CAN_START) {
             onClick.run();
