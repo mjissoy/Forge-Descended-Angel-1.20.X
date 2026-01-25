@@ -2,7 +2,6 @@ package net.normlroyal.descendedangel.item.custom.writings;
 
 import net.minecraft.resources.ResourceLocation;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.item.custom.writings.effects.PotionBoostWritType;
 import net.normlroyal.descendedangel.item.custom.writings.effects.SpawnEntityWritType;
 import net.normlroyal.descendedangel.item.custom.writings.effects.WeatherWritType;
 
@@ -17,7 +16,6 @@ public class WritTypeRegistry {
     public static void registerDefaults() {
         register(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "weather"), new WeatherWritType());
         register(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "spawn_entity"), new SpawnEntityWritType());
-        register(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "potion_boost"), new PotionBoostWritType());
         register(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "spawn_structure"), new SpawnEntityWritType());
     }
 
