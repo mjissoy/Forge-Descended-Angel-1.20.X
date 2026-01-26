@@ -15,6 +15,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.normlroyal.descendedangel.block.ModBlockEntities;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.config.lootmodifier.ModLootModifiers;
+import net.normlroyal.descendedangel.entity.ModEntities;
 import net.normlroyal.descendedangel.item.custom.writings.WritTypeRegistry;
 import net.normlroyal.descendedangel.menu.ModMenus;
 import net.normlroyal.descendedangel.config.ModConfigs;
@@ -46,6 +47,7 @@ public class DescendedAngel
         ModCreativeModTabs.register(modEventBus);
         GeckoLib.initialize();
 
+        ModEntities.ENTITY_TYPES.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
@@ -56,8 +58,6 @@ public class DescendedAngel
         ModNetwork.registerPackets();
 
         modEventBus.addListener(this::commonSetup);
-
-
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

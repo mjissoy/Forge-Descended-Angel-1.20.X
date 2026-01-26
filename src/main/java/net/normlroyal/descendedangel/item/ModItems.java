@@ -1,11 +1,13 @@
 package net.normlroyal.descendedangel.item;
 
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.entity.ModEntities;
 import net.normlroyal.descendedangel.item.custom.NecklaceCuriosItem;
 import net.normlroyal.descendedangel.item.custom.RingCuriosItem;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
@@ -75,6 +77,11 @@ public class ModItems {
     // Other Items
     public static final RegistryObject<Item> SACRED_WRITINGS = ITEMS.register("sacred_writings",
             () -> new SacredWritingsItem(new Item.Properties()));
+    public static final RegistryObject<Item> VOID_ANOMALY_SPAWN_EGG = ITEMS.register("void_anomaly_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.VOID_ANOMALY,
+                    0x320F3B,
+                    0x6780AC,
+                    new Item.Properties()));
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

@@ -54,7 +54,7 @@ public class ModConfigs {
                     .defineInRange("haloHealingBonusPerTier", 0.05D, 0.0D, 10.0D);
             HALO_UNDEAD_DAMAGE_BONUS_PER_TIER = builder
                     .comment("Extra damage vs undead per halo tier (e.g. 0.10 = +10% per tier).")
-                    .defineInRange("haloUndeadDamageBonusPerTier", 0.10D, 0.0D, 10.0D);
+                    .defineInRange("haloUndeadDamageBonusPerTier", 0.15D, 0.0D, 10.0D);
             HALO_HEALTH_BASE = builder
                     .comment("Base health added by halos (before tier scaling). Default: 2")
                     .defineInRange("haloExtraHealthBase", 2.0D, 0.0D, 1024.0D);

@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.config.ModConfigs;
+import net.normlroyal.descendedangel.events.useful.HaloUndeadScalingTarget;
 import net.normlroyal.descendedangel.util.HaloUtils;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -19,8 +20,10 @@ public class HaloEvents {
         if (!(event.getSource().getEntity() instanceof Player player)) return;
 
         LivingEntity target = event.getEntity();
-        if (target.getMobType() != MobType.UNDEAD) return;
 
+        boolean haloBonusApplies =
+                target.getMobType() == MobType.UNDEAD
+                        || target instanceof HaloUndeadScalingTarget;
 
         int tier = HaloUtils.getEquippedHaloTier(player);
         if (tier <= 0) return;
