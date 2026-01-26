@@ -4,7 +4,7 @@
     "icon": { "item": "descendedangel:halo_t2" },
     "title": { "text": "An Archangel's Ladder" },
     "description": { "text": "The powers of Heaven guide your ascension" },
-    "frame": "goal",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
   },

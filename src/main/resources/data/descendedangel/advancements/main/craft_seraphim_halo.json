@@ -4,7 +4,7 @@
     "icon": { "item": "descendedangel:halo_t9" },
     "title": { "text": "A Seraphim's Perfection" },
     "description": { "text": "Your Eyes burns with Divine Mercy" },
-    "frame": "goal",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true
   },

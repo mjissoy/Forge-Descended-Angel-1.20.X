@@ -4,7 +4,7 @@
     "icon": { "item": "descendedangel:halo_t1" },
     "title": { "text": "An Angel's Grace" },
     "description": { "text": "Craft a Halo befitting an Angel" },
-    "frame": "goal",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true
   },

@@ -4,7 +4,7 @@
     "icon": { "item": "descendedangel:halo_t8" },
     "title": { "text": "Throne of the Lord" },
     "description": { "text": "The Might of the Lord sits with you" },
-    "frame": "goal",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true
   },
