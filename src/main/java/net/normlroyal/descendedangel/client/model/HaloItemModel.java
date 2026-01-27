@@ -7,7 +7,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class HaloItemModel extends GeoModel<TieredHaloItem> {
     @Override
     public ResourceLocation getModelResource(TieredHaloItem object) {
-        int tier = object.getTier(); // 1..9
+        int tier = object.getTier();
 
         return ResourceLocation.fromNamespaceAndPath(
                 "descendedangel",

@@ -21,7 +21,6 @@ public class AltarItem extends BlockItem implements GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        // no item animations needed
     }
 
     @Override

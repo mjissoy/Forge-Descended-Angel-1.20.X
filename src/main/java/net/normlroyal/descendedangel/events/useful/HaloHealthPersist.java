@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.util.HaloUtils;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HaloHealthPersist {
@@ -23,7 +22,7 @@ public class HaloHealthPersist {
 
     private static float baseMaxHealth(ServerPlayer sp) {
         var inst = sp.getAttribute(Attributes.MAX_HEALTH);
-        return inst == null ? 20.0f : (float) inst.getBaseValue(); // usually 20
+        return inst == null ? 20.0f : (float) inst.getBaseValue();
     }
 
     private static float currentMaxHealth(ServerPlayer sp) {
@@ -74,7 +73,6 @@ public class HaloHealthPersist {
         var tag = sp.getPersistentData();
         if (!tag.getBoolean(KEY_PENDING)) return;
 
-        // Stop trying after ~2 seconds (40 ticks) to avoid permanent ticking.
         int tries = tag.getInt(KEY_TRIES);
         if (tries++ > 40) {
             tag.remove(KEY_PENDING);
@@ -83,7 +81,6 @@ public class HaloHealthPersist {
         }
         tag.putInt(KEY_TRIES, tries);
 
-        // Only apply if halo is equipped AND attribute modifiers are actually applied.
         if (!hasHalo(sp)) return;
         if (!modifiersApplied(sp)) return;
 
@@ -98,12 +95,10 @@ public class HaloHealthPersist {
         float target = Math.min(max, Math.max(1.0f, ratio * max));
         sp.setHealth(target);
 
-        // Done.
         tag.remove(KEY_PENDING);
         tag.remove(KEY_TRIES);
     }
 
-    // Optional: these can also trigger clamping in some setups
     @SubscribeEvent
     public static void onRespawn(PlayerEvent.PlayerRespawnEvent e) {
         if (!(e.getEntity() instanceof ServerPlayer sp)) return;
