@@ -1,5 +1,5 @@
 {
-  "parent": "descendedangel:main/craft_art_angel_feather",
+  "parent": "descendedangel:main/find_altar_structure",
   "display": {
     "icon": { "item": "descendedangel:halo_t1" },
     "title": { "text": "An Angel's Grace" },
