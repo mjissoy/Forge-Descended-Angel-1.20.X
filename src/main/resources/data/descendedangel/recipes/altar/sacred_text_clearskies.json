@@ -10,13 +10,13 @@
 
   "ring": [
     { "item": "minecraft:bucket" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "minecraft:kelp" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" }
+    { "empty" : true }
   ],
 
   "result": {

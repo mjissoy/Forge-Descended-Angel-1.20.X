@@ -10,13 +10,13 @@
 
   "ring": [
     { "item": "minecraft:flint_and_steel" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "minecraft:obsidian" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" }
+    { "empty" : true }
   ],
 
   "result": {

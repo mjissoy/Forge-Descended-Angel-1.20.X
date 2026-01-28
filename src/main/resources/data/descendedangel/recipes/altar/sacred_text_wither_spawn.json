@@ -12,9 +12,9 @@
     { "item": "minecraft:wither_skeleton_skull" },
     { "item": "minecraft:wither_skeleton_skull" },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "minecraft:soul_sand" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
     { "item": "minecraft:wither_skeleton_skull" }
   ],

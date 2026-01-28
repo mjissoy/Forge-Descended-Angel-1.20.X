@@ -12,9 +12,9 @@
     { "item": "minecraft:emerald_block" },
     { "item": "minecraft:emerald_block" },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "minecraft:golden_carrot" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
     { "item": "minecraft:emerald_block" }
   ],

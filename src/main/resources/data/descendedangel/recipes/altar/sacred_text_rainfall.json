@@ -10,13 +10,13 @@
 
   "ring": [
     { "item": "minecraft:snowball" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "minecraft:prismarine_shard" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" }
+    { "empty" : true }
   ],
 
   "result": {

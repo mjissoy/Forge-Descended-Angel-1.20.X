@@ -10,13 +10,13 @@
 
   "ring": [
     { "item": "minecraft:emerald" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "minecraft:bread" },
-    { "empty" : "true" },
+    { "empty" : true },
     { "item": "descendedangel:void_tear" },
-    { "empty" : "true" }
+    { "empty" : true }
   ],
 
   "result": {

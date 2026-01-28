@@ -16,6 +16,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AltarRiteRecipe implements Recipe<SimpleContainer> {
@@ -39,7 +40,7 @@ public class AltarRiteRecipe implements Recipe<SimpleContainer> {
     ) {
         this.id = id;
         this.core = core;
-        this.ring = ring;
+        this.ring = ring.size() == 8 ? ring : padToEight(ring);
         this.result = result;
         this.requiredHaloTier = requiredHaloTier;
         this.displayTypeKey = displayTypeKey;
@@ -52,10 +53,7 @@ public class AltarRiteRecipe implements Recipe<SimpleContainer> {
         }
 
         for (int i = 0; i < 8; i++) {
-            Ingredient ing = ring.get(i);
-            ItemStack stack = container.getItem(i);
-
-            if (!matchesIgnoringNBT(ing, stack)) {
+            if (!matchesIgnoringNBT(ring.get(i), container.getItem(i))) {
                 return false;
             }
         }
@@ -63,13 +61,10 @@ public class AltarRiteRecipe implements Recipe<SimpleContainer> {
     }
 
     private static boolean matchesIgnoringNBT(Ingredient ing, ItemStack stack) {
-        if (ing.isEmpty()) {
-            return stack.isEmpty();
-        }
+        if (ing.isEmpty()) return stack.isEmpty();
+        if (stack.isEmpty()) return false;
 
-        if (stack.isEmpty()) {
-            return false;
-        }
+        if (ing.test(stack)) return true;
 
         for (ItemStack example : ing.getItems()) {
             if (!example.isEmpty() && example.getItem() == stack.getItem()) {
@@ -81,28 +76,7 @@ public class AltarRiteRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public ItemStack assemble(SimpleContainer container, RegistryAccess access) {
-        ItemStack out = result.copy();
-
-        ItemStack potionStack = ItemStack.EMPTY;
-        for (int i = 0; i < container.getContainerSize(); i++) {
-            ItemStack s = container.getItem(i);
-            if (!s.isEmpty() && PotionUtils.getPotion(s) != null && PotionUtils.getPotion(s) != net.minecraft.world.item.alchemy.Potions.EMPTY) {
-                potionStack = s;
-                break;
-            }
-        }
-
-        if (!potionStack.isEmpty()) {
-            Potion p = PotionUtils.getPotion(potionStack);
-            var potionKey = BuiltInRegistries.POTION.getKey(p);
-
-            CompoundTag tag = out.getOrCreateTag();
-            CompoundTag root = tag.contains("descendedangel", Tag.TAG_COMPOUND) ? tag.getCompound("descendedangel") : new CompoundTag();
-            root.putString("boost_potion", potionKey.toString());
-            tag.put("descendedangel", root);
-        }
-
-        return out;
+        return result.copy();
     }
 
     @Override
@@ -130,6 +104,12 @@ public class AltarRiteRecipe implements Recipe<SimpleContainer> {
 
     public ItemStack getResult() {
         return result;
+    }
+
+    private static List<Ingredient> padToEight(List<Ingredient> in) {
+        List<Ingredient> out = new ArrayList<>(8);
+        for (int i = 0; i < 8; i++) out.add(i < in.size() ? in.get(i) : Ingredient.EMPTY);
+        return out;
     }
 
 }

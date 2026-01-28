@@ -18,34 +18,38 @@ public class AltarRiteRecipeSerializer implements RecipeSerializer<AltarRiteReci
 
     @Override
     public AltarRiteRecipe fromJson(ResourceLocation id, JsonObject json) {
+        if (!json.has("core"))
+            throw new JsonParseException("Missing required field 'core' for altar_rite recipe " + id);
         Ingredient core = Ingredient.fromJson(json.get("core"));
-
-        JsonArray ringArr = json.getAsJsonArray("ring");
-        if (ringArr.size() > 8)
-            throw new JsonParseException("Altar ring can have at most 8 ingredients");
-
         List<Ingredient> ring = new ArrayList<>(8);
+        JsonArray ringArr = GsonHelper.getAsJsonArray(json, "ring", new JsonArray());
+
+        if (ringArr.size() > 8)
+            throw new JsonParseException("Altar ring can have at most 8 ingredients (got " + ringArr.size() + ") in " + id);
         for (int i = 0; i < 8; i++) {
             if (i >= ringArr.size()) {
                 ring.add(Ingredient.EMPTY);
                 continue;
             }
-            if (ringArr.get(i).isJsonObject()) {
-                JsonObject o = ringArr.get(i).getAsJsonObject();
-                if (GsonHelper.getAsBoolean(o, "empty", false)) {
+            var el = ringArr.get(i);
+            if (el.isJsonObject()) {
+                JsonObject o = el.getAsJsonObject();
+                if (GsonHelper.getAsBoolean(o, "empty", false) || o.size() == 0) {
                     ring.add(Ingredient.EMPTY);
                 } else {
                     ring.add(Ingredient.fromJson(o));
                 }
             } else {
-                ring.add(Ingredient.fromJson(ringArr.get(i)));
+                ring.add(Ingredient.fromJson(el));
             }
         }
 
-        ItemStack result = ShapedRecipe.itemStackFromJson(json.getAsJsonObject("result"));
-        int haloTier = GsonHelper.getAsInt(json, "required_halo_tier", 0);
-        String displayKey = GsonHelper.getAsString(json, "display_type");
+        if (!json.has("result"))
+            throw new JsonParseException("Missing required field 'result' for altar_rite recipe " + id);
+        ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
 
+        int haloTier = GsonHelper.getAsInt(json, "required_halo_tier", 0);
+        String displayKey = GsonHelper.getAsString(json, "display_type", "altar.descendedangel.rite");
         return new AltarRiteRecipe(id, core, ring, result, haloTier, displayKey);
     }
 
