@@ -2,11 +2,16 @@
   "item.descendedangel.angel_feather" : "Artificial Angel Feather",
   "item.descendedangel.angel_feather_real" : "Sacred Angel Feather",
   "item.descendedangel.demon_heart" : "Demon's Heart",
-  "item.descendedangel.void_tear" : "Drop of Void",
+  "item.descendedangel.void_tear" : "Void Droplet",
   "item.descendedangel.spatial_core" : "Core of Space",
   "item.descendedangel.sacred_writings" : "Sacred Text",
 
+
+  "entity.descendedangel.void_anomaly": "Void Anomaly",
   "item.descendedangel.void_anomaly_spawn_egg": "Void Anomaly Spawn Egg",
+  "item.descendedangel.imp_spawn_egg": "Imp Spawn Egg",
+  "entity.descendedangel.imp": "Imp",
+
 
   "item.descendedangel.sacred_ore_ingot" : "Sacred Ingot",
   "item.descendedangel.sacred_ore_raw" : "Raw Sacred Ore",

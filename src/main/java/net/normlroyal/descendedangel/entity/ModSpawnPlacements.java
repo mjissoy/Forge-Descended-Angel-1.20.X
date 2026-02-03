@@ -18,6 +18,13 @@ public class ModSpawnPlacements {
                 VoidAnomalyEntity::canSpawnHere,
                 SpawnPlacementRegisterEvent.Operation.OR
         );
+        event.register(
+                ModEntities.IMP.get(),
+                SpawnPlacements.Type.NO_RESTRICTIONS,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                ImpEntity::canSpawnHere,
+                SpawnPlacementRegisterEvent.Operation.OR
+        );
     }
 
 }

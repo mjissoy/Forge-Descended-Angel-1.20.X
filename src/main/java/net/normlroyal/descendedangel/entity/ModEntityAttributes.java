@@ -12,5 +12,8 @@ public class ModEntityAttributes {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.VOID_ANOMALY.get(),
                 VoidAnomalyEntity.createAttributes().build());
+
+        event.put(ModEntities.IMP.get(),
+                ImpEntity.createAttributes().build());
     }
 }

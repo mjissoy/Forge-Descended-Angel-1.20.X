@@ -17,4 +17,12 @@ public class ModEntities {
                             .sized(0.6F, 1.95F)
                             .clientTrackingRange(8)
                             .build("descendedangel:void_anomaly"));
+
+    public static final RegistryObject<EntityType<ImpEntity>> IMP =
+            ENTITY_TYPES.register("imp",
+                    () -> EntityType.Builder
+                            .of(ImpEntity::new, MobCategory.MONSTER)
+                            .sized(0.375F, 0.8125F)
+                            .clientTrackingRange(16)
+                            .build("descendedangel:imp"));
 }

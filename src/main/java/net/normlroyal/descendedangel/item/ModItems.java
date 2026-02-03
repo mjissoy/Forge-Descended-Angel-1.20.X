@@ -82,6 +82,11 @@ public class ModItems {
                     0x320F3B,
                     0x6780AC,
                     new Item.Properties()));
+    public static final RegistryObject<Item> IMP_SPAWN_EGG = ITEMS.register("imp_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.IMP,
+                    0x7A1C1C,
+                    0xD46B2E,
+                    new Item.Properties()));
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);
