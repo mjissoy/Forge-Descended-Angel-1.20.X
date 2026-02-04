@@ -14,6 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.normlroyal.descendedangel.block.ModBlockEntities;
 import net.normlroyal.descendedangel.block.ModBlocks;
+import net.normlroyal.descendedangel.client.sounds.ModSounds;
 import net.normlroyal.descendedangel.config.lootmodifier.ModLootModifiers;
 import net.normlroyal.descendedangel.entity.ModEntities;
 import net.normlroyal.descendedangel.item.custom.writings.WritTypeRegistry;
@@ -51,6 +52,7 @@ public class DescendedAngel
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModSounds.SOUND_EVENTS.register(modEventBus);
         ModMenus.register(modEventBus);
         ModRecipeSerializers.SERIALIZERS.register(modEventBus);
         ModRecipeTypes.TYPES.register(modEventBus);
