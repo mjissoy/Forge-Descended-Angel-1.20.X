@@ -53,6 +53,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.SACRED_WRITINGS.get());
 
                         output.accept(ModItems.VOID_ANOMALY_SPAWN_EGG.get());
+                        output.accept(ModItems.IMP_SPAWN_EGG.get());
 
                     })
                     .build());
