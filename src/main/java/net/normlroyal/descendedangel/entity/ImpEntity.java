@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -146,6 +147,22 @@ public class ImpEntity extends Monster implements HaloUndeadScalingTarget, GeoEn
 
         int groundY = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos.getX(), pos.getZ());
         return pos.getY() >= groundY && pos.getY() <= groundY + 3;
+    }
+
+    @Override
+    public boolean fireImmune() {
+        return true;
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        if (source.is(DamageTypes.IN_FIRE)
+                || source.is(DamageTypes.ON_FIRE)
+                || source.is(DamageTypes.LAVA)
+                || source.is(DamageTypes.HOT_FLOOR)) {
+            return false;
+        }
+        return super.hurt(source, amount);
     }
 
 }
