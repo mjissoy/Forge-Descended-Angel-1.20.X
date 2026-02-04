@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "descendedangel:aboveground_tablet",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 16,
+    "salt": 18472631
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "descendedangel:ancientcity_tablet/start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "element": {
+        "location": "descendedangel:ancientcity_tablet",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      },
+      "weight": 1
+    }
+  ]
+}
