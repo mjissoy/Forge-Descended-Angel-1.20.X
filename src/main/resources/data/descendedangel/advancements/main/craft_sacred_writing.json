@@ -1,7 +1,7 @@
 {
   "parent": "descendedangel:main/craft_archangel_halo",
   "display": {
-    "icon": { "item": "descendedangel:sacred_writing" },
+    "icon": { "item": "descendedangel:sacred_writings" },
     "title": { "text": "The Scriptures of God" },
     "description": { "text": "Imbue upon a book knowledge from the Lord" },
     "frame": "task",
