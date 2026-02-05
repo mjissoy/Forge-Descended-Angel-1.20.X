@@ -20,17 +20,33 @@ import java.util.List;
 
 public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
 
+
+    private static final int BG_W = 177;
+    private static final int BG_H = 117;
+
+
     private static ResourceLocation rl(String path) {
         return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, path);
     }
 
-    private static final ResourceLocation BG = rl("textures/gui/jei_altar_workbench.png");
+    private static final ResourceLocation BG =
+            ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "textures/gui/jei_altar_workbench.png");
 
     private final IDrawable background;
     private final IDrawable icon;
 
     public AltarRiteCategory(IGuiHelper guiHelper) {
-        this.background = guiHelper.createDrawable(BG, 0, 0, 177, 117);
+
+        IDrawable bg = guiHelper.createBlankDrawable(BG_W, BG_H);
+
+        try {
+            bg = guiHelper.createDrawable(BG, 0, 0, BG_W, BG_H);
+        } catch (Exception e) {
+            System.out.println("[DA JEI] Failed to load JEI background " + BG + " -> using blank drawable");
+            e.printStackTrace();
+        }
+
+        this.background = bg;
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModItems.REALANGELFEATHER.get()));
     }
 
@@ -101,14 +117,12 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
 
     @Override
     public void draw(AltarRiteRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics g, double mouseX, double mouseY) {
-        background.draw(g);
         var font = Minecraft.getInstance().font;
 
         Component text = recipe.displayComponent();
         int w = font.width(text);
 
-        int bgWidth = 177;
-        int x = bgWidth - 6 - w;
+        int x = BG_W - 6 - w;
         int y = 6;
 
         g.drawString(font, text, x, y, 0x404040, false);
@@ -127,5 +141,15 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
             case 9 -> new ItemStack(ModItems.HALO_T9.get());
             default -> new ItemStack(ModItems.HALO_T1.get());
         };
+    }
+
+    @Override
+    public int getWidth() {
+        return BG_W;
+    }
+
+    @Override
+    public int getHeight() {
+        return BG_H;
     }
 }
