@@ -48,6 +48,7 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
 
         this.background = bg;
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModItems.REALANGELFEATHER.get()));
+
     }
 
     @Override
@@ -151,5 +152,11 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
     @Override
     public int getHeight() {
         return BG_H;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public IDrawable getBackground() {
+        return background;
     }
 }
