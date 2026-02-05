@@ -2,7 +2,7 @@
   "parent": "descendedangel:main/find_void_drop",
   "display": {
     "icon": {
-      "item": "descendedangel:void_tear"
+      "item": "descendedangel:demon_heart"
     },
     "title": {
       "text": "Wild Hellspawn"

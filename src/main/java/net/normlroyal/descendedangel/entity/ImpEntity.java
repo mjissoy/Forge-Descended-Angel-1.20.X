@@ -1,6 +1,7 @@
 package net.normlroyal.descendedangel.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -21,6 +22,9 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 import net.normlroyal.descendedangel.events.useful.HaloUndeadScalingTarget;
@@ -142,11 +146,32 @@ public class ImpEntity extends Monster implements HaloUndeadScalingTarget, GeoEn
     }
 
 
-    public static boolean canSpawnHere(EntityType<ImpEntity> type, LevelAccessor level, MobSpawnType reason, BlockPos pos, RandomSource random) {
-        if (!(level instanceof ServerLevel sl) || sl.dimension() != Level.NETHER) return false;
+    public static boolean canSpawnHere(EntityType<ImpEntity> type,
+                                       ServerLevelAccessor level,
+                                       MobSpawnType reason,
+                                       BlockPos pos,
+                                       RandomSource random) {
 
-        int groundY = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, pos.getX(), pos.getZ());
-        return pos.getY() >= groundY && pos.getY() <= groundY + 3;
+        if (level.getLevel().dimension() != Level.NETHER) return false;
+
+        if (!level.getBlockState(pos).getCollisionShape(level, pos).isEmpty()) return false;
+        if (!level.getBlockState(pos.above()).getCollisionShape(level, pos.above()).isEmpty()) return false;
+
+        if (level.getBrightness(LightLayer.BLOCK, pos) > 7) return false;
+
+        BlockPos.MutableBlockPos mpos = pos.mutable();
+        int minY = level.getMinBuildHeight();
+
+        while (mpos.getY() > minY && level.getBlockState(mpos).getCollisionShape(level, mpos).isEmpty()) {
+            mpos.move(Direction.DOWN);
+        }
+        if (mpos.getY() <= minY) return false;
+
+        BlockState ground = level.getBlockState(mpos);
+        if (ground.liquid()) return false;
+
+        int dy = pos.getY() - mpos.getY();
+        return dy >= 0 && dy <= 3;
     }
 
     @Override
@@ -164,5 +189,8 @@ public class ImpEntity extends Monster implements HaloUndeadScalingTarget, GeoEn
         }
         return super.hurt(source, amount);
     }
+
+    @Override
+    protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {}
 
 }
