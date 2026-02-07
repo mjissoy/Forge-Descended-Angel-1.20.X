@@ -1,0 +1,40 @@
+{
+  "parent": "descendedangel:main/find_void_drop",
+  "criteria": {
+    "kill_void_anomaly": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "descendedangel:void_anomaly"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "The Void leaks into worlds, corrupting its inhabitants and distorting them."
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:void_tear"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Leaking Void"
+    }
+  },
+  "requirements": [
+    [
+      "kill_void_anomaly"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

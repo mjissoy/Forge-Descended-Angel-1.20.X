@@ -1,0 +1,30 @@
+{
+  "criteria": {
+    "tick": {
+      "conditions": {},
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "descendedangel:textures/gui/advancements/backgrounds/holybg.png",
+    "description": {
+      "text": "A small guide curated by Heavens' own Metatron"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:angel_feather_real"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "Descended Angel"
+    }
+  },
+  "requirements": [
+    [
+      "tick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_throne_halo",
+  "criteria": {
+    "craft_halo": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/halo_t9_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Your Eyes burns with Divine Mercy"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:halo_t9"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "A Seraphim's Perfection"
+    }
+  },
+  "requirements": [
+    [
+      "craft_halo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

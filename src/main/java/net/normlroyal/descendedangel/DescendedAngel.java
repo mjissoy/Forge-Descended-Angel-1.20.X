@@ -56,7 +56,7 @@ public class DescendedAngel
         ModMenus.register(modEventBus);
         ModRecipeSerializers.SERIALIZERS.register(modEventBus);
         ModRecipeTypes.TYPES.register(modEventBus);
-        ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
         ModNetwork.registerPackets();
 
         modEventBus.addListener(this::commonSetup);

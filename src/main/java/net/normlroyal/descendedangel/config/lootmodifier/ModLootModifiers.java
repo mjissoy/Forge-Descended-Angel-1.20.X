@@ -2,6 +2,7 @@ package net.normlroyal.descendedangel.config.lootmodifier;
 
 import com.mojang.serialization.Codec;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -13,4 +14,12 @@ public class ModLootModifiers {
 
     public static final RegistryObject<Codec<? extends IGlobalLootModifier>> SPATIAL_CORE_ENDERMAN =
             LOOT_MODIFIERS.register("spatial_core_from_enderman", () -> SpatialCoreFromEndermanModifier.CODEC);
+
+    public static final RegistryObject<Codec<SpatialCoreFromEndCityTreasureModifier>> SPATIAL_CORE_IN_END_CITY_TREASURE =
+            LOOT_MODIFIERS.register("spatial_core_in_end_city_treasure", () -> SpatialCoreFromEndCityTreasureModifier.CODEC);
+
+    public static void register(IEventBus bus) {
+        LOOT_MODIFIERS.register(bus);
+    }
 }
+

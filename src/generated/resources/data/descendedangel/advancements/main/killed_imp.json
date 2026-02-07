@@ -1,0 +1,40 @@
+{
+  "parent": "descendedangel:main/find_void_drop",
+  "criteria": {
+    "kill_imp": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "descendedangel:imp"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Oftentimes, the lowest level of Hell find ways to creep into the Nether."
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:demon_heart"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Wild Hellspawn"
+    }
+  },
+  "requirements": [
+    [
+      "kill_imp"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

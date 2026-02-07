@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:holy_necklace"
+  },
+  "display_type": "altar.descendedangel.consecration",
+  "required_halo_tier": 5,
+  "result": {
+    "item": "descendedangel:messenger_pendant"
+  },
+  "ring": [
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_power_halo",
+  "criteria": {
+    "craft_halo": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/halo_t5_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "You embody the Seven Heavenly Virtues"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:halo_t5"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Righteous Purity"
+    }
+  },
+  "requirements": [
+    [
+      "craft_halo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

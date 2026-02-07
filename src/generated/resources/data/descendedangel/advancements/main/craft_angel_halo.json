@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/find_altar_structure",
+  "criteria": {
+    "craft_halo": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/halo_t1_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Craft a Halo befitting an Angel"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:halo_t1"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "An Angel's Grace"
+    }
+  },
+  "requirements": [
+    [
+      "craft_halo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "descendedangel:main/craft_art_angel_feather",
+  "criteria": {
+    "enter_shrine": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "descendedangel:ruined_cathedral"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Throughout worlds are scattered the Altars of the Lord"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:altar"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Holy Remnants"
+    }
+  },
+  "requirements": [
+    [
+      "enter_shrine"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

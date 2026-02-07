@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:holy_ring"
+  },
+  "display_type": "altar.descendedangel.consecration",
+  "required_halo_tier": 5,
+  "result": {
+    "item": "descendedangel:cloud_ring"
+  },
+  "ring": [
+    {
+      "item": "minecraft:lightning_rod"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:snow_block"
+    },
+    {
+      "item": "minecraft:lightning_rod"
+    },
+    {
+      "item": "minecraft:snow_block"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ]
+}

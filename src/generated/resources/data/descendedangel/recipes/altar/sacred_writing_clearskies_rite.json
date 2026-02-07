@@ -1,0 +1,38 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "minecraft:book"
+  },
+  "display_type": "altar.descendedangel.imbuement",
+  "required_halo_tier": 2,
+  "result": {
+    "item": "descendedangel:sacred_writings",
+    "nbt": "{descendedangel:{writ_id:\"descendedangel:clear_weather\",uses:3}}"
+  },
+  "ring": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "empty": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+// 1.20.1	2026-02-08T09:25:38.0574827	Tags for minecraft:item mod id descendedangel
+55dc244de1204101ae9776e5b5cd3478e17f4ece data/curios/tags/items/halo.json
+9c00f925d0ce44e07522fd4468d062f9dba94306 data/curios/tags/items/necklace.json
+b0f7b42b466160b7876985fb8ae0ce1fee7914fb data/curios/tags/items/ring.json
+2c33dd8783f9cda49b8805a37d1957084bf385d4 data/curios/tags/items/wing.json
+5c763b9b7f6c5301784fb9b964cd2e7697fdcba4 data/descendedangel/tags/items/halos.json
+ce81f020e08af435bd2c64f0ff6cc3e7a5fdff6b data/descendedangel/tags/items/necklaces.json
+e0f6226581f3ca1d3cd8695d86a6aadd48a10876 data/descendedangel/tags/items/rings.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/descendedangel/tags/items/wings.json

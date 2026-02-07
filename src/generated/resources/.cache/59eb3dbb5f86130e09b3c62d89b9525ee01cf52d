@@ -1,0 +1,7 @@
+// 1.20.1	2026-02-07T18:19:30.6885212	Loot Tables
+150ebd9e150eff61c2a652abdea65c50886f1962 data/descendedangel/loot_tables/blocks/raw_sacred_ore_block.json
+1934356a2049f8b53ffe4534bab54d25a8aee98c data/descendedangel/loot_tables/blocks/sacred_ingot_block.json
+ca9baad2dc84673778a40593a470b30026e810fd data/descendedangel/loot_tables/blocks/sacred_ore.json
+164a31836f17b64ad7e18da05e9b6ae0d0f21481 data/descendedangel/loot_tables/chests/tablet_barrel.json
+15506b13d33943b3fb97bc8b121484a1745288f7 data/descendedangel/loot_tables/entities/imp.json
+540e0dfe99abf58890602a96382da1b0ab323789 data/descendedangel/loot_tables/entities/void_anomaly.json

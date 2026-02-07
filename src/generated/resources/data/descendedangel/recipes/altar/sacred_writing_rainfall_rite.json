@@ -1,0 +1,38 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "minecraft:book"
+  },
+  "display_type": "altar.descendedangel.imbuement",
+  "required_halo_tier": 2,
+  "result": {
+    "item": "descendedangel:sacred_writings",
+    "nbt": "{descendedangel:{writ_id:\"descendedangel:rain_weather\",uses:1}}"
+  },
+  "ring": [
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "minecraft:prismarine_shard"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "empty": true
+    }
+  ]
+}

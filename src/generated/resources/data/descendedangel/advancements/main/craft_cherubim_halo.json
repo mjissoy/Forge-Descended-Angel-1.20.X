@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_dominion_halo",
+  "criteria": {
+    "craft_halo": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/halo_t7_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "You are the Chalice of the Lord"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:halo_t7"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fount of the World"
+    }
+  },
+  "requirements": [
+    [
+      "craft_halo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

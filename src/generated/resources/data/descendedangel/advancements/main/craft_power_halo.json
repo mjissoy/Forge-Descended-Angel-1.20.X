@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_principality_halo",
+  "criteria": {
+    "craft_halo": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/halo_t4_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "The Lord's Power floods your soul"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:halo_t4"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Authority by the Lord"
+    }
+  },
+  "requirements": [
+    [
+      "craft_halo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

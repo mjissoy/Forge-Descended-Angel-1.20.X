@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_cherubim_halo",
+  "criteria": {
+    "craft_halo": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/halo_t8_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "The Might of the Lord sits with you"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:halo_t8"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Throne of the Lord"
+    }
+  },
+  "requirements": [
+    [
+      "craft_halo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

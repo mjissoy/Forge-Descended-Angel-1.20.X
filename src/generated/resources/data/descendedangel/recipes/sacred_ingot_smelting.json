@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredient": {
+    "item": "descendedangel:sacred_ore_raw"
+  },
+  "result": "descendedangel:sacred_ore_ingot"
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "minecraft:feather"
+    },
+    "C": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "D": {
+      "item": "descendedangel:void_tear"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "DBD",
+    "ACA"
+  ],
+  "result": {
+    "item": "descendedangel:angel_feather"
+  },
+  "show_notification": true
+}

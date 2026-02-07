@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:halo_t7"
+  },
+  "display_type": "altar.descendedangel.ascendance",
+  "required_halo_tier": 7,
+  "result": {
+    "item": "descendedangel:halo_t8"
+  },
+  "ring": [
+    {
+      "item": "descendedangel:spatial_core"
+    },
+    {
+      "item": "descendedangel:sacred_ingot_block"
+    },
+    {
+      "item": "minecraft:dragon_breath"
+    },
+    {
+      "item": "descendedangel:sacred_ingot_block"
+    },
+    {
+      "item": "minecraft:nether_star"
+    },
+    {
+      "item": "descendedangel:sacred_ingot_block"
+    },
+    {
+      "item": "minecraft:dragon_breath"
+    },
+    {
+      "item": "descendedangel:sacred_ingot_block"
+    }
+  ]
+}

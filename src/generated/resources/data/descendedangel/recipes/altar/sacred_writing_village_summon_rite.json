@@ -1,0 +1,38 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "minecraft:book"
+  },
+  "display_type": "altar.descendedangel.imbuement",
+  "required_halo_tier": 6,
+  "result": {
+    "item": "descendedangel:sacred_writings",
+    "nbt": "{descendedangel:{writ_id:\"descendedangel:spawn_villages\",uses:1}}"
+  },
+  "ring": [
+    {
+      "item": "minecraft:emerald_block"
+    },
+    {
+      "item": "minecraft:emerald_block"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:emerald_block"
+    }
+  ]
+}

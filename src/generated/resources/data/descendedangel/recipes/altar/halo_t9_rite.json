@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:halo_t8"
+  },
+  "display_type": "altar.descendedangel.ascendance",
+  "required_halo_tier": 8,
+  "result": {
+    "item": "descendedangel:halo_t9"
+  },
+  "ring": [
+    {
+      "item": "minecraft:dragon_egg"
+    },
+    {
+      "item": "descendedangel:sacred_ingot_block"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    },
+    {
+      "item": "descendedangel:sacred_ingot_block"
+    },
+    {
+      "item": "descendedangel:spatial_core"
+    },
+    {
+      "item": "descendedangel:sacred_ingot_block"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    },
+    {
+      "item": "descendedangel:sacred_ingot_block"
+    }
+  ]
+}

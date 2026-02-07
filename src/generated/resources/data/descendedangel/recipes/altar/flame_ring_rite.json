@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:holy_ring"
+  },
+  "display_type": "altar.descendedangel.consecration",
+  "required_halo_tier": 5,
+  "result": {
+    "item": "descendedangel:flame_ring"
+  },
+  "ring": [
+    {
+      "item": "minecraft:fire_charge"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "item": "minecraft:fire_charge"
+    },
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ]
+}

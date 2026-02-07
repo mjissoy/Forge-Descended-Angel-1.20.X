@@ -22,7 +22,7 @@ public class SpatialCoreFromEndermanModifier extends LootModifier {
             RecordCodecBuilder.create(inst -> codecStart(inst)
                     .apply(inst, SpatialCoreFromEndermanModifier::new));
 
-    protected SpatialCoreFromEndermanModifier(LootItemCondition[] conditionsIn) {
+    public SpatialCoreFromEndermanModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
     }
 

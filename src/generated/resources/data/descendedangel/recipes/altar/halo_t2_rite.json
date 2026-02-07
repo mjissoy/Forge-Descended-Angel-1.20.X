@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:halo_t1"
+  },
+  "display_type": "altar.descendedangel.ascendance",
+  "required_halo_tier": 1,
+  "result": {
+    "item": "descendedangel:halo_t2"
+  },
+  "ring": [
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:gold_block"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:gold_block"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "parent": "descendedangel:main/craft_archangel_halo",
+  "criteria": {
+    "clearskies": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_text_clearskies"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    },
+    "rainfall": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_text_rainfall"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    },
+    "ruined_portal_spawn": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_text_ruined_portal_spawn"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    },
+    "village_spawn": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_text_village_spawn"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    },
+    "villager_spawn": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_text_villager_spawn"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    },
+    "wither_spawn": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_text_wither_spawn"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Imbue upon a book knowledge from the Lord"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:sacred_writings"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "The Scriptures of God"
+    }
+  },
+  "requirements": [
+    [
+      "rainfall",
+      "clearskies",
+      "villager_spawn",
+      "village_spawn",
+      "ruined_portal_spawn",
+      "wither_spawn"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

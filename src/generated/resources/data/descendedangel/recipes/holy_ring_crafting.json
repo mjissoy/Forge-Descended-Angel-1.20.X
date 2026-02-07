@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_nugget"
+    },
+    "B": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "A A",
+    "AAA"
+  ],
+  "result": {
+    "item": "descendedangel:holy_ring"
+  },
+  "show_notification": true
+}

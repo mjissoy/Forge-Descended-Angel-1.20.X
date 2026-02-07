@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_angel_halo",
+  "criteria": {
+    "craft_halo": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/halo_t2_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "The powers of Heaven guide your ascension"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:halo_t2"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "An Archangel's Ladder"
+    }
+  },
+  "requirements": [
+    [
+      "craft_halo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

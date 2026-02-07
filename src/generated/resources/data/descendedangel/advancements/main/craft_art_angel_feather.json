@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/find_void_drop",
+  "criteria": {
+    "craft_feather": {
+      "conditions": {
+        "recipe": "descendedangel:angel_feather_from_crafting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Craft an Artificial Angel Feather"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:angel_feather"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "An Imitation of Light"
+    }
+  },
+  "requirements": [
+    [
+      "craft_feather"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

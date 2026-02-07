@@ -1,0 +1,4 @@
+// 1.20.1	2026-02-08T09:32:41.488313	Tags for minecraft:block mod id descendedangel
+e157e00c048aa2faeed7a38c4a47015526eaf0e8 data/descendedangel/tags/blocks/sacred_blocks.json
+a08968f24cf79c277e56861b603436b7b5f1d444 data/forge/tags/blocks/needs_netherite_tool.json
+a08968f24cf79c277e56861b603436b7b5f1d444 data/minecraft/tags/blocks/mineable/pickaxe.json

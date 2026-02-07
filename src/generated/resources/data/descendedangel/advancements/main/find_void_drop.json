@@ -1,0 +1,38 @@
+{
+  "parent": "descendedangel:main/root",
+  "criteria": {
+    "void_drop": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "descendedangel:void_tear"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Collect a Drop of the Void from Void-Touched foes."
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:void_tear"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "The Void-Touched"
+    }
+  },
+  "requirements": [
+    [
+      "void_drop"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

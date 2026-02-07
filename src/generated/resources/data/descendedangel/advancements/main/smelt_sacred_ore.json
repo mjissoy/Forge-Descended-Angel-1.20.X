@@ -1,0 +1,38 @@
+{
+  "parent": "descendedangel:main/find_sacred_ore",
+  "criteria": {
+    "pickup_sacredingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "descendedangel:sacred_ore_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Smelting the Raw Sacred Ore returns its purified form, suitable for empowering a Halo"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:sacred_ore_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Fit to Ascend"
+    }
+  },
+  "requirements": [
+    [
+      "pickup_sacredingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

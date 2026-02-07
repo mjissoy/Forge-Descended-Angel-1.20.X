@@ -1,0 +1,9 @@
+{
+  "type": "descendedangel:spatial_core_from_enderman",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/enderman"
+    }
+  ]
+}

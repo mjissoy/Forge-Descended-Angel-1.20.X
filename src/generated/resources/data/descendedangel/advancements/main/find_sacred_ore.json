@@ -1,0 +1,38 @@
+{
+  "parent": "descendedangel:main/find_void_drop",
+  "criteria": {
+    "pickup_sacredore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "descendedangel:sacred_ore_raw"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Scattered at the depths of the World exists Sacred Ore, solidified Divine Essence"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:sacred_ore_raw"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Remenants of Divine Essence"
+    }
+  },
+  "requirements": [
+    [
+      "pickup_sacredore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
