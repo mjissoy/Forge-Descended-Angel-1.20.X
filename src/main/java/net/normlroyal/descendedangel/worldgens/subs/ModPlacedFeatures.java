@@ -23,6 +23,9 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BLESSED_ROCK_PATCH_PLACED =
             ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_patch_placed"));
 
+    public static final ResourceKey<PlacedFeature> ASHEN_ROCK_PATCH_PLACED =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_patch_placed"));
+
     public static void bootstrap(BootstapContext<PlacedFeature> ctx) {
         HolderGetter<ConfiguredFeature<?, ?>> configured = ctx.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -43,8 +46,8 @@ public class ModPlacedFeatures {
         ctx.register(SACRED_ORE, new PlacedFeature(sacredOre, modifiers));
 
         // Blessed Rock
-        int perChunk = 2;
-        var height = HeightRangePlacement.uniform(
+        int BlessperChunk = 2;
+        var Blessheight = HeightRangePlacement.uniform(
                 VerticalAnchor.absolute(0),
                 VerticalAnchor.absolute(128)
         );
@@ -52,9 +55,27 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.BLESSED_ROCK_PATCH),
                         List.of(
-                                CountPlacement.of(perChunk),
+                                CountPlacement.of(BlessperChunk),
                                 InSquarePlacement.spread(),
-                                height,
+                                Blessheight,
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+
+        // Ashen Rock
+        int AshperChunk = 2;
+        var Ashheight = HeightRangePlacement.uniform(
+                VerticalAnchor.absolute(0),
+                VerticalAnchor.absolute(128)
+        );
+        ctx.register(ASHEN_ROCK_PATCH_PLACED,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.ASHEN_ROCK_PATCH),
+                        List.of(
+                                CountPlacement.of(AshperChunk),
+                                InSquarePlacement.spread(),
+                                Ashheight,
                                 BiomeFilter.biome()
                         )
                 )

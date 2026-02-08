@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "descendedangel:block/polished_ashen_rock_slab"
+    },
+    "type=double": {
+      "model": "descendedangel:block/polished_ashen_rock"
+    },
+    "type=top": {
+      "model": "descendedangel:block/polished_ashen_rock_slab_top"
+    }
+  }
+}

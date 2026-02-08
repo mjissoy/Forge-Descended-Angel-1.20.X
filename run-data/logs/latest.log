@@ -1,43 +1,43 @@
-[09Feb2026 09:29:10.612] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\mjiss\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.10, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, descendedangel, --all, --output, C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\src\generated\resources, --existing, C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\src\main\resources]
-[09Feb2026 09:29:10.625] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
-[09Feb2026 09:29:10.831] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[09Feb2026 09:29:10.944] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/mjiss/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[09Feb2026 09:29:11.430] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\mjiss\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.10\ccc533c7dd67e0983217197d7549c8b49e7ab453\javafmllanguage-1.20.1-47.4.10.jar is missing mods.toml file
-[09Feb2026 09:29:11.432] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\mjiss\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.10\e9a2879fe3612ea34b9728ec2633304a1e67d480\lowcodelanguage-1.20.1-47.4.10.jar is missing mods.toml file
-[09Feb2026 09:29:11.437] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\mjiss\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.10\ec5cefbbc65c67302b8fac317010faab85fa14b9\mclanguage-1.20.1-47.4.10.jar is missing mods.toml file
-[09Feb2026 09:29:11.440] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\mjiss\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.10\94dae566be650566ea9115a1414ab76bfcf5a804\fmlcore-1.20.1-47.4.10.jar is missing mods.toml file
-[09Feb2026 09:29:11.690] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
-[09Feb2026 09:29:13.725] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[09Feb2026 09:29:13.729] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\mjiss\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, descendedangel, --all, --output, C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\src\generated\resources, --existing, C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\src\main\resources]
-[09Feb2026 09:29:14.442] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\build\createSrgToMcp\output.srg
-[09Feb2026 09:29:14.444] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\build\createSrgToMcp\output.srg
-[09Feb2026 09:29:15.161] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [descendedangel]
-[09Feb2026 09:29:22.100] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.10, for MC 1.20.1 with MCP 20230612.114412
-[09Feb2026 09:29:22.102] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.10 Initialized
-[09Feb2026 09:29:22.227] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
-[09Feb2026 09:29:22.533] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
-[09Feb2026 09:29:22.542] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 5.833 ms
-[09Feb2026 09:29:23.037] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/mjiss/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[09Feb2026 09:29:23.037] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/mjiss/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[09Feb2026 09:29:23.325] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[09Feb2026 09:29:23.481] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 155 ms
-[09Feb2026 09:29:23.482] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : descendedangel
-[09Feb2026 09:29:23.505] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : descendedangel finished after 22 ms
-[09Feb2026 09:29:23.505] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[09Feb2026 09:29:23.545] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 40 ms
-[09Feb2026 09:29:23.546] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[09Feb2026 09:29:23.579] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 32 ms
-[09Feb2026 09:29:23.579] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:worldgen/biome mod id descendedangel
-[09Feb2026 09:29:23.594] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:worldgen/biome mod id descendedangel finished after 14 ms
-[09Feb2026 09:29:23.594] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: DescendedAngel Forge Biome Modifiers (JSON)
-[09Feb2026 09:29:23.596] [main/INFO] [net.minecraft.data.DataGenerator/]: DescendedAngel Forge Biome Modifiers (JSON) finished after 1 ms
-[09Feb2026 09:29:23.596] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Advancements
-[09Feb2026 09:29:23.666] [main/INFO] [net.minecraft.data.DataGenerator/]: Advancements finished after 69 ms
-[09Feb2026 09:29:23.666] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id descendedangel
-[09Feb2026 09:29:23.671] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id descendedangel finished after 4 ms
-[09Feb2026 09:29:23.671] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id descendedangel
-[09Feb2026 09:29:23.675] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id descendedangel finished after 4 ms
-[09Feb2026 09:29:23.676] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: descendedangel
-[09Feb2026 09:29:23.889] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: descendedangel finished after 212 ms
-[09Feb2026 09:29:23.890] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 564 ms
-[09Feb2026 09:29:23.915] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 139, old count: 136, new count: 140, removed stale: 0, written: 3
+[09Feb2026 10:54:05.994] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\mjiss\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.10, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, descendedangel, --all, --output, C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\src\generated\resources, --existing, C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\src\main\resources]
+[09Feb2026 10:54:06.009] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[09Feb2026 10:54:06.591] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[09Feb2026 10:54:06.815] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/mjiss/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[09Feb2026 10:54:07.448] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\mjiss\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.10\ccc533c7dd67e0983217197d7549c8b49e7ab453\javafmllanguage-1.20.1-47.4.10.jar is missing mods.toml file
+[09Feb2026 10:54:07.451] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\mjiss\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.10\e9a2879fe3612ea34b9728ec2633304a1e67d480\lowcodelanguage-1.20.1-47.4.10.jar is missing mods.toml file
+[09Feb2026 10:54:07.454] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\mjiss\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.10\ec5cefbbc65c67302b8fac317010faab85fa14b9\mclanguage-1.20.1-47.4.10.jar is missing mods.toml file
+[09Feb2026 10:54:07.457] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\mjiss\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.10\94dae566be650566ea9115a1414ab76bfcf5a804\fmlcore-1.20.1-47.4.10.jar is missing mods.toml file
+[09Feb2026 10:54:08.026] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[09Feb2026 10:54:10.933] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[09Feb2026 10:54:10.937] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\mjiss\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, descendedangel, --all, --output, C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\src\generated\resources, --existing, C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\src\main\resources]
+[09Feb2026 10:54:11.522] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\build\createSrgToMcp\output.srg
+[09Feb2026 10:54:11.524] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\mjiss\Downloads\minecraftmod\Forge-Descended-Angel-1.20.X\build\createSrgToMcp\output.srg
+[09Feb2026 10:54:12.577] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [descendedangel]
+[09Feb2026 10:54:22.184] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.10, for MC 1.20.1 with MCP 20230612.114412
+[09Feb2026 10:54:22.186] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.10 Initialized
+[09Feb2026 10:54:22.375] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
+[09Feb2026 10:54:22.821] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[09Feb2026 10:54:22.900] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 68.12 ms
+[09Feb2026 10:54:23.630] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/mjiss/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[09Feb2026 10:54:23.631] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/mjiss/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.10_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[09Feb2026 10:54:24.259] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[09Feb2026 10:54:24.506] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 245 ms
+[09Feb2026 10:54:24.507] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : descendedangel
+[09Feb2026 10:54:24.540] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : descendedangel finished after 34 ms
+[09Feb2026 10:54:24.541] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[09Feb2026 10:54:24.633] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 91 ms
+[09Feb2026 10:54:24.633] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[09Feb2026 10:54:24.663] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 30 ms
+[09Feb2026 10:54:24.663] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:worldgen/biome mod id descendedangel
+[09Feb2026 10:54:24.695] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:worldgen/biome mod id descendedangel finished after 31 ms
+[09Feb2026 10:54:24.696] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: DescendedAngel Forge Biome Modifiers (JSON)
+[09Feb2026 10:54:24.698] [main/INFO] [net.minecraft.data.DataGenerator/]: DescendedAngel Forge Biome Modifiers (JSON) finished after 2 ms
+[09Feb2026 10:54:24.698] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Advancements
+[09Feb2026 10:54:24.874] [main/INFO] [net.minecraft.data.DataGenerator/]: Advancements finished after 175 ms
+[09Feb2026 10:54:24.874] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id descendedangel
+[09Feb2026 10:54:24.881] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id descendedangel finished after 7 ms
+[09Feb2026 10:54:24.881] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id descendedangel
+[09Feb2026 10:54:24.886] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id descendedangel finished after 3 ms
+[09Feb2026 10:54:24.886] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: descendedangel
+[09Feb2026 10:54:25.749] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: descendedangel finished after 862 ms
+[09Feb2026 10:54:25.749] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 1491 ms
+[09Feb2026 10:54:25.774] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 177, old count: 139, new count: 178, removed stale: 0, written: 40

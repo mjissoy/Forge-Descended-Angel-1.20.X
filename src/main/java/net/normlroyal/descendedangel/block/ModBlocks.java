@@ -54,6 +54,27 @@ public class ModBlocks {
     public static final RegistryObject<Block> POLISHED_BLESSED_ROCK_WALL = registerBlock("polished_blessed_rock_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_WALL)));
 
+    public static final RegistryObject<Block> ASHEN_ROCK = registerBlock("ashen_rock",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
+    public static final RegistryObject<Block> ASHEN_ROCK_SLAB = registerBlock("ashen_rock_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_SLAB)));
+    public static final RegistryObject<Block> ASHEN_ROCK_STAIR = registerBlock("ashen_rock_stair",
+            () -> new StairBlock(() -> ModBlocks.ASHEN_ROCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.ANDESITE_STAIRS)));
+    public static final RegistryObject<Block> ASHEN_ROCK_WALL = registerBlock("ashen_rock_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_WALL)));
+
+    public static final RegistryObject<Block> POLISHED_ASHEN_ROCK = registerBlock("polished_ashen_rock",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)));
+    public static final RegistryObject<Block> POLISHED_ASHEN_ROCK_SLAB = registerBlock("polished_ashen_rock_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE_SLAB)));
+    public static final RegistryObject<Block> POLISHED_ASHEN_ROCK_STAIR = registerBlock("polished_ashen_rock_stair",
+            () -> new StairBlock(() -> ModBlocks.POLISHED_ASHEN_ROCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE_STAIRS)));
+    public static final RegistryObject<Block> POLISHED_ASHEN_ROCK_WALL = registerBlock("polished_ashen_rock_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_WALL)));
+
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

@@ -24,6 +24,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLESSED_ROCK_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_patch"));
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_ROCK_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_patch"));
+
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -45,5 +48,15 @@ public class ModConfiguredFeatures {
         int blessedblobSize = 33;
         ctx.register(BLESSED_ROCK_PATCH,
                 new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(blessedtargets, blessedblobSize)));
+
+        // Ashen Rock
+        List<OreConfiguration.TargetBlockState> ashentargets = List.of(
+                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES),
+                        ModBlocks.ASHEN_ROCK.get().defaultBlockState())
+        );
+
+        int ashenblobSize = 33;
+        ctx.register(ASHEN_ROCK_PATCH,
+                new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ashentargets, ashenblobSize)));
     }
 }

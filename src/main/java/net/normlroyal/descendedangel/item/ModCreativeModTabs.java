@@ -59,6 +59,15 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get());
                         output.accept(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get());
 
+                        output.accept(ModBlocks.ASHEN_ROCK.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_STAIR.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_SLAB.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_WALL.get());
+                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK.get());
+                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get());
+                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get());
+                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
+
                         output.accept(ModItems.SACRED_WRITINGS.get());
                         output.accept(ModItems.VOID_ANOMALY_SPAWN_EGG.get());
                         output.accept(ModItems.IMP_SPAWN_EGG.get());

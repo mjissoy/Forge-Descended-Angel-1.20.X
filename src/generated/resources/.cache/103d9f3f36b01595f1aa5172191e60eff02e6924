@@ -1,6 +1,8 @@
-// 1.20.1	2026-02-09T09:29:23.8941668	Registries
+// 1.20.1	2026-02-09T10:54:25.7553711	Registries
+5be9013ce76fa1baa2ccfd010ab5746f76a78035 data/descendedangel/worldgen/configured_feature/ashen_rock_patch.json
 95ae1d844f540f5cb4c4fd05bbf7bc0830c4867f data/descendedangel/worldgen/configured_feature/blessed_rock_patch.json
 89f92e3133abbdd05621e695cf74b6615279e299 data/descendedangel/worldgen/configured_feature/sacred_ore.json
+0ef625bb6c1c2412f1286264b8f9b285c6b59734 data/descendedangel/worldgen/placed_feature/ashen_rock_patch_placed.json
 48255da11c8388c9f8becad2e4a1df16ca050b33 data/descendedangel/worldgen/placed_feature/blessed_rock_patch_placed.json
 9ed3b92a3a27af8b31302338a8f7af262928259c data/descendedangel/worldgen/placed_feature/sacred_ore.json
 6fe5dd3d3f8f9260efab919003e47f657b1724fd data/descendedangel/worldgen/structure/aboveground_tablet.json

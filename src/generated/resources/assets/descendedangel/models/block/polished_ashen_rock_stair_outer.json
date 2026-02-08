@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "descendedangel:block/polished_ashen_rock",
+    "side": "descendedangel:block/polished_ashen_rock",
+    "top": "descendedangel:block/polished_ashen_rock"
+  }
+}

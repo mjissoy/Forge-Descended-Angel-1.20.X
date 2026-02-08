@@ -39,6 +39,22 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 modLoc("block/polished_blessed_rock")
         );
 
+        stoneFamily(
+                ModBlocks.ASHEN_ROCK.get(),
+                (SlabBlock) ModBlocks.ASHEN_ROCK_SLAB.get(),
+                (StairBlock) ModBlocks.ASHEN_ROCK_STAIR.get(),
+                (WallBlock) ModBlocks.ASHEN_ROCK_WALL.get(),
+                modLoc("block/ashen_rock")
+        );
+
+        stoneFamily(
+                ModBlocks.POLISHED_ASHEN_ROCK.get(),
+                (SlabBlock) ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get(),
+                (StairBlock) ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get(),
+                (WallBlock) ModBlocks.POLISHED_ASHEN_ROCK_WALL.get(),
+                modLoc("block/polished_ashen_rock")
+        );
+
         simpleBlockWithItem(ModBlocks.SACRED_INGOT_BLOCK.get(),
                 models().cubeAll("sacred_ingot_block", modLoc("block/sacred_ingot_block"))
         );
