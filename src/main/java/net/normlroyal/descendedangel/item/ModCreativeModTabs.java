@@ -18,20 +18,20 @@ public class ModCreativeModTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.ANGELFEATHER.get()))
                     .title(Component.translatable("creativetab.angel_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
+
                         output.accept(ModItems.ANGELFEATHER.get());
                         output.accept(ModItems.REALANGELFEATHER.get());
+                        output.accept(ModItems.VOIDTEAR.get());
+                        output.accept(ModItems.DEMONHEART.get());
+                        output.accept(ModItems.SPATIALCORE.get());
 
                         output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModItems.SACREDORERAW.get());
-                        output.accept(ModItems.SACREDOREINGOT.get());
                         output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
+                        output.accept(ModItems.SACREDOREINGOT.get());
                         output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
 
                         output.accept(ModBlocks.ALTAR.get());
-
-                        output.accept(ModItems.DEMONHEART.get());
-                        output.accept(ModItems.VOIDTEAR.get());
-                        output.accept(ModItems.SPATIALCORE.get());
 
                         output.accept(ModItems.HALO_T1.get());
                         output.accept(ModItems.HALO_T2.get());
@@ -50,8 +50,16 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.MESSENGER_PENDANT.get());
                         output.accept(ModItems.LIGHTNESS_NECKLACE.get());
 
-                        output.accept(ModItems.SACRED_WRITINGS.get());
+                        output.accept(ModBlocks.BLESSED_ROCK.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_STAIR.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_SLAB.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_WALL.get());
+                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK.get());
+                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get());
+                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get());
+                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get());
 
+                        output.accept(ModItems.SACRED_WRITINGS.get());
                         output.accept(ModItems.VOID_ANOMALY_SPAWN_EGG.get());
                         output.accept(ModItems.IMP_SPAWN_EGG.get());
 

@@ -1,4 +1,6 @@
-// 1.20.1	2026-02-08T09:32:41.488313	Tags for minecraft:block mod id descendedangel
+// 1.20.1	2026-02-09T09:03:42.5245422	Tags for minecraft:block mod id descendedangel
+e7e5785145500354497480727642f0e0281616e1 data/descendedangel/tags/blocks/blessed_blocks.json
 e157e00c048aa2faeed7a38c4a47015526eaf0e8 data/descendedangel/tags/blocks/sacred_blocks.json
 a08968f24cf79c277e56861b603436b7b5f1d444 data/forge/tags/blocks/needs_netherite_tool.json
-a08968f24cf79c277e56861b603436b7b5f1d444 data/minecraft/tags/blocks/mineable/pickaxe.json
+4ebd241bb4fbd8f8c95fa0b765638fafbbb8d4b2 data/minecraft/tags/blocks/mineable/pickaxe.json
+fb75e406eb55a0ade3d581045c3f5d27c512f147 data/minecraft/tags/blocks/needs_stone_tool.json

@@ -29,6 +29,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     public static final TagKey<Block> SACRED_BLOCKS =
             TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_blocks"));
 
+    public static final TagKey<Block> BLESSED_BLOCKS =
+            TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_blocks"));
+
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
@@ -38,7 +41,21 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.RAW_SACRED_ORE_BLOCK.get()
         );
 
+        this.tag(BLESSED_BLOCKS).add(
+                ModBlocks.BLESSED_ROCK.get(),
+                ModBlocks.BLESSED_ROCK_SLAB.get(),
+                ModBlocks.BLESSED_ROCK_STAIR.get(),
+                ModBlocks.BLESSED_ROCK_WALL.get(),
+                ModBlocks.POLISHED_BLESSED_ROCK.get(),
+                ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(),
+                ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get(),
+                ModBlocks.POLISHED_BLESSED_ROCK_WALL.get()
+        );
+
+        this.tag(BlockTags.NEEDS_STONE_TOOL).addTag(BLESSED_BLOCKS);
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL).addTag(SACRED_BLOCKS);
-        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).addTag(SACRED_BLOCKS);
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addTag(SACRED_BLOCKS)
+                .addTag(BLESSED_BLOCKS);
     }
 }

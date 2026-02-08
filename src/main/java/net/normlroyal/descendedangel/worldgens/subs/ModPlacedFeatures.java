@@ -20,10 +20,14 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SACRED_ORE =
             ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ore"));
 
+    public static final ResourceKey<PlacedFeature> BLESSED_ROCK_PATCH_PLACED =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_patch_placed"));
+
     public static void bootstrap(BootstapContext<PlacedFeature> ctx) {
         HolderGetter<ConfiguredFeature<?, ?>> configured = ctx.lookup(Registries.CONFIGURED_FEATURE);
-        Holder<ConfiguredFeature<?, ?>> sacredOre = configured.getOrThrow(ModConfiguredFeatures.SACRED_ORE);
 
+        // Sacred Ore
+        Holder<ConfiguredFeature<?, ?>> sacredOre = configured.getOrThrow(ModConfiguredFeatures.SACRED_ORE);
         List<PlacementModifier> modifiers = List.of(
                 RarityFilter.onAverageOnceEvery(3),
                 CountPlacement.of(1),
@@ -36,7 +40,25 @@ public class ModPlacedFeatures {
                 ),
                 BiomeFilter.biome()
         );
-
         ctx.register(SACRED_ORE, new PlacedFeature(sacredOre, modifiers));
+
+        // Blessed Rock
+        int perChunk = 2;
+        var height = HeightRangePlacement.uniform(
+                VerticalAnchor.absolute(0),
+                VerticalAnchor.absolute(128)
+        );
+        ctx.register(BLESSED_ROCK_PATCH_PLACED,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.BLESSED_ROCK_PATCH),
+                        List.of(
+                                CountPlacement.of(perChunk),
+                                InSquarePlacement.spread(),
+                                height,
+                                BiomeFilter.biome()
+                        )
+                )
+        );
+
     }
 }

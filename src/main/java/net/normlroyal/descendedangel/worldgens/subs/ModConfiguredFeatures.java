@@ -21,16 +21,29 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SACRED_ORE =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ore"));
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLESSED_ROCK_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_patch"));
+
+
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
-        OreConfiguration.TargetBlockState target = OreConfiguration.target(
+        // Sacred Ore
+        OreConfiguration.TargetBlockState sacredtarget = OreConfiguration.target(
                 deepslateReplaceables,
                 ModBlocks.SACRED_ORE.get().defaultBlockState()
         );
+        OreConfiguration sacredconfig = new OreConfiguration(List.of(sacredtarget), 4, 0.5F);
+        ctx.register(SACRED_ORE, new ConfiguredFeature<>(Feature.ORE, sacredconfig));
 
-        OreConfiguration config = new OreConfiguration(List.of(target), 4, 0.5F);
+        // Blessed Rock
+        List<OreConfiguration.TargetBlockState> blessedtargets = List.of(
+                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES),
+                        ModBlocks.BLESSED_ROCK.get().defaultBlockState())
+        );
 
-        ctx.register(SACRED_ORE, new ConfiguredFeature<>(Feature.ORE, config));
+        int blessedblobSize = 33;
+        ctx.register(BLESSED_ROCK_PATCH,
+                new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(blessedtargets, blessedblobSize)));
     }
 }

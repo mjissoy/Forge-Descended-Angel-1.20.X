@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "descendedangel:block/blessed_rock",
+    "side": "descendedangel:block/blessed_rock",
+    "top": "descendedangel:block/blessed_rock"
+  }
+}
