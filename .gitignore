@@ -23,3 +23,27 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
+
+# Minecraft Run Folders
+run/
+runs/
+runData/
+run-data/
+run-data-*/
+
+# Everything inside run folders is runtime-only
+run*/logs/
+run*/crash-reports/
+run*/screenshots/
+run*/debug/
+run*/usercache.json
+run*/usernamecache.json
+run*/options.txt
+run*/optionsof.txt
+run*/latest.log
+
+# Logs
+logs/
+*.log
+*.log.gz
+crash-reports/
