@@ -315,6 +315,24 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/flame_ring_rite"));
 
         AltarRiteRecipeBuilder.altar(
+                        Ingredient.of(ModItems.HOLY_RING.get()),
+                        new ItemStack(ModItems.CURE_RING.get(), 1)
+                )
+                .displayType("altar.descendedangel.consecration")
+                .requiredHaloTier(5)
+                .ring(
+                      RingEntry.of(Ingredient.of(Items.AMETHYST_SHARD)),
+                      RingEntry.of(Ingredient.of(Items.GHAST_TEAR)),
+                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(Items.GOLD_INGOT)),
+                      RingEntry.of(Ingredient.of(Items.AMETHYST_SHARD)),
+                      RingEntry.of(Ingredient.of(Items.GOLD_INGOT)),
+                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(Items.GHAST_TEAR))
+                )
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/cure_ring_rite"));
+
+        AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HOLY_NECKLACE.get()),
                         new ItemStack(ModItems.MESSENGER_PENDANT.get(), 1)
                 )
@@ -349,6 +367,24 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(Items.GOLDEN_CARROT))
                 )
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/nanos_lantern_rite"));
+
+        AltarRiteRecipeBuilder.altar(
+                        Ingredient.of(ModItems.HOLY_NECKLACE.get()),
+                        new ItemStack(ModItems.BOOSTER_NECKLACE.get(), 1)
+                )
+                .displayType("altar.descendedangel.consecration")
+                .requiredHaloTier(5)
+                .ring(
+                      RingEntry.of(Ingredient.of(Items.BLAZE_ROD)),
+                      RingEntry.of(Ingredient.of(Items.BLAZE_ROD)),
+                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(Items.GLOWSTONE)),
+                      RingEntry.of(Ingredient.of(Items.REDSTONE)),
+                      RingEntry.of(Ingredient.of(Items.REDSTONE)),
+                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(Items.GLOWSTONE))
+                )
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/alchemy_chain_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(Items.BOOK),

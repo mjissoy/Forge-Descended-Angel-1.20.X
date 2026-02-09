@@ -42,9 +42,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(modLoc("holy_ring"));
         basicItem(modLoc("cloud_ring"));
         basicItem(modLoc("flame_ring"));
+        basicItem(modLoc("cure_ring"));
+
         basicItem(modLoc("holy_necklace"));
         basicItem(modLoc("messenger_pendant"));
         basicItem(modLoc("nanos_lantern"));
+        basicItem(modLoc("alchemy_chain"));
 
         // Other Items
         basicItem(modLoc("sacred_writings"));

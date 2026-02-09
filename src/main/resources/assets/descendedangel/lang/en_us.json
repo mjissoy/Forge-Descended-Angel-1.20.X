@@ -65,6 +65,9 @@
   "item.descendedangel.nanos_lantern" : "Lantern of Nagel",
   "tooltip.descendedangel.nanos_lantern.lore": "A blessed lantern prayed for by a Saint.",
   "tooltip.descendedangel.nanos_lantern.effect": "Grants night vision.",
+  "item.descendedangel.alchemy_chain" : "Alchemical Locket",
+  "tooltip.descendedangel.alchemy_chain.lore": "The divine Authority of BOOST descends.",
+  "tooltip.descendedangel.alchemy_chain.effect": "Boosts most Potion Effects.",
 
 
   "item.descendedangel.holy_ring" : "Holy Ring",
@@ -72,6 +75,8 @@
   "tooltip.descendedangel.cloud_ring.lore": "Born of the Wrath of Heaven, forged by the Dominions.",
   "item.descendedangel.flame_ring" : "Burning Ring",
   "tooltip.descendedangel.flame_ring.lore": "Modeled after Sacred Michael's Sword, the Ring ignites the wearer's foes.",
+  "item.descendedangel.cure_ring": "Life Ring",
+  "tooltip.descendedangel.cure_ring.lore" : "The Love and Grace of the Lord cures all your aliments.",
 
 
   "creativetab.angel_tab" : "Descended Angel Mod",

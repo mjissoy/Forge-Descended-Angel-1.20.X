@@ -72,13 +72,15 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         this.tag(RINGS).add(
                 ModItems.HOLY_RING.get(),
                 ModItems.FLAME_RING.get(),
-                ModItems.CLOUD_RING.get()
+                ModItems.CLOUD_RING.get(),
+                ModItems.CURE_RING.get()
         );
 
         this.tag(NECKLACES).add(
                 ModItems.HOLY_NECKLACE.get(),
                 ModItems.MESSENGER_PENDANT.get(),
-                ModItems.LIGHTNESS_NECKLACE.get()
+                ModItems.LIGHTNESS_NECKLACE.get(),
+                ModItems.BOOSTER_NECKLACE.get()
         );
 
         // Curios Tags

@@ -69,12 +69,17 @@ public class ModItems {
             () -> new RingCuriosItem(RingVariants.CLOUD, new Item.Properties()));
     public static final RegistryObject<Item> FLAME_RING = ITEMS.register("flame_ring",
             () -> new RingCuriosItem(RingVariants.FLAME, new Item.Properties()));
+    public static final RegistryObject<Item> CURE_RING = ITEMS.register("cure_ring",
+            () -> new RingCuriosItem(RingVariants.CURE, new Item.Properties()));
+
     public static final RegistryObject<Item> HOLY_NECKLACE = ITEMS.register("holy_necklace",
             () -> new NecklaceCuriosItem(NecklaceVariants.HOLY, new Item.Properties()));
     public static final RegistryObject<Item> MESSENGER_PENDANT = ITEMS.register("messenger_pendant",
             () -> new NecklaceCuriosItem(NecklaceVariants.MESSENGER, new Item.Properties()));
     public static final RegistryObject<Item> LIGHTNESS_NECKLACE = ITEMS.register("nanos_lantern",
             () -> new NecklaceCuriosItem(NecklaceVariants.LIGHTNESS, new Item.Properties()));
+    public static final RegistryObject<Item> BOOSTER_NECKLACE = ITEMS.register("alchemy_chain",
+            () -> new NecklaceCuriosItem(NecklaceVariants.BOOSTER, new Item.Properties()));
 
     // Altar Item
     public static final RegistryObject<Item> ALTAR = ITEMS.register("altar",

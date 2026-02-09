@@ -93,6 +93,21 @@ public class NecklaceCuriosItem extends Item implements ICurioItem, IVariantItem
             tooltip.add(
                     Component.translatable("tooltip.descendedangel.nanos_lantern.effect")
                             .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
+        } else if (variant == NecklaceVariants.BOOSTER) {
+            if (Screen.hasShiftDown()) {
+                tooltip.add(
+                        Component.translatable("tooltip.descendedangel.alchemy_chain.lore")
+                                .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
+                );
+            } else {
+                tooltip.add(
+                        Component.translatable("tooltip.descendedangel.halo.hold_shift")
+                                .withStyle(ChatFormatting.DARK_GRAY)
+                );
+            }
+            tooltip.add(
+                    Component.translatable("tooltip.descendedangel.alchemy_chain.effect")
+                            .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
         }
     }
 }

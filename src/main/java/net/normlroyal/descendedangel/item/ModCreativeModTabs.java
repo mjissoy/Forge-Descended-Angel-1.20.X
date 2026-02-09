@@ -46,9 +46,11 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.HOLY_RING.get());
                         output.accept(ModItems.CLOUD_RING.get());
                         output.accept(ModItems.FLAME_RING.get());
+                        output.accept(ModItems.CURE_RING.get());
                         output.accept(ModItems.HOLY_NECKLACE.get());
                         output.accept(ModItems.MESSENGER_PENDANT.get());
                         output.accept(ModItems.LIGHTNESS_NECKLACE.get());
+                        output.accept(ModItems.BOOSTER_NECKLACE.get());
 
                         output.accept(ModBlocks.BLESSED_ROCK.get());
                         output.accept(ModBlocks.BLESSED_ROCK_STAIR.get());

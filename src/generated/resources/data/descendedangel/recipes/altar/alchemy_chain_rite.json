@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:holy_necklace"
+  },
+  "display_type": "altar.descendedangel.consecration",
+  "required_halo_tier": 5,
+  "result": {
+    "item": "descendedangel:alchemy_chain"
+  },
+  "ring": [
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:glowstone"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:glowstone"
+    }
+  ]
+}

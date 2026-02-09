@@ -2,8 +2,13 @@ package net.normlroyal.descendedangel.events;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PotionItem;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
@@ -36,6 +41,35 @@ public class NecklaceEvents {
                         false
                 ));
             }
+        }
+    }
+
+    // Booster Necklace Event
+    @SubscribeEvent
+    public static void onDrinkPotionFinish(LivingEntityUseItemEvent.Finish event) {
+        LivingEntity entity = event.getEntity();
+        if (entity.level().isClientSide) return;
+        if (!(entity instanceof Player player)) return;
+
+        ItemStack stack = event.getItem();
+        if (!(stack.getItem() instanceof PotionItem)) return;
+
+        if (!RingNecklaceUtils.hasNecklace(player, NecklaceVariants.BOOSTER)) return;
+
+        for (MobEffectInstance inst : PotionUtils.getMobEffects(stack)) {
+            if (inst.getEffect().isInstantenous()) continue;
+
+            int newAmp = inst.getAmplifier() + 1;
+            int newDur = inst.getDuration() * 2;
+
+            player.addEffect(new MobEffectInstance(
+                    inst.getEffect(),
+                    newDur,
+                    newAmp,
+                    inst.isAmbient(),
+                    inst.isVisible(),
+                    inst.showIcon()
+            ));
         }
     }
 

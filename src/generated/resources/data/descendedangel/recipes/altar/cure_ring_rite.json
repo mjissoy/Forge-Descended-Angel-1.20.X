@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:holy_ring"
+  },
+  "display_type": "altar.descendedangel.consecration",
+  "required_halo_tier": 5,
+  "result": {
+    "item": "descendedangel:cure_ring"
+  },
+  "ring": [
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    }
+  ]
+}

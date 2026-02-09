@@ -94,6 +94,18 @@ public class RingCuriosItem extends Item implements ICurioItem, IVariantItem<Rin
                                 .withStyle(ChatFormatting.DARK_GRAY)
                 );
             }
+        }  else if (variant == RingVariants.CURE) {
+            if (Screen.hasShiftDown()) {
+                tooltip.add(
+                        Component.translatable("tooltip.descendedangel.cure_ring.lore")
+                                .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
+                );
+            } else {
+                tooltip.add(
+                        Component.translatable("tooltip.descendedangel.halo.hold_shift")
+                                .withStyle(ChatFormatting.DARK_GRAY)
+                );
+            }
         }
     }
 
