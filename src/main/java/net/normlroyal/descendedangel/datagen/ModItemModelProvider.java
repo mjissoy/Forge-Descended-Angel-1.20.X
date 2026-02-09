@@ -53,6 +53,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(modLoc("sacred_writings"));
         withExistingParent("void_anomaly_spawn_egg", mcLoc("item/template_spawn_egg"));
         withExistingParent("imp_spawn_egg", mcLoc("item/template_spawn_egg"));
+        basicItem(modLoc("fruit_of_space"));
+        basicItem(modLoc("fruit_of_time"));
 
 
     }

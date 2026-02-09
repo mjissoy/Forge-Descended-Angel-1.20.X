@@ -1,5 +1,6 @@
 package net.normlroyal.descendedangel.item;
 
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -9,10 +10,8 @@ import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.entity.ModEntities;
-import net.normlroyal.descendedangel.item.custom.AltarItem;
-import net.normlroyal.descendedangel.item.custom.NecklaceCuriosItem;
-import net.normlroyal.descendedangel.item.custom.RingCuriosItem;
-import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
+import net.normlroyal.descendedangel.item.custom.*;
+import net.normlroyal.descendedangel.item.custom.enums.FruitType;
 import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
 import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
 import net.normlroyal.descendedangel.item.custom.writings.SacredWritingsItem;
@@ -98,6 +97,12 @@ public class ModItems {
                     0x7A1C1C,
                     0xD46B2E,
                     new Item.Properties()));
+    public static final RegistryObject<Item> SPACE_FRUIT = ITEMS.register("fruit_of_space",
+            () -> new FruitUnlockItem(FruitType.SPACE, new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+    public static final RegistryObject<Item> TIME_FRUIT = ITEMS.register("fruit_of_time",
+            () -> new FruitUnlockItem(FruitType.TIME, new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

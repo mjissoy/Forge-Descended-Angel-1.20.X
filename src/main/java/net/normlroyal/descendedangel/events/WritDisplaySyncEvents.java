@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.item.custom.writings.SacredWritReloadListener;
 import net.normlroyal.descendedangel.network.ModNetwork;
-import net.normlroyal.descendedangel.network.writs.SyncWritDisplaysS2CPacket;
+import net.normlroyal.descendedangel.network.packets.SyncWritDisplaysS2CPacket;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class WritDisplaySyncEvents {

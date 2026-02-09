@@ -14,7 +14,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
-import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
 import net.normlroyal.descendedangel.util.IVariantItem;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;

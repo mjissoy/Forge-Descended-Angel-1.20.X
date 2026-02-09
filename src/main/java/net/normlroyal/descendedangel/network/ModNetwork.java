@@ -4,7 +4,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.network.writs.SyncWritDisplaysS2CPacket;
+import net.normlroyal.descendedangel.network.packets.SyncWritDisplaysS2CPacket;
+import net.normlroyal.descendedangel.network.packets.UseHaloAbilityC2SPacket;
 
 public final class ModNetwork {
     private static final String PROTOCOL = "1";
@@ -23,6 +24,12 @@ public final class ModNetwork {
                 .encoder(SyncWritDisplaysS2CPacket::encode)
                 .decoder(SyncWritDisplaysS2CPacket::decode)
                 .consumerMainThread(SyncWritDisplaysS2CPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(UseHaloAbilityC2SPacket.class, id++)
+                .encoder(UseHaloAbilityC2SPacket::encode)
+                .decoder(UseHaloAbilityC2SPacket::decode)
+                .consumerMainThread(UseHaloAbilityC2SPacket::handle)
                 .add();
     }
 

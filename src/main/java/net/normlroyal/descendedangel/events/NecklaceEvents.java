@@ -12,7 +12,6 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
 import net.normlroyal.descendedangel.util.RingNecklaceUtils;
 

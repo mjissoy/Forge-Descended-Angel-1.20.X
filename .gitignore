@@ -30,6 +30,10 @@ runs/
 runData/
 run-data/
 run-data-*/
+run-client-*/
+run-client/
+run-server-*/
+run-server/
 
 # Everything inside run folders is runtime-only
 run*/logs/

@@ -106,6 +106,15 @@
   "altar_jei.halo_t6.name": "Requires Dominion Halo or higher",
   "altar_jei.halo_t7.name": "Requires Cherubim Halo or higher",
   "altar_jei.halo_t8.name": "Requires Throne Halo or higher",
-  "altar_jei.halo_t9.name": "Requires Seraphim Halo"
+  "altar_jei.halo_t9.name": "Requires Seraphim Halo",
+
+
+  "ability.descendedangel.space": "The Dominion of Space floods Your Divinity.",
+  "ability.descendedangel.time": "The Dominion of Time floods Your Divinity.",
+
+
+  "key.categories.descendedangel": "Descended Angel",
+  "key.descendedangel.open_halo_wheel": "Open Halo Wheel",
+  "key.descendedangel.use_halo_ability": "Use Selected Halo Ability"
 
 }

@@ -44,6 +44,14 @@ public class ModConfigs {
         public final ForgeConfigSpec.IntValue ENTITY_SPAWN_COUNT;
         public final ForgeConfigSpec.BooleanValue ENABLE_SPAWN_STRUCTURE_WRITS;
 
+        public final ForgeConfigSpec.IntValue TELEPORT_RANGE;
+        public final ForgeConfigSpec.IntValue TELEPORT_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.IntValue FIELD_DURATION_TICKS;
+        public final ForgeConfigSpec.DoubleValue FIELD_RADIUS;
+        public final ForgeConfigSpec.IntValue FIELD_SLOWNESS_AMPLIFIER;
+        public final ForgeConfigSpec.IntValue FIELD_COOLDOWN_TICKS;
+
+
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("Config Options");
             builder.pop();
@@ -123,8 +131,29 @@ public class ModConfigs {
                     .comment("Enable/disable structure spawning Sacred Writings")
                     .define("enableSacredWritings", true);
 
-
             builder.pop();
+
+            builder.push("--Halo Abilities--");
+            TELEPORT_RANGE = builder
+                    .comment("How far the Player can Teleport")
+                    .defineInRange("halo_teleport_range", 20, 0, 64);
+            TELEPORT_COOLDOWN_TICKS = builder
+                    .comment("Cooldown of Teleport ability")
+                    .defineInRange("halo_teleport_cooldown", 200, 20, 1200000);
+            FIELD_DURATION_TICKS = builder
+                    .comment("How long the Field ability lasts")
+                    .defineInRange("halo_field_duration", 200, 20, 1200000);
+            FIELD_RADIUS = builder
+                    .comment("The radius of the Field Ability (blocks)")
+                    .defineInRange("halo_field_range", 8.0D, 0.0D, 32.0D);
+            FIELD_SLOWNESS_AMPLIFIER = builder
+                    .comment("Strength of slowness applied in field")
+                    .defineInRange("halo_field_slowness", 5, 0, 20);
+            FIELD_COOLDOWN_TICKS = builder
+                    .comment("Cooldown of Field ability")
+                    .defineInRange("halo_field_cooldown", 1200, 20, 1200000);
+            builder.pop();
+
 
         }
     }

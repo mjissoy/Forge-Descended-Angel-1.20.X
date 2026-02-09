@@ -70,6 +70,8 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get());
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
 
+                        output.accept(ModItems.SPACE_FRUIT.get());
+                        output.accept(ModItems.TIME_FRUIT.get());
                         output.accept(ModItems.SACRED_WRITINGS.get());
                         output.accept(ModItems.VOID_ANOMALY_SPAWN_EGG.get());
                         output.accept(ModItems.IMP_SPAWN_EGG.get());

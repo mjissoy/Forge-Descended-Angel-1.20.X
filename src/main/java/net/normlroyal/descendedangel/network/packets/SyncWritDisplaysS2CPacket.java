@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.network.writs;
+package net.normlroyal.descendedangel.network.packets;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
