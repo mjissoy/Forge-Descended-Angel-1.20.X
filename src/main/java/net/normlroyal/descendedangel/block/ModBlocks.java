@@ -11,10 +11,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.altar.AltarBlock;
-import net.normlroyal.descendedangel.item.ModItems;
-import net.normlroyal.descendedangel.item.custom.AltarItem;
 
 import java.util.function.Supplier;
+
+import static net.normlroyal.descendedangel.item.ModItems.ITEMS;
 
 public class ModBlocks {
 
@@ -77,18 +77,18 @@ public class ModBlocks {
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
+        if (!name.equals("altar")) {
+            registerBlockItem(name, toReturn);
+        }
+
         return toReturn;
     }
 
-    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return ModItems.ITEMS.register(name, () -> {
-            if (name.equals("altar")) {
-                return new AltarItem(block.get(), new Item.Properties());
-            }
-            return new BlockItem(block.get(), new Item.Properties());
-        });
+    private static <T extends Block> RegistryObject<Item> registerBlockItem(
+            String name, RegistryObject<T> block) {
+        return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
+
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

@@ -31,7 +31,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.SACREDOREINGOT.get());
                         output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
 
-                        output.accept(ModBlocks.ALTAR.get());
+                        output.accept(ModItems.ALTAR.get());
 
                         output.accept(ModItems.HALO_T1.get());
                         output.accept(ModItems.HALO_T2.get());

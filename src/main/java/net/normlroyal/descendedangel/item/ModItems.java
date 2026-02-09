@@ -7,7 +7,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.entity.ModEntities;
+import net.normlroyal.descendedangel.item.custom.AltarItem;
 import net.normlroyal.descendedangel.item.custom.NecklaceCuriosItem;
 import net.normlroyal.descendedangel.item.custom.RingCuriosItem;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
@@ -73,6 +75,10 @@ public class ModItems {
             () -> new NecklaceCuriosItem(NecklaceVariants.MESSENGER, new Item.Properties()));
     public static final RegistryObject<Item> LIGHTNESS_NECKLACE = ITEMS.register("nanos_lantern",
             () -> new NecklaceCuriosItem(NecklaceVariants.LIGHTNESS, new Item.Properties()));
+
+    // Altar Item
+    public static final RegistryObject<Item> ALTAR = ITEMS.register("altar",
+            () -> new AltarItem(ModBlocks.ALTAR.get(), new Item.Properties()));
 
     // Other Items
     public static final RegistryObject<Item> SACRED_WRITINGS = ITEMS.register("sacred_writings",

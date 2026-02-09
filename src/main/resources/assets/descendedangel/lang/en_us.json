@@ -20,6 +20,24 @@
   "block.descendedangel.sacred_ore": "Sacred Ore",
 
 
+  "block.descendedangel.blessed_rock" : "Blessed Rock",
+  "block.descendedangel.blessed_rock_slab" : "Blessed Rock Slab",
+  "block.descendedangel.blessed_rock_stair" : "Blessed Rock Stair",
+  "block.descendedangel.blessed_rock_wall" : "Blessed Rock Wall",
+  "block.descendedangel.polished_blessed_rock" : "Polished Blessed Rock",
+  "block.descendedangel.polished_blessed_rock_slab" : "Polished Blessed Rock Slab",
+  "block.descendedangel.polished_blessed_rock_stair" : "Polished Blessed Rock Stair",
+  "block.descendedangel.polished_blessed_rock_wall" : "Polished Blessed Rock Wall",
+  "block.descendedangel.ashen_rock" : "Ashen Rock",
+  "block.descendedangel.ashen_rock_slab" : "Ashen Rock Slab",
+  "block.descendedangel.ashen_rock_stair" : "Ashen Rock Stair",
+  "block.descendedangel.ashen_rock_wall" : "Ashen Rock Wall",
+  "block.descendedangel.polished_ashen_rock" : "Polished Ashen Rock",
+  "block.descendedangel.polished_ashen_rock_slab" : "Polished Ashen Rock Slab",
+  "block.descendedangel.polished_ashen_rock_stair" : "Polished Ashen Rock Stair",
+  "block.descendedangel.polished_ashen_rock_wall" : "Polished Ashen Rock Wall",
+
+
   "container.descendedangel.altar": "Altar",
   "block.descendedangel.altar": "Altar",
   "jei.descendedangel.altar_rite": "Altar Rite",
@@ -83,6 +101,6 @@
   "altar_jei.halo_t6.name": "Requires Dominion Halo or higher",
   "altar_jei.halo_t7.name": "Requires Cherubim Halo or higher",
   "altar_jei.halo_t8.name": "Requires Throne Halo or higher",
-  "altar_jei.halo_t9.name": "Requires Seraphim Halo or higher"
+  "altar_jei.halo_t9.name": "Requires Seraphim Halo"
 
 }
