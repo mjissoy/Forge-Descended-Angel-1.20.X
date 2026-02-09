@@ -70,9 +70,9 @@ public class ModBiomeModifiersJsonProvider implements DataProvider {
         JsonArray spawners = new JsonArray();
         JsonObject s = new JsonObject();
         s.addProperty("type", "descendedangel:void_anomaly");
-        s.addProperty("weight", 50);
+        s.addProperty("weight", 5);
         s.addProperty("minCount", 1);
-        s.addProperty("maxCount", 3);
+        s.addProperty("maxCount", 2);
         spawners.add(s);
 
         root.add("spawners", spawners);

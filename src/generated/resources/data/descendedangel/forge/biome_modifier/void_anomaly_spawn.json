@@ -4,9 +4,9 @@
   "spawners": [
     {
       "type": "descendedangel:void_anomaly",
-      "maxCount": 3,
+      "maxCount": 2,
       "minCount": 1,
-      "weight": 50
+      "weight": 5
     }
   ]
 }

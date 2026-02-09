@@ -1,6 +1,6 @@
-// 1.20.1	2026-02-09T10:54:25.7513759	DescendedAngel Forge Biome Modifiers (JSON)
+// 1.20.1	2026-02-09T13:01:11.2543355	DescendedAngel Forge Biome Modifiers (JSON)
 97bad314e2413063e39c11a080cb254a7feaaae1 data/descendedangel/forge/biome_modifier/ashen_rock_patch.json
 f5ec8226939a2cb01e728db693a6bf8f38964d06 data/descendedangel/forge/biome_modifier/blessed_rock_patch.json
 d34d8869faf83a14453e56de7cda54feb807eacd data/descendedangel/forge/biome_modifier/imp_spawn.json
 40d865bea9f1425dccba0432cce4e38cec1926af data/descendedangel/forge/biome_modifier/sacred_ore.json
-8df54c954fc08b9b49d0f66ed892c17f7516adfe data/descendedangel/forge/biome_modifier/void_anomaly_spawn.json
+51ff9e661807d7080d9f1c84ccde5b451c941f70 data/descendedangel/forge/biome_modifier/void_anomaly_spawn.json
