@@ -157,4 +157,6 @@ public class TieredHaloItem extends Item implements ICurioItem, GeoItem {
             }
         });
     }
+
+
 }

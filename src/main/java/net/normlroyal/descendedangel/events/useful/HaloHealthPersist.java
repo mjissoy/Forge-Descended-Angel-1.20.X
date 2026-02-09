@@ -1,6 +1,7 @@
 package net.normlroyal.descendedangel.events.useful;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -8,13 +9,13 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.util.HaloUtils;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HaloHealthPersist {
-    private static final String KEY_RATIO   = "da_halo_health_ratio";
-    private static final String KEY_PENDING = "da_halo_health_pending";
-    private static final String KEY_TRIES   = "da_halo_health_tries";
+    private static final String KEY_RATIO     = "da_halo_health_ratio";
+    private static final String KEY_PENDING   = "da_halo_health_pending";
+    private static final String KEY_TRIES     = "da_halo_health_tries";
+    private static final String KEY_LAST_HALO = "da_halo_had_halo_last_tick";
 
     private static boolean hasHalo(Player p) {
         return HaloUtils.findEquippedHalo(p).isPresent();
@@ -22,7 +23,7 @@ public class HaloHealthPersist {
 
     private static float baseMaxHealth(ServerPlayer sp) {
         var inst = sp.getAttribute(Attributes.MAX_HEALTH);
-        return inst == null ? 20.0f : (float) inst.getBaseValue();
+        return inst == null ? 20.0f : (float) inst.getBaseValue(); // usually 20
     }
 
     private static float currentMaxHealth(ServerPlayer sp) {
@@ -35,6 +36,13 @@ public class HaloHealthPersist {
         return Math.abs(max - base) > 0.001f;
     }
 
+    private static void markPending(ServerPlayer sp) {
+        var tag = sp.getPersistentData();
+        if (!tag.contains(KEY_RATIO)) return;
+        tag.putBoolean(KEY_PENDING, true);
+        tag.putInt(KEY_TRIES, 0);
+    }
+
     @SubscribeEvent
     public static void onLogout(PlayerEvent.PlayerLoggedOutEvent e) {
         if (!(e.getEntity() instanceof ServerPlayer sp)) return;
@@ -45,6 +53,7 @@ public class HaloHealthPersist {
             tag.remove(KEY_RATIO);
             tag.remove(KEY_PENDING);
             tag.remove(KEY_TRIES);
+            tag.remove(KEY_LAST_HALO);
             return;
         }
 
@@ -56,13 +65,23 @@ public class HaloHealthPersist {
 
     @SubscribeEvent
     public static void onLogin(PlayerEvent.PlayerLoggedInEvent e) {
-        if (!(e.getEntity() instanceof ServerPlayer sp)) return;
+        if (e.getEntity() instanceof ServerPlayer sp) {
+            markPending(sp);
+        }
+    }
 
-        var tag = sp.getPersistentData();
-        if (!tag.contains(KEY_RATIO)) return;
+    @SubscribeEvent
+    public static void onRespawn(PlayerEvent.PlayerRespawnEvent e) {
+        if (e.getEntity() instanceof ServerPlayer sp) {
+            markPending(sp);
+        }
+    }
 
-        tag.putBoolean(KEY_PENDING, true);
-        tag.putInt(KEY_TRIES, 0);
+    @SubscribeEvent
+    public static void onDimensionChange(PlayerEvent.PlayerChangedDimensionEvent e) {
+        if (e.getEntity() instanceof ServerPlayer sp) {
+            markPending(sp);
+        }
     }
 
     @SubscribeEvent
@@ -71,6 +90,23 @@ public class HaloHealthPersist {
         if (!(e.player instanceof ServerPlayer sp)) return;
 
         var tag = sp.getPersistentData();
+
+        boolean hasHaloNow = hasHalo(sp);
+        boolean hadHaloLast = tag.getBoolean(KEY_LAST_HALO);
+
+        if (hadHaloLast && !hasHaloNow) {
+            sp.serverLevel().getServer().execute(() -> {
+                float newMax = sp.getMaxHealth();
+                if (sp.getHealth() > newMax) {
+                    sp.setHealth(newMax);
+                }
+            });
+
+            tag.remove(KEY_PENDING);
+            tag.remove(KEY_TRIES);
+        }
+        tag.putBoolean(KEY_LAST_HALO, hasHaloNow);
+
         if (!tag.getBoolean(KEY_PENDING)) return;
 
         int tries = tag.getInt(KEY_TRIES);
@@ -81,7 +117,7 @@ public class HaloHealthPersist {
         }
         tag.putInt(KEY_TRIES, tries);
 
-        if (!hasHalo(sp)) return;
+        if (!hasHaloNow) return;
         if (!modifiersApplied(sp)) return;
 
         float ratio = tag.getFloat(KEY_RATIO);
@@ -98,25 +134,4 @@ public class HaloHealthPersist {
         tag.remove(KEY_PENDING);
         tag.remove(KEY_TRIES);
     }
-
-    @SubscribeEvent
-    public static void onRespawn(PlayerEvent.PlayerRespawnEvent e) {
-        if (!(e.getEntity() instanceof ServerPlayer sp)) return;
-        var tag = sp.getPersistentData();
-        if (tag.contains(KEY_RATIO)) {
-            tag.putBoolean(KEY_PENDING, true);
-            tag.putInt(KEY_TRIES, 0);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onDimensionChange(PlayerEvent.PlayerChangedDimensionEvent e) {
-        if (!(e.getEntity() instanceof ServerPlayer sp)) return;
-        var tag = sp.getPersistentData();
-        if (tag.contains(KEY_RATIO)) {
-            tag.putBoolean(KEY_PENDING, true);
-            tag.putInt(KEY_TRIES, 0);
-        }
-    }
-
 }
