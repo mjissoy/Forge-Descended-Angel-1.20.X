@@ -66,8 +66,8 @@ public class ModPlacedFeatures {
         // Ashen Rock
         int AshperChunk = 2;
         var Ashheight = HeightRangePlacement.uniform(
-                VerticalAnchor.absolute(0),
-                VerticalAnchor.absolute(128)
+                VerticalAnchor.absolute(-64),
+                VerticalAnchor.absolute(0)
         );
         ctx.register(ASHEN_ROCK_PATCH_PLACED,
                 new PlacedFeature(
