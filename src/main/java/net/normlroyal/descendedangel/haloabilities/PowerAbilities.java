@@ -1,8 +1,10 @@
 package net.normlroyal.descendedangel.haloabilities;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -157,8 +159,54 @@ public class PowerAbilities {
             e.setDeltaMovement(newVel);
 
             e.hurtMarked = true;
+
+            spawnGustParticles(level, sp.position(), radius, 3, 24);
+            level.sendParticles(ParticleTypes.POOF, sp.getX(), sp.getY() + 0.2, sp.getZ(), 12, 0.2, 0.05, 0.2, 0.0);
         }
     }
+
+    public static void spawnGustParticles(ServerLevel level, Vec3 center, double radius, int rings, int pointsPerRing) {
+
+        for (int r = 1; r <= rings; r++) {
+            double t = (double) r / rings;
+            double ringRadius = radius * t;
+
+            for (int i = 0; i < pointsPerRing; i++) {
+                double angle = (i / (double) pointsPerRing) * (Math.PI * 2.0);
+
+                double xOff = Math.cos(angle) * ringRadius;
+                double zOff = Math.sin(angle) * ringRadius;
+
+                double x = center.x + xOff;
+                double y = center.y + 0.2;
+                double z = center.z + zOff;
+
+                Vec3 out = new Vec3(xOff, 0, zOff);
+                if (out.lengthSqr() < 1.0e-6) continue;
+                out = out.normalize();
+
+                double speed = Mth.lerp(t, 0.02, 0.12);
+
+                level.sendParticles(
+                        ParticleTypes.CLOUD,
+                        x, y, z,
+                        1,
+                        0, 0, 0,
+                        0
+                );
+
+                level.sendParticles(
+                        ParticleTypes.SWEEP_ATTACK,
+                        x, y + 0.15, z,
+                        1,
+                        0, 0, 0,
+                        0
+                );
+
+            }
+        }
+    }
+
 
     private static void doEarthWall(ServerPlayer sp, int width, int height, int dur) {
         ServerLevel level = sp.serverLevel();

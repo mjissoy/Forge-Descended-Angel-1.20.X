@@ -12,16 +12,16 @@ public class HaloScaling {
 
     public static double cooldownMul(int tier) {
         return switch (tier) {
-            case 7 -> 0.90;
-            case 8 -> 0.80;
-            case 9 -> 0.70;
+            case 7 -> 0.80;
+            case 8 -> 0.65;
+            case 9 -> 0.50;
             default -> 1.0;
         };
     }
 
     public static double scaleUp(double base, int tier) {
         int m = mastery(tier);
-        return base * (1.0 + 0.20 * m);
+        return base * (1.0 + 0.50 * m);
     }
 
     public static int addInt(int base, int tier, int perLevel) {

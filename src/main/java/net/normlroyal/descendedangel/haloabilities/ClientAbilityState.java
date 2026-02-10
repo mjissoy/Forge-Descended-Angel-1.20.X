@@ -8,7 +8,9 @@ public class ClientAbilityState {
 
     private static final HaloAbility[] DOMINION_ABILITIES = {
             HaloAbility.TELEPORT,
-            HaloAbility.FIELD
+            HaloAbility.FIELD,
+            HaloAbility.SPACE_CHEST,
+            HaloAbility.ACCELERATE
     };
 
     private static final HaloAbility[] POWER_ABILITIES = {
@@ -24,7 +26,9 @@ public class ClientAbilityState {
             HaloAbility.EARTH_WALL,
             HaloAbility.MIST_VEIL,
             HaloAbility.TELEPORT,
-            HaloAbility.FIELD
+            HaloAbility.FIELD,
+            HaloAbility.SPACE_CHEST,
+            HaloAbility.ACCELERATE
     };
 
     private static final HaloAbility[] NO_ABILITIES = {};

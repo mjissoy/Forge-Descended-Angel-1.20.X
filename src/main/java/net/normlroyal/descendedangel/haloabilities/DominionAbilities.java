@@ -51,6 +51,23 @@ public class DominionAbilities {
                 sp.getPersistentData().putLong(CD_TELEPORT, now + cd);
             }
 
+            case SPACE_CHEST -> {
+                if (!sp.getPersistentData().getBoolean(TAG_SPACE)){
+                    NetworkUtils.actionbar(sp, "You have not unlocked Portable Chest");
+                    return;
+                }
+                long until = sp.getPersistentData().getLong("da_cd_dom_ender_until");
+                if (now < until){
+                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
+                    return;
+                }
+
+                openEnderChest(sp);
+
+                int cd = ModConfigs.COMMON.SPACE_CHEST_COOLDOWN_TICKS.get();
+                sp.getPersistentData().putLong("da_cd_dom_ender_until", now + cd);
+            }
+
             case FIELD -> {
                 if (!sp.getPersistentData().getBoolean(TAG_TIME)){
                     NetworkUtils.actionbar(sp, "You have not unlocked Time Field");
@@ -68,7 +85,7 @@ public class DominionAbilities {
                 int basedur = ModConfigs.COMMON.FIELD_DURATION_TICKS.get();
                 int dur = HaloScaling.scaleIntDuration(basedur, tier);
                 int baseamp = ModConfigs.COMMON.FIELD_SLOWNESS_AMPLIFIER.get();
-                int amp = HaloScaling.addIntCapped(baseamp, tier, 1, 10);
+                int amp = HaloScaling.addIntCapped(baseamp, tier, 1, 30);
 
 
                 doDominionField(sp, radius, dur, amp);
@@ -76,6 +93,36 @@ public class DominionAbilities {
                 int basecd = ModConfigs.COMMON.FIELD_COOLDOWN_TICKS.get();
                 int cd = HaloScaling.scaleIntDuration(basecd, tier);
                 sp.getPersistentData().putLong(CD_FIELD, now + cd);
+            }
+
+            case ACCELERATE -> {
+                if (!sp.getPersistentData().getBoolean(TAG_TIME)){
+                    NetworkUtils.actionbar(sp, "You have not unlocked Acceleration");
+                    return;
+                }
+                long until = sp.getPersistentData().getLong("da_cd_dom_timeacc_until");
+                if (now < until) {
+                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
+                    return;
+                }
+                int basedur = ModConfigs.COMMON.ACCEL_DURATION_TICKS.get();
+                int dur = HaloScaling.scaleIntDuration(basedur, tier);
+                int baseamp = ModConfigs.COMMON.ACCEL_SPEED_AMPLIFIER.get();
+                int amp = HaloScaling.addIntCapped(baseamp, tier, 1, 30);
+
+
+                sp.addEffect(new MobEffectInstance(
+                        MobEffects.MOVEMENT_SPEED,
+                        dur,
+                        amp,
+                        true,
+                        false,
+                        false
+                ));
+
+                int basecd = ModConfigs.COMMON.ACCEL_COOLDOWN_TICKS.get();
+                int cd = HaloScaling.scaleIntDuration(basecd, tier);
+                sp.getPersistentData().putLong("da_cd_dom_timeacc_until", now + cd);
             }
         }
     }
@@ -128,5 +175,14 @@ public class DominionAbilities {
         for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, box, e -> e != sp)) {
             e.addEffect(new MobEffectInstance(slow));
         }
+    }
+
+    private static void openEnderChest(ServerPlayer sp) {
+        var inv = sp.getEnderChestInventory();
+
+        sp.openMenu(new net.minecraft.world.SimpleMenuProvider(
+                (id, playerInv, player) -> net.minecraft.world.inventory.ChestMenu.threeRows(id, playerInv, inv),
+                net.minecraft.network.chat.Component.translatable("container.enderchest")
+        ));
     }
 }

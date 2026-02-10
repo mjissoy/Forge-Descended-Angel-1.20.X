@@ -46,10 +46,14 @@ public class ModConfigs {
 
         public final ForgeConfigSpec.IntValue TELEPORT_RANGE;
         public final ForgeConfigSpec.IntValue TELEPORT_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.IntValue SPACE_CHEST_COOLDOWN_TICKS;
         public final ForgeConfigSpec.IntValue FIELD_DURATION_TICKS;
         public final ForgeConfigSpec.DoubleValue FIELD_RADIUS;
         public final ForgeConfigSpec.IntValue FIELD_SLOWNESS_AMPLIFIER;
         public final ForgeConfigSpec.IntValue FIELD_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.IntValue ACCEL_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.IntValue ACCEL_DURATION_TICKS;
+        public final ForgeConfigSpec.IntValue ACCEL_SPEED_AMPLIFIER;
         public final ForgeConfigSpec.IntValue FIREBALL_COOLDOWN_TICKS;
         public final ForgeConfigSpec.IntValue GUST_COOLDOWN_TICKS;
         public final ForgeConfigSpec.DoubleValue GUST_RADIUS;
@@ -143,13 +147,16 @@ public class ModConfigs {
 
             builder.pop();
 
-            builder.push("--Halo Abilities--");
+            builder.push("--Halo Ability Settings--");
             TELEPORT_RANGE = builder
                     .comment("How far the Player can Teleport")
                     .defineInRange("halo_teleport_range", 20, 0, 64);
             TELEPORT_COOLDOWN_TICKS = builder
                     .comment("Cooldown of Teleport ability")
-                    .defineInRange("halo_teleport_cooldown", 200, 20, 1200000);
+                    .defineInRange("halo_teleport_cooldown", 100, 20, 1200000);
+            SPACE_CHEST_COOLDOWN_TICKS = builder
+                    .comment("Cooldown of Space Chest ability")
+                    .defineInRange("halo_space_chest_cooldown", 20, 1, 1200000);
             FIELD_DURATION_TICKS = builder
                     .comment("How long the Field ability lasts")
                     .defineInRange("halo_field_duration", 200, 20, 1200000);
@@ -162,6 +169,15 @@ public class ModConfigs {
             FIELD_COOLDOWN_TICKS = builder
                     .comment("Cooldown of Field ability")
                     .defineInRange("halo_field_cooldown", 1200, 20, 1200000);
+            ACCEL_COOLDOWN_TICKS = builder
+                    .comment("Cooldown of Accelerate ability")
+                    .defineInRange("halo_accelerate_cooldown", 200, 20, 1200000);
+            ACCEL_DURATION_TICKS = builder
+                    .comment("Duration of Accelerate ability")
+                    .defineInRange("halo_accelerate_duration", 100, 20, 1200000);
+            ACCEL_SPEED_AMPLIFIER = builder
+                    .comment("Level of Speed effect applied by Accelerate ability")
+                    .defineInRange("halo_accelerate_speed_amp", 5, 0, 20);
             FIREBALL_COOLDOWN_TICKS = builder
                     .comment("Cooldown of Fireball ability")
                     .defineInRange("halo_fireball_cooldown", 200, 20, 1200000);
