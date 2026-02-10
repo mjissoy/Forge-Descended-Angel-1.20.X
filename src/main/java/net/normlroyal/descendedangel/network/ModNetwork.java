@@ -1,9 +1,12 @@
 package net.normlroyal.descendedangel.network;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.network.packets.ClientMsgS2CPacket;
+import net.normlroyal.descendedangel.network.packets.ShardPopS2CPacket;
 import net.normlroyal.descendedangel.network.packets.SyncWritDisplaysS2CPacket;
 import net.normlroyal.descendedangel.network.packets.UseHaloAbilityC2SPacket;
 
@@ -30,6 +33,18 @@ public final class ModNetwork {
                 .encoder(UseHaloAbilityC2SPacket::encode)
                 .decoder(UseHaloAbilityC2SPacket::decode)
                 .consumerMainThread(UseHaloAbilityC2SPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(ShardPopS2CPacket.class, id++)
+                .encoder(ShardPopS2CPacket::encode)
+                .decoder(ShardPopS2CPacket::decode)
+                .consumerMainThread(ShardPopS2CPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(ClientMsgS2CPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(ClientMsgS2CPacket::encode)
+                .decoder(ClientMsgS2CPacket::decode)
+                .consumerMainThread(ClientMsgS2CPacket::handle)
                 .add();
     }
 

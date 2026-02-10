@@ -72,6 +72,10 @@ public class ModCreativeModTabs {
 
                         output.accept(ModItems.SPACE_FRUIT.get());
                         output.accept(ModItems.TIME_FRUIT.get());
+                        output.accept(ModItems.FIRE_SHARD.get());
+                        output.accept(ModItems.AIR_SHARD.get());
+                        output.accept(ModItems.EARTH_SHARD.get());
+                        output.accept(ModItems.WATER_SHARD.get());
                         output.accept(ModItems.SACRED_WRITINGS.get());
                         output.accept(ModItems.VOID_ANOMALY_SPAWN_EGG.get());
                         output.accept(ModItems.IMP_SPAWN_EGG.get());

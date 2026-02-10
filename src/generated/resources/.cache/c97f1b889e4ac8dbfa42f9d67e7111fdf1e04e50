@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-09T15:05:28.2509858	Tags for minecraft:item mod id descendedangel
+// 1.20.1	2026-02-10T10:28:23.1745131	Tags for minecraft:item mod id descendedangel
 55dc244de1204101ae9776e5b5cd3478e17f4ece data/curios/tags/items/halo.json
 9c00f925d0ce44e07522fd4468d062f9dba94306 data/curios/tags/items/necklace.json
 b0f7b42b466160b7876985fb8ae0ce1fee7914fb data/curios/tags/items/ring.json
@@ -6,4 +6,5 @@ b0f7b42b466160b7876985fb8ae0ce1fee7914fb data/curios/tags/items/ring.json
 5c763b9b7f6c5301784fb9b964cd2e7697fdcba4 data/descendedangel/tags/items/halos.json
 36a8b5f26c7f37ba42490a810c72fffb800f6561 data/descendedangel/tags/items/necklaces.json
 7349241a9b1fccf02440ab31932b8e7168c41adc data/descendedangel/tags/items/rings.json
+2955b7b67a4bed3a2b894633fa2794ed2368129c data/descendedangel/tags/items/shards.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/descendedangel/tags/items/wings.json

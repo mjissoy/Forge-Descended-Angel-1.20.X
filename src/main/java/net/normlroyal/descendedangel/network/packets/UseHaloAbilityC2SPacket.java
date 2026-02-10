@@ -4,6 +4,8 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 import net.normlroyal.descendedangel.haloabilities.DominionAbilities;
 import net.normlroyal.descendedangel.haloabilities.HaloAbility;
+import net.normlroyal.descendedangel.haloabilities.PowerAbilities;
+import net.normlroyal.descendedangel.util.HaloUtils;
 
 import java.util.function.Supplier;
 
@@ -23,11 +25,25 @@ public record UseHaloAbilityC2SPacket(int abilityOrdinal) {
             if (sp == null) return;
 
             int ord = msg.abilityOrdinal();
-            if (ord < 0 || ord >= HaloAbility.values().length) return;
+            HaloAbility[] values = HaloAbility.values();
+            if (ord < 0 || ord >= values.length) return;
 
-            HaloAbility ability = HaloAbility.values()[ord];
-            DominionAbilities.tryUse(sp, ability);
+            HaloAbility ability = values[ord];
+
+            int tier = HaloUtils.getEquippedHaloTier(sp);
+
+            switch (tier) {
+                case 4 -> PowerAbilities.tryUse(sp, ability);
+                case 6 -> DominionAbilities.tryUse(sp, ability);
+                case 7, 8, 9 -> {
+                    PowerAbilities.tryUse(sp, ability);
+                    DominionAbilities.tryUse(sp, ability);
+                }
+                default -> {}
+            }
+
         });
+
         ctx.get().setPacketHandled(true);
     }
 }

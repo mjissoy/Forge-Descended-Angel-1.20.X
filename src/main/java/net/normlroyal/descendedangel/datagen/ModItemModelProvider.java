@@ -55,7 +55,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent("imp_spawn_egg", mcLoc("item/template_spawn_egg"));
         basicItem(modLoc("fruit_of_space"));
         basicItem(modLoc("fruit_of_time"));
-
+        basicItem(modLoc("fire_shard"));
+        basicItem(modLoc("water_shard"));
+        basicItem(modLoc("earth_shard"));
+        basicItem(modLoc("air_shard"));
 
     }
 }

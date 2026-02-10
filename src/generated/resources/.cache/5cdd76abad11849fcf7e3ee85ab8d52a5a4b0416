@@ -1,10 +1,13 @@
-// 1.20.1	2026-02-09T19:08:45.2631844	Item Models: descendedangel
+// 1.20.1	2026-02-10T10:28:23.1715139	Item Models: descendedangel
+591627e5862dfc6e3647ae8edcda099eb7ee681d assets/descendedangel/models/item/air_shard.json
 424c1b6df14d0973a0cac70a6e0e51a0eed1ad7a assets/descendedangel/models/item/alchemy_chain.json
 d741f253426c63bd67627a9ad45aa6bcb2c8b428 assets/descendedangel/models/item/angel_feather.json
 33b888cb6154604d27915d606b7d03256096a493 assets/descendedangel/models/item/angel_feather_real.json
 d0258be46bac96d3af664b27ea967d5ca6c422b3 assets/descendedangel/models/item/cloud_ring.json
 04e2fe7a0da1b7eaf762f947947b01525dc60415 assets/descendedangel/models/item/cure_ring.json
 b5e56552c53b3f9c0c3845df8d2ca6c55f7bf8e7 assets/descendedangel/models/item/demon_heart.json
+9d5c762bd4f3bae311b412d30be698b98a842f52 assets/descendedangel/models/item/earth_shard.json
+195e4ead0aef9a8287b937809a66416ddb8acf7a assets/descendedangel/models/item/fire_shard.json
 e245576eadc214840d0d9356e9f9a071ae3dd2bd assets/descendedangel/models/item/flame_ring.json
 88ba1afe56abc07b6fad9a15669e8b5de8fea526 assets/descendedangel/models/item/fruit_of_space.json
 37daa50f0510ce0efe79be9a303002cd22a40f4f assets/descendedangel/models/item/fruit_of_time.json
@@ -28,3 +31,4 @@ ee0303b0373b1139d2fecd754ebc729b03761d53 assets/descendedangel/models/item/sacre
 0c32c5fbd6acdc59e7659aa68f9d3eaca3f4b062 assets/descendedangel/models/item/spatial_core.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/descendedangel/models/item/void_anomaly_spawn_egg.json
 9405c171c19d5bb03e51b6a9f53cd2f9ec5874b0 assets/descendedangel/models/item/void_tear.json
+c1eebb0377a38eb136d5adde3d65a5a596dfb272 assets/descendedangel/models/item/water_shard.json

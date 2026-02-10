@@ -2,5 +2,9 @@ package net.normlroyal.descendedangel.haloabilities;
 
 public enum HaloAbility {
     TELEPORT,
-    FIELD
+    FIELD,
+    FIREBALL,
+    EARTH_WALL,
+    GUST,
+    MIST_VEIL
 }

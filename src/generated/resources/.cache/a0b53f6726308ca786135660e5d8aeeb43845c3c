@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-09T10:54:25.7563717	Block States: descendedangel
+// 1.20.1	2026-02-10T11:20:52.0268658	Block States: descendedangel
 418a4549cd9a7b5ecc9c528d5494b4954aa2fca4 assets/descendedangel/blockstates/ashen_rock.json
 917d34d1a85ad0d53bb99ed1f0662e821ab23ec8 assets/descendedangel/blockstates/ashen_rock_slab.json
 93d5b446a91c0732cc230246ce43563b51a385b8 assets/descendedangel/blockstates/ashen_rock_stair.json
@@ -18,6 +18,7 @@ a69e26d5a4df7770846ddf293e4af8a5857a5817 assets/descendedangel/blockstates/polis
 976a684aa9a0c87e4c7b8afbea8a08658808f036 assets/descendedangel/blockstates/raw_sacred_ore_block.json
 a30fb920f6a80d305766a6b3ddf00e58097f7dfe assets/descendedangel/blockstates/sacred_ingot_block.json
 58f715d3b6944e6f9d3d1b33c6a6430229c7ba70 assets/descendedangel/blockstates/sacred_ore.json
+412b95ecff2e49686e0cb92c5e1dbd9620b702d1 assets/descendedangel/blockstates/temp_earth_wall.json
 ff58801bd2abaee87805be5533ef4dc4f87e7bce assets/descendedangel/models/block/ashen_rock.json
 92c2645e35dd5f6b5b3edff593b7cb718499c3ae assets/descendedangel/models/block/ashen_rock_slab.json
 75bf5231d420903b364bcd94ad5cb555b21c88b2 assets/descendedangel/models/block/ashen_rock_slab_top.json
@@ -57,6 +58,7 @@ aded102fd3eab04f6a4be551c424e58361516b70 assets/descendedangel/models/block/poli
 a34fd8f266b48a48058af30de9d8ab5595c61d74 assets/descendedangel/models/block/raw_sacred_ore_block.json
 dad42fb172e0db63458339cf5b1332f1f096bec7 assets/descendedangel/models/block/sacred_ingot_block.json
 ff3237536db1f5319ac5440c671c4da946ff3058 assets/descendedangel/models/block/sacred_ore.json
+797b1e73b7ee4f7848c4a56c804b6254b2dc5196 assets/descendedangel/models/block/temp_earth_wall.json
 c556d8a19357c16231ab71d3db1214c9c9f8b557 assets/descendedangel/models/item/ashen_rock.json
 bb20078d9152d63de7ae7f805f72c0363360a5f1 assets/descendedangel/models/item/ashen_rock_slab.json
 4961043ecb142ee435166c8966c5f01d359847c2 assets/descendedangel/models/item/ashen_rock_stair.json
@@ -76,3 +78,4 @@ cb5c1388540122bd14d1abfd23504a4c0a18b983 assets/descendedangel/models/item/polis
 9de46c0eda1260f92429447a3c0a05ed39f44ac7 assets/descendedangel/models/item/raw_sacred_ore_block.json
 be724748d2ff7943b3d4d32ad35b0ac43f089788 assets/descendedangel/models/item/sacred_ingot_block.json
 4988ee9795e9c78f49d8c8dc521155aea3bc40c6 assets/descendedangel/models/item/sacred_ore.json
+bbdebb87bf49d38cac08fc56b220970f27404788 assets/descendedangel/models/item/temp_earth_wall.json

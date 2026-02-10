@@ -30,6 +30,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     public static final TagKey<Item> NECKLACES =
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "necklaces"));
 
+    public static final TagKey<Item> SHARDS =
+            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "shards"));
+
     public static final TagKey<Item> CURIOS_HALOS =
             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "halo"));
 
@@ -81,6 +84,13 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ModItems.MESSENGER_PENDANT.get(),
                 ModItems.LIGHTNESS_NECKLACE.get(),
                 ModItems.BOOSTER_NECKLACE.get()
+        );
+
+        this.tag(SHARDS).add(
+                ModItems.FIRE_SHARD.get(),
+                ModItems.WATER_SHARD.get(),
+                ModItems.EARTH_SHARD.get(),
+                ModItems.AIR_SHARD.get()
         );
 
         // Curios Tags

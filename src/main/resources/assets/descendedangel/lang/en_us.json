@@ -111,6 +111,19 @@
 
   "ability.descendedangel.space": "The Dominion of Space floods Your Divinity.",
   "ability.descendedangel.time": "The Dominion of Time floods Your Divinity.",
+  "ability.descendedangel.fire": "The Power of Fire strengthens Your Divinity.",
+  "ability.descendedangel.water": "The Power of Water strengthens Your Divinity.",
+  "ability.descendedangel.earth": "The Power of Earth strengthens Your Divinity.",
+  "ability.descendedangel.air": "The Power of Air strengthens Your Divinity.",
+  "message.descendedangel.shard_already_unlocked": "Your Divinity has traces of this Power already.",
+
+  "item.descendedangel.fruit_of_space" : "Fruit of Space",
+  "item.descendedangel.fruit_of_time" : "Fruit of Time",
+  "item.descendedangel.fire_shard" : "Fire Shard",
+  "item.descendedangel.water_shard" : "Water Shard",
+  "item.descendedangel.earth_shard" : "Earth Shard",
+  "item.descendedangel.air_shard" : "Air Shard",
+  "block.descendedangel.temp_earth_wall" : "Earth Wall Block",
 
 
   "key.categories.descendedangel": "Descended Angel",

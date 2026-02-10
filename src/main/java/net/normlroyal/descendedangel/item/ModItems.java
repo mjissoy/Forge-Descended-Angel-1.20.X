@@ -14,6 +14,7 @@ import net.normlroyal.descendedangel.item.custom.*;
 import net.normlroyal.descendedangel.item.custom.enums.FruitType;
 import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
 import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
+import net.normlroyal.descendedangel.item.custom.enums.ShardType;
 import net.normlroyal.descendedangel.item.custom.writings.SacredWritingsItem;
 
 public class ModItems {
@@ -97,12 +98,28 @@ public class ModItems {
                     0x7A1C1C,
                     0xD46B2E,
                     new Item.Properties()));
+
+    // Ability Items
     public static final RegistryObject<Item> SPACE_FRUIT = ITEMS.register("fruit_of_space",
             () -> new FruitUnlockItem(FruitType.SPACE, new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
     public static final RegistryObject<Item> TIME_FRUIT = ITEMS.register("fruit_of_time",
             () -> new FruitUnlockItem(FruitType.TIME, new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+    public static final RegistryObject<Item> FIRE_SHARD = ITEMS.register("fire_shard",
+            () -> new ShardUnlockItem(ShardType.FIRE, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> WATER_SHARD = ITEMS.register("water_shard",
+            () -> new ShardUnlockItem(ShardType.WATER, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> EARTH_SHARD = ITEMS.register("earth_shard",
+            () -> new ShardUnlockItem(ShardType.EARTH, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> AIR_SHARD = ITEMS.register("air_shard",
+            () -> new ShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
+    );
+
+
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

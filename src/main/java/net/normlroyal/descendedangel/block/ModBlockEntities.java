@@ -7,6 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.altar.AltarBlockEntity;
+import net.normlroyal.descendedangel.block.tempwall.TempEarthWallBlockEntity;
 
 public class ModBlockEntities {
 
@@ -16,6 +17,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<AltarBlockEntity>> ALTAR =
             BLOCK_ENTITIES.register("altar",
                     () -> BlockEntityType.Builder.of(AltarBlockEntity::new, ModBlocks.ALTAR.get())
+                            .build(null));
+
+    public static final RegistryObject<BlockEntityType<TempEarthWallBlockEntity>> TEMP_EARTH_WALL_BE =
+            BLOCK_ENTITIES.register("temp_earth_wall",
+                    () -> BlockEntityType.Builder.of(TempEarthWallBlockEntity::new, ModBlocks.TEMP_EARTH_WALL.get())
                             .build(null));
 
     public static void register(IEventBus eventBus) {

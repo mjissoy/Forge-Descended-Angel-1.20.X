@@ -65,6 +65,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 models().cubeAll("sacred_ore", modLoc("block/sacred_ore"))
         );
 
+        simpleBlockWithItem(ModBlocks.TEMP_EARTH_WALL.get(),
+                models().cubeAll("temp_earth_wall", modLoc("block/temp_earth_wall")));
+
 
     }
 

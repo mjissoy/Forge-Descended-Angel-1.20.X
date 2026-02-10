@@ -50,6 +50,16 @@ public class ModConfigs {
         public final ForgeConfigSpec.DoubleValue FIELD_RADIUS;
         public final ForgeConfigSpec.IntValue FIELD_SLOWNESS_AMPLIFIER;
         public final ForgeConfigSpec.IntValue FIELD_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.IntValue FIREBALL_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.IntValue GUST_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.DoubleValue GUST_RADIUS;
+        public final ForgeConfigSpec.DoubleValue GUST_STRENGTH;
+        public final ForgeConfigSpec.IntValue EARTH_WALL_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.IntValue EARTHWALL_WIDTH;
+        public final ForgeConfigSpec.IntValue EARTHWALL_HEIGHT;
+        public final ForgeConfigSpec.IntValue EARTHWALL_DURATION_TICKS;
+        public final ForgeConfigSpec.IntValue MIST_VEIL_COOLDOWN_TICKS;
+        public final ForgeConfigSpec.IntValue MIST_VEIL_DURATION_TICKS;
 
 
         public Common(ForgeConfigSpec.Builder builder) {
@@ -152,6 +162,36 @@ public class ModConfigs {
             FIELD_COOLDOWN_TICKS = builder
                     .comment("Cooldown of Field ability")
                     .defineInRange("halo_field_cooldown", 1200, 20, 1200000);
+            FIREBALL_COOLDOWN_TICKS = builder
+                    .comment("Cooldown of Fireball ability")
+                    .defineInRange("halo_fireball_cooldown", 200, 20, 1200000);
+            GUST_COOLDOWN_TICKS = builder
+                    .comment("Cooldown of Gust ability")
+                    .defineInRange("halo_gust_cooldown", 200, 20, 1200000);
+            GUST_RADIUS = builder
+                    .comment("The radius of the Gust Ability (blocks)")
+                    .defineInRange("halo_gust_radius", 4.0D, 0.0D, 32.0D);
+            GUST_STRENGTH = builder
+                    .comment("The strength of the Gust Ability (blocks per tick)")
+                    .defineInRange("halo_gust_strength", 0.6D, 0.0D, 2.0D);
+            EARTH_WALL_COOLDOWN_TICKS = builder
+                    .comment("Cooldown of Earth Wall ability")
+                    .defineInRange("halo_earth_wall_cooldown", 200, 20, 1200000);
+            EARTHWALL_WIDTH = builder
+                    .comment("Width of Earth Wall ability (blocks)")
+                    .defineInRange("halo_earth_wall_width", 2, 0, 32);
+            EARTHWALL_HEIGHT = builder
+                    .comment("Height of Earth Wall ability (blocks)")
+                    .defineInRange("halo_earth_wall_height", 3, 0, 32);
+            EARTHWALL_DURATION_TICKS = builder
+                    .comment("Duration of Earth Wall ability (blocks)")
+                    .defineInRange("halo_earth_wall_duration", 100, 20, 1200000);
+            MIST_VEIL_COOLDOWN_TICKS = builder
+                    .comment("Cooldown of Mist Veil ability")
+                    .defineInRange("halo_mist_veil_cooldown", 400, 20, 1200000);
+            MIST_VEIL_DURATION_TICKS = builder
+                    .comment("Duration of Mist Veil ability")
+                    .defineInRange("halo_mist_veil_duration", 200, 20, 1200000);
             builder.pop();
 
 

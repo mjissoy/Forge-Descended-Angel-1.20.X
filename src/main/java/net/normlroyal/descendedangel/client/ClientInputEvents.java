@@ -1,17 +1,22 @@
 package net.normlroyal.descendedangel.client;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.haloabilities.ClientAbilityState;
+import net.normlroyal.descendedangel.haloabilities.HaloAbility;
 import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.network.packets.UseHaloAbilityC2SPacket;
+import net.normlroyal.descendedangel.util.HaloUtils;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ClientInputEvents {
+
+    private static int lastTier = -1;
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
@@ -20,25 +25,31 @@ public class ClientInputEvents {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null) return;
 
+        int tierNow = HaloUtils.getEquippedHaloTier(mc.player);
+        if (tierNow != lastTier) {
+            lastTier = tierNow;
+            ClientAbilityState.reset();
+        }
+
         // Cycle ability
         while (ClientKeybinds.OPEN_WHEEL.consumeClick()) {
-            ClientAbilityState.cycle();
+            ClientAbilityState.cycle(mc.player);
 
+            HaloAbility selected = ClientAbilityState.get(mc.player);
             mc.player.displayClientMessage(
-                    net.minecraft.network.chat.Component.literal(
-                            "Selected: " + ClientAbilityState.get().name()
-                    ),
+                    Component.literal(selected == null ? "Selected: (none)" : "Selected: " + selected.name()),
                     true
             );
         }
 
         // Use ability
         while (ClientKeybinds.USE_ABILITY.consumeClick()) {
-            ModNetwork.CHANNEL.sendToServer(
-                    new UseHaloAbilityC2SPacket(
-                            ClientAbilityState.get().ordinal()
-                    )
-            );
+            HaloAbility selected = ClientAbilityState.get(mc.player);
+            if (selected == null) return;
+
+            ModNetwork.CHANNEL.sendToServer(new UseHaloAbilityC2SPacket(selected.ordinal()));
         }
     }
 }
+
+

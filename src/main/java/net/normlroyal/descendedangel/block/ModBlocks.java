@@ -11,6 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.altar.AltarBlock;
+import net.normlroyal.descendedangel.block.tempwall.TempEarthWallBlock;
 
 import java.util.function.Supplier;
 
@@ -33,6 +34,14 @@ public class ModBlocks {
             () -> new AltarBlock(BlockBehaviour.Properties.of()
                     .strength(-1.0F, 3600000.0F)
                     .noOcclusion()));
+
+    public static final RegistryObject<Block> TEMP_EARTH_WALL = registerBlock("temp_earth_wall",
+            () -> new TempEarthWallBlock(BlockBehaviour.Properties.of()
+                    .strength(2.5F, 6.0F)
+                    .noLootTable()
+                    .requiresCorrectToolForDrops()
+            )
+    );
 
     public static final RegistryObject<Block> BLESSED_ROCK = registerBlock("blessed_rock",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));

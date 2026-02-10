@@ -11,6 +11,7 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.*;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.util.HaloUtils;
+import net.normlroyal.descendedangel.util.NetworkUtils;
 
 public class DominionAbilities {
 
@@ -22,38 +23,58 @@ public class DominionAbilities {
 
     public static void tryUse(ServerPlayer sp, HaloAbility ability) {
         int tier = HaloUtils.getEquippedHaloTier(sp);
-        if (tier != 6) return;
+        if (tier != 6 && tier != 7 && tier != 8 && tier != 9) return;
 
         long now = sp.level().getGameTime();
 
         switch (ability) {
             case TELEPORT -> {
-                if (!sp.getPersistentData().getBoolean(TAG_SPACE)) return;
+                if (!sp.getPersistentData().getBoolean(TAG_SPACE)){
+                    NetworkUtils.actionbar(sp, "You have not unlocked Teleport");
+                    return;
+                }
 
                 long until = sp.getPersistentData().getLong(CD_TELEPORT);
-                if (now < until) return;
+                if (now < until){
+                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
+                    return;
+                }
 
-                int range = ModConfigs.COMMON.TELEPORT_RANGE.get();
+                int baserange = ModConfigs.COMMON.TELEPORT_RANGE.get();
+                int range = HaloScaling.addInt(baserange, tier, 2);
+
                 boolean ok = tryTeleport(sp, range);
                 if (!ok) return;
 
-                int cd = ModConfigs.COMMON.TELEPORT_COOLDOWN_TICKS.get();
+                int basecd = ModConfigs.COMMON.TELEPORT_COOLDOWN_TICKS.get();
+                int cd = HaloScaling.scaleIntDuration(basecd, tier);
                 sp.getPersistentData().putLong(CD_TELEPORT, now + cd);
             }
 
             case FIELD -> {
-                if (!sp.getPersistentData().getBoolean(TAG_TIME)) return;
+                if (!sp.getPersistentData().getBoolean(TAG_TIME)){
+                    NetworkUtils.actionbar(sp, "You have not unlocked Time Field");
+                    return;
+                }
 
                 long until = sp.getPersistentData().getLong(CD_FIELD);
-                if (now < until) return;
+                if (now < until) {
+                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
+                    return;
+                }
 
-                double radius = ModConfigs.COMMON.FIELD_RADIUS.get();
-                int dur = ModConfigs.COMMON.FIELD_DURATION_TICKS.get();
-                int amp = ModConfigs.COMMON.FIELD_SLOWNESS_AMPLIFIER.get();
+                double baseradius = ModConfigs.COMMON.FIELD_RADIUS.get();
+                double radius = HaloScaling.scaleUp(baseradius, tier);
+                int basedur = ModConfigs.COMMON.FIELD_DURATION_TICKS.get();
+                int dur = HaloScaling.scaleIntDuration(basedur, tier);
+                int baseamp = ModConfigs.COMMON.FIELD_SLOWNESS_AMPLIFIER.get();
+                int amp = HaloScaling.addIntCapped(baseamp, tier, 1, 10);
+
 
                 doDominionField(sp, radius, dur, amp);
 
-                int cd = ModConfigs.COMMON.FIELD_COOLDOWN_TICKS.get();
+                int basecd = ModConfigs.COMMON.FIELD_COOLDOWN_TICKS.get();
+                int cd = HaloScaling.scaleIntDuration(basecd, tier);
                 sp.getPersistentData().putLong(CD_FIELD, now + cd);
             }
         }
