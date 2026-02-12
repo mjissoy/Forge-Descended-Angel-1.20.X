@@ -1,0 +1,38 @@
+{
+  "parent": "descendedangel:main/craft_virtue_halo",
+  "criteria": {
+    "shard_find": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "descendedangel:air_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "The Powers that shaped the world left relics of their vast Authorities."
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:fire_shard"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Worldly Powers"
+    }
+  },
+  "requirements": [
+    [
+      "shard_find"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

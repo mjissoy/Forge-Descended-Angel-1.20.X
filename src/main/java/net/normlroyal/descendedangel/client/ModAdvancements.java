@@ -71,6 +71,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         ))
                 .save(saver, id("main/find_void_drop"));
 
+
         Advancement craftArtFeather = Advancement.Builder.advancement()
                 .parent(findVoidDrop)
                 .display(display(ModItems.ANGELFEATHER.get(),
@@ -205,6 +206,38 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                                 ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t9_rite")
                         ))
                 .save(saver, id("main/craft_seraphim_halo"));
+
+        Advancement findSpaceTimeFruit = Advancement.Builder.advancement()
+                .parent(craftDominionHalo)
+                .display(display(ModItems.SPACE_FRUIT.get(),
+                        "Ancient Dominions",
+                        "Scattered through the haunts of the Brutes, fruits from the Heavenly Garden lay.",
+                        FrameType.GOAL))
+                .addCriterion("fruit_find",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(
+                                ItemPredicate.Builder.item()
+                                        .of(ModItems.TIME_FRUIT.get())
+                                        .of(ModItems.SPACE_FRUIT.get())
+                                        .build()
+                        ))
+                .save(saver, id("main/find_fruit"));
+
+        Advancement findElementalShard = Advancement.Builder.advancement()
+                .parent(craftVirtueHalo)
+                .display(display(ModItems.FIRE_SHARD.get(),
+                        "Worldly Powers",
+                        "The Powers that shaped the world left relics of their vast Authorities.",
+                        FrameType.GOAL))
+                .addCriterion("shard_find",
+                        InventoryChangeTrigger.TriggerInstance.hasItems(
+                                ItemPredicate.Builder.item()
+                                        .of(ModItems.FIRE_SHARD.get())
+                                        .of(ModItems.WATER_SHARD.get())
+                                        .of(ModItems.EARTH_SHARD.get())
+                                        .of(ModItems.AIR_SHARD.get())
+                                        .build()
+                        ))
+                .save(saver, id("main/find_shard"));
 
         Advancement.Builder sacredWritingBuilder = Advancement.Builder.advancement()
                 .parent(craftArchangelHalo)

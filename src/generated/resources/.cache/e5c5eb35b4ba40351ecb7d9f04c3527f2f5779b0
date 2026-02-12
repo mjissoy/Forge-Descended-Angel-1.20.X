@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-07T21:25:01.9536917	Advancements
+// 1.20.1	2026-02-12T14:00:40.4608099	Advancements
 8f9f98f9871ff6f7e5190c08aabbe9cc1b5a4705 data/descendedangel/advancements/main/craft_angel_halo.json
 006dbb2248ede3faaf6c52a3def75ba99f8424ea data/descendedangel/advancements/main/craft_archangel_halo.json
 61ac746988237a96ee8c39ad451f7710641259db data/descendedangel/advancements/main/craft_art_angel_feather.json
@@ -11,7 +11,9 @@
 517d0849aef24a9f5fe2f90bef7c4190adde255b data/descendedangel/advancements/main/craft_throne_halo.json
 0d0c6f5681bc03204cc4f3f9f32ebd8aff982824 data/descendedangel/advancements/main/craft_virtue_halo.json
 8d035828367861aa7d3bafed6dcfe119e6898d70 data/descendedangel/advancements/main/find_altar_structure.json
+97e1c721efd98aa3e172bf11aa9340e2c6183e50 data/descendedangel/advancements/main/find_fruit.json
 aeb0be61784528b0dc8a48104eb40b6048fc26bc data/descendedangel/advancements/main/find_sacred_ore.json
+f378a53066baa13ad46716a6aade615c3e95f084 data/descendedangel/advancements/main/find_shard.json
 e2974505fa184c485321817d9c7517d87225b94d data/descendedangel/advancements/main/find_void_drop.json
 d10539e188f31e8a408501b1542513affce236b6 data/descendedangel/advancements/main/killed_imp.json
 2b68ec8553c8fcb68393b7daf5b8f33ca51fcf59 data/descendedangel/advancements/main/killed_void_anomaly.json

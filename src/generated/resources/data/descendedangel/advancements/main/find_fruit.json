@@ -1,0 +1,38 @@
+{
+  "parent": "descendedangel:main/craft_dominion_halo",
+  "criteria": {
+    "fruit_find": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "descendedangel:fruit_of_space"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Scattered through the haunts of the Brutes, fruits from the Heavenly Garden lay."
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:fruit_of_space"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Ancient Dominions"
+    }
+  },
+  "requirements": [
+    [
+      "fruit_find"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
