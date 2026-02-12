@@ -59,9 +59,9 @@ public class ModConfigs {
         public final ForgeConfigSpec.DoubleValue GUST_RADIUS;
         public final ForgeConfigSpec.DoubleValue GUST_STRENGTH;
         public final ForgeConfigSpec.IntValue EARTH_WALL_COOLDOWN_TICKS;
-        public final ForgeConfigSpec.IntValue EARTHWALL_WIDTH;
-        public final ForgeConfigSpec.IntValue EARTHWALL_HEIGHT;
-        public final ForgeConfigSpec.IntValue EARTHWALL_DURATION_TICKS;
+        public final ForgeConfigSpec.IntValue EARTH_WALL_WIDTH;
+        public final ForgeConfigSpec.IntValue EARTH_WALL_HEIGHT;
+        public final ForgeConfigSpec.IntValue EARTH_WALL_DURATION_TICKS;
         public final ForgeConfigSpec.IntValue MIST_VEIL_COOLDOWN_TICKS;
         public final ForgeConfigSpec.IntValue MIST_VEIL_DURATION_TICKS;
 
@@ -193,14 +193,14 @@ public class ModConfigs {
             EARTH_WALL_COOLDOWN_TICKS = builder
                     .comment("Cooldown of Earth Wall ability")
                     .defineInRange("halo_earth_wall_cooldown", 200, 20, 1200000);
-            EARTHWALL_WIDTH = builder
+            EARTH_WALL_WIDTH = builder
                     .comment("Width of Earth Wall ability (blocks)")
-                    .defineInRange("halo_earth_wall_width", 2, 0, 32);
-            EARTHWALL_HEIGHT = builder
+                    .defineInRange("halo_earth_wall_width", 3, 0, 32);
+            EARTH_WALL_HEIGHT = builder
                     .comment("Height of Earth Wall ability (blocks)")
-                    .defineInRange("halo_earth_wall_height", 3, 0, 32);
-            EARTHWALL_DURATION_TICKS = builder
-                    .comment("Duration of Earth Wall ability (blocks)")
+                    .defineInRange("halo_earth_wall_height", 4, 0, 32);
+            EARTH_WALL_DURATION_TICKS = builder
+                    .comment("Duration of Earth Wall ability")
                     .defineInRange("halo_earth_wall_duration", 100, 20, 1200000);
             MIST_VEIL_COOLDOWN_TICKS = builder
                     .comment("Cooldown of Mist Veil ability")

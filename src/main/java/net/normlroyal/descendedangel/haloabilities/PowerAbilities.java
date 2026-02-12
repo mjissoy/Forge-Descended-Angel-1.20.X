@@ -26,7 +26,7 @@ public class PowerAbilities {
 
     private static final String CD_FIREBALL   = "da_cd_power_fireball_until";
     private static final String CD_GUST       = "da_cd_power_gust_until";
-    private static final String CD_EARTHWALL  = "da_cd_power_earthwall_until";
+    private static final String CD_EARTH_WALL = "da_cd_power_earthwall_until";
     private static final String CD_MIST_VEIL  = "da_cd_power_mist_veil_until";
 
     public static void tryUse(ServerPlayer sp, HaloAbility ability) {
@@ -43,7 +43,6 @@ public class PowerAbilities {
                 }
 
                 if (now < sp.getPersistentData().getLong(CD_FIREBALL)) {
-                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
                     return;
                 }
 
@@ -61,7 +60,6 @@ public class PowerAbilities {
                 }
 
                 if (now < sp.getPersistentData().getLong(CD_GUST)) {
-                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
                     return;
                 }
 
@@ -84,23 +82,22 @@ public class PowerAbilities {
                     return;
                 }
 
-                if (now < sp.getPersistentData().getLong(CD_EARTHWALL)) {
-                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
+                if (now < sp.getPersistentData().getLong(CD_EARTH_WALL)) {
                     return;
                 }
 
-                int basewidth  = ModConfigs.COMMON.EARTHWALL_WIDTH.get();
+                int basewidth  = ModConfigs.COMMON.EARTH_WALL_WIDTH.get();
                 int width = HaloScaling.addIntCapped(basewidth, tier, 1, 7);
-                int baseheight = ModConfigs.COMMON.EARTHWALL_HEIGHT.get();
+                int baseheight = ModConfigs.COMMON.EARTH_WALL_HEIGHT.get();
                 int height = HaloScaling.addIntCapped(baseheight, tier, 1, 4);
-                int basedur  = ModConfigs.COMMON.EARTHWALL_DURATION_TICKS.get();
+                int basedur  = ModConfigs.COMMON.EARTH_WALL_DURATION_TICKS.get();
                 int dur = HaloScaling.scaleIntDuration(basedur, tier);
 
                 doEarthWall(sp, width, height, dur);
 
                 int baseCd = ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get();
                 int cd = (int)Math.max(1, Math.round(baseCd * HaloScaling.cooldownMul(tier)));
-                sp.getPersistentData().putLong(CD_EARTHWALL, now + cd);
+                sp.getPersistentData().putLong(CD_EARTH_WALL, now + cd);
             }
 
             case MIST_VEIL -> {
@@ -110,7 +107,6 @@ public class PowerAbilities {
                 }
 
                 if (now < sp.getPersistentData().getLong(CD_MIST_VEIL)) {
-                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
                     return;
                 }
 

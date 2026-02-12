@@ -2,9 +2,12 @@ package net.normlroyal.descendedangel.network.packets;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.network.PacketDistributor;
 import net.normlroyal.descendedangel.haloabilities.DominionAbilities;
 import net.normlroyal.descendedangel.haloabilities.HaloAbility;
 import net.normlroyal.descendedangel.haloabilities.PowerAbilities;
+import net.normlroyal.descendedangel.haloabilities.helpers.CooldownSnapshots;
+import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.util.HaloUtils;
 
 import java.util.function.Supplier;
@@ -12,7 +15,7 @@ import java.util.function.Supplier;
 public record UseHaloAbilityC2SPacket(int abilityOrdinal) {
 
     public static void encode(UseHaloAbilityC2SPacket msg, FriendlyByteBuf buf) {
-        buf.writeVarInt(msg.abilityOrdinal);
+        buf.writeVarInt(msg.abilityOrdinal());
     }
 
     public static UseHaloAbilityC2SPacket decode(FriendlyByteBuf buf) {
@@ -41,6 +44,12 @@ public record UseHaloAbilityC2SPacket(int abilityOrdinal) {
                 }
                 default -> {}
             }
+
+            var snap = CooldownSnapshots.getCooldown(sp, ability);
+            ModNetwork.CHANNEL.send(
+                    PacketDistributor.PLAYER.with(() -> sp),
+                    new AbilityCooldownS2CPacket(ability.ordinal(), snap.until(), snap.total())
+            );
 
         });
 

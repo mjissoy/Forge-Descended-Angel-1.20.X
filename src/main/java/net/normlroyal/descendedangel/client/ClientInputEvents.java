@@ -10,6 +10,7 @@ import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.haloabilities.ClientAbilityState;
 import net.normlroyal.descendedangel.haloabilities.HaloAbility;
 import net.normlroyal.descendedangel.network.ModNetwork;
+import net.normlroyal.descendedangel.network.packets.RequestAbilityCooldownC2SPacket;
 import net.normlroyal.descendedangel.network.packets.UseHaloAbilityC2SPacket;
 import net.normlroyal.descendedangel.util.HaloUtils;
 
@@ -36,10 +37,10 @@ public class ClientInputEvents {
             ClientAbilityState.cycle(mc.player);
 
             HaloAbility selected = ClientAbilityState.get(mc.player);
-            mc.player.displayClientMessage(
-                    Component.literal(selected == null ? "Selected: (none)" : "Selected: " + selected.name()),
-                    true
-            );
+            if (selected != null) {
+                ModNetwork.CHANNEL.sendToServer(new RequestAbilityCooldownC2SPacket(selected.ordinal()));
+
+            }
         }
 
         // Use ability
@@ -48,6 +49,7 @@ public class ClientInputEvents {
             if (selected == null) return;
 
             ModNetwork.CHANNEL.sendToServer(new UseHaloAbilityC2SPacket(selected.ordinal()));
+
         }
     }
 }

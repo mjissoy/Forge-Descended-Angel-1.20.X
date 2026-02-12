@@ -5,10 +5,7 @@ import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.network.packets.ClientMsgS2CPacket;
-import net.normlroyal.descendedangel.network.packets.ShardPopS2CPacket;
-import net.normlroyal.descendedangel.network.packets.SyncWritDisplaysS2CPacket;
-import net.normlroyal.descendedangel.network.packets.UseHaloAbilityC2SPacket;
+import net.normlroyal.descendedangel.network.packets.*;
 
 public final class ModNetwork {
     private static final String PROTOCOL = "1";
@@ -45,6 +42,18 @@ public final class ModNetwork {
                 .encoder(ClientMsgS2CPacket::encode)
                 .decoder(ClientMsgS2CPacket::decode)
                 .consumerMainThread(ClientMsgS2CPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(RequestAbilityCooldownC2SPacket.class, id++, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(RequestAbilityCooldownC2SPacket::encode)
+                .decoder(RequestAbilityCooldownC2SPacket::decode)
+                .consumerMainThread(RequestAbilityCooldownC2SPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(AbilityCooldownS2CPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(AbilityCooldownS2CPacket::encode)
+                .decoder(AbilityCooldownS2CPacket::decode)
+                .consumerMainThread(AbilityCooldownS2CPacket::handle)
                 .add();
     }
 
