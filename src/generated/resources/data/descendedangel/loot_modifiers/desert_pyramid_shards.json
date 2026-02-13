@@ -1,0 +1,21 @@
+{
+  "type": "descendedangel:random_shard",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/desert_pyramid"
+    },
+    {
+      "chance": 0.1,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "maxCount": 1,
+  "minCount": 1,
+  "shards": [
+    "descendedangel:fire_shard",
+    "descendedangel:water_shard",
+    "descendedangel:earth_shard",
+    "descendedangel:air_shard"
+  ]
+}

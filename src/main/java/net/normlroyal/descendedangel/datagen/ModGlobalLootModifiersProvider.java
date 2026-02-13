@@ -9,10 +9,12 @@ import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.config.lootmodifier.AddItemModifier;
+import net.normlroyal.descendedangel.config.lootmodifier.RandomShardLootModifier;
 import net.normlroyal.descendedangel.config.lootmodifier.SpatialCoreFromEndCityTreasureModifier;
 import net.normlroyal.descendedangel.config.lootmodifier.SpatialCoreFromEndermanModifier;
 import net.normlroyal.descendedangel.item.ModItems;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
@@ -39,10 +41,8 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             // Bastion Treasure Injection
             add("fruit_of_space_bastion_treasure",
                     new AddItemModifier(
-                            new LootItemCondition[]{
-                                    LootTableIdCondition.builder(
-                                            ResourceLocation.fromNamespaceAndPath("minecraft", "chests/bastion_treasure")
-                                    ).build(),
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/bastion_treasure")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.10f).build()
                             },
                             ModItems.SPACE_FRUIT.get()
@@ -51,17 +51,30 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
             add("fruit_of_time_bastion_treasure",
                     new AddItemModifier(
-                            new LootItemCondition[]{
-                                    LootTableIdCondition.builder(
-                                            ResourceLocation.fromNamespaceAndPath("minecraft", "chests/bastion_treasure")
-                                    ).build(),
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/bastion_treasure")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.10f).build()
                             },
                             ModItems.TIME_FRUIT.get()
                     )
             );
 
-
+            // Desert Pyramid Shards Injection
+            add("desert_pyramid_shards",
+                    new RandomShardLootModifier(
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/desert_pyramid")).build(),
+                                    LootItemRandomChanceCondition.randomChance(0.10f).build()
+                            },
+                            List.of(
+                                    ModItems.FIRE_SHARD.get(),
+                                    ModItems.WATER_SHARD.get(),
+                                    ModItems.EARTH_SHARD.get(),
+                                    ModItems.AIR_SHARD.get()
+                            ),
+                            1, 1
+                    )
+            );
 
         }
     }

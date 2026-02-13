@@ -36,7 +36,6 @@ public class DominionAbilities {
 
                 long until = sp.getPersistentData().getLong(CD_TELEPORT);
                 if (now < until){
-                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
                     return;
                 }
 
@@ -58,7 +57,6 @@ public class DominionAbilities {
                 }
                 long until = sp.getPersistentData().getLong("da_cd_dom_ender_until");
                 if (now < until){
-                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
                     return;
                 }
 
@@ -76,7 +74,6 @@ public class DominionAbilities {
 
                 long until = sp.getPersistentData().getLong(CD_FIELD);
                 if (now < until) {
-                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
                     return;
                 }
 
@@ -102,7 +99,6 @@ public class DominionAbilities {
                 }
                 long until = sp.getPersistentData().getLong("da_cd_dom_timeacc_until");
                 if (now < until) {
-                    NetworkUtils.actionbar(sp, "Ability is on cooldown.");
                     return;
                 }
                 int basedur = ModConfigs.COMMON.ACCEL_DURATION_TICKS.get();

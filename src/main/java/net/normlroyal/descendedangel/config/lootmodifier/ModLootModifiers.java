@@ -2,7 +2,6 @@ package net.normlroyal.descendedangel.config.lootmodifier;
 
 import com.mojang.serialization.Codec;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -21,6 +20,9 @@ public class ModLootModifiers {
 
     public static final RegistryObject<Codec<AddItemModifier>> ADD_ITEM =
             LOOT_MODIFIERS.register("add_item", () -> AddItemModifier.CODEC);
+
+    public static final RegistryObject<Codec<RandomShardLootModifier>> RANDOM_SHARD =
+            LOOT_MODIFIERS.register("random_shard", () -> RandomShardLootModifier.CODEC);
 
     public static void register(IEventBus bus) {
         LOOT_MODIFIERS.register(bus);

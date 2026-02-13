@@ -1,6 +1,7 @@
-// 1.20.1	2026-02-09T19:08:45.2721876	Global Loot Modifiers : descendedangel
+// 1.20.1	2026-02-13T11:13:50.6430605	Global Loot Modifiers : descendedangel
+d9e06283c85b6deae497a263e76de7465902d53b data/descendedangel/loot_modifiers/desert_pyramid_shards.json
 0dfdab2064195eb7678c887f4a62ebaa6336fc16 data/descendedangel/loot_modifiers/fruit_of_space_bastion_treasure.json
 35e64212391ee2793aa27f194ec203378e868b62 data/descendedangel/loot_modifiers/fruit_of_time_bastion_treasure.json
 eeb72ad1b2dcb096bfb6711ba74a76166202b9c9 data/descendedangel/loot_modifiers/spatial_core_from_enderman.json
 933ab11040b7c36055f93b0e17b4b2a9fff1c92a data/descendedangel/loot_modifiers/spatial_core_in_end_city_treasure.json
-3b75093f63a06fcc6851ae5ff88a4a23aa6d7a3e data/forge/loot_modifiers/global_loot_modifiers.json
+e58f35337d3d30b7cfbe06c338f7cefbf26515cb data/forge/loot_modifiers/global_loot_modifiers.json
