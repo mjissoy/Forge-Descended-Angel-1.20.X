@@ -70,7 +70,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ModItems.HALO_T9.get()
         );
 
-        this.tag(WINGS);
+        this.tag(WINGS).add(
+                ModItems.WING1.get(),
+                ModItems.WING2.get(),
+                ModItems.WING3.get()
+        );
 
         this.tag(RINGS).add(
                 ModItems.HOLY_RING.get(),

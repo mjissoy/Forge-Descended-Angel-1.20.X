@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "descendedangel:void_matrix"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "descendedangel:compressed_void"
+  }
+}

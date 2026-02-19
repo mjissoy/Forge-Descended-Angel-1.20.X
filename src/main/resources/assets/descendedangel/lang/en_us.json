@@ -1,8 +1,11 @@
 {
   "item.descendedangel.angel_feather" : "Artificial Angel Feather",
   "item.descendedangel.angel_feather_real" : "Sacred Angel Feather",
-  "item.descendedangel.demon_heart" : "Demon's Heart",
+  "item.descendedangel.demon_heart" : "Demon Heart",
+  "item.descendedangel.purified_demon_heart" : "Purified Demon Heart",
   "item.descendedangel.void_tear" : "Void Droplet",
+  "item.descendedangel.compressed_void" : "Void Sphere",
+  "item.descendedangel.void_matrix" : "Void Matrix",
   "item.descendedangel.spatial_core" : "Core of Space",
   "item.descendedangel.sacred_writings" : "Sacred Text",
 
@@ -57,6 +60,11 @@
   "item.descendedangel.halo_t7" : "Cherubim Halo",
   "item.descendedangel.halo_t8" : "Throne Halo",
   "item.descendedangel.halo_t9" : "Seraphim Halo",
+
+
+  "item.descendedangel.wing_t1": "Holy Wings",
+  "item.descendedangel.wing_t2": "Angelic Wings",
+  "item.descendedangel.wing_t3": "Sacred Wings",
 
 
   "item.descendedangel.holy_necklace" : "Holy Necklace",

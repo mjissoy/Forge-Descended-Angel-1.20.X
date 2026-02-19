@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.datagen.helpers.AltarRiteRecipeBuilder;
@@ -33,6 +34,134 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_gold_nugget", has(Items.GOLD_NUGGET))
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "holy_necklace_crafting")
                 );
+
+        // Blessed Rock and Blessed Rock Crafting
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.BLESSED_ROCK_SLAB.get(),
+                Ingredient.of(ModBlocks.BLESSED_ROCK.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_slab_crafting")
+                );
+
+        stairBuilder(ModBlocks.BLESSED_ROCK_STAIR.get(),
+                Ingredient.of(ModBlocks.BLESSED_ROCK.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_stair_crafting")
+                );
+
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.BLESSED_ROCK_WALL.get(),
+                Ingredient.of(ModBlocks.BLESSED_ROCK.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_wall_crafting")
+                );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.POLISHED_BLESSED_ROCK.get(), 4)
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', ModBlocks.BLESSED_ROCK.get())
+                .unlockedBy("has_blessed_rock",
+                        has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_crafting")
+                );
+
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(),
+                Ingredient.of(ModBlocks.POLISHED_BLESSED_ROCK.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_slab_crafting")
+                );
+
+        stairBuilder(ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get(),
+                Ingredient.of(ModBlocks.POLISHED_BLESSED_ROCK.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_stair_crafting")
+                );
+
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_BLESSED_ROCK_WALL.get(),
+                Ingredient.of(ModBlocks.POLISHED_BLESSED_ROCK.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_wall_crafting")
+                );
+
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.ASHEN_ROCK_SLAB.get(),
+                Ingredient.of(ModBlocks.ASHEN_ROCK.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_slab_crafting")
+                );
+
+        stairBuilder(ModBlocks.ASHEN_ROCK_STAIR.get(),
+                Ingredient.of(ModBlocks.ASHEN_ROCK.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_stair_crafting")
+                );
+
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.ASHEN_ROCK_WALL.get(),
+                Ingredient.of(ModBlocks.ASHEN_ROCK.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_wall_crafting")
+                );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.POLISHED_ASHEN_ROCK.get(), 4)
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', ModBlocks.ASHEN_ROCK.get())
+                .unlockedBy("has_ashen_rock",
+                        has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_crafting")
+                );
+
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get(),
+                Ingredient.of(ModBlocks.POLISHED_ASHEN_ROCK.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_slab_crafting")
+                );
+
+        stairBuilder(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get(),
+                Ingredient.of(ModBlocks.POLISHED_ASHEN_ROCK.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_stair_crafting")
+                );
+
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.POLISHED_ASHEN_ROCK_WALL.get(),
+                Ingredient.of(ModBlocks.POLISHED_ASHEN_ROCK.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_wall_crafting")
+                );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COMPRESSEDVOID.get())
+                .pattern("VVV")
+                .pattern("VVV")
+                .pattern("VVV")
+                .define('V', ModItems.VOIDTEAR.get())
+                .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "compressed_void_from_void_tear"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOIDTEAR.get(), 9)
+                .requires(ModItems.COMPRESSEDVOID.get())
+                .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "void_tear_from_compressed_void"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOIDMATRIX.get())
+                .pattern("VVV")
+                .pattern("VVV")
+                .pattern("VVV")
+                .define('V', ModItems.COMPRESSEDVOID.get())
+                .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "void_matrix_from_compressed_void"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.COMPRESSEDVOID.get(), 9)
+                .requires(ModItems.VOIDMATRIX.get())
+                .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "compressed_void_from_void_matrix"));
+
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.HOLY_RING.get())
                 .pattern("ABA")
@@ -115,6 +244,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ingot_block_blasting")
                 );
 
+        SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModItems.DEMONHEART.get()),
+                        RecipeCategory.MISC,
+                        ModItems.REALDEMONHEART.get(),
+                        5.0f,
+                        200)
+                .unlockedBy("has_demon_heart", has(ModItems.DEMONHEART.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "purified_demon_heart_from_smelting")
+                );
+
+
         // Altar Rite Recipes
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.ANGELFEATHER.get()),
@@ -177,13 +317,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .displayType("altar.descendedangel.ascendance")
                 .requiredHaloTier(3)
                 .ring(
-                        RingEntry.of(Ingredient.of(ModItems.DEMONHEART.get())),
+                        RingEntry.of(Ingredient.of(ModItems.REALDEMONHEART.get())),
                         RingEntry.of(Ingredient.of(Items.DIAMOND_BLOCK)),
-                        RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(Items.DIAMOND_BLOCK)),
-                        RingEntry.of(Ingredient.of(ModItems.DEMONHEART.get())),
+                        RingEntry.of(Ingredient.of(ModItems.REALDEMONHEART.get())),
                         RingEntry.of(Ingredient.of(Items.DIAMOND_BLOCK)),
-                        RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(Items.DIAMOND_BLOCK))
                 )
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t4_rite"));
@@ -195,13 +335,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .displayType("altar.descendedangel.ascendance")
                 .requiredHaloTier(4)
                 .ring(
-                        RingEntry.of(Ingredient.of(ModItems.DEMONHEART.get())),
+                        RingEntry.of(Ingredient.of(ModItems.REALDEMONHEART.get())),
                         RingEntry.of(Ingredient.of(Items.DIAMOND_BLOCK)),
-                        RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(Items.NETHERITE_INGOT)),
-                        RingEntry.of(Ingredient.of(ModItems.DEMONHEART.get())),
+                        RingEntry.of(Ingredient.of(ModItems.REALDEMONHEART.get())),
                         RingEntry.of(Ingredient.of(Items.DIAMOND_BLOCK)),
-                        RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(Items.NETHERITE_INGOT))
                 )
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t5_rite"));
@@ -213,13 +353,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .displayType("altar.descendedangel.ascendance")
                 .requiredHaloTier(5)
                 .ring(
-                        RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(Items.NETHERITE_BLOCK)),
-                        RingEntry.of(Ingredient.of(ModItems.DEMONHEART.get())),
+                        RingEntry.of(Ingredient.of(ModItems.REALDEMONHEART.get())),
                         RingEntry.of(Ingredient.of(Items.NETHERITE_BLOCK)),
-                        RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(Items.NETHERITE_BLOCK)),
-                        RingEntry.of(Ingredient.of(ModItems.DEMONHEART.get())),
+                        RingEntry.of(Ingredient.of(ModItems.REALDEMONHEART.get())),
                         RingEntry.of(Ingredient.of(Items.NETHERITE_BLOCK))
                 )
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t6_rite"));
@@ -252,9 +392,9 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.SPATIALCORE.get())),
                         RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get())),
                         RingEntry.of(Ingredient.of(Items.DRAGON_BREATH)),
-                        RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get())),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(Items.NETHER_STAR)),
-                        RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get())),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(Items.DRAGON_BREATH)),
                         RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get()))
                 )
@@ -269,11 +409,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .ring(
                         RingEntry.of(Ingredient.of(Items.DRAGON_EGG)),
                         RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get())),
-                        RingEntry.of(Ingredient.of(Items.ECHO_SHARD)),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get())),
                         RingEntry.of(Ingredient.of(ModItems.SPATIALCORE.get())),
                         RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get())),
-                        RingEntry.of(Ingredient.of(Items.ECHO_SHARD)),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get()))
                 )
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t9_rite"));

@@ -28,7 +28,13 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> VOIDTEAR = ITEMS.register("void_tear",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COMPRESSEDVOID = ITEMS.register("compressed_void",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> VOIDMATRIX= ITEMS.register("void_matrix",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> DEMONHEART = ITEMS.register("demon_heart",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REALDEMONHEART = ITEMS.register("purified_demon_heart",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SPATIALCORE = ITEMS.register("spatial_core",
             () -> new Item(new Item.Properties()));
@@ -118,6 +124,14 @@ public class ModItems {
     public static final RegistryObject<Item> AIR_SHARD = ITEMS.register("air_shard",
             () -> new ShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
     );
+
+    // Wings
+    public static final RegistryObject<Item> WING1 = ITEMS.register("wing_t1",
+            () -> new TieredWingItem(1, new Item.Properties()));
+    public static final RegistryObject<Item> WING2 = ITEMS.register("wing_t2",
+            () -> new TieredWingItem(2, new Item.Properties()));
+    public static final RegistryObject<Item> WING3 = ITEMS.register("wing_t3",
+            () -> new TieredWingItem(3, new Item.Properties()));
 
 
 

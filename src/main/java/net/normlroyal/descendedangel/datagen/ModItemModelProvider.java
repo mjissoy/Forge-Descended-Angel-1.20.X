@@ -29,12 +29,21 @@ public class ModItemModelProvider extends ItemModelProvider {
         getBuilder("halo_t8").parent(builtinEntity());
         getBuilder("halo_t9").parent(builtinEntity());
 
+        // Wing Item Models
+        getBuilder("wing_t1").parent(builtinEntity());
+        getBuilder("wing_t2").parent(builtinEntity());
+        getBuilder("wing_t3").parent(builtinEntity());
+
+
         // Material Item Models
         basicItem(modLoc("angel_feather"));
         basicItem(modLoc("angel_feather_real"));
         basicItem(modLoc("demon_heart"));
+        basicItem(modLoc("purified_demon_heart"));
         basicItem(modLoc("spatial_core"));
         basicItem(modLoc("void_tear"));
+        basicItem(modLoc("compressed_void"));
+        basicItem(modLoc("void_matrix"));
         basicItem(modLoc("sacred_ore_ingot"));
         basicItem(modLoc("sacred_ore_raw"));
 

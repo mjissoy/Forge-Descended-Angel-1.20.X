@@ -22,7 +22,10 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.ANGELFEATHER.get());
                         output.accept(ModItems.REALANGELFEATHER.get());
                         output.accept(ModItems.VOIDTEAR.get());
+                        output.accept(ModItems.COMPRESSEDVOID.get());
+                        output.accept(ModItems.VOIDMATRIX.get());
                         output.accept(ModItems.DEMONHEART.get());
+                        output.accept(ModItems.REALDEMONHEART.get());
                         output.accept(ModItems.SPATIALCORE.get());
 
                         output.accept(ModBlocks.SACRED_ORE.get());
@@ -42,6 +45,11 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.HALO_T7.get());
                         output.accept(ModItems.HALO_T8.get());
                         output.accept(ModItems.HALO_T9.get());
+
+
+                        output.accept(ModItems.WING1.get());
+                        output.accept(ModItems.WING2.get());
+                        output.accept(ModItems.WING3.get());
 
                         output.accept(ModItems.HOLY_RING.get());
                         output.accept(ModItems.CLOUD_RING.get());

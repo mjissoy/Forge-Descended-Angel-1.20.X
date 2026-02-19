@@ -9,6 +9,7 @@ import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.ModBlockEntities;
 import net.normlroyal.descendedangel.client.render.AltarRenderer;
 import net.normlroyal.descendedangel.client.render.HaloCurioRenderer;
+import net.normlroyal.descendedangel.client.render.WingCurioRenderer;
 import net.normlroyal.descendedangel.item.ModItems;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
@@ -32,6 +33,11 @@ public class ClientModEvents {
 
             // Altar Block Renderer
             BlockEntityRenderers.register(ModBlockEntities.ALTAR.get(), AltarRenderer::new);
+
+            // Wings
+            CuriosRendererRegistry.register(ModItems.WING1.get(), WingCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.WING2.get(), WingCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.WING3.get(), WingCurioRenderer::new);
         });
     }
 }
