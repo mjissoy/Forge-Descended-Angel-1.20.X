@@ -48,6 +48,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(modLoc("sacred_ore_raw"));
         basicItem(modLoc("sacred_blood"));
 
+
         // Ring and Necklace Item Models
         basicItem(modLoc("holy_ring"));
         basicItem(modLoc("cloud_ring"));
@@ -58,6 +59,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(modLoc("messenger_pendant"));
         basicItem(modLoc("nanos_lantern"));
         basicItem(modLoc("alchemy_chain"));
+
+
+        // Equipment
+        basicItem(modLoc("destiny_spear_shaft"));
+        basicItem(modLoc("destiny_spear_head"));
+
 
         // Other Items
         basicItem(modLoc("sacred_writings"));

@@ -61,6 +61,9 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.LIGHTNESS_NECKLACE.get());
                         output.accept(ModItems.BOOSTER_NECKLACE.get());
 
+                        output.accept(ModItems.SPEARSHAFT.get());
+                        output.accept(ModItems.SPEARHEAD.get());
+
                         output.accept(ModBlocks.BLESSED_ROCK.get());
                         output.accept(ModBlocks.BLESSED_ROCK_STAIR.get());
                         output.accept(ModBlocks.BLESSED_ROCK_SLAB.get());

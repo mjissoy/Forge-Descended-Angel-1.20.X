@@ -67,7 +67,11 @@ public class ModItems {
     public static final RegistryObject<Item> HALO_T9 = ITEMS.register("halo_t9",
             () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 9));
 
-    // Wings
+    // Equipment
+    public static final RegistryObject<Item> SPEARSHAFT = ITEMS.register("destiny_spear_shaft",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SPEARHEAD = ITEMS.register("destiny_spear_head",
+            () -> new Item(new Item.Properties()));
 
 
     // Trinkets

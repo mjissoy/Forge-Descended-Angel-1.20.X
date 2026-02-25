@@ -61,6 +61,8 @@ public class ModChestLootTableProvider implements LootTableSubProvider {
                         .add(LootItem.lootTableItem(ModItems.ANGELFEATHER.get())
                                 .setWeight(4)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 3.0f))))
+                        .add(LootItem.lootTableItem(ModItems.SACRED_BLOOD.get())
+                                .setWeight(1))
                 )
 
                 // rare ancient bits
