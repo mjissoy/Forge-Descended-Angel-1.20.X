@@ -38,6 +38,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SPATIALCORE = ITEMS.register("spatial_core",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SACRED_BLOOD = ITEMS.register("sacred_blood",
+            () -> new Item(new Item.Properties()));
 
     // Ores
     public static final RegistryObject<Item> SACREDOREINGOT = ITEMS.register("sacred_ore_ingot",

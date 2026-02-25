@@ -46,6 +46,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(modLoc("void_matrix"));
         basicItem(modLoc("sacred_ore_ingot"));
         basicItem(modLoc("sacred_ore_raw"));
+        basicItem(modLoc("sacred_blood"));
 
         // Ring and Necklace Item Models
         basicItem(modLoc("holy_ring"));

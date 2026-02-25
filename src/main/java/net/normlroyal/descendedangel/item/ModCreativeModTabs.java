@@ -27,6 +27,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.DEMONHEART.get());
                         output.accept(ModItems.REALDEMONHEART.get());
                         output.accept(ModItems.SPATIALCORE.get());
+                        output.accept(ModItems.SACRED_BLOOD.get());
 
                         output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModItems.SACREDORERAW.get());
