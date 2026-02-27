@@ -64,6 +64,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         // Equipment
         basicItem(modLoc("destiny_spear_shaft"));
         basicItem(modLoc("destiny_spear_head"));
+        basicItem(modLoc("destiny_spear"));
 
 
         // Other Items

@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-19T11:57:22.6239927	Item Models: descendedangel
+// 1.20.1	2026-02-27T10:48:39.1692713	Item Models: descendedangel
 591627e5862dfc6e3647ae8edcda099eb7ee681d assets/descendedangel/models/item/air_shard.json
 424c1b6df14d0973a0cac70a6e0e51a0eed1ad7a assets/descendedangel/models/item/alchemy_chain.json
 d741f253426c63bd67627a9ad45aa6bcb2c8b428 assets/descendedangel/models/item/angel_feather.json
@@ -7,6 +7,9 @@ d0258be46bac96d3af664b27ea967d5ca6c422b3 assets/descendedangel/models/item/cloud
 97cbadc522683fc4bc34617fa40d9375f8019a42 assets/descendedangel/models/item/compressed_void.json
 04e2fe7a0da1b7eaf762f947947b01525dc60415 assets/descendedangel/models/item/cure_ring.json
 b5e56552c53b3f9c0c3845df8d2ca6c55f7bf8e7 assets/descendedangel/models/item/demon_heart.json
+fa7584745604aa299d826a0302a4b9d2f096d861 assets/descendedangel/models/item/destiny_spear.json
+fe16e7145828ba0cdd1b64574b4806ee584ee623 assets/descendedangel/models/item/destiny_spear_head.json
+97667818c98af43ae554b7a2ccc6a0f151cf5b3c assets/descendedangel/models/item/destiny_spear_shaft.json
 9d5c762bd4f3bae311b412d30be698b98a842f52 assets/descendedangel/models/item/earth_shard.json
 195e4ead0aef9a8287b937809a66416ddb8acf7a assets/descendedangel/models/item/fire_shard.json
 e245576eadc214840d0d9356e9f9a071ae3dd2bd assets/descendedangel/models/item/flame_ring.json
@@ -27,6 +30,7 @@ eab592ff44b5713df5599688db1915f23db261f1 assets/descendedangel/models/item/holy_
 8cba77345ac430bd3de99038a6e4c6624f4e51b7 assets/descendedangel/models/item/messenger_pendant.json
 22fbb6e8f8375450a8958114980eecd7a1f69c98 assets/descendedangel/models/item/nanos_lantern.json
 d4d03e6a93353e7b52c5497c18b9a0d09671b5e8 assets/descendedangel/models/item/purified_demon_heart.json
+638f8e23aae396b52c2e618ba7083dd81c1d1d8e assets/descendedangel/models/item/sacred_blood.json
 51fe62b5e6e438d41e34262daa8833a73c623fa8 assets/descendedangel/models/item/sacred_ore_ingot.json
 c7a259b92cd35eb73f7ab6dd9c8f643e384be641 assets/descendedangel/models/item/sacred_ore_raw.json
 ee0303b0373b1139d2fecd754ebc729b03761d53 assets/descendedangel/models/item/sacred_writings.json

@@ -63,6 +63,7 @@ public class ModCreativeModTabs {
 
                         output.accept(ModItems.SPEARSHAFT.get());
                         output.accept(ModItems.SPEARHEAD.get());
+                        output.accept(ModItems.DESTINY_SPEAR.get());
 
                         output.accept(ModBlocks.BLESSED_ROCK.get());
                         output.accept(ModBlocks.BLESSED_ROCK_STAIR.get());

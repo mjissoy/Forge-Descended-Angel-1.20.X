@@ -137,6 +137,10 @@
           ],
           "name": "descendedangel:angel_feather",
           "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "descendedangel:sacred_blood"
         }
       ],
       "name": "descendedangel_core_items",

@@ -2,6 +2,7 @@ package net.normlroyal.descendedangel.item;
 
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -72,6 +73,15 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SPEARHEAD = ITEMS.register("destiny_spear_head",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DESTINY_SPEAR = ITEMS.register("destiny_spear",
+            () -> new DestinySpearItem(
+                    Tiers.NETHERITE,
+                    5,
+                    -2.6F,
+                    new Item.Properties().stacksTo(1).durability(4062)
+            )
+    );
+
 
 
     // Trinkets

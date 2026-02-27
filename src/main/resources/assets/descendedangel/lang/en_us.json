@@ -8,7 +8,12 @@
   "item.descendedangel.void_matrix" : "Void Matrix",
   "item.descendedangel.spatial_core" : "Core of Space",
   "item.descendedangel.sacred_writings" : "Sacred Text",
-  "item.descendedangel.sacred_blood" : "Sacred Text",
+  "item.descendedangel.sacred_blood" : "Sacred Blood",
+
+
+  "item.descendedangel.destiny_spear_head" : "Destiny Spear Head",
+  "item.descendedangel.destiny_spear_shaft" : "Destiny Spear Shaft",
+  "item.descendedangel.destiny_spear" : "Destiny Spear",
 
 
   "entity.descendedangel.void_anomaly": "Void Anomaly",
@@ -49,7 +54,6 @@
   "altar.descendedangel.consecration": "Consecrate",
   "altar.descendedangel.imbuement": "Imbue",
   "altar.descendedangel.rite" : "Bless",
-
 
 
   "item.descendedangel.halo_t1" : "Halo",
@@ -125,6 +129,7 @@
   "ability.descendedangel.earth": "The Power of Earth strengthens Your Divinity.",
   "ability.descendedangel.air": "The Power of Air strengthens Your Divinity.",
   "message.descendedangel.shard_already_unlocked": "Your Divinity has traces of this Power already.",
+
 
   "item.descendedangel.fruit_of_space" : "Fruit of Space",
   "item.descendedangel.fruit_of_time" : "Fruit of Time",

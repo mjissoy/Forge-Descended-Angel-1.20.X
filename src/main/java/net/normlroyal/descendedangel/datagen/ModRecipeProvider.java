@@ -640,5 +640,23 @@ public class ModRecipeProvider extends RecipeProvider {
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_villager\",uses:1}}")
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_writing_villager_summon_rite"));
 
+        AltarRiteRecipeBuilder.altar(
+                        Ingredient.of(ModItems.SACRED_BLOOD.get()),
+                        new ItemStack(ModItems.DESTINY_SPEAR.get(), 1)
+                )
+                .displayType("altar.descendedangel.rite")
+                .requiredHaloTier(3)
+                .ring(
+                        RingEntry.of(Ingredient.of(ModItems.SPEARHEAD.get())),
+                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.SPEARSHAFT.get())),
+                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                        RingEntry.empty()
+                )
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/destiny_spear_rite"));
+
     }
 }

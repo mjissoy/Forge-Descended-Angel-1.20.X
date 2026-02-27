@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-19T12:03:39.4726043	Recipes
+// 1.20.1	2026-02-27T10:48:39.1692713	Recipes
 5310bb19d25b85657f27b122e0c1a1bbfcc3993c data/descendedangel/advancements/recipes/building_blocks/ashen_rock_slab_crafting.json
 dfb14ce36eea13c55c77044feaa107a3791877cb data/descendedangel/advancements/recipes/building_blocks/ashen_rock_stair_crafting.json
 427a66081bff43d33dd9d3fb7cd5eed7da432704 data/descendedangel/advancements/recipes/building_blocks/ashen_rock_wall_crafting.json
@@ -30,6 +30,7 @@ aba608e1cfdeb4c5b0fb5818cc85d00c2f4eb877 data/descendedangel/advancements/recipe
 400cc9a307c19328bdd15a5dcc4d8cf0a5ed4f4f data/descendedangel/recipes/altar/alchemy_chain_rite.json
 4906b2d233d13a9cdc7391f746612d62901955f5 data/descendedangel/recipes/altar/cloud_ring_rite.json
 11217a4630b3b89266d83161794d04c2cd99d1ec data/descendedangel/recipes/altar/cure_ring_rite.json
+295a3d80af4ed5074ceb398503c03023c63fe8ba data/descendedangel/recipes/altar/destiny_spear_rite.json
 a742bc25579766e5a2ee4f78a305a94936d297a3 data/descendedangel/recipes/altar/flame_ring_rite.json
 3f38dab4c5906df61b3d4af4d11e88ac0877a5f0 data/descendedangel/recipes/altar/halo_t1_rite.json
 b4c40b05bcfa1d4b01a87499374e8f6f9e3a211f data/descendedangel/recipes/altar/halo_t2_rite.json

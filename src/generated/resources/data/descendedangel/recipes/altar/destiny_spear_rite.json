@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:sacred_blood"
+  },
+  "display_type": "altar.descendedangel.rite",
+  "required_halo_tier": 3,
+  "result": {
+    "item": "descendedangel:destiny_spear"
+  },
+  "ring": [
+    {
+      "item": "descendedangel:destiny_spear_head"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:destiny_spear_shaft"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "empty": true
+    }
+  ]
+}
