@@ -47,6 +47,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(modLoc("sacred_ore_ingot"));
         basicItem(modLoc("sacred_ore_raw"));
         basicItem(modLoc("sacred_blood"));
+        basicItem(modLoc("angels_tears"));
 
 
         // Ring and Necklace Item Models
@@ -64,7 +65,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         // Equipment
         basicItem(modLoc("destiny_spear_shaft"));
         basicItem(modLoc("destiny_spear_head"));
-        basicItem(modLoc("destiny_spear"));
+        getBuilder("destiny_spear").parent(builtinEntity());
+
 
 
         // Other Items

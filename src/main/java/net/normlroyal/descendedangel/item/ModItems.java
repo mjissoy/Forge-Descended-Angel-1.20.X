@@ -41,6 +41,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SACRED_BLOOD = ITEMS.register("sacred_blood",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ANGELS_TEARS = ITEMS.register("angels_tears",
+            () -> new Item(new Item.Properties()));
 
     // Ores
     public static final RegistryObject<Item> SACREDOREINGOT = ITEMS.register("sacred_ore_ingot",

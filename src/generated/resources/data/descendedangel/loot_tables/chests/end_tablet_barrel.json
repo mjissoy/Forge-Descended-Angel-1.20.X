@@ -17,7 +17,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:string",
+          "name": "minecraft:chorus_fruit",
           "weight": 8
         },
         {
@@ -33,7 +33,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:bone",
+          "name": "minecraft:end_stone",
           "weight": 4
         },
         {
@@ -43,17 +43,17 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 8.0,
-                "min": 1.0
+                "max": 10.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:coal",
-          "weight": 5
+          "name": "minecraft:purpur_block",
+          "weight": 6
         }
       ],
-      "name": "common_materials",
+      "name": "nether_common_materials",
       "rolls": {
         "type": "minecraft:uniform",
         "max": 4.0,
@@ -92,11 +92,27 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:emerald",
+          "name": "minecraft:ender_pearl",
           "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:phantom_membrane",
+          "weight": 3
         }
       ],
-      "name": "gold_and_emeralds",
+      "name": "gold_and_obsidian",
       "rolls": {
         "type": "minecraft:uniform",
         "max": 2.0,
@@ -155,43 +171,21 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:echo_shard",
+          "name": "minecraft:enchanted_golden_apple",
           "weight": 2
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:diamond"
+          "name": "minecraft:shulker_box"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:enchanted_golden_apple"
+          "name": "minecraft:dragon_head"
         }
       ],
-      "name": "rare_ancient_bits",
+      "name": "end_rare_ancient_bits",
       "rolls": 1.0
     }
   ],
-  "random_sequence": "descendedangel:chests/tablet_barrel"
+  "random_sequence": "descendedangel:chests/end_tablet_barrel"
 }

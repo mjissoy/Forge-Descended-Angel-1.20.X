@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "minecraft:crimson_forest",
+      "required": false
+    },
+    {
+      "id": "minecraft:nether_wastes",
+      "required": false
+    },
+    {
+      "id": "minecraft:soul_sand_valley",
+      "required": false
+    },
+    {
+      "id": "minecraft:warped_forest",
+      "required": false
+    }
+  ]
+}

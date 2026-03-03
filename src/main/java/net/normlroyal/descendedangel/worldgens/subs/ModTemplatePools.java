@@ -19,6 +19,10 @@ public class ModTemplatePools {
             key("aboveground_tablet/start_pool");
     public static final ResourceKey<StructureTemplatePool> ANCIENTCITY_TABLET_START =
             key("ancientcity_tablet/start_pool");
+    public static final ResourceKey<StructureTemplatePool>  NETHER_TABLET_START =
+            key("nether_tablet/start_pool");
+    public static final ResourceKey<StructureTemplatePool> END_TABLET_START =
+            key("end_tablet/start_pool");
     public static final ResourceKey<StructureTemplatePool> RUINED_CATHEDRAL_START =
             key("ruined_cathedral/start_pool");
 
@@ -47,6 +51,28 @@ public class ModTemplatePools {
                         empty,
                         List.of(Pair.of(
                                         StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ancientcity_tablet").toString())
+                                                .apply(StructureTemplatePool.Projection.RIGID),
+                                        1
+                                )
+                        )
+                ));
+
+        ctx.register(NETHER_TABLET_START,
+                new StructureTemplatePool(
+                        empty,
+                        List.of(Pair.of(
+                                StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "nether_tablet").toString())
+                                        .apply(StructureTemplatePool.Projection.RIGID),
+                                        1
+                        )
+                )
+        ));
+
+        ctx.register(END_TABLET_START,
+                new StructureTemplatePool(
+                        empty,
+                        List.of(Pair.of(
+                                        StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "end_tablet").toString())
                                                 .apply(StructureTemplatePool.Projection.RIGID),
                                         1
                                 )

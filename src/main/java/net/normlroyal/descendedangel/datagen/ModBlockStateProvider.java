@@ -68,6 +68,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.TEMP_EARTH_WALL.get(),
                 models().cubeAll("temp_earth_wall", modLoc("block/temp_earth_wall")));
 
+        simpleBlockWithItem(ModBlocks.VOID_CAVE_BLOCK.get(),
+                models().cubeAll("void_cave_wall", modLoc("block/void_cave_wall")));
+
 
     }
 

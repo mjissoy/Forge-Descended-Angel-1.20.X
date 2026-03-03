@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-27T10:04:58.992955	Loot Tables
+// 1.20.1	2026-03-03T12:42:43.02164	Loot Tables
 eae145582af0cca3a184ae74f8b1a7b4018595e6 data/descendedangel/loot_tables/blocks/ashen_rock.json
 6aadec23d73e7dd0aa53bd630532cbda02729c18 data/descendedangel/loot_tables/blocks/ashen_rock_slab.json
 d54047fbf629e770ff34f077c34286fb034fce90 data/descendedangel/loot_tables/blocks/ashen_rock_stair.json
@@ -18,6 +18,8 @@ b299b71ec76ffc636c5b353b0b24a79b8b3c1b79 data/descendedangel/loot_tables/blocks/
 150ebd9e150eff61c2a652abdea65c50886f1962 data/descendedangel/loot_tables/blocks/raw_sacred_ore_block.json
 1934356a2049f8b53ffe4534bab54d25a8aee98c data/descendedangel/loot_tables/blocks/sacred_ingot_block.json
 ca9baad2dc84673778a40593a470b30026e810fd data/descendedangel/loot_tables/blocks/sacred_ore.json
-40399da5bb1f67c5a6e54c49bbe8b7261d7431a1 data/descendedangel/loot_tables/chests/tablet_barrel.json
+31dc20928399d653fb4b3601177885d19c264c6b data/descendedangel/loot_tables/chests/end_tablet_barrel.json
+6424b9187a3f66021d7cb37a84e08d3b9dadb572 data/descendedangel/loot_tables/chests/nether_tablet_barrel.json
+e438b71328e0e036ac531622d098a8b9455ffc50 data/descendedangel/loot_tables/chests/tablet_barrel.json
 15506b13d33943b3fb97bc8b121484a1745288f7 data/descendedangel/loot_tables/entities/imp.json
 540e0dfe99abf58890602a96382da1b0ab323789 data/descendedangel/loot_tables/entities/void_anomaly.json

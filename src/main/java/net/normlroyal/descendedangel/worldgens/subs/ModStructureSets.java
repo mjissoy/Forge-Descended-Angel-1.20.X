@@ -19,6 +19,8 @@ public class ModStructureSets {
 
     public static final ResourceKey<StructureSet> ABOVEGROUND_TABLET = key("aboveground_tablet");
     public static final ResourceKey<StructureSet> ANCIENTCITY_TABLET = key("ancientcity_tablet");
+    public static final ResourceKey<StructureSet> NETHER_TABLET = key("nether_tablet");
+    public static final ResourceKey<StructureSet> END_TABLET = key("end_tablet");
     public static final ResourceKey<StructureSet> RUINED_CATHEDRAL = key("ruined_cathedral");
 
     private static ResourceKey<StructureSet> key(String id) {
@@ -40,6 +42,24 @@ public class ModStructureSets {
         ctx.register(ANCIENTCITY_TABLET,
                 new StructureSet(
                         List.of(StructureSet.entry(structures.getOrThrow(ModStructures.ANCIENTCITY_TABLET), 1)),
+                        new RandomSpreadStructurePlacement(
+                                48, 24, RandomSpreadType.LINEAR, 91827364
+                        )
+                )
+        );
+
+        ctx.register(NETHER_TABLET,
+                new StructureSet(
+                        List.of(StructureSet.entry(structures.getOrThrow(ModStructures.NETHER_TABLET), 1)),
+                        new RandomSpreadStructurePlacement(
+                                48, 24, RandomSpreadType.LINEAR, 91827364
+                        )
+                )
+        );
+
+        ctx.register(END_TABLET,
+                new StructureSet(
+                        List.of(StructureSet.entry(structures.getOrThrow(ModStructures.END_TABLET), 1)),
                         new RandomSpreadStructurePlacement(
                                 48, 24, RandomSpreadType.LINEAR, 91827364
                         )

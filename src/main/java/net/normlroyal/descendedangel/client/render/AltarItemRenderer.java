@@ -25,12 +25,12 @@ public class AltarItemRenderer extends GeoItemRenderer<AltarItem> {
 
         switch (ctx) {
             case GUI -> {
-                poseStack.translate(0.1D, -0.40D, 0.0D);
-                poseStack.scale(0.80f, 0.80f, 0.80f);
+                poseStack.translate(0.30D, 0, 0.0D);
+                poseStack.scale(0.35f, 0.35f, 0.35f);
             }
             case GROUND, FIRST_PERSON_LEFT_HAND, FIRST_PERSON_RIGHT_HAND, THIRD_PERSON_LEFT_HAND,
                  THIRD_PERSON_RIGHT_HAND -> {
-                poseStack.scale(0.75f, 0.75f, 0.75f);
+                poseStack.scale(0.65f, 0.65f, 0.65f);
             }
             case FIXED -> {
                 poseStack.scale(0.75f, 0.75f, 0.75f);

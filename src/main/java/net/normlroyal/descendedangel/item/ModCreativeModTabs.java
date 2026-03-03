@@ -28,6 +28,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.REALDEMONHEART.get());
                         output.accept(ModItems.SPATIALCORE.get());
                         output.accept(ModItems.SACRED_BLOOD.get());
+                        output.accept(ModItems.ANGELS_TEARS.get());
 
                         output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModItems.SACREDORERAW.get());
@@ -82,6 +83,8 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get());
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get());
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
+
+                        output.accept(ModBlocks.VOID_CAVE_BLOCK.get());
 
                         output.accept(ModItems.SPACE_FRUIT.get());
                         output.accept(ModItems.TIME_FRUIT.get());

@@ -6,7 +6,6 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
@@ -27,6 +26,8 @@ public class ModStructures {
 
     public static final ResourceKey<Structure> ABOVEGROUND_TABLET = key("aboveground_tablet");
     public static final ResourceKey<Structure> ANCIENTCITY_TABLET = key("ancientcity_tablet");
+    public static final ResourceKey<Structure> NETHER_TABLET = key("nether_tablet");
+    public static final ResourceKey<Structure> END_TABLET = key("end_tablet");
     public static final ResourceKey<Structure> RUINED_CATHEDRAL = key("ruined_cathedral");
 
     private static ResourceKey<Structure> key(String id) {
@@ -41,6 +42,12 @@ public class ModStructures {
         TagKey<Biome> HAS_ABOVEGROUND_TABLET =
                 TagKey.create(Registries.BIOME,
                         ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "has_aboveground_tablet"));
+        TagKey<Biome> HAS_NETHER_TABLET =
+                TagKey.create(Registries.BIOME,
+                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "has_nether_tablet"));
+        TagKey<Biome> HAS_END_TABLET =
+                TagKey.create(Registries.BIOME,
+                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "has_end_tablet"));
         TagKey<Biome> HAS_RUINED_CATHEDRAL =
                 TagKey.create(Registries.BIOME,
                         ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "has_ruined_cathedral"));
@@ -79,6 +86,42 @@ public class ModStructures {
                         ConstantHeight.of(VerticalAnchor.absolute(-50)),
                         false,
                         Optional.empty(),
+                        80
+                )
+        );
+
+        ctx.register(NETHER_TABLET,
+                new JigsawStructure(
+                        new Structure.StructureSettings(
+                                biomes.getOrThrow(HAS_NETHER_TABLET),
+                                Map.of(),
+                                net.minecraft.world.level.levelgen.GenerationStep.Decoration.SURFACE_STRUCTURES,
+                                TerrainAdjustment.BEARD_THIN
+                        ),
+                        pools.getOrThrow(ModTemplatePools.NETHER_TABLET_START),
+                        Optional.empty(),
+                        1,
+                        ConstantHeight.of(VerticalAnchor.absolute(0)),
+                        false,
+                        Optional.of(Heightmap.Types.WORLD_SURFACE_WG),
+                        80
+                )
+        );
+
+        ctx.register(END_TABLET,
+                new JigsawStructure(
+                        new Structure.StructureSettings(
+                                biomes.getOrThrow(HAS_END_TABLET),
+                                Map.of(),
+                                net.minecraft.world.level.levelgen.GenerationStep.Decoration.SURFACE_STRUCTURES,
+                                TerrainAdjustment.BEARD_THIN
+                        ),
+                        pools.getOrThrow(ModTemplatePools.END_TABLET_START),
+                        Optional.empty(),
+                        1,
+                        ConstantHeight.of(VerticalAnchor.absolute(0)),
+                        false,
+                        Optional.of(Heightmap.Types.WORLD_SURFACE_WG),
                         80
                 )
         );

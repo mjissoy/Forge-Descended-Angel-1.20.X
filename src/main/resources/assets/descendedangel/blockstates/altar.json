@@ -1,5 +1,19 @@
 {
   "variants": {
-    "": { "model": "descendedangel:block/altar_particles" }
+    "facing=north,part=center": { "model": "minecraft:block/air" },
+    "facing=north,part=left":   { "model": "minecraft:block/air" },
+    "facing=north,part=right":  { "model": "minecraft:block/air" },
+
+    "facing=south,part=center": { "model": "minecraft:block/air" },
+    "facing=south,part=left":   { "model": "minecraft:block/air" },
+    "facing=south,part=right":  { "model": "minecraft:block/air" },
+
+    "facing=west,part=center":  { "model": "minecraft:block/air" },
+    "facing=west,part=left":    { "model": "minecraft:block/air" },
+    "facing=west,part=right":   { "model": "minecraft:block/air" },
+
+    "facing=east,part=center":  { "model": "minecraft:block/air" },
+    "facing=east,part=left":    { "model": "minecraft:block/air" },
+    "facing=east,part=right":   { "model": "minecraft:block/air" }
   }
 }

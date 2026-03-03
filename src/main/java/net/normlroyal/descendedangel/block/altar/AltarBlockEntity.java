@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
@@ -381,6 +382,11 @@ public class AltarBlockEntity extends BlockEntity implements MenuProvider, GeoAn
         int slotTier = haloTierOf(items.getStackInSlot(HALO_SLOT));
         int coreTier = haloTierOf(items.getStackInSlot(CORE_SLOT));
         return Math.max(slotTier, coreTier);
+    }
+
+    @Override
+    public AABB getRenderBoundingBox() {
+        return new AABB(worldPosition).inflate(1.0D, 1.0D, 1.0D);
     }
 
 }

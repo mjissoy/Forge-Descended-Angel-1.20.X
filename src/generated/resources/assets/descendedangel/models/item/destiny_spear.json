@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "descendedangel:item/destiny_spear"
-  }
+  "parent": "minecraft:builtin/entity"
 }

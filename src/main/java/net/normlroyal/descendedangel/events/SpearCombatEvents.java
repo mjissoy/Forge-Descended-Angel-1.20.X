@@ -4,7 +4,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -38,38 +37,26 @@ public class SpearCombatEvents {
         float strength = player.getAttackStrengthScale(0.0F);
         if (strength < 0.65F) return;
 
-        event.setCanceled(true);
-
         boolean wantsSweep = player.isShiftKeyDown();
 
-        if (wantsSweep) {
-            doSweep(player, stack);
-            return;
-        }
+        boolean didCustom = wantsSweep
+                ? doSweep(player, stack)
+                : (player.getRandom().nextBoolean() ? doThrust(player, stack) : doCut(player, stack));
 
-        boolean thrust = player.getRandom().nextBoolean();
-        if (thrust) doThrust(player, stack);
-        else doCut(player, stack);
+        if (didCustom) event.setCanceled(true);
     }
 
-
-    private static void doThrust(Player player, ItemStack spear) {
+    private static boolean doThrust(Player player, ItemStack spear) {
         LivingEntity target = raytraceLiving(player, 4.6D, 1.0D);
-        if (target == null) return;
+        if (target == null) return false;
 
         float base = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float dmg = base + 2.0F;
 
-        if (!target.hurt(player.damageSources().playerAttack(player), dmg)) return;
+        if (!target.hurt(player.damageSources().playerAttack(player), dmg)) return false;
 
-        player.level().playSound(
-                null,
-                player.blockPosition(),
-                SoundEvents.TRIDENT_HIT,
-                SoundSource.PLAYERS,
-                1.0F,
-                1.2F
-        );
+        player.level().playSound(null, player.blockPosition(),
+                SoundEvents.TRIDENT_HIT, SoundSource.PLAYERS, 1.0F, 1.2F);
 
         Vec3 dir = player.getLookAngle().normalize();
         player.push(dir.x * 0.18, 0.0, dir.z * 0.18);
@@ -83,65 +70,55 @@ public class SpearCombatEvents {
         }
 
         spear.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-        player.swing(InteractionHand.MAIN_HAND, true);
         player.getCooldowns().addCooldown(spear.getItem(), 3);
+
+        return true;
     }
 
-    private static void doCut(Player player, ItemStack spear) {
+    private static boolean doCut(Player player, ItemStack spear) {
         LivingEntity target = raytraceLiving(player, 3.2D, 0.8D);
-        if (target == null) return;
+        if (target == null) return false;
 
         float base = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float dmg = base + 0.5F;
 
-        if (!target.hurt(player.damageSources().playerAttack(player), dmg)) return;
+        if (!target.hurt(player.damageSources().playerAttack(player), dmg)) return false;
 
-        player.level().playSound(
-                null,
-                player.blockPosition(),
-                SoundEvents.PLAYER_ATTACK_SWEEP,
-                SoundSource.PLAYERS,
-                1.0F,
-                1.0F
-        );
+        player.level().playSound(null, player.blockPosition(),
+                SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.0F, 1.0F);
 
         if (player.level() instanceof ServerLevel sl) {
-            sl.sendParticles(
-                    ParticleTypes.CRIT,
+            sl.sendParticles(ParticleTypes.CRIT,
                     target.getX(), target.getY() + 1.0D, target.getZ(),
-                    6,
-                    0.25D, 0.25D, 0.25D,
-                    0.05D
-            );
+                    6, 0.25D, 0.25D, 0.25D, 0.05D);
+
         }
 
         target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 50, 0));
 
         spear.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-        player.swing(InteractionHand.MAIN_HAND, true);
         player.getCooldowns().addCooldown(spear.getItem(), 1);
+
+        return true;
     }
 
-    private static void doSweep(Player player, ItemStack spear) {
+    private static boolean doSweep(Player player, ItemStack spear) {
         Level level = player.level();
 
         double radius = 3.0D;
         Vec3 origin = player.position().add(0, 1.0, 0);
         Vec3 forward = player.getLookAngle().normalize();
-
         AABB area = player.getBoundingBox().inflate(radius, 1.0, radius);
 
         float base = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float dmg = base * 0.75F;
 
         int hits = 0;
-        for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, area, ent ->
-                ent != player && ent.isAlive() && ent.isPickable())) {
+        for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, area,
+                ent -> ent != player && ent.isAlive() && ent.isPickable())) {
 
             Vec3 to = e.position().add(0, 1.0, 0).subtract(origin).normalize();
-            double dot = forward.dot(to);
-
-            if (dot < 0.35) continue;
+            if (forward.dot(to) < 0.35) continue;
 
             if (e.hurt(player.damageSources().playerAttack(player), dmg)) {
                 Vec3 push = forward.scale(0.35);
@@ -150,12 +127,15 @@ public class SpearCombatEvents {
             }
         }
 
-        player.swing(InteractionHand.MAIN_HAND, true);
+        if (hits <= 0) return false;
 
-        if (hits > 0) {
-            spear.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-            player.getCooldowns().addCooldown(spear.getItem(), 14);
+        if (player.level() instanceof ServerLevel sl) {
         }
+
+        spear.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+        player.getCooldowns().addCooldown(spear.getItem(), 14);
+
+        return true;
     }
 
     private static LivingEntity raytraceLiving(Player player, double range, double inflate) {
@@ -167,7 +147,7 @@ public class SpearCombatEvents {
 
         EntityHitResult hit = ProjectileUtil.getEntityHitResult(
                 player.level(), player, eye, end, box,
-                e -> e instanceof LivingEntity le && le.isAlive() && le.isPickable() && e != player
+                e -> e instanceof LivingEntity le && le.isAlive() && e.isPickable() && e != player
         );
 
         return (hit != null && hit.getEntity() instanceof LivingEntity le) ? le : null;
@@ -176,7 +156,6 @@ public class SpearCombatEvents {
     private static void spawnThrustLine(ServerLevel level, Player player, double range) {
         Vec3 eye = player.getEyePosition();
         Vec3 dir = player.getLookAngle().normalize();
-
         Vec3 start = eye.add(dir.scale(0.5));
 
         int points = 14;
@@ -184,14 +163,9 @@ public class SpearCombatEvents {
             double t = (range * i) / points;
             Vec3 p = start.add(dir.scale(t));
 
-            level.sendParticles(
-                    ParticleTypes.END_ROD,
-                    p.x, p.y, p.z,
-                    1,
-                    0.0D, 0.0D, 0.0D,
-                    0.0D
-            );
+            level.sendParticles(ParticleTypes.END_ROD,
+                    p.x, p.y, p.z, 1,
+                    0.0D, 0.0D, 0.0D, 0.0D);
         }
     }
-
 }
