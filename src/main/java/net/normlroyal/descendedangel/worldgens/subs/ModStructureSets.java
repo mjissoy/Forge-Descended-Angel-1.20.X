@@ -52,7 +52,7 @@ public class ModStructureSets {
                 new StructureSet(
                         List.of(StructureSet.entry(structures.getOrThrow(ModStructures.NETHER_TABLET), 1)),
                         new RandomSpreadStructurePlacement(
-                                48, 24, RandomSpreadType.LINEAR, 91827364
+                                48, 24, RandomSpreadType.LINEAR, 91827564
                         )
                 )
         );
@@ -61,7 +61,7 @@ public class ModStructureSets {
                 new StructureSet(
                         List.of(StructureSet.entry(structures.getOrThrow(ModStructures.END_TABLET), 1)),
                         new RandomSpreadStructurePlacement(
-                                48, 24, RandomSpreadType.LINEAR, 91827364
+                                48, 24, RandomSpreadType.LINEAR, 92827364
                         )
                 )
         );

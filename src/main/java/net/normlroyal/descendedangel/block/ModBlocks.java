@@ -84,7 +84,7 @@ public class ModBlocks {
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_WALL)));
 
     public static final RegistryObject<Block> VOID_CAVE_BLOCK = registerBlock("void_cave_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

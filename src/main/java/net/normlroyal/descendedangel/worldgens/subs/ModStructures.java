@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
+import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
@@ -101,9 +102,9 @@ public class ModStructures {
                         pools.getOrThrow(ModTemplatePools.NETHER_TABLET_START),
                         Optional.empty(),
                         1,
-                        ConstantHeight.of(VerticalAnchor.absolute(0)),
+                        UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.absolute(96)),
                         false,
-                        Optional.of(Heightmap.Types.WORLD_SURFACE_WG),
+                        Optional.empty(),
                         80
                 )
         );
@@ -119,9 +120,9 @@ public class ModStructures {
                         pools.getOrThrow(ModTemplatePools.END_TABLET_START),
                         Optional.empty(),
                         1,
-                        ConstantHeight.of(VerticalAnchor.absolute(0)),
+                        UniformHeight.of(VerticalAnchor.absolute(32), VerticalAnchor.absolute(96)),
                         false,
-                        Optional.of(Heightmap.Types.WORLD_SURFACE_WG),
+                        Optional.empty(),
                         80
                 )
         );
