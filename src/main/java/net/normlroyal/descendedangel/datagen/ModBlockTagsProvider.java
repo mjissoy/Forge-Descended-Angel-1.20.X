@@ -67,6 +67,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.POLISHED_ASHEN_ROCK_WALL.get()
         );
 
+        // Wall Tag
+        this.tag(BlockTags.WALLS)
+                .add(ModBlocks.BLESSED_ROCK_WALL.get())
+                .add(ModBlocks.ASHEN_ROCK_WALL.get())
+                .add(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get())
+                .add(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());;
+
         // Mining Tags
         this.tag(BlockTags.NEEDS_STONE_TOOL)
                 .addTag(BLESSED_BLOCKS)

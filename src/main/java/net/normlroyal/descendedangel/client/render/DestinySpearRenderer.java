@@ -26,6 +26,11 @@ public class DestinySpearRenderer extends GeoItemRenderer<DestinySpearItem> {
         if (context == ItemDisplayContext.GUI) {
             poseStack.scale(0.5F, 0.5F, 0.5F);
             poseStack.translate(0.0D, -0.5D, 0.0D);
+        } else if (context == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND
+                || context == ItemDisplayContext.FIRST_PERSON_LEFT_HAND
+                || context == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND
+                || context == ItemDisplayContext.THIRD_PERSON_LEFT_HAND) {
+            poseStack.translate(0.0D, -12.0D / 16.0D, 0.0D);
         }
 
         super.renderByItem(stack, context, poseStack, bufferSource, packedLight, packedOverlay);

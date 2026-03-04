@@ -83,6 +83,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> POLISHED_ASHEN_ROCK_WALL = registerBlock("polished_ashen_rock_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_BLACKSTONE_WALL)));
 
+
     public static final RegistryObject<Block> VOID_CAVE_BLOCK = registerBlock("void_cave_wall",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
 
