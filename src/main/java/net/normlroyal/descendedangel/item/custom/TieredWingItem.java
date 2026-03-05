@@ -1,11 +1,11 @@
 package net.normlroyal.descendedangel.item.custom;
 
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.normlroyal.descendedangel.events.useful.WingRenderContext;
+import net.normlroyal.descendedangel.flight.ClientFlightState;
 import net.normlroyal.descendedangel.util.IWingItem;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -88,7 +88,12 @@ public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioIt
             var c = state.getController();
             String prefix = "animation.wing_t" + tier + ".";
 
-            if (e.isFallFlying()) {
+            boolean customFlying = false;
+            if (tier >= 2) {
+                customFlying = ClientFlightState.isActive();
+            }
+
+            if (e.isFallFlying() || customFlying) {
                 c.setAnimation(RawAnimation.begin().thenLoop(prefix + "flying"));
                 return PlayState.CONTINUE;
             }

@@ -13,6 +13,7 @@ public class ClientParticleEvents {
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticles.VOID_TOUCHED.get(), VTPProvider::new);
+        event.registerSpriteSet(ModParticles.ANGEl_FLIGHT.get(), AFPProvider::new);
         event.registerSpriteSet(ModParticles.BLUE_PORTAL.get(), BluePortalParticle.Provider::new);
     }
 }

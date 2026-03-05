@@ -12,6 +12,8 @@ import org.lwjgl.glfw.GLFW;
 public class ClientKeybinds {
     public static KeyMapping OPEN_WHEEL;
     public static KeyMapping USE_ABILITY;
+    public static KeyMapping FLIGHT_BOOST;
+    public static KeyMapping FLIGHT_DESCEND;
 
     @SubscribeEvent
     public static void registerKeys(RegisterKeyMappingsEvent event) {
@@ -27,7 +29,21 @@ public class ClientKeybinds {
                 "key.categories.descendedangel"
         );
 
+        FLIGHT_BOOST = new KeyMapping(
+                "key.descendedangel.flight_boost",
+                GLFW.GLFW_KEY_LEFT_CONTROL,
+                "key.categories.descendedangel"
+        );
+
+        FLIGHT_DESCEND = new KeyMapping(
+                "key.descendedangel.flight_descend",
+                GLFW.GLFW_KEY_LEFT_SHIFT,
+                "key.categories.descendedangel"
+        );
+
         event.register(OPEN_WHEEL);
         event.register(USE_ABILITY);
+        event.register(FLIGHT_BOOST);
+        event.register(FLIGHT_DESCEND);
     }
 }

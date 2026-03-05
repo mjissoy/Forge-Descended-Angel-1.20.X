@@ -2,6 +2,7 @@ package net.normlroyal.descendedangel.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -10,14 +11,27 @@ import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.haloabilities.ClientAbilityState;
 import net.normlroyal.descendedangel.haloabilities.HaloAbility;
 import net.normlroyal.descendedangel.network.ModNetwork;
+import net.normlroyal.descendedangel.network.packets.FlightInputC2SPacket;
 import net.normlroyal.descendedangel.network.packets.RequestAbilityCooldownC2SPacket;
+import net.normlroyal.descendedangel.network.packets.ToggleFlightC2SPacket;
 import net.normlroyal.descendedangel.network.packets.UseHaloAbilityC2SPacket;
 import net.normlroyal.descendedangel.util.HaloUtils;
+import net.normlroyal.descendedangel.util.WingLogic;
+import net.normlroyal.descendedangel.util.WingUtils;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ClientInputEvents {
 
     private static int lastTier = -1;
+
+    private static final int DOUBLE_TAP_WINDOW_TICKS = 7;
+
+    private static boolean wasJumpDown = false;
+    private static int ticksSinceLastJumpPress = 999;
+
+    private static boolean lastAscend = false;
+    private static boolean lastDescend = false;
+    private static boolean lastBoost = false;
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
@@ -50,6 +64,48 @@ public class ClientInputEvents {
 
             ModNetwork.CHANNEL.sendToServer(new UseHaloAbilityC2SPacket(selected.ordinal()));
 
+        }
+
+        ticksSinceLastJumpPress++;
+
+        boolean jumpDown = mc.options.keyJump.isDown();
+        boolean jumpPressedThisTick = jumpDown && !wasJumpDown;
+        wasJumpDown = jumpDown;
+
+        // Custom Flight Toggle
+        if (jumpPressedThisTick) {
+            ItemStack wings = WingUtils.getEquippedWings(mc.player);
+            if (!wings.isEmpty() && WingLogic.allowsCustomFlight(wings)) {
+
+                if (mc.screen == null && !mc.player.isFallFlying()) {
+                    if (ticksSinceLastJumpPress <= DOUBLE_TAP_WINDOW_TICKS) {
+                        ModNetwork.CHANNEL.sendToServer(new ToggleFlightC2SPacket());
+                        ticksSinceLastJumpPress = 999;
+                    } else {
+                        ticksSinceLastJumpPress = 0;
+                    }
+                }
+            } else {
+                ticksSinceLastJumpPress = 999;
+            }
+        }
+
+        // Ascend-Descend-Boost while in custom flight
+        ItemStack wings = WingUtils.getEquippedWings(mc.player);
+        if (!wings.isEmpty() && WingLogic.allowsCustomFlight(wings)) {
+            boolean ascend = mc.options.keyJump.isDown();
+            boolean descend = mc.options.keyShift.isDown();
+            boolean boost = ClientKeybinds.FLIGHT_BOOST.isDown();
+
+            if (ascend != lastAscend || descend != lastDescend || boost != lastBoost) {
+                lastAscend = ascend;
+                lastDescend = descend;
+                lastBoost = boost;
+
+                ModNetwork.CHANNEL.sendToServer(new FlightInputC2SPacket(ascend, descend, boost));
+            }
+        } else {
+            lastAscend = lastDescend = lastBoost = false;
         }
     }
 }

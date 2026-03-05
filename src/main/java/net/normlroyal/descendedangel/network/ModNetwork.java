@@ -55,6 +55,24 @@ public final class ModNetwork {
                 .decoder(AbilityCooldownS2CPacket::decode)
                 .consumerMainThread(AbilityCooldownS2CPacket::handle)
                 .add();
+
+        CHANNEL.messageBuilder(ToggleFlightC2SPacket.class, id++, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ToggleFlightC2SPacket::encode)
+                .decoder(ToggleFlightC2SPacket::decode)
+                .consumerMainThread(ToggleFlightC2SPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(FlightInputC2SPacket.class, id++, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(FlightInputC2SPacket::encode)
+                .decoder(FlightInputC2SPacket::decode)
+                .consumerMainThread(FlightInputC2SPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(FlightActiveS2CPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(FlightActiveS2CPacket::encode)
+                .decoder(FlightActiveS2CPacket::decode)
+                .consumerMainThread(FlightActiveS2CPacket::handle)
+                .add();
     }
 
     private ModNetwork() {}
