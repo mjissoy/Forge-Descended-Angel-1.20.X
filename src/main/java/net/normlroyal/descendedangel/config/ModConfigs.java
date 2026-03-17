@@ -65,6 +65,10 @@ public class ModConfigs {
         public final ForgeConfigSpec.IntValue MIST_VEIL_COOLDOWN_TICKS;
         public final ForgeConfigSpec.IntValue MIST_VEIL_DURATION_TICKS;
 
+        public final ForgeConfigSpec.DoubleValue T2_SPEED_MULTIPLIER;
+        public final ForgeConfigSpec.DoubleValue T3_SPEED_MULTIPLIER;
+        public final ForgeConfigSpec.DoubleValue GLOBAL_FLIGHT_SPEED_MULTIPLIER;
+
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("Config Options");
@@ -125,6 +129,19 @@ public class ModConfigs {
             Necklaces_Effectiveness = builder
                     .comment("Global multiplier for all Necklace bonuses. < 1.0 = weaker necklace, > 1.0 = stronger.")
                     .defineInRange("necklaceEffectivenessMultiplier", 1.0D, 0.0D, 100.0D);
+
+            builder.pop();
+
+            builder.push("--Wing Settings--");
+            T2_SPEED_MULTIPLIER = builder
+                    .comment("Speed multiplier for tier 2 wings.")
+                    .defineInRange("t2SpeedMultiplier", 1.0, 0.1, 10.0);
+            T3_SPEED_MULTIPLIER = builder
+                    .comment("Speed multiplier for tier 3 wings.")
+                    .defineInRange("t3SpeedMultiplier", 1.75, 0.1, 10.0);
+            GLOBAL_FLIGHT_SPEED_MULTIPLIER = builder
+                    .comment("Global multiplier for angelic custom flight speed.")
+                    .defineInRange("globalFlightSpeedMultiplier", 1.0, 0.1, 10.0);
 
             builder.pop();
 

@@ -1,7 +1,10 @@
 package net.normlroyal.descendedangel.flight;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+import net.normlroyal.descendedangel.util.WingLogic;
+import net.normlroyal.descendedangel.util.WingUtils;
 
 public class AngelicFlightController implements FlightController {
 
@@ -18,10 +21,19 @@ public class AngelicFlightController implements FlightController {
 
     @Override
     public void tick(ServerPlayer p, FlightState state, FlightInput input) {
+        ItemStack wings = WingUtils.getEquippedWings(p);
+        int tier = WingLogic.getWingTier(wings);
+
+        double tierSpeedMul = WingFlightStats.speedMultiplier(tier);
+        double tierAccelMul = WingFlightStats.accelMultiplier(tier);
+
         // Horizontal
-        final double MAX_SPEED = input.boost() ? 1.25 : 0.95;
-        final float ACCEL = input.boost() ? 0.08f : 0.06f;
+        final double baseMAX_SPEED = input.boost() ? 1.25 : 0.95;
+        final float baseACCEL = input.boost() ? 0.08f : 0.06f;
         final double DRAG = 0.93;
+
+        final double MAX_SPEED = baseMAX_SPEED * tierSpeedMul;
+        final float ACCEL = (float) (baseACCEL * tierAccelMul);
 
         // Vertical
         final double HOVER_TARGET = 0.02;
