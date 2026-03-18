@@ -6,7 +6,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.datagen.helpers.AltarRiteRecipeBuilder;
