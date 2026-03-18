@@ -50,6 +50,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.BLESSED_ROCK_SLAB.get(),
                 ModBlocks.BLESSED_ROCK_STAIR.get(),
                 ModBlocks.BLESSED_ROCK_WALL.get(),
+                ModBlocks.BLESSED_ROCK_BRICKS.get(),
+                ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get(),
+                ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get(),
+                ModBlocks.BLESSED_ROCK_BRICKS_WALL.get(),
                 ModBlocks.POLISHED_BLESSED_ROCK.get(),
                 ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(),
                 ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get(),
@@ -61,6 +65,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.ASHEN_ROCK_SLAB.get(),
                 ModBlocks.ASHEN_ROCK_STAIR.get(),
                 ModBlocks.ASHEN_ROCK_WALL.get(),
+                ModBlocks.ASHEN_ROCK_BRICKS.get(),
+                ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(),
+                ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get(),
+                ModBlocks.ASHEN_ROCK_BRICKS_WALL.get(),
                 ModBlocks.POLISHED_ASHEN_ROCK.get(),
                 ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get(),
                 ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get(),
@@ -72,7 +80,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.BLESSED_ROCK_WALL.get())
                 .add(ModBlocks.ASHEN_ROCK_WALL.get())
                 .add(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get())
-                .add(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());;
+                .add(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get())
+                .add(ModBlocks.BLESSED_ROCK_BRICKS_WALL.get())
+                .add(ModBlocks.ASHEN_ROCK_BRICKS_WALL.get());
 
         // Mining Tags
         this.tag(BlockTags.NEEDS_STONE_TOOL)

@@ -1,6 +1,5 @@
 package net.normlroyal.descendedangel.datagen;
 
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -32,6 +31,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         );
 
         stoneFamily(
+                ModBlocks.BLESSED_ROCK_BRICKS.get(),
+                (SlabBlock) ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get(),
+                (StairBlock) ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get(),
+                (WallBlock) ModBlocks.BLESSED_ROCK_BRICKS_WALL.get(),
+                modLoc("block/blessed_rock_bricks")
+        );
+
+        stoneFamily(
                 ModBlocks.POLISHED_BLESSED_ROCK.get(),
                 (SlabBlock) ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(),
                 (StairBlock) ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get(),
@@ -45,6 +52,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 (StairBlock) ModBlocks.ASHEN_ROCK_STAIR.get(),
                 (WallBlock) ModBlocks.ASHEN_ROCK_WALL.get(),
                 modLoc("block/ashen_rock")
+        );
+
+        stoneFamily(
+                ModBlocks.ASHEN_ROCK_BRICKS.get(),
+                (SlabBlock) ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(),
+                (StairBlock) ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get(),
+                (WallBlock) ModBlocks.ASHEN_ROCK_BRICKS_WALL.get(),
+                modLoc("block/ashen_rock_bricks")
         );
 
         stoneFamily(

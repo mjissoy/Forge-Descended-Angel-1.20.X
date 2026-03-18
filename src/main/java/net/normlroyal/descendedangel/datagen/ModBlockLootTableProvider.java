@@ -3,7 +3,6 @@ package net.normlroyal.descendedangel.datagen;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.item.ModItems;
 
@@ -26,6 +25,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.BLESSED_ROCK.get());
         dropSelf(ModBlocks.BLESSED_ROCK_STAIR.get());
         dropSelf(ModBlocks.BLESSED_ROCK_WALL.get());
+        dropSelf(ModBlocks.BLESSED_ROCK_BRICKS.get());
+        dropSelf(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get());
+        dropSelf(ModBlocks.BLESSED_ROCK_BRICKS_WALL.get());
         dropSelf(ModBlocks.POLISHED_BLESSED_ROCK.get());
         dropSelf(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get());
         dropSelf(ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get());
@@ -33,13 +35,18 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.ASHEN_ROCK.get());
         dropSelf(ModBlocks.ASHEN_ROCK_STAIR.get());
         dropSelf(ModBlocks.ASHEN_ROCK_WALL.get());
+        dropSelf(ModBlocks.ASHEN_ROCK_BRICKS.get());
+        dropSelf(ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get());
+        dropSelf(ModBlocks.ASHEN_ROCK_BRICKS_WALL.get());
         dropSelf(ModBlocks.POLISHED_ASHEN_ROCK.get());
         dropSelf(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
         dropSelf(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get());
 
         add(ModBlocks.BLESSED_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.BLESSED_ROCK_SLAB.get()));
+        add(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get(), block -> createSlabItemTable(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get()));
         add(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get()));
         add(ModBlocks.ASHEN_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.ASHEN_ROCK_SLAB.get()));
+        add(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(), block -> createSlabItemTable(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get()));
         add(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get()));
 
         // Ores
@@ -67,7 +74,15 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.POLISHED_BLESSED_ROCK.get(),
                 ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(),
                 ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get(),
-                ModBlocks.POLISHED_BLESSED_ROCK_WALL.get()
+                ModBlocks.POLISHED_BLESSED_ROCK_WALL.get(),
+                ModBlocks.BLESSED_ROCK_BRICKS.get(),
+                ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get(),
+                ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get(),
+                ModBlocks.BLESSED_ROCK_BRICKS_WALL.get(),
+                ModBlocks.ASHEN_ROCK_BRICKS.get(),
+                ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get(),
+                ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(),
+                ModBlocks.ASHEN_ROCK_BRICKS_WALL.get()
         );
     }
 }

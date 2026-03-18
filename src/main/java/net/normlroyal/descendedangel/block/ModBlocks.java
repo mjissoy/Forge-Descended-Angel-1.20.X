@@ -53,6 +53,16 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLESSED_ROCK_WALL = registerBlock("blessed_rock_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_WALL)));
 
+    public static final RegistryObject<Block> BLESSED_ROCK_BRICKS = registerBlock("blessed_rock_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
+    public static final RegistryObject<Block> BLESSED_ROCK_BRICKS_SLAB = registerBlock("blessed_rock_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_SLAB)));
+    public static final RegistryObject<Block> BLESSED_ROCK_BRICKS_STAIR = registerBlock("blessed_rock_brick_stair",
+            () -> new StairBlock(() -> ModBlocks.BLESSED_ROCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.ANDESITE_STAIRS)));
+    public static final RegistryObject<Block> BLESSED_ROCK_BRICKS_WALL = registerBlock("blessed_rock_brick_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_WALL)));
+
     public static final RegistryObject<Block> POLISHED_BLESSED_ROCK = registerBlock("polished_blessed_rock",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)));
     public static final RegistryObject<Block> POLISHED_BLESSED_ROCK_SLAB = registerBlock("polished_blessed_rock_slab",
@@ -71,6 +81,16 @@ public class ModBlocks {
             () -> new StairBlock(() -> ModBlocks.ASHEN_ROCK.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(Blocks.ANDESITE_STAIRS)));
     public static final RegistryObject<Block> ASHEN_ROCK_WALL = registerBlock("ashen_rock_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_WALL)));
+
+    public static final RegistryObject<Block> ASHEN_ROCK_BRICKS = registerBlock("ashen_rock_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
+    public static final RegistryObject<Block> ASHEN_ROCK_BRICKS_SLAB = registerBlock("ashen_rock_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_SLAB)));
+    public static final RegistryObject<Block> ASHEN_ROCK_BRICKS_STAIR = registerBlock("ashen_rock_brick_stair",
+            () -> new StairBlock(() -> ModBlocks.ASHEN_ROCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.ANDESITE_STAIRS)));
+    public static final RegistryObject<Block> ASHEN_ROCK_BRICKS_WALL = registerBlock("ashen_rock_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_WALL)));
 
     public static final RegistryObject<Block> POLISHED_ASHEN_ROCK = registerBlock("polished_ashen_rock",
