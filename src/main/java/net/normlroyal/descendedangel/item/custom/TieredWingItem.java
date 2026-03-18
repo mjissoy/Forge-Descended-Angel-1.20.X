@@ -101,7 +101,7 @@ public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioIt
             if (!e.onGround()) {
                 c.setAnimation(RawAnimation.begin().thenLoop(prefix + "open_idle"));
             } else {
-                c.setAnimation(RawAnimation.begin().thenLoop(prefix + "closed_idle"));
+                c.setAnimation(RawAnimation.begin().thenLoop(prefix + "open_idle"));
             }
             return PlayState.CONTINUE;
         }));
