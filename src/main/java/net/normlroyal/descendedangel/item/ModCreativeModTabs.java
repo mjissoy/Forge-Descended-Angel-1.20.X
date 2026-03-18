@@ -30,13 +30,11 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.SACRED_BLOOD.get());
                         output.accept(ModItems.ANGELS_TEARS.get());
 
+
                         output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModItems.SACREDORERAW.get());
-                        output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
                         output.accept(ModItems.SACREDOREINGOT.get());
-                        output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
 
-                        output.accept(ModItems.ALTAR.get());
 
                         output.accept(ModItems.HALO_T1.get());
                         output.accept(ModItems.HALO_T2.get());
@@ -53,38 +51,22 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.WING2.get());
                         output.accept(ModItems.WING3.get());
 
+
                         output.accept(ModItems.HOLY_RING.get());
                         output.accept(ModItems.CLOUD_RING.get());
                         output.accept(ModItems.FLAME_RING.get());
                         output.accept(ModItems.CURE_RING.get());
+
                         output.accept(ModItems.HOLY_NECKLACE.get());
                         output.accept(ModItems.MESSENGER_PENDANT.get());
                         output.accept(ModItems.LIGHTNESS_NECKLACE.get());
                         output.accept(ModItems.BOOSTER_NECKLACE.get());
 
+
                         output.accept(ModItems.SPEARSHAFT.get());
                         output.accept(ModItems.SPEARHEAD.get());
                         output.accept(ModItems.DESTINY_SPEAR.get());
 
-                        output.accept(ModBlocks.BLESSED_ROCK.get());
-                        output.accept(ModBlocks.BLESSED_ROCK_STAIR.get());
-                        output.accept(ModBlocks.BLESSED_ROCK_SLAB.get());
-                        output.accept(ModBlocks.BLESSED_ROCK_WALL.get());
-                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK.get());
-                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get());
-                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get());
-                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get());
-
-                        output.accept(ModBlocks.ASHEN_ROCK.get());
-                        output.accept(ModBlocks.ASHEN_ROCK_STAIR.get());
-                        output.accept(ModBlocks.ASHEN_ROCK_SLAB.get());
-                        output.accept(ModBlocks.ASHEN_ROCK_WALL.get());
-                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK.get());
-                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get());
-                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get());
-                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
-
-                        output.accept(ModBlocks.VOID_CAVE_BLOCK.get());
 
                         output.accept(ModItems.SPACE_FRUIT.get());
                         output.accept(ModItems.TIME_FRUIT.get());
@@ -93,8 +75,55 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.EARTH_SHARD.get());
                         output.accept(ModItems.WATER_SHARD.get());
                         output.accept(ModItems.SACRED_WRITINGS.get());
+
+
                         output.accept(ModItems.VOID_ANOMALY_SPAWN_EGG.get());
                         output.accept(ModItems.IMP_SPAWN_EGG.get());
+
+                    })
+                    .build());
+
+    public static final RegistryObject<CreativeModeTab> Descended_Angel_Blocks_Tab = CREATIVE_MOD_TABS.register("angel_blocks_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.ALTAR.get()))
+                    .title(Component.translatable("creativetab.angel_blocks_tab"))
+                    .displayItems((itemDisplayParameters, output) -> {
+
+                        output.accept(ModItems.ALTAR.get());
+
+
+                        output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
+                        output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
+
+
+                        output.accept(ModBlocks.BLESSED_ROCK.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_STAIR.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_SLAB.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_WALL.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_WALL.get());
+                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK.get());
+                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get());
+                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get());
+                        output.accept(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get());
+
+
+                        output.accept(ModBlocks.ASHEN_ROCK.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_STAIR.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_SLAB.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_WALL.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_WALL.get());
+                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK.get());
+                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get());
+                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get());
+                        output.accept(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
+
+
+                        output.accept(ModBlocks.VOID_CAVE_BLOCK.get());
 
                     })
                     .build());
