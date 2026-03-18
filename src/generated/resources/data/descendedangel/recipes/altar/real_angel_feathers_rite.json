@@ -1,0 +1,38 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:angels_tears"
+  },
+  "display_type": "altar.descendedangel.consecration",
+  "required_halo_tier": 4,
+  "result": {
+    "count": 2,
+    "item": "descendedangel:angel_feather_real"
+  },
+  "ring": [
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    },
+    {
+      "item": "descendedangel:compressed_void"
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    },
+    {
+      "item": "descendedangel:compressed_void"
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    }
+  ]
+}

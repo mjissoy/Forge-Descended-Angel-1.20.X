@@ -1,0 +1,37 @@
+{
+  "type": "descendedangel:altar_rite",
+  "core": {
+    "item": "descendedangel:angel_feather"
+  },
+  "display_type": "altar.descendedangel.ascendance",
+  "required_halo_tier": 1,
+  "result": {
+    "item": "descendedangel:wing_t1"
+  },
+  "ring": [
+    {
+      "item": "descendedangel:angel_feather"
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    },
+    {
+      "item": "descendedangel:void_tear"
+    },
+    {
+      "item": "descendedangel:angel_feather"
+    }
+  ]
+}
