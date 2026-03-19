@@ -31,7 +31,6 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.ANGELS_TEARS.get());
 
 
-                        output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModItems.SACREDORERAW.get());
                         output.accept(ModItems.SACREDOREINGOT.get());
 
@@ -90,7 +89,7 @@ public class ModCreativeModTabs {
 
                         output.accept(ModItems.ALTAR.get());
 
-
+                        output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
                         output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
 
@@ -99,28 +98,28 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.BLESSED_ROCK_STAIR.get());
                         output.accept(ModBlocks.BLESSED_ROCK_SLAB.get());
                         output.accept(ModBlocks.BLESSED_ROCK_WALL.get());
-                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS.get());
-                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get());
-                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get());
-                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_WALL.get());
                         output.accept(ModBlocks.POLISHED_BLESSED_ROCK.get());
                         output.accept(ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get());
                         output.accept(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get());
                         output.accept(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get());
+                        output.accept(ModBlocks.BLESSED_ROCK_BRICKS_WALL.get());
 
 
                         output.accept(ModBlocks.ASHEN_ROCK.get());
                         output.accept(ModBlocks.ASHEN_ROCK_STAIR.get());
                         output.accept(ModBlocks.ASHEN_ROCK_SLAB.get());
                         output.accept(ModBlocks.ASHEN_ROCK_WALL.get());
-                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS.get());
-                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get());
-                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get());
-                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_WALL.get());
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK.get());
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get());
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get());
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get());
+                        output.accept(ModBlocks.ASHEN_ROCK_BRICKS_WALL.get());
 
 
                         output.accept(ModBlocks.VOID_CAVE_BLOCK.get());

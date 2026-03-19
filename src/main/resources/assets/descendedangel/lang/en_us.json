@@ -56,6 +56,9 @@
   "block.descendedangel.polished_ashen_rock_wall" : "Polished Ashen Rock Wall",
 
 
+  "block.descendedangel.void_cave_wall" : "Void Wall",
+
+
   "container.descendedangel.altar": "Altar",
   "block.descendedangel.altar": "Altar",
   "jei.descendedangel.altar_rite": "Altar Rite",
@@ -101,7 +104,8 @@
   "tooltip.descendedangel.cure_ring.lore" : "The Love and Grace of the Lord cures all your aliments.",
 
 
-  "creativetab.angel_tab" : "Descended Angel Mod",
+  "creativetab.angel_tab" : "Descended Angel Items",
+  "creativetab.angel_blocks_tab" : "Descended Angel Blocks",
   "tooltip.descendedangel.halo.when_worn": "When worn:",
   "tooltip.descendedangel.halo.undead_damage": "+%s%% Damage vs Undead",
   "tooltip.descendedangel.halo.healing_bonus": "+%s%% Healing Received",
