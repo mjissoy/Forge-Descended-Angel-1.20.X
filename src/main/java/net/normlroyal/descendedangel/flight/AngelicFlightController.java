@@ -28,15 +28,15 @@ public class AngelicFlightController implements FlightController {
         double tierAccelMul = WingFlightStats.accelMultiplier(tier);
 
         // Horizontal
-        final double baseMAX_SPEED = input.boost() ? 1.25 : 0.95;
-        final float baseACCEL = input.boost() ? 0.08f : 0.06f;
-        final double DRAG = 0.93;
+        final double BASE_MAX_SPEED = input.boost() ? 1.25 : 0.95;
+        final float BASE_ACCEL = input.boost() ? 0.08f : 0.06f;
+        final double DRAG = 0.88;
 
-        final double MAX_SPEED = baseMAX_SPEED * tierSpeedMul;
-        final float ACCEL = (float) (baseACCEL * tierAccelMul);
+        final double MAX_SPEED = BASE_MAX_SPEED * tierSpeedMul;
+        final float ACCEL = (float) (BASE_ACCEL * tierAccelMul);
 
         // Vertical
-        final double HOVER_TARGET = 0.02;
+        final double HOVER_TARGET = 0.0;
         final double HOVER_STEP = 0.08;
         final double FALL_DAMP = 0.08;
 
@@ -44,47 +44,57 @@ public class AngelicFlightController implements FlightController {
         final double DESCEND_TARGET = input.boost() ? -0.55 : -0.42;
         final double VERT_STEP = 0.12;
 
-        // Flap pulse
-        final double FLAP_AMPLITUDE = input.ascend() ? 0.02 : 0.012;
-        final double FLAP_FREQ = 0.30;
+        // Hover bob
+        final double IDLE_BOB_AMPLITUDE = 0.012;
+        final double IDLE_BOB_FREQ = 0.18;
 
         Vec3 current = p.getDeltaMovement();
 
-        // Horizontal inertial movement
+        // Look-relative horizontal basis
         Vec3 look = p.getLookAngle();
-        Vec3 lookHoriz = new Vec3(look.x, 0, look.z);
-        if (lookHoriz.lengthSqr() < 1.0e-6) lookHoriz = new Vec3(0, 0, 1);
-        lookHoriz = lookHoriz.normalize();
+        Vec3 forwardDir = new Vec3(look.x, 0, look.z);
+        if (forwardDir.lengthSqr() < 1.0e-6) forwardDir = new Vec3(0, 0, 1);
+        forwardDir = forwardDir.normalize();
 
-        state.forwardSpeed = approach(state.forwardSpeed, (float) MAX_SPEED, ACCEL);
+        Vec3 rightDir = new Vec3(-forwardDir.z, 0, forwardDir.x);
 
-        Vec3 desiredHoriz = lookHoriz.scale(state.forwardSpeed);
+        // Build movement vector from WASD input
+        Vec3 desiredMove = forwardDir.scale(input.forward()).add(rightDir.scale(input.strafe()));
+        boolean hasHorizontalInput = desiredMove.lengthSqr() > 1.0e-4;
+
+        if (hasHorizontalInput) {
+            desiredMove = desiredMove.normalize();
+        }
+
+        float targetSpeed = hasHorizontalInput ? (float) MAX_SPEED : 0f;
+        state.forwardSpeed = approach(state.forwardSpeed, targetSpeed, ACCEL);
+
+        Vec3 desiredHoriz = hasHorizontalInput
+                ? desiredMove.scale(state.forwardSpeed)
+                : Vec3.ZERO;
+
         Vec3 currentHoriz = new Vec3(current.x, 0, current.z);
         Vec3 newHoriz = currentHoriz.scale(DRAG).add(desiredHoriz.scale(1.0 - DRAG));
 
         double hLen = newHoriz.length();
-        if (hLen > MAX_SPEED) newHoriz = newHoriz.normalize().scale(MAX_SPEED);
-
-        // Vertical buoyancy and flap
-        double y = current.y;
-
-        // gentle flap pulse
-        boolean moving = hLen > 0.08;
-        float flapTarget = (input.ascend() || moving) ? 1f : 0f;
-        state.flapAmount = approach(state.flapAmount, flapTarget, 0.05f);
-
-        double flap = 0.0;
-        if (state.flapAmount > 0.001f) {
-            flap = Math.sin(p.tickCount * FLAP_FREQ) * FLAP_AMPLITUDE * state.flapAmount;
+        if (hLen > MAX_SPEED) {
+            newHoriz = newHoriz.normalize().scale(MAX_SPEED);
         }
+
+        // Vertical
+        double y = current.y;
+        boolean idleHover = !input.ascend() && !input.descend() && !hasHorizontalInput;
 
         if (!input.ascend() && !input.descend()) {
             if (y < 0) y *= FALL_DAMP;
             y = approachDouble(y, HOVER_TARGET, HOVER_STEP);
-            y += flap;
+
+            // subtle bob when idle in place
+            if (idleHover) {
+                y += Math.sin(p.tickCount * IDLE_BOB_FREQ) * IDLE_BOB_AMPLITUDE;
+            }
         } else if (input.ascend()) {
             y = approachDouble(y, ASCEND_TARGET, VERT_STEP);
-            y += flap;
         } else {
             y = approachDouble(y, DESCEND_TARGET, VERT_STEP);
         }

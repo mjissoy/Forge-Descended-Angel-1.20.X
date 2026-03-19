@@ -12,16 +12,30 @@ import net.normlroyal.descendedangel.util.WingUtils;
 
 import java.util.function.Supplier;
 
-public record FlightInputC2SPacket(boolean ascend, boolean descend, boolean boost) {
+public record FlightInputC2SPacket(
+        boolean ascend,
+        boolean descend,
+        boolean boost,
+        float forward,
+        float strafe
+) {
 
     public static void encode(FlightInputC2SPacket msg, FriendlyByteBuf buf) {
         buf.writeBoolean(msg.ascend);
         buf.writeBoolean(msg.descend);
         buf.writeBoolean(msg.boost);
+        buf.writeFloat(msg.forward);
+        buf.writeFloat(msg.strafe);
     }
 
     public static FlightInputC2SPacket decode(FriendlyByteBuf buf) {
-        return new FlightInputC2SPacket(buf.readBoolean(), buf.readBoolean(), buf.readBoolean());
+        return new FlightInputC2SPacket(
+                buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readFloat(),
+                buf.readFloat()
+        );
     }
 
     public static void handle(FlightInputC2SPacket msg, Supplier<NetworkEvent.Context> ctx) {
@@ -35,7 +49,13 @@ public record FlightInputC2SPacket(boolean ascend, boolean descend, boolean boos
             IFlightData data = FlightData.get(sp);
             if (!data.state().active) return;
 
-            FlightSystem.setInput(sp, new FlightInput(msg.ascend, msg.descend, msg.boost));
+            FlightSystem.setInput(sp, new FlightInput(
+                    msg.ascend(),
+                    msg.descend(),
+                    msg.boost(),
+                    msg.forward(),
+                    msg.strafe()
+            ));
         });
 
         ctx.get().setPacketHandled(true);

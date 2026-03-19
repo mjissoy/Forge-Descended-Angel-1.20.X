@@ -33,6 +33,9 @@ public class ClientInputEvents {
     private static boolean lastDescend = false;
     private static boolean lastBoost = false;
 
+    private static float lastForward = 0f;
+    private static float lastStrafe = 0f;
+
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
@@ -97,15 +100,33 @@ public class ClientInputEvents {
             boolean descend = mc.options.keyShift.isDown();
             boolean boost = ClientKeybinds.FLIGHT_BOOST.isDown();
 
-            if (ascend != lastAscend || descend != lastDescend || boost != lastBoost) {
+            float forward = 0f;
+            if (mc.options.keyUp.isDown()) forward += 1f;
+            if (mc.options.keyDown.isDown()) forward -= 1f;
+
+            float strafe = 0f;
+            if (mc.options.keyLeft.isDown()) strafe -= 1f;
+            if (mc.options.keyRight.isDown()) strafe += 1f;
+
+            if (ascend != lastAscend
+                    || descend != lastDescend
+                    || boost != lastBoost
+                    || forward != lastForward
+                    || strafe != lastStrafe) {
+
                 lastAscend = ascend;
                 lastDescend = descend;
                 lastBoost = boost;
+                lastForward = forward;
+                lastStrafe = strafe;
 
-                ModNetwork.CHANNEL.sendToServer(new FlightInputC2SPacket(ascend, descend, boost));
+                ModNetwork.CHANNEL.sendToServer(new FlightInputC2SPacket(
+                        ascend, descend, boost, forward, strafe
+                ));
             }
         } else {
             lastAscend = lastDescend = lastBoost = false;
+            lastForward = lastStrafe = 0f;
         }
     }
 }

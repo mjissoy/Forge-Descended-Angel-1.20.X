@@ -1,10 +1,10 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"open_idle": {
+		"animation.wing_t2.open_idle": {
 			"loop": "hold_on_last_frame"
 		},
-		"flying": {
+		"animation.wing_t2.flying": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {

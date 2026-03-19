@@ -14,7 +14,7 @@ public final class FlightSystem {
     private FlightSystem() {}
 
     public static FlightInput getInput(ServerPlayer sp) {
-        return INPUTS.getOrDefault(sp.getUUID(), new FlightInput(false, false, false));
+        return INPUTS.getOrDefault(sp.getUUID(), new FlightInput(false, false, false, 1, 1));
     }
 
     public static void setInput(ServerPlayer sp, FlightInput input) {
