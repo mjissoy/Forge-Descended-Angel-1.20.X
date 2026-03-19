@@ -65,6 +65,38 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_crafting")
                 );
 
+
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get(),
+                Ingredient.of(ModBlocks.BLESSED_ROCK_BRICKS.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_brick_slab_crafting")
+                );
+
+        stairBuilder(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get(),
+                Ingredient.of(ModBlocks.BLESSED_ROCK_BRICKS.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_brick_stair_crafting")
+                );
+
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.BLESSED_ROCK_BRICKS_WALL.get(),
+                Ingredient.of(ModBlocks.BLESSED_ROCK_BRICKS.get()))
+                .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_brick_wall_crafting")
+                );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.BLESSED_ROCK_BRICKS.get(), 4)
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', ModBlocks.POLISHED_BLESSED_ROCK.get())
+                .unlockedBy("has_blessed_rock",
+                        has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_bricks_crafting")
+                );
+
+
         slabBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(),
                 Ingredient.of(ModBlocks.POLISHED_BLESSED_ROCK.get()))
@@ -116,6 +148,36 @@ public class ModRecipeProvider extends RecipeProvider {
                 );
 
         slabBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(),
+                Ingredient.of(ModBlocks.ASHEN_ROCK_BRICKS.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_brick_slab_crafting")
+                );
+
+        stairBuilder(ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get(),
+                Ingredient.of(ModBlocks.ASHEN_ROCK_BRICKS.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_brick_stair_crafting")
+                );
+
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.ASHEN_ROCK_BRICKS_WALL.get(),
+                Ingredient.of(ModBlocks.ASHEN_ROCK_BRICKS.get()))
+                .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_brick_wall_crafting")
+                );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.ASHEN_ROCK_BRICKS.get(), 4)
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', ModBlocks.POLISHED_ASHEN_ROCK.get())
+                .unlockedBy("has_ashen_rock",
+                        has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_bricks_crafting")
+                );
+
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get(),
                 Ingredient.of(ModBlocks.POLISHED_ASHEN_ROCK.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
@@ -135,6 +197,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_wall_crafting")
                 );
 
+
+        // Void Tear Crafting
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COMPRESSEDVOID.get())
                 .pattern("VVV")
                 .pattern("VVV")
@@ -162,6 +226,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "compressed_void_from_void_matrix"));
 
 
+        // Mod Items Crafting
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.HOLY_RING.get())
                 .pattern("ABA")
                 .pattern("A A")
@@ -201,6 +266,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_sacred_ore_ingot", has(ModItems.SACREDOREINGOT.get()))
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ore_ingot_block_crafting")
                 );
+
 
         // Smelting and Blasting Recipes
         SimpleCookingRecipeBuilder.smelting(
