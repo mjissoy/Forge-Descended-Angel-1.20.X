@@ -43,8 +43,9 @@ public class WingCurioRenderer implements ICurioRenderer {
                 humanoid.body.translateAndRotate(poseStack);
             }
 
-            poseStack.translate(-0.535D, 1.2D, 0.25D);
-           poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+            poseStack.mulPose(Axis.XP.rotationDegrees(180f));
+            poseStack.mulPose(Axis.YP.rotationDegrees(180f));
+            poseStack.translate(-0.5, -0.75, 0.15D);
 
             WingRenderContext.setEntity(living);
             try {

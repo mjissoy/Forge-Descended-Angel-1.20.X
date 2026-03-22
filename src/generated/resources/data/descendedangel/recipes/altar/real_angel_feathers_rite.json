@@ -1,7 +1,7 @@
 {
   "type": "descendedangel:altar_rite",
   "core": {
-    "item": "descendedangel:angels_tears"
+    "item": "descendedangel:sacred_ore_ingot"
   },
   "display_type": "altar.descendedangel.consecration",
   "required_halo_tier": 4,

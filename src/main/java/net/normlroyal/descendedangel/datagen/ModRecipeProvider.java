@@ -713,13 +713,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requiredHaloTier(3)
                 .ring(
                         RingEntry.of(Ingredient.of(ModItems.SPEARHEAD.get())),
-                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get())),
                         RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
-                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get())),
                         RingEntry.of(Ingredient.of(ModItems.SPEARSHAFT.get())),
-                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get())),
                         RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
-                        RingEntry.empty()
+                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get()))
                 )
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/destiny_spear_rite"));
 
@@ -766,11 +766,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .displayType("altar.descendedangel.ascendance")
                 .requiredHaloTier(7)
                 .ring(
-                        RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
+                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get())),
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
                         RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
-                        RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
+                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get())),
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
                         RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get()))
@@ -778,7 +778,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_wing_rite"));
 
         AltarRiteRecipeBuilder.altar(
-                Ingredient.of(ModItems.ANGELS_TEARS.get()),
+                Ingredient.of(ModItems.SACREDOREINGOT.get()),
                 new ItemStack(ModItems.REALANGELFEATHER.get(), 2)
                 )
                 .displayType("altar.descendedangel.consecration")

@@ -25,8 +25,8 @@ public class WingItemRenderer extends GeoItemRenderer<TieredWingItem> {
         poseStack.pushPose();
 
         if (displayContext == ItemDisplayContext.GUI) {
-            poseStack.translate(0.2F, -0.15F, 0.0F);
-            poseStack.scale(0.5F, 0.5F, 0.5F);
+            poseStack.scale(0.3F, 0.3F, 0.3F);
+            poseStack.translate(1.0F, 0.75F, 0.0F);
         }
 
         super.renderByItem(stack, displayContext, poseStack, buffer, packedLight, packedOverlay);
