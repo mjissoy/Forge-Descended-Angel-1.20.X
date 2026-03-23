@@ -4,6 +4,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -25,6 +26,9 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> ASHEN_ROCK_PATCH_PLACED =
             ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_patch_placed"));
+
+    public static final ResourceKey<PlacedFeature> ANGEl_WEEPING_PATCH_PLACED =
+            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "angel_weeping_patch_placed"));
 
     public static void bootstrap(BootstapContext<PlacedFeature> ctx) {
         HolderGetter<ConfiguredFeature<?, ?>> configured = ctx.lookup(Registries.CONFIGURED_FEATURE);
@@ -80,6 +84,18 @@ public class ModPlacedFeatures {
                         )
                 )
         );
+
+        // Angel Weeping Patch
+        ctx.register(ANGEl_WEEPING_PATCH_PLACED,
+                new PlacedFeature(
+                        configured.getOrThrow(ModConfiguredFeatures.ANGEl_WEEPING_PATCH),
+                        List.of(
+                                RarityFilter.onAverageOnceEvery(8),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP,
+                                BiomeFilter.biome()
+                        )
+                ));
 
     }
 }

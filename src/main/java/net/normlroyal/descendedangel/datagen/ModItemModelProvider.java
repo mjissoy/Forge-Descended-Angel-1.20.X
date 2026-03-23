@@ -1,5 +1,6 @@
 package net.normlroyal.descendedangel.datagen;
 
+import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -73,6 +74,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(modLoc("sacred_writings"));
         withExistingParent("void_anomaly_spawn_egg", mcLoc("item/template_spawn_egg"));
         withExistingParent("imp_spawn_egg", mcLoc("item/template_spawn_egg"));
+        withExistingParent("angel_weeping", mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/angel_weeping"));
 
 
         // Unlock Items

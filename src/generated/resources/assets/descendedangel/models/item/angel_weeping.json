@@ -1,3 +1,6 @@
 {
-  "parent": "descendedangel:block/angel_weeping"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "descendedangel:block/angel_weeping"
+  }
 }

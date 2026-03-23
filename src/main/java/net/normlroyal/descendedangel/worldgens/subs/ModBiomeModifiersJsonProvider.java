@@ -28,7 +28,8 @@ public class ModBiomeModifiersJsonProvider implements DataProvider {
         CompletableFuture<?> c = save(cache, "void_anomaly_spawn", voidAnomalySpawn());
         CompletableFuture<?> d = save(cache, "blessed_rock_patch", blessedRockPatch());
         CompletableFuture<?> e = save(cache, "ashen_rock_patch", ashenRockPatch());
-        return CompletableFuture.allOf(a, b, c, d, e);
+        CompletableFuture<?> f = save(cache, "angel_weeping_patch", angelWeepingPatch());
+        return CompletableFuture.allOf(a, b, c, d, e, f);
     }
 
     private CompletableFuture<?> save(CachedOutput cache, String name, JsonObject json) {
@@ -100,6 +101,19 @@ public class ModBiomeModifiersJsonProvider implements DataProvider {
 
         JsonArray features = new JsonArray();
         features.add("descendedangel:ashen_rock_patch_placed");
+        root.add("features", features);
+
+        return root;
+    }
+
+    private static JsonObject angelWeepingPatch() {
+        JsonObject root = new JsonObject();
+        root.addProperty("type", "forge:add_features");
+        root.addProperty("biomes", "#minecraft:is_overworld");
+        root.addProperty("step", "vegetal_decoration");
+
+        JsonArray features = new JsonArray();
+        features.add("descendedangel:angel_weeping_patch_placed");
         root.add("features", features);
 
         return root;

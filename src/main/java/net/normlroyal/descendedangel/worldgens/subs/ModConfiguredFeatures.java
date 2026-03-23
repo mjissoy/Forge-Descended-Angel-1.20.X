@@ -2,12 +2,17 @@ package net.normlroyal.descendedangel.worldgens.subs;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -26,6 +31,9 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_ROCK_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_patch"));
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ANGEl_WEEPING_PATCH =
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "angel_weeping_patch"));
 
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> ctx) {
@@ -58,5 +66,19 @@ public class ModConfiguredFeatures {
         int ashenblobSize = 33;
         ctx.register(ASHEN_ROCK_PATCH,
                 new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ashentargets, ashenblobSize)));
+
+        // Flower Patch
+        ctx.register(ANGEl_WEEPING_PATCH,
+                new ConfiguredFeature<>(Feature.FLOWER,
+                        new RandomPatchConfiguration(32, 6, 2,
+                        PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(
+                                        BlockStateProvider.simple(
+                                                ModBlocks.ANGEL_WEEPING.get()
+                                        )))
+                        )));
+
+
+
     }
 }
