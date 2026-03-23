@@ -309,5 +309,41 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                                 EntityPredicate.Builder.entity().of(ModEntities.VOID_ANOMALY.get())
                         ))
                 .save(saver, id("main/killed_void_anomaly"));
+
+        Advancement craftHolywings = Advancement.Builder.advancement()
+                .parent(craftAngelHalo)
+                .display(display(ModItems.WING1.get(),
+                        "Blessed Gliding",
+                        "Flood artificial feathers with Your Divinity, binding them together.",
+                        FrameType.GOAL))
+                .addCriterion("craft_holy_wings",
+                        RecipeCraftedTrigger.TriggerInstance.craftedItem(
+                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/holy_wing_rite"))
+                )
+                .save(saver, id("main/craft_holy_wings"));
+
+        Advancement craftAngelicwings = Advancement.Builder.advancement()
+                .parent(craftPowerHalo)
+                .display(display(ModItems.WING2.get(),
+                        "Divine Flight",
+                        "Reinforce Your wings with pure Divinity.",
+                        FrameType.GOAL))
+                .addCriterion("craft_angelic_wings",
+                        RecipeCraftedTrigger.TriggerInstance.craftedItem(
+                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/angelic_wing_rite"))
+                )
+                .save(saver, id("main/craft_angelic_wings"));
+
+        Advancement craftSacredwings = Advancement.Builder.advancement()
+                .parent(craftCherubimHalo)
+                .display(display(ModItems.WING3.get(),
+                        "Sacred Ascension",
+                        "Consecrate Your wings with the Truth of Heaven.",
+                        FrameType.GOAL))
+                .addCriterion("craft_sacred_wings",
+                        RecipeCraftedTrigger.TriggerInstance.craftedItem(
+                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_wing_rite"))
+                )
+                .save(saver, id("main/craft_sacred_wings"));
     }
 }

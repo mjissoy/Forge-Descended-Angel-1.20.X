@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_power_halo",
+  "criteria": {
+    "craft_angelic_wings": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/angelic_wing_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Reinforce Your wings with pure Divinity."
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:wing_t2"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Divine Flight"
+    }
+  },
+  "requirements": [
+    [
+      "craft_angelic_wings"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

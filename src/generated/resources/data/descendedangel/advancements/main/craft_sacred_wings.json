@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_cherubim_halo",
+  "criteria": {
+    "craft_sacred_wings": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_wing_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Consecrate Your wings with the Truth of Heaven."
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:wing_t3"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Sacred Ascension"
+    }
+  },
+  "requirements": [
+    [
+      "craft_sacred_wings"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

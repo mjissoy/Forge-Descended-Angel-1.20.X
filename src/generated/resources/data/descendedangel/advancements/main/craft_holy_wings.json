@@ -1,0 +1,32 @@
+{
+  "parent": "descendedangel:main/craft_angel_halo",
+  "criteria": {
+    "craft_holy_wings": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/holy_wing_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "Flood artificial feathers with Your Divinity, binding them together."
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "descendedangel:wing_t1"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Blessed Gliding"
+    }
+  },
+  "requirements": [
+    [
+      "craft_holy_wings"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
