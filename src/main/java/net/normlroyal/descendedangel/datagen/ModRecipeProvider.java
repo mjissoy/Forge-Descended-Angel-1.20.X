@@ -197,6 +197,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_wall_crafting")
                 );
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ANGELS_TEARS.get())
+                .requires(ModBlocks.ANGEL_WEEPING.get())
+                .requires(Items.GLASS_BOTTLE)
+                .unlockedBy(getHasName(ModBlocks.ANGEL_WEEPING.get()), has(ModBlocks.ANGEL_WEEPING.get()))
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "angel_tears_crafting"));
 
         // Void Tear Crafting
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COMPRESSEDVOID.get())
@@ -749,11 +754,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requiredHaloTier(4)
                 .ring(
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
-                        RingEntry.of(Ingredient.of(ModItems.ANGELFEATHER.get())),
+                        RingEntry.of(Ingredient.of(ModItems.ANGELS_TEARS.get())),
                         RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(ModItems.ANGELFEATHER.get())),
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
-                        RingEntry.of(Ingredient.of(ModItems.ANGELFEATHER.get())),
+                        RingEntry.of(Ingredient.of(ModItems.ANGELS_TEARS.get())),
                         RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(ModItems.ANGELFEATHER.get()))
                 )
@@ -766,7 +771,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .displayType("altar.descendedangel.ascendance")
                 .requiredHaloTier(7)
                 .ring(
-                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get())),
+                        RingEntry.of(Ingredient.of(ModItems.SACRED_BLOOD.get())),
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
                         RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get())),
