@@ -1,6 +1,8 @@
 package net.normlroyal.descendedangel;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -70,7 +72,14 @@ public class DescendedAngel
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        event.enqueueWork(WritTypeRegistry::registerDefaults);
+        event.enqueueWork(() -> {
+            WritTypeRegistry.registerDefaults();
+
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(
+                    ModBlocks.ANGEL_WEEPING.getId(),
+                    ModBlocks.POTTED_ANGEL_WEEPING
+            );
+        });
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)

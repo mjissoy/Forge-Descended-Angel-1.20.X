@@ -49,6 +49,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(), block -> createSlabItemTable(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get()));
         add(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get()));
 
+        dropSelf(ModBlocks.ANGEL_WEEPING.get());
+        add(ModBlocks.POTTED_ANGEL_WEEPING.get(),
+                block -> createPotFlowerItemTable(ModBlocks.ANGEL_WEEPING.get()));
+
         // Ores
         add(ModBlocks.SACRED_ORE.get(), block -> createOreDrop(ModBlocks.SACRED_ORE.get(), ModItems.SACREDORERAW.get()));
     }
@@ -82,7 +86,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.ASHEN_ROCK_BRICKS.get(),
                 ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get(),
                 ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(),
-                ModBlocks.ASHEN_ROCK_BRICKS_WALL.get()
+                ModBlocks.ASHEN_ROCK_BRICKS_WALL.get(),
+                ModBlocks.ANGEL_WEEPING.get(),
+                ModBlocks.POTTED_ANGEL_WEEPING.get()
         );
     }
 }

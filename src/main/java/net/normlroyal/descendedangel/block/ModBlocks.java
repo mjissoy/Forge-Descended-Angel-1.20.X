@@ -1,6 +1,7 @@
 package net.normlroyal.descendedangel.block;
 
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -106,6 +107,19 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> VOID_CAVE_BLOCK = registerBlock("void_cave_wall",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
+
+    public static final RegistryObject<Block> ANGEL_WEEPING = registerBlock("angel_weeping",
+            () -> new FlowerBlock(
+                    () -> MobEffects.REGENERATION,
+                    8,
+                    BlockBehaviour.Properties.copy(Blocks.DANDELION)
+            ));
+
+    public static final RegistryObject<Block> POTTED_ANGEL_WEEPING = BLOCKS.register("potted_angel_weeping",
+            () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT,
+                    ANGEL_WEEPING,
+                    BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION)
+            ));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

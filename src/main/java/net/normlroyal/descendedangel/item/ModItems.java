@@ -84,8 +84,6 @@ public class ModItems {
             )
     );
 
-
-
     // Trinkets
     public static final RegistryObject<Item> HOLY_RING = ITEMS.register("holy_ring",
             () -> new RingCuriosItem(RingVariants.HOLY, new Item.Properties()));

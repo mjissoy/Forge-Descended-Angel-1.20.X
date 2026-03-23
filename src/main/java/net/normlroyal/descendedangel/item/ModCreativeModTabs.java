@@ -121,6 +121,8 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get());
                         output.accept(ModBlocks.ASHEN_ROCK_BRICKS_WALL.get());
 
+                        output.accept(ModBlocks.ANGEL_WEEPING.get());
+
 
                         output.accept(ModBlocks.VOID_CAVE_BLOCK.get());
 
