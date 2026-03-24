@@ -6,3 +6,5 @@ the Player to experience being an Angel
 in the minecraft world. This is done through the
 implementation of Halos and Wings and other Holy Items
 and structures.
+
+Dependencies: [Geckolib](https://www.curseforge.com/minecraft/mc-mods/geckolib), [Curios API](https://www.curseforge.com/minecraft/mc-mods/curios), [Caelus API](https://www.curseforge.com/minecraft/mc-mods/caelus)
