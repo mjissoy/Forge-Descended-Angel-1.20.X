@@ -125,6 +125,20 @@
   "tooltip.descendedangel.halo_t9.lore": "An attendant of the Lord, You behold His utmost radiance.",
 
 
+  "tooltip.descendedangel.wing_t1.lore": "Holy Wings powered by a newborn Divinity.",
+  "tooltip.descendedangel.wing_t2.lore": "True Wings, belonging in the Host of Heavenly Angels.",
+  "tooltip.descendedangel.wing_t3.lore": "Sacred and Adored, the Love of the Lord floods these Wings.",
+
+  "item.descendedangel.mark_component1": "Slice of Cain's Mark",
+  "item.descendedangel.mark_component2": "Part of Cain's Mark",
+  "item.descendedangel.mark_component3": "Fragment of Cain's Mark",
+  "item.descendedangel.mark_of_cain": "Mark Of Cain (Replica)",
+  "item.descendedangel.purified_mark_of_cain": "Cleansed Mark of Cain",
+  "tooltip.descendedangel.mark_of_cain_lore": "A Replica of the Curse cast upon the first mortal Killer.",
+  "tooltip.descendedangel.mark_of_cain_not_ready": "Insufficient Charge.",
+  "tooltip.descendedangel.mark_of_cain_ready": "Fuelled and Ready.",
+
+
   "altar_jei.halo_t0.name": "No Halo Requirements",
   "altar_jei.halo_t1.name": "Requires Angel Halo or higher",
   "altar_jei.halo_t2.name": "Requires Archangel Halo or higher",

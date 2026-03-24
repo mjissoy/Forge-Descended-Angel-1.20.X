@@ -1,12 +1,19 @@
 package net.normlroyal.descendedangel.item.custom;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.events.useful.WingRenderContext;
 import net.normlroyal.descendedangel.flight.ClientFlightState;
 import net.normlroyal.descendedangel.util.IWingItem;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -18,6 +25,7 @@ import top.theillusivec4.caelus.api.CaelusApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
+import java.util.List;
 import java.util.UUID;
 
 public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioItem {
@@ -120,6 +128,33 @@ public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioIt
                 return this.renderer;
             }
         });
+    }
+
+    @Override
+    public void appendHoverText(
+            ItemStack stack,
+            @Nullable Level level,
+            List<Component> tooltip,
+            TooltipFlag flag
+    ) {
+        super.appendHoverText(stack, level, tooltip, flag);
+
+
+        if (Screen.hasShiftDown()) {
+
+            tooltip.add(
+                    Component.translatable("tooltip.descendedangel.wing_t" + tier + ".lore")
+                            .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
+            );
+        } else {
+            tooltip.add(
+                    Component.translatable("tooltip.descendedangel.halo.hold_shift")
+                            .withStyle(ChatFormatting.DARK_GRAY)
+            );
+        }
+
+        tooltip.add(Component.empty());
+
     }
 
 }
