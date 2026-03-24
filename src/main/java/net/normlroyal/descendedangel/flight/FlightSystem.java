@@ -1,6 +1,9 @@
 package net.normlroyal.descendedangel.flight;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.network.PacketDistributor;
+import net.normlroyal.descendedangel.network.ModNetwork;
+import net.normlroyal.descendedangel.network.packets.FlightActiveS2CPacket;
 
 import java.util.Map;
 import java.util.UUID;
@@ -23,5 +26,23 @@ public final class FlightSystem {
 
     public static void clear(ServerPlayer sp) {
         INPUTS.remove(sp.getUUID());
+    }
+
+    public static void stopFlight(ServerPlayer sp) {
+        IFlightData data = FlightData.get(sp);
+        FlightState st = data.state();
+
+        if (!st.active) return;
+
+        st.active = false;
+        CONTROLLER.onStop(sp, st);
+        clear(sp);
+
+        ModNetwork.CHANNEL.send(
+                PacketDistributor.PLAYER.with(() -> sp),
+                new FlightActiveS2CPacket(false)
+        );
+
+        data.sync(sp);
     }
 }

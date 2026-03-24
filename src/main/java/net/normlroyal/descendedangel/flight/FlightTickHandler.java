@@ -4,10 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.PacketDistributor;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.network.ModNetwork;
-import net.normlroyal.descendedangel.network.packets.FlightActiveS2CPacket;
 import net.normlroyal.descendedangel.util.WingLogic;
 import net.normlroyal.descendedangel.util.WingUtils;
 
@@ -25,29 +22,17 @@ public class FlightTickHandler {
 
         var wings = WingUtils.getEquippedWings(sp);
         if (wings.isEmpty() || !WingLogic.allowsCustomFlight(wings)) {
-            st.active = false;
-            FlightSystem.CONTROLLER.onStop(sp, st);
-            data.sync(sp);
+            FlightSystem.stopFlight(sp);
             return;
         }
 
         if (sp.onGround()) {
-            st.active = false;
-            FlightSystem.CONTROLLER.onStop(sp, st);
-
-            ModNetwork.CHANNEL.send(
-                    PacketDistributor.PLAYER.with(() -> sp),
-                    new FlightActiveS2CPacket(false)
-            );
-
+            FlightSystem.stopFlight(sp);
             return;
         }
 
         if (sp.isCreative() || sp.isSpectator()) {
-            st.active = false;
-            FlightSystem.CONTROLLER.onStop(sp, st);
-            ModNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> sp),
-                    new FlightActiveS2CPacket(false));
+            FlightSystem.stopFlight(sp);
             return;
         }
 
