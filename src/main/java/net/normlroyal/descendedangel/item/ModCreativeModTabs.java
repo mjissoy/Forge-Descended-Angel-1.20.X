@@ -67,6 +67,13 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.DESTINY_SPEAR.get());
 
 
+                        output.accept(ModItems.MARK_PIECE1.get());
+                        output.accept(ModItems.MARK_PIECE2.get());
+                        output.accept(ModItems.MARK_PIECE3.get());
+                        output.accept(ModItems.MARK_OF_CAIN.get());
+                        output.accept(ModItems.PURIFIED_MARK_OF_CAIN.get());
+
+
                         output.accept(ModItems.SPACE_FRUIT.get());
                         output.accept(ModItems.TIME_FRUIT.get());
                         output.accept(ModItems.FIRE_SHARD.get());

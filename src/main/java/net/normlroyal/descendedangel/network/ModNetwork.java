@@ -1,8 +1,10 @@
 package net.normlroyal.descendedangel.network;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.network.packets.*;
@@ -73,6 +75,16 @@ public final class ModNetwork {
                 .decoder(FlightActiveS2CPacket::decode)
                 .consumerMainThread(FlightActiveS2CPacket::handle)
                 .add();
+
+        CHANNEL.messageBuilder(PlayMarkActivationS2CPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(PlayMarkActivationS2CPacket::encode)
+                .decoder(PlayMarkActivationS2CPacket::decode)
+                .consumerMainThread(PlayMarkActivationS2CPacket::handle)
+                .add();
+    }
+
+    public static void sendToPlayer(Object packet, ServerPlayer player) {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
     }
 
     private ModNetwork() {}

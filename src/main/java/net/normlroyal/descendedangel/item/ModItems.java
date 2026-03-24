@@ -121,6 +121,18 @@ public class ModItems {
                     0xD46B2E,
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> MARK_PIECE1 = ITEMS.register("mark_component1",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MARK_PIECE2 = ITEMS.register("mark_component2",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MARK_PIECE3 = ITEMS.register("mark_component3",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MARK_OF_CAIN = ITEMS.register("mark_of_cain",
+            () -> new MarkOfCainItem(new Item.Properties()));
+    public static final RegistryObject<Item> PURIFIED_MARK_OF_CAIN = ITEMS.register("purified_mark_of_cain",
+            () -> new PurifiedMarkOfCainItem(new Item.Properties()));
+
+
     // Ability Items
     public static final RegistryObject<Item> SPACE_FRUIT = ITEMS.register("fruit_of_space",
             () -> new FruitUnlockItem(FruitType.SPACE, new Item.Properties().food(

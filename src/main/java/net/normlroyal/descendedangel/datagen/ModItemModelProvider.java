@@ -67,6 +67,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(modLoc("destiny_spear_shaft"));
         basicItem(modLoc("destiny_spear_head"));
         getBuilder("destiny_spear").parent(builtinEntity());
+        basicItem(modLoc("mark_component1"));
+        basicItem(modLoc("mark_component2"));
+        basicItem(modLoc("mark_component3"));
+        basicItem(modLoc("mark_of_cain"));
+        basicItem(modLoc("purified_mark_of_cain"));
 
 
 

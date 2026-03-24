@@ -70,6 +70,9 @@ public class ModConfigs {
         public final ForgeConfigSpec.DoubleValue GLOBAL_FLIGHT_SPEED_MULTIPLIER;
 
 
+        public final ForgeConfigSpec.IntValue MAX_PURIFIED_MARK_USES;
+
+
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("Config Options");
             builder.pop();
@@ -226,6 +229,14 @@ public class ModConfigs {
                     .comment("Duration of Mist Veil ability")
                     .defineInRange("halo_mist_veil_duration", 200, 20, 1200000);
             builder.pop();
+
+
+            builder.push("--Mark Of Cain Settings--");
+            MAX_PURIFIED_MARK_USES = builder
+                    .comment("Max uses of a Purified Mark of Cain")
+                    .defineInRange("mark_max_uses", 5, 1, 10);
+            builder.pop();
+
 
 
         }

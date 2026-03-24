@@ -800,5 +800,41 @@ public class ModRecipeProvider extends RecipeProvider {
                 )
                 .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/real_angel_feathers_rite"));
 
+        AltarRiteRecipeBuilder.altar(
+                Ingredient.of(ModItems.SACRED_BLOOD.get()),
+                new ItemStack(ModItems.MARK_OF_CAIN.get(), 1)
+                )
+                .displayType("altar.descendedangel.imbuement")
+                .requiredHaloTier(4)
+                .ring(
+                        RingEntry.of(Ingredient.of(ModItems.MARK_PIECE3.get())),
+                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get())),
+                        RingEntry.of(Ingredient.of(ModItems.ANGELS_TEARS.get())),
+                        RingEntry.of(Ingredient.of(ModItems.MARK_PIECE2.get())),
+                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.MARK_PIECE1.get())),
+                        RingEntry.of(Ingredient.of(ModItems.ANGELS_TEARS.get())),
+                        RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get()))
+                )
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/mark_of_cain_rite"));
+
+        AltarRiteRecipeBuilder.altar(
+                Ingredient.of(ModItems.MARK_OF_CAIN.get()),
+                new ItemStack(ModItems.PURIFIED_MARK_OF_CAIN.get(), 1)
+                )
+                .displayType("altar.descendedangel.ascendance")
+                .requiredHaloTier(7)
+                .ring(
+                        RingEntry.of(Ingredient.of(ModItems.SACRED_BLOOD.get())),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
+                        RingEntry.of(Ingredient.of(ModItems.ANGELS_TEARS.get())),
+                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
+                        RingEntry.of(Ingredient.of(ModItems.ANGELS_TEARS.get())),
+                        RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
+                        RingEntry.empty()
+                )
+                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/purified_mark_of_cain_rite"));
+
     }
 }
