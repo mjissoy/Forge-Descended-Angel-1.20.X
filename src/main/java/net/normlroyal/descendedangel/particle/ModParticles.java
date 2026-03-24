@@ -14,7 +14,7 @@ public class ModParticles {
     public static final RegistryObject<SimpleParticleType> VOID_TOUCHED =
             PARTICLES.register("void_touched", () -> new SimpleParticleType(true));
 
-    public static final RegistryObject<SimpleParticleType> ANGEl_FLIGHT =
+    public static final RegistryObject<SimpleParticleType> ANGEL_FLIGHT =
             PARTICLES.register("angel_flight_particle", () -> new SimpleParticleType(true));
 
     public static final RegistryObject<SimpleParticleType> BLUE_PORTAL =
