@@ -76,6 +76,56 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                     )
             );
 
+            // Ship wreak Cain Fragments Injection
+            add("mark_component3_ship_wreak",
+                    new AddItemModifier(
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/shipwreck_supply")).build(),
+                                    LootItemRandomChanceCondition.randomChance(0.075f).build()
+                            },
+                                    ModItems.MARK_PIECE3.get()
+                    )
+            );
+
+            add("mark_component2_ship_wreak",
+                    new AddItemModifier(
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/shipwreck_supply")).build(),
+                                    LootItemRandomChanceCondition.randomChance(0.05f).build()
+                            },
+                                    ModItems.MARK_PIECE2.get()
+                    )
+            );
+
+            // Stronghold Library Cain Fragments Injection
+            add("mark_component1_stronghold_library",
+                    new AddItemModifier(
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/stronghold_library")).build(),
+                                    LootItemRandomChanceCondition.randomChance(0.15f).build()
+                            },
+                                    ModItems.MARK_PIECE1.get()
+                            )
+            );
+            add("mark_component2_stronghold_library",
+                    new AddItemModifier(
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/stronghold_library")).build(),
+                                    LootItemRandomChanceCondition.randomChance(0.10f).build()
+                            },
+                                    ModItems.MARK_PIECE2.get()
+                            )
+            );
+            add("mark_component3_stronghold_library",
+                    new AddItemModifier(
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/stronghold_library")).build(),
+                                    LootItemRandomChanceCondition.randomChance(0.01f).build()
+                            },
+                                    ModItems.MARK_PIECE3.get()
+                            )
+            );
+
         }
     }
 
