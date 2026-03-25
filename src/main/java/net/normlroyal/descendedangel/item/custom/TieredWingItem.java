@@ -9,7 +9,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.events.useful.WingRenderContext;
 import net.normlroyal.descendedangel.flight.ClientFlightState;
 import net.normlroyal.descendedangel.util.IWingItem;
@@ -106,11 +105,7 @@ public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioIt
                 return PlayState.CONTINUE;
             }
 
-            if (!e.onGround()) {
-                c.setAnimation(RawAnimation.begin().thenLoop(prefix + "open_idle"));
-            } else {
-                c.setAnimation(RawAnimation.begin().thenLoop(prefix + "open_idle"));
-            }
+            c.setAnimation(RawAnimation.begin().thenLoop(prefix + "open_idle"));
             return PlayState.CONTINUE;
         }));
     }

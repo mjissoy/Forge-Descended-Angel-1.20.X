@@ -1,13 +1,10 @@
 package net.normlroyal.descendedangel.client;
 
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.client.screen.AltarScreen;
 import net.normlroyal.descendedangel.menu.ModMenus;
 

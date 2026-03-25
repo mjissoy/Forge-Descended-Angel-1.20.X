@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.events.useful.WingRenderContext;
 import net.normlroyal.descendedangel.item.custom.TieredWingItem;
 import top.theillusivec4.curios.api.SlotContext;
@@ -55,6 +56,7 @@ public class WingCurioRenderer implements ICurioRenderer {
             }
 
         } catch (Exception ex) {
+            DescendedAngel.LOGGER.error("Failed to render wing curio", ex);
         } finally {
             poseStack.popPose();
         }
