@@ -48,7 +48,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         ModItems.REALANGELFEATHER.get(),
                         Component.literal("Descended Angel"),
                         Component.literal("A small guide curated by Heavens' own Metatron"),
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "textures/gui/advancements/backgrounds/holybg.png"),
+                        new ResourceLocation(DescendedAngel.MOD_ID, "textures/gui/advancements/backgrounds/holybg.png"),
                         FrameType.TASK,
                         false, false, false
                 )
@@ -80,12 +80,12 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.TASK))
                 .addCriterion("craft_feather",
                         RecipeUnlockedTrigger.unlocked(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "angel_feather_from_crafting")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "angel_feather_from_crafting")
                         ))
                 .save(saver, id("main/craft_art_angel_feather"));
 
         ResourceKey<Structure> cathedral =
-                ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ruined_cathedral"));
+                ResourceKey.create(Registries.STRUCTURE, new ResourceLocation(DescendedAngel.MOD_ID, "ruined_cathedral"));
 
         Advancement findAltarStructure = Advancement.Builder.advancement()
                 .parent(craftArtFeather)
@@ -107,7 +107,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.CHALLENGE))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t1_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t1_rite")
                         ))
                 .save(saver, id("main/craft_angel_halo"));
 
@@ -119,7 +119,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.TASK))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t2_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t2_rite")
                         ))
                 .save(saver, id("main/craft_archangel_halo"));
 
@@ -131,7 +131,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.TASK))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t3_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t3_rite")
                         ))
                 .save(saver, id("main/craft_principality_halo"));
 
@@ -143,7 +143,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.GOAL))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t4_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t4_rite")
                         ))
                 .save(saver, id("main/craft_power_halo"));
 
@@ -155,7 +155,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.GOAL))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t5_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t5_rite")
                         ))
                 .save(saver, id("main/craft_virtue_halo"));
 
@@ -167,7 +167,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.GOAL))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t6_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t6_rite")
                         ))
                 .save(saver, id("main/craft_dominion_halo"));
 
@@ -179,7 +179,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.CHALLENGE))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t7_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t7_rite")
                         ))
                 .save(saver, id("main/craft_cherubim_halo"));
 
@@ -191,7 +191,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.CHALLENGE))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t8_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t8_rite")
                         ))
                 .save(saver, id("main/craft_throne_halo"));
 
@@ -203,7 +203,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.CHALLENGE))
                 .addCriterion("craft_halo",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t9_rite")
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t9_rite")
                         ))
                 .save(saver, id("main/craft_seraphim_halo"));
 
@@ -246,17 +246,17 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         "Imbue upon a book knowledge from the Lord",
                         FrameType.TASK))
                 .addCriterion("rainfall", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_text_rainfall")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_rainfall")))
                 .addCriterion("clearskies", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_text_clearskies")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_clearskies")))
                 .addCriterion("villager_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_text_villager_spawn")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_villager_spawn")))
                 .addCriterion("village_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_text_village_spawn")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_village_spawn")))
                 .addCriterion("ruined_portal_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_text_ruined_portal_spawn")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_ruined_portal_spawn")))
                 .addCriterion("wither_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_text_wither_spawn")));
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_wither_spawn")));
 
         sacredWritingBuilder.requirements(RequirementsStrategy.OR);
 
@@ -318,7 +318,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.GOAL))
                 .addCriterion("craft_holy_wings",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/holy_wing_rite"))
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/holy_wing_rite"))
                 )
                 .save(saver, id("main/craft_holy_wings"));
 
@@ -330,7 +330,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.GOAL))
                 .addCriterion("craft_angelic_wings",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/angelic_wing_rite"))
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/angelic_wing_rite"))
                 )
                 .save(saver, id("main/craft_angelic_wings"));
 
@@ -342,7 +342,7 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         FrameType.GOAL))
                 .addCriterion("craft_sacred_wings",
                         RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_wing_rite"))
+                                new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_wing_rite"))
                 )
                 .save(saver, id("main/craft_sacred_wings"));
     }

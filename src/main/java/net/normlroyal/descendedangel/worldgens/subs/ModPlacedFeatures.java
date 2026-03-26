@@ -19,16 +19,16 @@ import java.util.List;
 public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> SACRED_ORE =
-            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ore"));
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ore"));
 
     public static final ResourceKey<PlacedFeature> BLESSED_ROCK_PATCH_PLACED =
-            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_patch_placed"));
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_patch_placed"));
 
     public static final ResourceKey<PlacedFeature> ASHEN_ROCK_PATCH_PLACED =
-            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_patch_placed"));
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_patch_placed"));
 
     public static final ResourceKey<PlacedFeature> ANGEl_WEEPING_PATCH_PLACED =
-            ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "angel_weeping_patch_placed"));
+            ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "angel_weeping_patch_placed"));
 
     public static void bootstrap(BootstapContext<PlacedFeature> ctx) {
         HolderGetter<ConfiguredFeature<?, ?>> configured = ctx.lookup(Registries.CONFIGURED_FEATURE);

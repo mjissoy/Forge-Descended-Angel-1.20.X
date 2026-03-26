@@ -9,16 +9,16 @@ public class ImpModel extends GeoModel<ImpEntity> {
 
     @Override
     public ResourceLocation getModelResource(ImpEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "geo/imp.geo.json");
+        return new ResourceLocation(DescendedAngel.MOD_ID, "geo/imp.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(ImpEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "textures/entity/imp.png");
+        return new ResourceLocation(DescendedAngel.MOD_ID, "textures/entity/imp.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(ImpEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "animations/imp.animation.json");
+        return new ResourceLocation(DescendedAngel.MOD_ID, "animations/imp.animation.json");
     }
 }

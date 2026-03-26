@@ -23,16 +23,16 @@ import java.util.List;
 public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SACRED_ORE =
-            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ore"));
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ore"));
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLESSED_ROCK_PATCH =
-            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_patch"));
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_patch"));
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_ROCK_PATCH =
-            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_patch"));
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_patch"));
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ANGEl_WEEPING_PATCH =
-            ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "angel_weeping_patch"));
+            ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "angel_weeping_patch"));
 
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> ctx) {

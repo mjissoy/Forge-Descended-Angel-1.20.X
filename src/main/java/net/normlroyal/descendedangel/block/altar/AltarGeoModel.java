@@ -8,7 +8,7 @@ public class AltarGeoModel extends GeoModel<AltarBlockEntity> {
 
     @Override
     public ResourceLocation getModelResource(AltarBlockEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(
+        return new ResourceLocation (
                 DescendedAngel.MOD_ID,
                 "geo/altarnew.geo.json"
         );
@@ -16,7 +16,7 @@ public class AltarGeoModel extends GeoModel<AltarBlockEntity> {
 
     @Override
     public ResourceLocation getTextureResource(AltarBlockEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(
+        return new ResourceLocation(
                 DescendedAngel.MOD_ID,
                 "textures/block/altar_rework.png"
         );

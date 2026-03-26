@@ -18,10 +18,10 @@ import net.normlroyal.descendedangel.recipe.ModRecipeTypes;
 public class DescendedAngelJeiPlugin implements IModPlugin {
 
     public static final ResourceLocation UID =
-            ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "jei_plugin");
+            new ResourceLocation(DescendedAngel.MOD_ID, "jei_plugin");
 
     public static final RecipeType<AltarRiteRecipe> ALTAR_RITE =
-            new RecipeType<>(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar_rite"), AltarRiteRecipe.class);
+            new RecipeType<>(new ResourceLocation(DescendedAngel.MOD_ID, "altar_rite"), AltarRiteRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {

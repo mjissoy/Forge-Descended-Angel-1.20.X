@@ -27,14 +27,14 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             // Enderman Drop Injection
             add("spatial_core_from_enderman",
                     new SpatialCoreFromEndermanModifier(new LootItemCondition[] {
-                            LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "entities/enderman")).build()
+                            LootTableIdCondition.builder(new ResourceLocation("minecraft", "entities/enderman")).build()
                     })
             );
 
             // End City Treasure Injection
             add("spatial_core_in_end_city_treasure",
                     new SpatialCoreFromEndCityTreasureModifier(new LootItemCondition[] {
-                            LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/end_city_treasure")).build()
+                            LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/end_city_treasure")).build()
                     })
             );
 
@@ -42,7 +42,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             add("fruit_of_space_bastion_treasure",
                     new AddItemModifier(
                             new LootItemCondition[] {
-                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/bastion_treasure")).build(),
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/bastion_treasure")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.10f).build()
                             },
                             ModItems.SPACE_FRUIT.get()
@@ -52,7 +52,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             add("fruit_of_time_bastion_treasure",
                     new AddItemModifier(
                             new LootItemCondition[] {
-                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/bastion_treasure")).build(),
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/bastion_treasure")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.10f).build()
                             },
                             ModItems.TIME_FRUIT.get()
@@ -63,7 +63,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             add("desert_pyramid_shards",
                     new RandomShardLootModifier(
                             new LootItemCondition[] {
-                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/desert_pyramid")).build(),
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.10f).build()
                             },
                             List.of(
@@ -80,7 +80,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             add("mark_component3_ship_wreak",
                     new AddItemModifier(
                             new LootItemCondition[] {
-                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/shipwreck_supply")).build(),
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/shipwreck_supply")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.075f).build()
                             },
                                     ModItems.MARK_PIECE3.get()
@@ -90,7 +90,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             add("mark_component2_ship_wreak",
                     new AddItemModifier(
                             new LootItemCondition[] {
-                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/shipwreck_supply")).build(),
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/shipwreck_supply")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.05f).build()
                             },
                                     ModItems.MARK_PIECE2.get()
@@ -101,7 +101,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             add("mark_component1_stronghold_library",
                     new AddItemModifier(
                             new LootItemCondition[] {
-                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/stronghold_library")).build(),
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/stronghold_library")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.15f).build()
                             },
                                     ModItems.MARK_PIECE1.get()
@@ -110,7 +110,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             add("mark_component2_stronghold_library",
                     new AddItemModifier(
                             new LootItemCondition[] {
-                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/stronghold_library")).build(),
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/stronghold_library")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.10f).build()
                             },
                                     ModItems.MARK_PIECE2.get()
@@ -119,7 +119,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             add("mark_component3_stronghold_library",
                     new AddItemModifier(
                             new LootItemCondition[] {
-                                    LootTableIdCondition.builder(ResourceLocation.fromNamespaceAndPath("minecraft", "chests/stronghold_library")).build(),
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/stronghold_library")).build(),
                                     LootItemRandomChanceCondition.randomChance(0.01f).build()
                             },
                                     ModItems.MARK_PIECE3.get()

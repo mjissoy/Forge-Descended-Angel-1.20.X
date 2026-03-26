@@ -33,7 +33,7 @@ public class ModBiomeModifiersJsonProvider implements DataProvider {
     }
 
     private CompletableFuture<?> save(CachedOutput cache, String name, JsonObject json) {
-        Path path = pathProvider.json(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, name));
+        Path path = pathProvider.json(new ResourceLocation(DescendedAngel.MOD_ID, name));
         return DataProvider.saveStable(cache, json, path);
     }
 

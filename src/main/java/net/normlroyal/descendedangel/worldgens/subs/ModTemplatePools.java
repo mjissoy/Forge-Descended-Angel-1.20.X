@@ -27,19 +27,19 @@ public class ModTemplatePools {
             key("ruined_cathedral/start_pool");
 
     private static ResourceKey<StructureTemplatePool> key(String id) {
-        return ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, id));
+        return ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation(DescendedAngel.MOD_ID, id));
     }
 
     public static void bootstrap(BootstapContext<StructureTemplatePool> ctx) {
         HolderGetter<StructureTemplatePool> pools = ctx.lookup(Registries.TEMPLATE_POOL);
 
-        var empty = pools.getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.withDefaultNamespace("empty")));
+        var empty = pools.getOrThrow(ResourceKey.create(Registries.TEMPLATE_POOL, new ResourceLocation("minecraft", "empty")));
 
         ctx.register(ABOVEGROUND_TABLET_START,
                 new StructureTemplatePool(
                         empty,
                         List.of(Pair.of(
-                                StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "aboveground_tablet").toString())
+                                StructurePoolElement.single(new ResourceLocation(DescendedAngel.MOD_ID, "aboveground_tablet").toString())
                                         .apply(StructureTemplatePool.Projection.RIGID),
                                         1
                         )
@@ -50,7 +50,7 @@ public class ModTemplatePools {
                 new StructureTemplatePool(
                         empty,
                         List.of(Pair.of(
-                                        StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ancientcity_tablet").toString())
+                                        StructurePoolElement.single(new ResourceLocation(DescendedAngel.MOD_ID, "ancientcity_tablet").toString())
                                                 .apply(StructureTemplatePool.Projection.RIGID),
                                         1
                                 )
@@ -61,7 +61,7 @@ public class ModTemplatePools {
                 new StructureTemplatePool(
                         empty,
                         List.of(Pair.of(
-                                StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "nether_tablet").toString())
+                                StructurePoolElement.single(new ResourceLocation(DescendedAngel.MOD_ID, "nether_tablet").toString())
                                         .apply(StructureTemplatePool.Projection.RIGID),
                                         1
                         )
@@ -72,7 +72,7 @@ public class ModTemplatePools {
                 new StructureTemplatePool(
                         empty,
                         List.of(Pair.of(
-                                        StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "end_tablet").toString())
+                                        StructurePoolElement.single(new ResourceLocation(DescendedAngel.MOD_ID, "end_tablet").toString())
                                                 .apply(StructureTemplatePool.Projection.RIGID),
                                         1
                                 )
@@ -83,7 +83,7 @@ public class ModTemplatePools {
                 new StructureTemplatePool(
                         empty,
                         List.of(Pair.of(
-                                        StructurePoolElement.single(ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ruined_cathedral").toString())
+                                        StructurePoolElement.single(new ResourceLocation(DescendedAngel.MOD_ID, "ruined_cathedral").toString())
                                                 .apply(StructureTemplatePool.Projection.RIGID),
                                         1
                                 )

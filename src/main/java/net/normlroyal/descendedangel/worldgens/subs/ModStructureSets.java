@@ -24,7 +24,7 @@ public class ModStructureSets {
     public static final ResourceKey<StructureSet> RUINED_CATHEDRAL = key("ruined_cathedral");
 
     private static ResourceKey<StructureSet> key(String id) {
-        return ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, id));
+        return ResourceKey.create(Registries.STRUCTURE_SET, new ResourceLocation(DescendedAngel.MOD_ID, id));
     }
 
     public static void bootstrap(BootstapContext<StructureSet> ctx) {

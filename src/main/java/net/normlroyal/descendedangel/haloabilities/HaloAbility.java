@@ -16,7 +16,7 @@ public enum HaloAbility {
     private final ResourceLocation icon;
 
     HaloAbility(String id) {
-        this.icon = ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "textures/gui/ability_icons/" + id + ".png");
+        this.icon = new ResourceLocation(DescendedAngel.MOD_ID, "textures/gui/ability_icons/" + id + ".png");
     }
 
     public ResourceLocation icon() {

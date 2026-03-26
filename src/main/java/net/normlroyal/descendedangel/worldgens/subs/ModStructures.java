@@ -33,7 +33,7 @@ public class ModStructures {
 
     private static ResourceKey<Structure> key(String id) {
         return ResourceKey.create(Registries.STRUCTURE,
-                ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, id));
+                new ResourceLocation(DescendedAngel.MOD_ID, id));
     }
 
     public static void bootstrap(BootstapContext<Structure> ctx) {
@@ -42,18 +42,18 @@ public class ModStructures {
 
         TagKey<Biome> HAS_ABOVEGROUND_TABLET =
                 TagKey.create(Registries.BIOME,
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "has_aboveground_tablet"));
+                        new ResourceLocation(DescendedAngel.MOD_ID, "has_aboveground_tablet"));
         TagKey<Biome> HAS_NETHER_TABLET =
                 TagKey.create(Registries.BIOME,
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "has_nether_tablet"));
+                        new ResourceLocation(DescendedAngel.MOD_ID, "has_nether_tablet"));
         TagKey<Biome> HAS_END_TABLET =
                 TagKey.create(Registries.BIOME,
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "has_end_tablet"));
+                        new ResourceLocation(DescendedAngel.MOD_ID, "has_end_tablet"));
         TagKey<Biome> HAS_RUINED_CATHEDRAL =
                 TagKey.create(Registries.BIOME,
-                        ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "has_ruined_cathedral"));
+                        new ResourceLocation(DescendedAngel.MOD_ID, "has_ruined_cathedral"));
         TagKey<Biome> HAS_ANCIENT_CITY =
-                TagKey.create(Registries.BIOME, ResourceLocation.withDefaultNamespace("has_structure/ancient_city"));
+                TagKey.create(Registries.BIOME, new ResourceLocation("minecraft", "has_structure/ancient_city"));
 
         ctx.register(ABOVEGROUND_TABLET,
                 new JigsawStructure(

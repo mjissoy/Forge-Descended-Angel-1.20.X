@@ -26,11 +26,11 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
 
 
     private static ResourceLocation rl(String path) {
-        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, path);
+        return new ResourceLocation(DescendedAngel.MOD_ID, path);
     }
 
     private static final ResourceLocation BG =
-            ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "textures/gui/jei_altar_workbench.png");
+            new ResourceLocation(DescendedAngel.MOD_ID, "textures/gui/jei_altar_workbench.png");
 
     private final IDrawable background;
     private final IDrawable icon;

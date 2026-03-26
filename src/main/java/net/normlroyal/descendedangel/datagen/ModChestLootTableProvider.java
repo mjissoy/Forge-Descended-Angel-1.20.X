@@ -16,15 +16,15 @@ import java.util.function.BiConsumer;
 
 public class ModChestLootTableProvider implements LootTableSubProvider {
 
-    public static final ResourceLocation TABLET_BARREL_LOOT = ResourceLocation.fromNamespaceAndPath(
+    public static final ResourceLocation TABLET_BARREL_LOOT = new ResourceLocation(
             DescendedAngel.MOD_ID, "chests/tablet_barrel"
     );
 
-    public static final ResourceLocation NETHER_TABLET_BARREL_LOOT = ResourceLocation.fromNamespaceAndPath(
+    public static final ResourceLocation NETHER_TABLET_BARREL_LOOT = new ResourceLocation(
             DescendedAngel.MOD_ID, "chests/nether_tablet_barrel"
     );
 
-    public static final ResourceLocation END_TABLET_BARREL_LOOT = ResourceLocation.fromNamespaceAndPath(
+    public static final ResourceLocation END_TABLET_BARREL_LOOT = new ResourceLocation(
             DescendedAngel.MOD_ID, "chests/end_tablet_barrel"
     );
 

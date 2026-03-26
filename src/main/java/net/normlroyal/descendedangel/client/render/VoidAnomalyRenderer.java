@@ -7,7 +7,7 @@ import net.minecraft.world.entity.monster.Zombie;
 
 public class VoidAnomalyRenderer extends ZombieRenderer {
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath("descendedangel", "textures/entity/void_anomaly.png");
+            new ResourceLocation("descendedangel", "textures/entity/void_anomaly.png");
 
     public VoidAnomalyRenderer(EntityRendererProvider.Context p_174456_) {
         super(p_174456_);

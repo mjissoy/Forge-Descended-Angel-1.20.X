@@ -27,13 +27,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     }
 
     public static final TagKey<Block> SACRED_BLOCKS =
-            TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_blocks"));
+            TagKey.create(Registries.BLOCK, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_blocks"));
 
     public static final TagKey<Block> BLESSED_BLOCKS =
-            TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_blocks"));
+            TagKey.create(Registries.BLOCK, new ResourceLocation(DescendedAngel.MOD_ID, "blessed_blocks"));
 
     public static final TagKey<Block> ASHEN_BLOCKS =
-            TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_blocks"));
+            TagKey.create(Registries.BLOCK, new ResourceLocation(DescendedAngel.MOD_ID, "ashen_blocks"));
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {

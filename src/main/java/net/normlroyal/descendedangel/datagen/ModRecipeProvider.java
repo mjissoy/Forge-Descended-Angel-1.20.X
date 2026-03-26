@@ -31,7 +31,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', Items.IRON_NUGGET)
                 .define('B', Items.GOLD_NUGGET)
                 .unlockedBy("has_gold_nugget", has(Items.GOLD_NUGGET))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "holy_necklace_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "holy_necklace_crafting")
                 );
 
         // Blessed Rock and Blessed Rock Crafting
@@ -39,20 +39,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.BLESSED_ROCK_SLAB.get(),
                 Ingredient.of(ModBlocks.BLESSED_ROCK.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_slab_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_slab_crafting")
                 );
 
         stairBuilder(ModBlocks.BLESSED_ROCK_STAIR.get(),
                 Ingredient.of(ModBlocks.BLESSED_ROCK.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_stair_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_stair_crafting")
                 );
 
         wallBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.BLESSED_ROCK_WALL.get(),
                 Ingredient.of(ModBlocks.BLESSED_ROCK.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_wall_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_wall_crafting")
                 );
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
@@ -62,7 +62,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', ModBlocks.BLESSED_ROCK.get())
                 .unlockedBy("has_blessed_rock",
                         has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "polished_blessed_rock_crafting")
                 );
 
 
@@ -70,20 +70,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get(),
                 Ingredient.of(ModBlocks.BLESSED_ROCK_BRICKS.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_brick_slab_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_brick_slab_crafting")
                 );
 
         stairBuilder(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get(),
                 Ingredient.of(ModBlocks.BLESSED_ROCK_BRICKS.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_brick_stair_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_brick_stair_crafting")
                 );
 
         wallBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.BLESSED_ROCK_BRICKS_WALL.get(),
                 Ingredient.of(ModBlocks.BLESSED_ROCK_BRICKS.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_brick_wall_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_brick_wall_crafting")
                 );
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
@@ -93,7 +93,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', ModBlocks.POLISHED_BLESSED_ROCK.get())
                 .unlockedBy("has_blessed_rock",
                         has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "blessed_rock_bricks_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_bricks_crafting")
                 );
 
 
@@ -101,40 +101,40 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(),
                 Ingredient.of(ModBlocks.POLISHED_BLESSED_ROCK.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_slab_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "polished_blessed_rock_slab_crafting")
                 );
 
         stairBuilder(ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get(),
                 Ingredient.of(ModBlocks.POLISHED_BLESSED_ROCK.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_stair_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "polished_blessed_rock_stair_crafting")
                 );
 
         wallBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.POLISHED_BLESSED_ROCK_WALL.get(),
                 Ingredient.of(ModBlocks.POLISHED_BLESSED_ROCK.get()))
                 .unlockedBy("has_blessed_rock", has(ModBlocks.BLESSED_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_blessed_rock_wall_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "polished_blessed_rock_wall_crafting")
                 );
 
         slabBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.ASHEN_ROCK_SLAB.get(),
                 Ingredient.of(ModBlocks.ASHEN_ROCK.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_slab_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_slab_crafting")
                 );
 
         stairBuilder(ModBlocks.ASHEN_ROCK_STAIR.get(),
                 Ingredient.of(ModBlocks.ASHEN_ROCK.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_stair_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_stair_crafting")
                 );
 
         wallBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.ASHEN_ROCK_WALL.get(),
                 Ingredient.of(ModBlocks.ASHEN_ROCK.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_wall_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_wall_crafting")
                 );
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
@@ -144,27 +144,27 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', ModBlocks.ASHEN_ROCK.get())
                 .unlockedBy("has_ashen_rock",
                         has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "polished_ashen_rock_crafting")
                 );
 
         slabBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(),
                 Ingredient.of(ModBlocks.ASHEN_ROCK_BRICKS.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_brick_slab_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_brick_slab_crafting")
                 );
 
         stairBuilder(ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get(),
                 Ingredient.of(ModBlocks.ASHEN_ROCK_BRICKS.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_brick_stair_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_brick_stair_crafting")
                 );
 
         wallBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.ASHEN_ROCK_BRICKS_WALL.get(),
                 Ingredient.of(ModBlocks.ASHEN_ROCK_BRICKS.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_brick_wall_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_brick_wall_crafting")
                 );
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
@@ -174,34 +174,34 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', ModBlocks.POLISHED_ASHEN_ROCK.get())
                 .unlockedBy("has_ashen_rock",
                         has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "ashen_rock_bricks_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_bricks_crafting")
                 );
 
         slabBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get(),
                 Ingredient.of(ModBlocks.POLISHED_ASHEN_ROCK.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_slab_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "polished_ashen_rock_slab_crafting")
                 );
 
         stairBuilder(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get(),
                 Ingredient.of(ModBlocks.POLISHED_ASHEN_ROCK.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_stair_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "polished_ashen_rock_stair_crafting")
                 );
 
         wallBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.POLISHED_ASHEN_ROCK_WALL.get(),
                 Ingredient.of(ModBlocks.POLISHED_ASHEN_ROCK.get()))
                 .unlockedBy("has_ashen_rock", has(ModBlocks.ASHEN_ROCK.get()))
-                .save(out,  ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "polished_ashen_rock_wall_crafting")
+                .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "polished_ashen_rock_wall_crafting")
                 );
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ANGELS_TEARS.get())
                 .requires(ModBlocks.ANGEL_WEEPING.get())
                 .requires(Items.GLASS_BOTTLE)
                 .unlockedBy(getHasName(ModBlocks.ANGEL_WEEPING.get()), has(ModBlocks.ANGEL_WEEPING.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "angel_tears_crafting"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "angel_tears_crafting"));
 
         // Void Tear Crafting
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COMPRESSEDVOID.get())
@@ -210,12 +210,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("VVV")
                 .define('V', ModItems.VOIDTEAR.get())
                 .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "compressed_void_from_void_tear"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "compressed_void_from_void_tear"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOIDTEAR.get(), 9)
                 .requires(ModItems.COMPRESSEDVOID.get())
                 .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "void_tear_from_compressed_void"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "void_tear_from_compressed_void"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOIDMATRIX.get())
                 .pattern("VVV")
@@ -223,12 +223,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("VVV")
                 .define('V', ModItems.COMPRESSEDVOID.get())
                 .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "void_matrix_from_compressed_void"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "void_matrix_from_compressed_void"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.COMPRESSEDVOID.get(), 9)
                 .requires(ModItems.VOIDMATRIX.get())
                 .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "compressed_void_from_void_matrix"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "compressed_void_from_void_matrix"));
 
 
         // Mod Items Crafting
@@ -239,7 +239,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', Items.IRON_NUGGET)
                 .define('B', Items.GOLD_NUGGET)
                 .unlockedBy("has_gold_nugget", has(Items.GOLD_NUGGET))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "holy_ring_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "holy_ring_crafting")
                 );
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ANGELFEATHER.get())
@@ -251,7 +251,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('C', Items.GLOWSTONE_DUST)
                 .define('D', ModItems.VOIDTEAR.get())
                 .unlockedBy("has_void_tear", has(ModItems.VOIDTEAR.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "angel_feather_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "angel_feather_crafting")
                 );
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RAW_SACRED_ORE_BLOCK.get())
@@ -260,7 +260,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("AAA")
                 .define('A', ModItems.SACREDORERAW.get())
                 .unlockedBy("has_sacred_ore_raw", has(ModItems.SACREDORERAW.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ore_raw_block_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ore_raw_block_crafting")
                 );
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SACRED_INGOT_BLOCK.get())
@@ -269,7 +269,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("AAA")
                 .define('A', ModItems.SACREDOREINGOT.get())
                 .unlockedBy("has_sacred_ore_ingot", has(ModItems.SACREDOREINGOT.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ore_ingot_block_crafting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ore_ingot_block_crafting")
                 );
 
 
@@ -281,7 +281,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 1.0f,
                 200)
                 .unlockedBy("has_sacred_ore_raw", has(ModItems.SACREDORERAW.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ingot_smelting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ingot_smelting")
                 );
 
         SimpleCookingRecipeBuilder.blasting(
@@ -291,7 +291,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 1.0f,
                 100)
                 .unlockedBy("has_sacred_ore_raw", has(ModItems.SACREDORERAW.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ingot_blasting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ingot_blasting")
                 );
 
         SimpleCookingRecipeBuilder.smelting(
@@ -301,7 +301,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 1.0f,
                 200)
                 .unlockedBy("has_sacred_ore_raw", has(ModItems.SACREDORERAW.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ingot_block_smelting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ingot_block_smelting")
                 );
 
         SimpleCookingRecipeBuilder.blasting(
@@ -311,7 +311,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 1.0f,
                 100)
                 .unlockedBy("has_sacred_ore_raw", has(ModItems.SACREDORERAW.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "sacred_ingot_block_blasting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ingot_block_blasting")
                 );
 
         SimpleCookingRecipeBuilder.smelting(
@@ -321,7 +321,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         5.0f,
                         200)
                 .unlockedBy("has_demon_heart", has(ModItems.DEMONHEART.get()))
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "purified_demon_heart_from_smelting")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "purified_demon_heart_from_smelting")
                 );
 
 
@@ -342,7 +342,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(Items.GOLD_INGOT)),
                         RingEntry.of(Ingredient.of(Items.GOLD_INGOT))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t1_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t1_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HALO_T1.get()),
@@ -360,7 +360,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                         RingEntry.of(Ingredient.of(Items.GOLD_BLOCK))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t2_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t2_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HALO_T2.get()),
@@ -378,7 +378,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                         RingEntry.of(Ingredient.of(Items.GOLD_BLOCK))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t3_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t3_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HALO_T3.get()),
@@ -396,7 +396,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(Items.DIAMOND_BLOCK))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t4_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t4_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HALO_T4.get()),
@@ -414,7 +414,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(Items.NETHERITE_INGOT))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t5_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t5_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HALO_T5.get()),
@@ -432,7 +432,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.REALDEMONHEART.get())),
                         RingEntry.of(Ingredient.of(Items.NETHERITE_BLOCK))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t6_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t6_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HALO_T6.get()),
@@ -450,7 +450,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(Items.NETHER_STAR)),
                         RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t7_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t7_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HALO_T7.get()),
@@ -468,7 +468,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(Items.DRAGON_BREATH)),
                         RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t8_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t8_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HALO_T8.get()),
@@ -486,7 +486,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(ModBlocks.SACRED_INGOT_BLOCK.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/halo_t9_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/halo_t9_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HOLY_RING.get()),
@@ -504,7 +504,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                       RingEntry.of(Ingredient.of(Items.WATER_BUCKET))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/cloud_ring_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/cloud_ring_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HOLY_RING.get()),
@@ -522,7 +522,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                       RingEntry.of(Ingredient.of(Items.GUNPOWDER))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/flame_ring_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/flame_ring_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HOLY_RING.get()),
@@ -540,7 +540,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                       RingEntry.of(Ingredient.of(Items.GHAST_TEAR))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/cure_ring_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/cure_ring_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HOLY_NECKLACE.get()),
@@ -558,7 +558,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                       RingEntry.of(Ingredient.of(Items.RABBIT_FOOT))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/messenger_pendant_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/messenger_pendant_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HOLY_NECKLACE.get()),
@@ -576,7 +576,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                       RingEntry.of(Ingredient.of(Items.GOLDEN_CARROT))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/nanos_lantern_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/nanos_lantern_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.HOLY_NECKLACE.get()),
@@ -594,7 +594,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                       RingEntry.of(Ingredient.of(Items.GLOWSTONE))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/alchemy_chain_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/alchemy_chain_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(Items.BOOK),
@@ -613,7 +613,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(Items.WITHER_SKELETON_SKULL))
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_wither\",uses:3}}")
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_writing_spawn_wither_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_spawn_wither_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(Items.BOOK),
@@ -632,7 +632,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.empty()
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:clear_weather\",uses:3}}")
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_writing_clearskies_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_clearskies_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(Items.BOOK),
@@ -651,7 +651,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.empty()
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:rain_weather\",uses:1}}")
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_writing_rainfall_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_rainfall_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(Items.BOOK),
@@ -670,7 +670,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.empty()
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_ruined_portal\",uses:1}}")
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_writing_ruined_portal_spawn_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_ruined_portal_spawn_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(Items.BOOK),
@@ -689,7 +689,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.of(Ingredient.of(Items.EMERALD_BLOCK))
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_villages\",uses:1}}")
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_writing_village_summon_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_village_summon_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(Items.BOOK),
@@ -708,7 +708,7 @@ public class ModRecipeProvider extends RecipeProvider {
                       RingEntry.empty()
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_villager\",uses:1}}")
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_writing_villager_summon_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_villager_summon_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.SACRED_BLOOD.get()),
@@ -726,7 +726,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                         RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/destiny_spear_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/destiny_spear_rite"));
 
         AltarRiteRecipeBuilder.altar(
                 Ingredient.of(ModItems.ANGELFEATHER.get()),
@@ -744,7 +744,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
                         RingEntry.of(Ingredient.of(ModItems.ANGELFEATHER.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/holy_wing_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/holy_wing_rite"));
 
         AltarRiteRecipeBuilder.altar(
                 Ingredient.of(ModItems.WING1.get()),
@@ -762,7 +762,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(ModItems.ANGELFEATHER.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/angelic_wing_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/angelic_wing_rite"));
 
         AltarRiteRecipeBuilder.altar(
                 Ingredient.of(ModItems.WING2.get()),
@@ -780,7 +780,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.of(Ingredient.of(ModItems.REALANGELFEATHER.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/sacred_wing_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_wing_rite"));
 
         AltarRiteRecipeBuilder.altar(
                 Ingredient.of(ModItems.SACREDOREINGOT.get()),
@@ -798,7 +798,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                         RingEntry.of(Ingredient.of(ModItems.ANGELFEATHER.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/real_angel_feathers_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/real_angel_feathers_rite"));
 
         AltarRiteRecipeBuilder.altar(
                 Ingredient.of(ModItems.SACRED_BLOOD.get()),
@@ -816,7 +816,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.ANGELS_TEARS.get())),
                         RingEntry.of(Ingredient.of(ModItems.SACREDOREINGOT.get()))
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/mark_of_cain_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/mark_of_cain_rite"));
 
         AltarRiteRecipeBuilder.altar(
                 Ingredient.of(ModItems.MARK_OF_CAIN.get()),
@@ -834,7 +834,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         RingEntry.of(Ingredient.of(ModItems.VOIDMATRIX.get())),
                         RingEntry.empty()
                 )
-                .save(out, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "altar/purified_mark_of_cain_rite"));
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/purified_mark_of_cain_rite"));
 
     }
 }

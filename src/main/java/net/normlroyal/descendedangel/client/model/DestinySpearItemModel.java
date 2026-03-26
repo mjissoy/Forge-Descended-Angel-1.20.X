@@ -8,12 +8,12 @@ import software.bernie.geckolib.model.GeoModel;
 public class DestinySpearItemModel extends GeoModel<DestinySpearItem> {
     @Override
     public ResourceLocation getModelResource(DestinySpearItem animatable) {
-        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "geo/destiny_spear.geo.json");
+        return new ResourceLocation(DescendedAngel.MOD_ID, "geo/destiny_spear.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(DestinySpearItem animatable) {
-        return ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "textures/item/destiny_spear.png");
+        return new ResourceLocation(DescendedAngel.MOD_ID, "textures/item/destiny_spear.png");
     }
 
     @Override

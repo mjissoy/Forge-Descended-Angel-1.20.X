@@ -19,31 +19,31 @@ import java.util.concurrent.CompletableFuture;
 public class ModItemTagsProvider extends ItemTagsProvider {
 
     public static final TagKey<Item> HALOS =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "halos"));
+            TagKey.create(Registries.ITEM, new ResourceLocation(DescendedAngel.MOD_ID, "halos"));
 
     public static final TagKey<Item> WINGS =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "wings"));
+            TagKey.create(Registries.ITEM, new ResourceLocation(DescendedAngel.MOD_ID, "wings"));
 
     public static final TagKey<Item> RINGS =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "rings"));
+            TagKey.create(Registries.ITEM, new ResourceLocation(DescendedAngel.MOD_ID, "rings"));
 
     public static final TagKey<Item> NECKLACES =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "necklaces"));
+            TagKey.create(Registries.ITEM, new ResourceLocation(DescendedAngel.MOD_ID, "necklaces"));
 
     public static final TagKey<Item> SHARDS =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DescendedAngel.MOD_ID, "shards"));
+            TagKey.create(Registries.ITEM, new ResourceLocation(DescendedAngel.MOD_ID, "shards"));
 
     public static final TagKey<Item> CURIOS_HALOS =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "halo"));
+            TagKey.create(Registries.ITEM, new ResourceLocation("curios", "halo"));
 
     public static final TagKey<Item> CURIOS_WINGS =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "wing"));
+            TagKey.create(Registries.ITEM, new ResourceLocation("curios", "wing"));
 
     public static final TagKey<Item> CURIOS_RINGS =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "ring"));
+            TagKey.create(Registries.ITEM, new ResourceLocation("curios", "ring"));
 
     public static final TagKey<Item> CURIOS_NECKLACES =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "necklace"));
+            TagKey.create(Registries.ITEM, new ResourceLocation("curios", "necklace"));
 
     public ModItemTagsProvider(
             PackOutput output,
