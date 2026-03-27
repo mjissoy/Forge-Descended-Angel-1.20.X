@@ -2,7 +2,10 @@
   "type": "descendedangel:spawn_structure",
   "mode": "command",
   "structure": "minecraft:ruined_portal",
-  "offset": [0, 0, 24],
+  "placement": "clicked_surface",
+  "clicked_face_mode": "adjacent",
+  "fallback_placement": "surface",
+  "offset": [0, 0, 0],
 
   "display": {
     "name": "Scripture of §cDescent§r",

@@ -3,6 +3,7 @@ package net.normlroyal.descendedangel.item.custom.writings;
 import net.minecraft.resources.ResourceLocation;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.item.custom.writings.effects.SpawnEntityWritType;
+import net.normlroyal.descendedangel.item.custom.writings.effects.SpawnStructureWritType;
 import net.normlroyal.descendedangel.item.custom.writings.effects.WeatherWritType;
 
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class WritTypeRegistry {
     public static void registerDefaults() {
         register(new ResourceLocation(DescendedAngel.MOD_ID, "weather"), new WeatherWritType());
         register(new ResourceLocation(DescendedAngel.MOD_ID, "spawn_entity"), new SpawnEntityWritType());
-        register(new ResourceLocation(DescendedAngel.MOD_ID, "spawn_structure"), new SpawnEntityWritType());
+        register(new ResourceLocation(DescendedAngel.MOD_ID, "spawn_structure"), new SpawnStructureWritType());
     }
 
     public static void register(ResourceLocation id, IWritType effect) {
