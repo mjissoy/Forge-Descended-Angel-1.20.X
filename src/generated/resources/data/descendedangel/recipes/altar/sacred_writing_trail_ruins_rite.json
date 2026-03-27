@@ -4,26 +4,14 @@
     "item": "minecraft:book"
   },
   "display_type": "altar.descendedangel.imbuement",
-  "required_halo_tier": 6,
+  "required_halo_tier": 5,
   "result": {
     "item": "descendedangel:sacred_writings",
-    "nbt": "{descendedangel:{writ_id:\"descendedangel:spawn_wither\",uses:3}}"
+    "nbt": "{descendedangel:{writ_id:\"descendedangel:spawn_trail_ruins\",uses:1}}"
   },
   "ring": [
     {
-      "item": "minecraft:wither_skeleton_skull"
-    },
-    {
-      "item": "minecraft:wither_skeleton_skull"
-    },
-    {
-      "item": "descendedangel:compressed_void"
-    },
-    {
-      "empty": true
-    },
-    {
-      "item": "minecraft:soul_sand"
+      "item": "minecraft:brush"
     },
     {
       "empty": true
@@ -32,7 +20,19 @@
       "item": "descendedangel:compressed_void"
     },
     {
-      "item": "minecraft:wither_skeleton_skull"
+      "tag": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "empty": true
+    },
+    {
+      "item": "descendedangel:compressed_void"
+    },
+    {
+      "tag": "minecraft:sand"
     }
   ]
 }

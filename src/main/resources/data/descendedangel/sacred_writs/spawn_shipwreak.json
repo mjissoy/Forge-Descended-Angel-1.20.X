@@ -1,0 +1,16 @@
+{
+  "type": "descendedangel:spawn_structure",
+  "mode": "command",
+  "structure": "minecraft:shipwreck",
+  "placement": "clicked_surface",
+  "fallback_placement": "surface",
+  "offset": [0, 0, 0],
+
+  "display": {
+    "name": "Scripture of Forgotten Seafarers",
+    "tooltip": [
+      "Bring from the Depths the remains of those on a lost voyage.",
+      "Use near water for optimal results"
+    ]
+  }
+}

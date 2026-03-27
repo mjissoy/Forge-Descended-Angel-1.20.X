@@ -1,0 +1,15 @@
+{
+  "type": "descendedangel:spawn_structure",
+  "mode": "command",
+  "structure": "minecraft:trail_ruins",
+  "placement": "clicked_surface",
+  "fallback_placement": "surface",
+  "offset": [0, 0, 0],
+
+  "display": {
+    "name": "Scripture of Buried Life",
+    "tooltip": [
+      "Unearth the remnants of an ancient civilisation."
+    ]
+  }
+}

@@ -3,9 +3,11 @@ package net.normlroyal.descendedangel.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.common.Tags;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.datagen.helpers.AltarRiteRecipeBuilder;
@@ -605,11 +607,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .ring(
                       RingEntry.of(Ingredient.of(Items.WITHER_SKELETON_SKULL)),
                       RingEntry.of(Ingredient.of(Items.WITHER_SKELETON_SKULL)),
-                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                       RingEntry.empty(),
                       RingEntry.of(Ingredient.of(Items.SOUL_SAND)),
                       RingEntry.empty(),
-                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                       RingEntry.of(Ingredient.of(Items.WITHER_SKELETON_SKULL))
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_wither\",uses:3}}")
@@ -662,11 +664,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .ring(
                       RingEntry.of(Ingredient.of(Items.FLINT_AND_STEEL)),
                       RingEntry.empty(),
-                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                       RingEntry.of(Ingredient.of(Items.OBSIDIAN)),
                       RingEntry.of(Ingredient.of(Items.OBSIDIAN)),
                       RingEntry.of(Ingredient.of(Items.OBSIDIAN)),
-                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                       RingEntry.empty()
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_ruined_portal\",uses:1}}")
@@ -681,11 +683,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .ring(
                       RingEntry.of(Ingredient.of(Items.EMERALD_BLOCK)),
                       RingEntry.of(Ingredient.of(Items.EMERALD_BLOCK)),
-                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                       RingEntry.empty(),
                       RingEntry.of(Ingredient.of(Items.GOLDEN_CARROT)),
                       RingEntry.empty(),
-                      RingEntry.of(Ingredient.of(ModItems.VOIDTEAR.get())),
+                      RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
                       RingEntry.of(Ingredient.of(Items.EMERALD_BLOCK))
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_villages\",uses:1}}")
@@ -709,6 +711,44 @@ public class ModRecipeProvider extends RecipeProvider {
                 )
                 .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_villager\",uses:1}}")
                 .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_villager_summon_rite"));
+
+        AltarRiteRecipeBuilder.altar(
+                        Ingredient.of(Items.BOOK),
+                        new ItemStack(ModItems.SACRED_WRITINGS.get(), 1)
+                )
+                .displayType("altar.descendedangel.imbuement")
+                .requiredHaloTier(5)
+                .ring(
+                        RingEntry.of(Ingredient.of(Items.WATER_BUCKET)),
+                        RingEntry.of(Ingredient.of(ItemTags.PLANKS)),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
+                        RingEntry.of(Ingredient.of(ItemTags.PLANKS)),
+                        RingEntry.of(Ingredient.of(Items.WET_SPONGE)),
+                        RingEntry.of(Ingredient.of(ItemTags.PLANKS)),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
+                        RingEntry.of(Ingredient.of(ItemTags.PLANKS))
+                )
+                .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_shipwreak\",uses:1}}")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_shipwreak_rite"));
+
+        AltarRiteRecipeBuilder.altar(
+                        Ingredient.of(Items.BOOK),
+                        new ItemStack(ModItems.SACRED_WRITINGS.get(), 1)
+                )
+                .displayType("altar.descendedangel.imbuement")
+                .requiredHaloTier(5)
+                .ring(
+                        RingEntry.of(Ingredient.of(Items.BRUSH)),
+                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
+                        RingEntry.of(Ingredient.of(ItemTags.SAND)),
+                        RingEntry.of(Ingredient.of(Items.GRAVEL)),
+                        RingEntry.empty(),
+                        RingEntry.of(Ingredient.of(ModItems.COMPRESSEDVOID.get())),
+                        RingEntry.of(Ingredient.of(ItemTags.SAND))
+                )
+                .resultNbt("{descendedangel:{writ_id:\"descendedangel:spawn_trail_ruins\",uses:1}}")
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_trail_ruins_rite"));
 
         AltarRiteRecipeBuilder.altar(
                         Ingredient.of(ModItems.SACRED_BLOOD.get()),

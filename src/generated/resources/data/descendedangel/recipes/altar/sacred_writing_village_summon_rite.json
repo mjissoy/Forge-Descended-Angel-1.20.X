@@ -17,7 +17,7 @@
       "item": "minecraft:emerald_block"
     },
     {
-      "item": "descendedangel:void_tear"
+      "item": "descendedangel:compressed_void"
     },
     {
       "empty": true
@@ -29,7 +29,7 @@
       "empty": true
     },
     {
-      "item": "descendedangel:void_tear"
+      "item": "descendedangel:compressed_void"
     },
     {
       "item": "minecraft:emerald_block"

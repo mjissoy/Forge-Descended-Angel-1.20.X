@@ -4,35 +4,35 @@
     "item": "minecraft:book"
   },
   "display_type": "altar.descendedangel.imbuement",
-  "required_halo_tier": 6,
+  "required_halo_tier": 5,
   "result": {
     "item": "descendedangel:sacred_writings",
-    "nbt": "{descendedangel:{writ_id:\"descendedangel:spawn_wither\",uses:3}}"
+    "nbt": "{descendedangel:{writ_id:\"descendedangel:spawn_shipwreak\",uses:1}}"
   },
   "ring": [
     {
-      "item": "minecraft:wither_skeleton_skull"
+      "item": "minecraft:water_bucket"
     },
     {
-      "item": "minecraft:wither_skeleton_skull"
-    },
-    {
-      "item": "descendedangel:compressed_void"
-    },
-    {
-      "empty": true
-    },
-    {
-      "item": "minecraft:soul_sand"
-    },
-    {
-      "empty": true
+      "tag": "minecraft:planks"
     },
     {
       "item": "descendedangel:compressed_void"
     },
     {
-      "item": "minecraft:wither_skeleton_skull"
+      "tag": "minecraft:planks"
+    },
+    {
+      "item": "minecraft:wet_sponge"
+    },
+    {
+      "tag": "minecraft:planks"
+    },
+    {
+      "item": "descendedangel:compressed_void"
+    },
+    {
+      "tag": "minecraft:planks"
     }
   ]
 }
