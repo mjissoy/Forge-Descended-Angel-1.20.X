@@ -33,6 +33,10 @@ public record UseHaloAbilityC2SPacket(int abilityOrdinal) {
 
             HaloAbility ability = values[ord];
 
+            if (!ability.canUse(sp)) {
+                return;
+            }
+
             int tier = HaloUtils.getEquippedHaloTier(sp);
 
             switch (tier) {

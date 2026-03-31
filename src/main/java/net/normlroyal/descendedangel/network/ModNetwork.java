@@ -81,6 +81,12 @@ public final class ModNetwork {
                 .decoder(PlayMarkActivationS2CPacket::decode)
                 .consumerMainThread(PlayMarkActivationS2CPacket::handle)
                 .add();
+
+        CHANNEL.messageBuilder(UnlockAbilitiesS2CPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(UnlockAbilitiesS2CPacket::encode)
+                .decoder(UnlockAbilitiesS2CPacket::decode)
+                .consumerMainThread(UnlockAbilitiesS2CPacket::handle)
+                .add();
     }
 
     public static void sendToPlayer(Object packet, ServerPlayer player) {

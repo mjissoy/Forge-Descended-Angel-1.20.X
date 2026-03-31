@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.normlroyal.descendedangel.item.custom.enums.ShardType;
 import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.network.packets.ShardPopS2CPacket;
+import net.normlroyal.descendedangel.util.AbilityUtils;
 
 public class ShardUnlockItem extends Item {
     private final ShardType type;
@@ -64,6 +65,7 @@ public class ShardUnlockItem extends Item {
 
             if (!data.getBoolean(tag)) {
                 data.putBoolean(tag, true);
+                AbilityUtils.syncUnlocks(sp);
 
                 ModNetwork.CHANNEL.send(
                         net.minecraftforge.network.PacketDistributor.PLAYER.with(() -> sp),

@@ -42,6 +42,8 @@ public class ClientInputEvents {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null) return;
 
+        ClientAbilityState.clamp(mc.player);
+
         int tierNow = HaloUtils.getEquippedHaloTier(mc.player);
         if (tierNow != lastTier) {
             lastTier = tierNow;

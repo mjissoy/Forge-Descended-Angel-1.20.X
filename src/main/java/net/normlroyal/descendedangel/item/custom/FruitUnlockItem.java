@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.normlroyal.descendedangel.item.custom.enums.FruitType;
+import net.normlroyal.descendedangel.util.AbilityUtils;
 
 public class FruitUnlockItem extends Item {
     private final FruitType type;
@@ -30,6 +31,7 @@ public class FruitUnlockItem extends Item {
 
             if (!data.getBoolean(tag)) {
                 data.putBoolean(tag, true);
+                AbilityUtils.syncUnlocks(sp);
 
                 Component msg = switch (type) {
                     case SPACE -> Component.translatable("ability.descendedangel.space");

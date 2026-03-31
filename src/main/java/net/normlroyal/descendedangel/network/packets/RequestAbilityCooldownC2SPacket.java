@@ -32,6 +32,10 @@ public record RequestAbilityCooldownC2SPacket(int abilityOrdinal) {
 
             HaloAbility a = values[ord];
 
+            if (!a.canUse(sp)) {
+                return;
+            }
+
             CooldownSnapshots.CooldownSnapshot snap = CooldownSnapshots.getCooldown(sp, a);
 
             ModNetwork.CHANNEL.send(
