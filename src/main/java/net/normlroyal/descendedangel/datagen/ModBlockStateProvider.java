@@ -97,6 +97,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
                                 blockTexture(ModBlocks.ANGEL_WEEPING.get()))
                         .renderType("cutout"));
 
+        simpleBlockWithItem(ModBlocks.MOSSY_BLESSED_ROCK_BRICKS.get(),
+                models().cubeAll("mossy_blessed_rock_bricks", modLoc("block/mossy_blessed_rock_bricks")));
+        simpleBlockWithItem(ModBlocks.MOSSY_ASHEN_ROCK_BRICKS.get(),
+                models().cubeAll("mossy_ashen_rock_bricks", modLoc("block/mossy_ashen_rock_bricks")));
+
 
     }
 

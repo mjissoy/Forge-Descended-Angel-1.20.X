@@ -56,6 +56,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> BLESSED_ROCK_BRICKS = registerBlock("blessed_rock_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
+    public static final RegistryObject<Block> MOSSY_BLESSED_ROCK_BRICKS = registerBlock("mossy_blessed_rock_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
     public static final RegistryObject<Block> BLESSED_ROCK_BRICKS_SLAB = registerBlock("blessed_rock_brick_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_SLAB)));
     public static final RegistryObject<Block> BLESSED_ROCK_BRICKS_STAIR = registerBlock("blessed_rock_brick_stair",
@@ -85,6 +87,8 @@ public class ModBlocks {
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_WALL)));
 
     public static final RegistryObject<Block> ASHEN_ROCK_BRICKS = registerBlock("ashen_rock_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
+    public static final RegistryObject<Block> MOSSY_ASHEN_ROCK_BRICKS = registerBlock("mossy_ashen_rock_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
     public static final RegistryObject<Block> ASHEN_ROCK_BRICKS_SLAB = registerBlock("ashen_rock_brick_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.ANDESITE_SLAB)));

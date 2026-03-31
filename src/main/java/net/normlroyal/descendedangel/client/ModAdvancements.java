@@ -43,6 +43,11 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
 
     @Override
     public void generate(HolderLookup.Provider registries, Consumer<Advancement> saver, ExistingFileHelper existingFileHelper) {
+        /*
+        * TODO: add an achievement for the Mark of Cain
+        * TODO: add the new structure sacred writings to the sacred writings advancement
+        */
+
         Advancement root = Advancement.Builder.advancement()
                 .display(
                         ModItems.REALANGELFEATHER.get(),

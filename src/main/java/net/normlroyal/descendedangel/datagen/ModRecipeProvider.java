@@ -7,6 +7,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.ModBlocks;
@@ -98,6 +99,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "blessed_rock_bricks_crafting")
                 );
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.MOSSY_BLESSED_ROCK_BRICKS.get(), 8)
+                .pattern("AAA")
+                .pattern("ABA")
+                .pattern("AAA")
+                .define('B', Blocks.MOSS_BLOCK)
+                .define('A', ModBlocks.BLESSED_ROCK_BRICKS.get())
+                .unlockedBy("has_blessed_rock",
+                        has(ModBlocks.BLESSED_ROCK.get()))
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "mossy_blessed_rock_bricks_crafting")
+                );
 
         slabBuilder(RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(),
@@ -177,6 +189,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_ashen_rock",
                         has(ModBlocks.ASHEN_ROCK.get()))
                 .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_bricks_crafting")
+                );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.MOSSY_ASHEN_ROCK_BRICKS.get(), 8)
+                .pattern("AAA")
+                .pattern("ABA")
+                .pattern("AAA")
+                .define('B', Blocks.MOSS_BLOCK)
+                .define('A', ModBlocks.ASHEN_ROCK_BRICKS.get())
+                .unlockedBy("has_ashen_rock",
+                        has(ModBlocks.ASHEN_ROCK.get()))
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "mossy_ashen_rock_bricks_crafting")
                 );
 
         slabBuilder(RecipeCategory.BUILDING_BLOCKS,

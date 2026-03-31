@@ -67,6 +67,7 @@ public class ModConfiguredFeatures {
                 new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ashentargets, ashenblobSize)));
 
         // Flower Patch
+        // TODO: Make them spawn less frequently
         ctx.register(ANGEl_WEEPING_PATCH,
                 new ConfiguredFeature<>(Feature.FLOWER,
                         new RandomPatchConfiguration(32, 6, 2,

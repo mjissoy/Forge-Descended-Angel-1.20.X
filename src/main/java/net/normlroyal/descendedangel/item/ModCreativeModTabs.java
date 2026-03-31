@@ -110,6 +110,7 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get());
                         output.accept(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get());
                         output.accept(ModBlocks.BLESSED_ROCK_BRICKS.get());
+                        output.accept(ModBlocks.MOSSY_BLESSED_ROCK_BRICKS.get());
                         output.accept(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get());
                         output.accept(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get());
                         output.accept(ModBlocks.BLESSED_ROCK_BRICKS_WALL.get());
@@ -124,6 +125,7 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get());
                         output.accept(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
                         output.accept(ModBlocks.ASHEN_ROCK_BRICKS.get());
+                        output.accept(ModBlocks.MOSSY_ASHEN_ROCK_BRICKS.get());
                         output.accept(ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get());
                         output.accept(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get());
                         output.accept(ModBlocks.ASHEN_ROCK_BRICKS_WALL.get());
