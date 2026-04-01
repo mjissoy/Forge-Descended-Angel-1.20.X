@@ -45,7 +45,6 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
     public void generate(HolderLookup.Provider registries, Consumer<Advancement> saver, ExistingFileHelper existingFileHelper) {
         /*
         * TODO: add an achievement for the Mark of Cain
-        * TODO: add the new structure sacred writings to the sacred writings advancement
         */
 
         Advancement root = Advancement.Builder.advancement()
@@ -251,17 +250,21 @@ public class ModAdvancements implements ForgeAdvancementProvider.AdvancementGene
                         "Imbue upon a book knowledge from the Lord",
                         FrameType.TASK))
                 .addCriterion("rainfall", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_rainfall")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_rainfall_rite")))
                 .addCriterion("clearskies", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_clearskies")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_clearskies_rite")))
                 .addCriterion("villager_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_villager_spawn")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_villager_spawn_rite")))
                 .addCriterion("village_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_village_spawn")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_village_spawn_rite")))
                 .addCriterion("ruined_portal_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_ruined_portal_spawn")))
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_ruined_portal_spawn_rite")))
                 .addCriterion("wither_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
-                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_text_wither_spawn")));
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_wither_spawn_rite")))
+                .addCriterion("shipwreak_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_shipwreak_rite")))
+                .addCriterion("trail_ruines_spawn", RecipeCraftedTrigger.TriggerInstance.craftedItem(
+                        new ResourceLocation(DescendedAngel.MOD_ID, "altar/sacred_writing_trail_ruins_rite")));
 
         sacredWritingBuilder.requirements(RequirementsStrategy.OR);
 
