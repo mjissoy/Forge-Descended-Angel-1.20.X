@@ -7,7 +7,6 @@ import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.item.ModItems;
 
-import java.util.List;
 import java.util.Set;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {

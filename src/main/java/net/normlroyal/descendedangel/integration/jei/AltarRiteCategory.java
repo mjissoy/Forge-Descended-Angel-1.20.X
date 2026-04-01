@@ -154,7 +154,6 @@ public class AltarRiteCategory implements IRecipeCategory<AltarRiteRecipe> {
         return BG_H;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public IDrawable getBackground() {
         return background;
