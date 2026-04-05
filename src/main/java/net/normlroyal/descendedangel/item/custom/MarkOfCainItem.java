@@ -161,8 +161,6 @@ public class MarkOfCainItem extends Item {
         int max = getMaxCharge(stack);
         int uses = getStoredUses(stack);
 
-        // TODO: add a tooltip saying how to recharge?
-
         if (Screen.hasShiftDown()) {
 
             tooltip.add(

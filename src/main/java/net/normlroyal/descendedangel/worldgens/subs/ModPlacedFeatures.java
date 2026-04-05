@@ -90,7 +90,7 @@ public class ModPlacedFeatures {
                 new PlacedFeature(
                         configured.getOrThrow(ModConfiguredFeatures.ANGEl_WEEPING_PATCH),
                         List.of(
-                                RarityFilter.onAverageOnceEvery(8),
+                                RarityFilter.onAverageOnceEvery(16),
                                 InSquarePlacement.spread(),
                                 PlacementUtils.HEIGHTMAP,
                                 BiomeFilter.biome()
