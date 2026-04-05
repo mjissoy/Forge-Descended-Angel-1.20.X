@@ -1,8 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "#minecraft:is_overworld",
-  "features": [
-    "descendedangel:angel_weeping_patch_placed"
-  ],
+  "features": "descendedangel:angel_weeping_patch_placed",
   "step": "vegetal_decoration"
 }

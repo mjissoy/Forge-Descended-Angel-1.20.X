@@ -5,6 +5,7 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.worldgens.subs.*;
 
@@ -16,6 +17,7 @@ public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
+            .add(ForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
             .add(Registries.TEMPLATE_POOL, ModTemplatePools::bootstrap)
             .add(Registries.STRUCTURE, ModStructures::bootstrap)
             .add(Registries.STRUCTURE_SET, ModStructureSets::bootstrap);

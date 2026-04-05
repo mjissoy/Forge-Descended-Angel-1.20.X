@@ -3,37 +3,49 @@
   "criteria": {
     "clearskies": {
       "conditions": {
-        "recipe_id": "descendedangel:altar/sacred_text_clearskies"
+        "recipe_id": "descendedangel:altar/sacred_writing_clearskies_rite"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "rainfall": {
       "conditions": {
-        "recipe_id": "descendedangel:altar/sacred_text_rainfall"
+        "recipe_id": "descendedangel:altar/sacred_writing_rainfall_rite"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "ruined_portal_spawn": {
       "conditions": {
-        "recipe_id": "descendedangel:altar/sacred_text_ruined_portal_spawn"
+        "recipe_id": "descendedangel:altar/sacred_writing_ruined_portal_spawn_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    },
+    "shipwreak_spawn": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_writing_shipwreak_rite"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    },
+    "trail_ruines_spawn": {
+      "conditions": {
+        "recipe_id": "descendedangel:altar/sacred_writing_trail_ruins_rite"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "village_spawn": {
       "conditions": {
-        "recipe_id": "descendedangel:altar/sacred_text_village_spawn"
+        "recipe_id": "descendedangel:altar/sacred_writing_village_spawn_rite"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "villager_spawn": {
       "conditions": {
-        "recipe_id": "descendedangel:altar/sacred_text_villager_spawn"
+        "recipe_id": "descendedangel:altar/sacred_writing_villager_spawn_rite"
       },
       "trigger": "minecraft:recipe_crafted"
     },
     "wither_spawn": {
       "conditions": {
-        "recipe_id": "descendedangel:altar/sacred_text_wither_spawn"
+        "recipe_id": "descendedangel:altar/sacred_writing_wither_spawn_rite"
       },
       "trigger": "minecraft:recipe_crafted"
     }
@@ -60,7 +72,9 @@
       "villager_spawn",
       "village_spawn",
       "ruined_portal_spawn",
-      "wither_spawn"
+      "wither_spawn",
+      "shipwreak_spawn",
+      "trail_ruines_spawn"
     ]
   ],
   "sends_telemetry_event": true

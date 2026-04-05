@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.worldgens.ModBiomeTagsProvider;
 import net.normlroyal.descendedangel.worldgens.ModWorldGenProvider;
-import net.normlroyal.descendedangel.worldgens.subs.ModBiomeModifiersJsonProvider;
 
 import java.util.Collections;
 import java.util.List;
@@ -46,7 +45,6 @@ public class DataGenerators {
         // World Gen
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new ModBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ModBiomeModifiersJsonProvider(packOutput));
 
         // Advancement
         generator.addProvider(event.includeServer(), new ModAdvancementProvider(packOutput, lookupProvider, existingFileHelper));

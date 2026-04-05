@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ModPlacedFeatures {
 
-    public static final ResourceKey<PlacedFeature> SACRED_ORE =
+    public static final ResourceKey<PlacedFeature> SACRED_ORE_PLACED =
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "sacred_ore"));
 
     public static final ResourceKey<PlacedFeature> BLESSED_ROCK_PATCH_PLACED =
@@ -27,7 +27,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ASHEN_ROCK_PATCH_PLACED =
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_patch_placed"));
 
-    public static final ResourceKey<PlacedFeature> ANGEl_WEEPING_PATCH_PLACED =
+    public static final ResourceKey<PlacedFeature> ANGEL_WEEPING_PATCH_PLACED =
             ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "angel_weeping_patch_placed"));
 
     public static void bootstrap(BootstapContext<PlacedFeature> ctx) {
@@ -47,7 +47,7 @@ public class ModPlacedFeatures {
                 ),
                 BiomeFilter.biome()
         );
-        ctx.register(SACRED_ORE, new PlacedFeature(sacredOre, modifiers));
+        ctx.register(SACRED_ORE_PLACED, new PlacedFeature(sacredOre, modifiers));
 
         // Blessed Rock
         int BlessperChunk = 2;
@@ -86,9 +86,9 @@ public class ModPlacedFeatures {
         );
 
         // Angel Weeping Patch
-        ctx.register(ANGEl_WEEPING_PATCH_PLACED,
+        ctx.register(ANGEL_WEEPING_PATCH_PLACED,
                 new PlacedFeature(
-                        configured.getOrThrow(ModConfiguredFeatures.ANGEl_WEEPING_PATCH),
+                        configured.getOrThrow(ModConfiguredFeatures.ANGEL_WEEPING_PATCH),
                         List.of(
                                 RarityFilter.onAverageOnceEvery(16),
                                 InSquarePlacement.spread(),

@@ -1,12 +1,10 @@
 {
   "type": "forge:add_spawns",
   "biomes": "minecraft:deep_dark",
-  "spawners": [
-    {
-      "type": "descendedangel:void_anomaly",
-      "maxCount": 2,
-      "minCount": 1,
-      "weight": 5
-    }
-  ]
+  "spawners": {
+    "type": "descendedangel:void_anomaly",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 5
+  }
 }

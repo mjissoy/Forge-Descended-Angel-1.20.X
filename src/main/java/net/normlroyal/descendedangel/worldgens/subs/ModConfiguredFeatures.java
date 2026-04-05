@@ -31,7 +31,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_ROCK_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "ashen_rock_patch"));
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ANGEl_WEEPING_PATCH =
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ANGEL_WEEPING_PATCH =
             ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(DescendedAngel.MOD_ID, "angel_weeping_patch"));
 
 
@@ -67,7 +67,7 @@ public class ModConfiguredFeatures {
                 new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ashentargets, ashenblobSize)));
 
         // Flower Patch
-        ctx.register(ANGEl_WEEPING_PATCH,
+        ctx.register(ANGEL_WEEPING_PATCH,
                 new ConfiguredFeature<>(Feature.FLOWER,
                         new RandomPatchConfiguration(12, 5, 2,
                         PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
