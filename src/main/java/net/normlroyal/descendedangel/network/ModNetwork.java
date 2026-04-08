@@ -76,6 +76,12 @@ public final class ModNetwork {
                 .consumerMainThread(FlightActiveS2CPacket::handle)
                 .add();
 
+        CHANNEL.messageBuilder(TryStartGlideC2SPacket.class, id++, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(TryStartGlideC2SPacket::encode)
+                .decoder(TryStartGlideC2SPacket::decode)
+                .consumerMainThread(TryStartGlideC2SPacket::handle)
+                .add();
+
         CHANNEL.messageBuilder(PlayMarkActivationS2CPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(PlayMarkActivationS2CPacket::encode)
                 .decoder(PlayMarkActivationS2CPacket::decode)
@@ -87,6 +93,8 @@ public final class ModNetwork {
                 .decoder(UnlockAbilitiesS2CPacket::decode)
                 .consumerMainThread(UnlockAbilitiesS2CPacket::handle)
                 .add();
+
+
     }
 
     public static void sendToPlayer(Object packet, ServerPlayer player) {

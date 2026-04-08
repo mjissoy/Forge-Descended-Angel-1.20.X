@@ -1,6 +1,8 @@
 package net.normlroyal.descendedangel.client;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
@@ -10,10 +12,7 @@ import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.haloabilities.ClientAbilityState;
 import net.normlroyal.descendedangel.haloabilities.HaloAbility;
 import net.normlroyal.descendedangel.network.ModNetwork;
-import net.normlroyal.descendedangel.network.packets.FlightInputC2SPacket;
-import net.normlroyal.descendedangel.network.packets.RequestAbilityCooldownC2SPacket;
-import net.normlroyal.descendedangel.network.packets.ToggleFlightC2SPacket;
-import net.normlroyal.descendedangel.network.packets.UseHaloAbilityC2SPacket;
+import net.normlroyal.descendedangel.network.packets.*;
 import net.normlroyal.descendedangel.util.HaloUtils;
 import net.normlroyal.descendedangel.util.WingLogic;
 import net.normlroyal.descendedangel.util.WingUtils;
@@ -79,20 +78,35 @@ public class ClientInputEvents {
         // Custom Flight Toggle
         if (jumpPressedThisTick) {
             ItemStack wings = WingUtils.getEquippedWings(mc.player);
-            if (!wings.isEmpty() && WingLogic.allowsCustomFlight(wings)) {
 
-                if (mc.screen == null && !mc.player.isFallFlying()) {
-                    if (ticksSinceLastJumpPress <= DOUBLE_TAP_WINDOW_TICKS) {
-                        ModNetwork.CHANNEL.sendToServer(new ToggleFlightC2SPacket());
-                        ticksSinceLastJumpPress = 999;
-                    } else {
-                        ticksSinceLastJumpPress = 0;
+            if (!wings.isEmpty()) {
+                int tier = WingLogic.getWingTier(wings);
+
+                if (tier == 1) {
+                    // start elytra glide
+                    if (mc.screen == null && canStartGlide(mc.player)) {
+                        mc.player.startFallFlying();
+                        ModNetwork.CHANNEL.sendToServer(new TryStartGlideC2SPacket());
                     }
+                    ticksSinceLastJumpPress = 999;
+                } else if (WingLogic.allowsCustomFlight(wings)) {
+                    // start custom flight
+                    if (mc.screen == null && !mc.player.isFallFlying()) {
+                        if (ticksSinceLastJumpPress <= DOUBLE_TAP_WINDOW_TICKS) {
+                            ModNetwork.CHANNEL.sendToServer(new ToggleFlightC2SPacket());
+                            ticksSinceLastJumpPress = 999;
+                        } else {
+                            ticksSinceLastJumpPress = 0;
+                        }
+                    }
+                } else {
+                    ticksSinceLastJumpPress = 999;
                 }
             } else {
                 ticksSinceLastJumpPress = 999;
             }
         }
+
 
         // Ascend-Descend-Boost while in custom flight
         ItemStack wings = WingUtils.getEquippedWings(mc.player);
@@ -130,6 +144,16 @@ public class ClientInputEvents {
             lastForward = lastStrafe = 0f;
         }
     }
+
+    private static boolean canStartGlide(LocalPlayer player) {
+        return !player.onGround()
+                && !player.isInWater()
+                && !player.hasEffect(MobEffects.LEVITATION)
+                && !player.isPassenger()
+                && !player.isFallFlying()
+                && player.getDeltaMovement().y < 0.0;
+    }
+
 }
 
 

@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.normlroyal.descendedangel.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "descendedangel.refmap.json",
+  "mixins": [
+    "MixinLivingEntity"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -4,7 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -20,17 +20,13 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
-import top.theillusivec4.caelus.api.CaelusApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
-import java.util.UUID;
 
 public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioItem {
 
-    private static final UUID CAELUS_FALL_FLY_UUID =
-            UUID.fromString("7b2adf4e-1f43-4d83-9c3f-3d5e1c28b3f1");
 
     private final int tier;
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -46,10 +42,7 @@ public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioIt
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (tier != 1) return;
-
-        LivingEntity e = slotContext.entity();
-        enableCaelusFallFlying(e);   // run on client + server
+        // pass
     }
 
     @Override
@@ -57,34 +50,11 @@ public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioIt
         if (tier != 1) return;
 
         LivingEntity e = slotContext.entity();
-        disableCaelusFallFlying(e);  // run on client + server
-    }
-
-    private static void enableCaelusFallFlying(LivingEntity e) {
-        var api = CaelusApi.getInstance();
-
-        var attr = api.getFlightAttribute();
-        var inst = e.getAttribute(attr);
-        if (inst == null) return;
-
-        AttributeModifier elytraMod = api.getElytraModifier();
-        if (inst.getModifier(elytraMod.getId()) == null) {
-            inst.addTransientModifier(elytraMod);
+        if (e instanceof Player p && p.isFallFlying()) {
+            p.stopFallFlying();
         }
     }
 
-    private static void disableCaelusFallFlying(LivingEntity e) {
-        var api = CaelusApi.getInstance();
-
-        var attr = api.getFlightAttribute();
-        var inst = e.getAttribute(attr);
-        if (inst == null) return;
-
-        AttributeModifier elytraMod = api.getElytraModifier();
-        if (inst.getModifier(elytraMod.getId()) != null) {
-            inst.removeModifier(elytraMod.getId());
-        }
-    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
