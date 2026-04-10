@@ -21,6 +21,9 @@ public class HaloAbilityHudOverlay {
         int x = hotbarX + 182 + 6;
         int y = hotbarY - 16;
 
+        // TODO: Center to Hotbar better
+        // TODO: Scale Up Icons Slightly
+
         gfx.blit(selected.icon(), x, y, 0, 0, 16, 16, 16, 16);
 
         long now = mc.level != null ? mc.level.getGameTime() : 0;

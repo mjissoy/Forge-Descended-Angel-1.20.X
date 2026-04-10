@@ -12,7 +12,6 @@ import net.normlroyal.descendedangel.block.ModBlockEntities;
 import net.normlroyal.descendedangel.client.render.AltarRenderer;
 import net.normlroyal.descendedangel.client.render.HaloCurioRenderer;
 import net.normlroyal.descendedangel.client.render.WingCurioRenderer;
-import net.normlroyal.descendedangel.client.render.layer.DivineGraceLayer;
 import net.normlroyal.descendedangel.item.ModItems;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
@@ -44,15 +43,6 @@ public class ClientModEvents {
         });
     }
 
-    @SubscribeEvent
-    public static void onAddLayers(EntityRenderersEvent.AddLayers event) {
-        for (String skin : event.getSkins()) {
-            PlayerRenderer renderer = event.getSkin(skin);
-            if (renderer != null) {
-                renderer.addLayer(new DivineGraceLayer(renderer));
-            }
-        }
-    }
 
 
 }
