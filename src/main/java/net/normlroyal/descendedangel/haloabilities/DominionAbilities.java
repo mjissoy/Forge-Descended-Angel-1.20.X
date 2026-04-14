@@ -21,9 +21,9 @@ public class DominionAbilities {
     private static final String CD_TELEPORT = "da_cd_dom_teleport_until";
     private static final String CD_FIELD    = "da_cd_dom_field_until";
 
-    public static void tryUse(ServerPlayer sp, HaloAbility ability) {
+    public static boolean tryUse(ServerPlayer sp, HaloAbility ability) {
         int tier = HaloUtils.getEquippedHaloTier(sp);
-        if (tier != 6 && tier != 7 && tier != 8 && tier != 9) return;
+        if (tier != 6 && tier != 7 && tier != 8 && tier != 9) return false;
 
         long now = sp.level().getGameTime();
 
@@ -31,50 +31,54 @@ public class DominionAbilities {
             case TELEPORT -> {
                 if (!sp.getPersistentData().getBoolean(TAG_SPACE)){
                     NetworkUtils.actionbar(sp, "You have not unlocked Teleport");
-                    return;
+                    return false;
                 }
 
                 long until = sp.getPersistentData().getLong(CD_TELEPORT);
                 if (now < until){
-                    return;
+                    return false;
                 }
 
                 int baserange = ModConfigs.COMMON.TELEPORT_RANGE.get();
                 int range = HaloScaling.addInt(baserange, tier, 2);
 
                 boolean ok = tryTeleport(sp, range);
-                if (!ok) return;
+                if (!ok) return false;;
 
                 int basecd = ModConfigs.COMMON.TELEPORT_COOLDOWN_TICKS.get();
                 int cd = HaloScaling.scaleIntDuration(basecd, tier);
                 sp.getPersistentData().putLong(CD_TELEPORT, now + cd);
+                return true;
+
             }
 
             case SPACE_CHEST -> {
                 if (!sp.getPersistentData().getBoolean(TAG_SPACE)){
                     NetworkUtils.actionbar(sp, "You have not unlocked Portable Chest");
-                    return;
+                    return false;
                 }
                 long until = sp.getPersistentData().getLong("da_cd_dom_ender_until");
                 if (now < until){
-                    return;
+                    return false;
                 }
 
                 openEnderChest(sp);
 
                 int cd = ModConfigs.COMMON.SPACE_CHEST_COOLDOWN_TICKS.get();
                 sp.getPersistentData().putLong("da_cd_dom_ender_until", now + cd);
+                return true;
+
             }
 
             case FIELD -> {
                 if (!sp.getPersistentData().getBoolean(TAG_TIME)){
                     NetworkUtils.actionbar(sp, "You have not unlocked Time Field");
-                    return;
+                    return false;
                 }
 
                 long until = sp.getPersistentData().getLong(CD_FIELD);
                 if (now < until) {
-                    return;
+                    return false;
                 }
 
                 double baseradius = ModConfigs.COMMON.FIELD_RADIUS.get();
@@ -90,16 +94,18 @@ public class DominionAbilities {
                 int basecd = ModConfigs.COMMON.FIELD_COOLDOWN_TICKS.get();
                 int cd = HaloScaling.scaleIntDuration(basecd, tier);
                 sp.getPersistentData().putLong(CD_FIELD, now + cd);
+                return true;
+
             }
 
             case ACCELERATE -> {
                 if (!sp.getPersistentData().getBoolean(TAG_TIME)){
                     NetworkUtils.actionbar(sp, "You have not unlocked Acceleration");
-                    return;
+                    return false;
                 }
                 long until = sp.getPersistentData().getLong("da_cd_dom_timeacc_until");
                 if (now < until) {
-                    return;
+                    return false;
                 }
                 int basedur = ModConfigs.COMMON.ACCEL_DURATION_TICKS.get();
                 int dur = HaloScaling.scaleIntDuration(basedur, tier);
@@ -119,8 +125,11 @@ public class DominionAbilities {
                 int basecd = ModConfigs.COMMON.ACCEL_COOLDOWN_TICKS.get();
                 int cd = HaloScaling.scaleIntDuration(basecd, tier);
                 sp.getPersistentData().putLong("da_cd_dom_timeacc_until", now + cd);
+
+                return true;
             }
         }
+        return false;
     }
 
     private static boolean tryTeleport(ServerPlayer sp, int range) {

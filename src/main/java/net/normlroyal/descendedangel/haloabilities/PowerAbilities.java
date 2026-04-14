@@ -29,9 +29,9 @@ public class PowerAbilities {
     private static final String CD_EARTH_WALL = "da_cd_power_earthwall_until";
     private static final String CD_MIST_VEIL  = "da_cd_power_mist_veil_until";
 
-    public static void tryUse(ServerPlayer sp, HaloAbility ability) {
+    public static boolean tryUse(ServerPlayer sp, HaloAbility ability) {
         int tier = HaloUtils.getEquippedHaloTier(sp);
-        if (tier != 4 && tier != 7 && tier != 8 && tier != 9) return;
+        if (tier != 4 && tier != 7 && tier != 8 && tier != 9) return false;
 
         long now = sp.level().getGameTime();
 
@@ -39,11 +39,11 @@ public class PowerAbilities {
             case FIREBALL -> {
                 if (!sp.getPersistentData().getBoolean(TAG_FIRE)) {
                     NetworkUtils.actionbar(sp, "You have not unlocked Fireball");
-                    return;
+                    return false;
                 }
 
                 if (now < sp.getPersistentData().getLong(CD_FIREBALL)) {
-                    return;
+                    return false;
                 }
 
                 doFireball(sp, tier);
@@ -51,16 +51,18 @@ public class PowerAbilities {
                 int baseCd = ModConfigs.COMMON.FIREBALL_COOLDOWN_TICKS.get();
                 int cd = (int)Math.max(1, Math.round(baseCd * HaloScaling.cooldownMul(tier)));
                 sp.getPersistentData().putLong(CD_FIREBALL, now + cd);
+
+                return true;
             }
 
             case GUST -> {
                 if (!sp.getPersistentData().getBoolean(TAG_AIR)) {
                     NetworkUtils.actionbar(sp, "You have not unlocked Gust");
-                    return;
+                    return false;
                 }
 
                 if (now < sp.getPersistentData().getLong(CD_GUST)) {
-                    return;
+                    return false;
                 }
 
                 int baseCd = ModConfigs.COMMON.GUST_COOLDOWN_TICKS.get();
@@ -74,16 +76,19 @@ public class PowerAbilities {
 
                 doGust(sp, radius, strength);
                 sp.getPersistentData().putLong(CD_GUST, now + cd);
+
+                return true;
+
             }
 
             case EARTH_WALL -> {
                 if (!sp.getPersistentData().getBoolean(TAG_EARTH)) {
                     NetworkUtils.actionbar(sp, "You have not unlocked Earth Wall");
-                    return;
+                    return false;
                 }
 
                 if (now < sp.getPersistentData().getLong(CD_EARTH_WALL)) {
-                    return;
+                    return false;
                 }
 
                 int basewidth  = ModConfigs.COMMON.EARTH_WALL_WIDTH.get();
@@ -98,16 +103,19 @@ public class PowerAbilities {
                 int baseCd = ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get();
                 int cd = (int)Math.max(1, Math.round(baseCd * HaloScaling.cooldownMul(tier)));
                 sp.getPersistentData().putLong(CD_EARTH_WALL, now + cd);
+
+                return true;
+
             }
 
             case MIST_VEIL -> {
                 if (!sp.getPersistentData().getBoolean(TAG_WATER)) {
                     NetworkUtils.actionbar(sp, "You have not unlocked Mist Veil");
-                    return;
+                    return false;
                 }
 
                 if (now < sp.getPersistentData().getLong(CD_MIST_VEIL)) {
-                    return;
+                    return false;
                 }
 
                 int basedur = ModConfigs.COMMON.MIST_VEIL_DURATION_TICKS.get();
@@ -118,10 +126,14 @@ public class PowerAbilities {
                 int baseCd = ModConfigs.COMMON.MIST_VEIL_COOLDOWN_TICKS.get();
                 int cd = (int)Math.max(1, Math.round(baseCd * HaloScaling.cooldownMul(tier)));
                 sp.getPersistentData().putLong(CD_MIST_VEIL, now + cd);
+
+                return true;
+
             }
 
             default -> {}
         }
+    return false;
     }
 
 

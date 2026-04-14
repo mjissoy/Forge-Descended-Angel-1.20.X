@@ -3,7 +3,6 @@ package net.normlroyal.descendedangel;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -11,12 +10,12 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.normlroyal.descendedangel.block.ModBlockEntities;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.client.sounds.ModSounds;
+import net.normlroyal.descendedangel.config.ModGameRules;
 import net.normlroyal.descendedangel.config.lootmodifier.ModLootModifiers;
 import net.normlroyal.descendedangel.entity.ModEntities;
 import net.normlroyal.descendedangel.item.custom.writings.WritTypeRegistry;
@@ -46,6 +45,7 @@ public class DescendedAngel
                 ModConfigs.COMMON_SPEC,
                 MOD_ID + "-server.toml"
         );
+        ModGameRules.init();
 
         ModCreativeModTabs.register(modEventBus);
         GeckoLib.initialize();
@@ -92,13 +92,4 @@ public class DescendedAngel
         LOGGER.info("HELLO from server starting");
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-
-        }
-    }
 }

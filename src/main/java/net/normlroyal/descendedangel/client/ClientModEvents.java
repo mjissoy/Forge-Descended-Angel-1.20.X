@@ -9,9 +9,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.block.ModBlockEntities;
+import net.normlroyal.descendedangel.client.animation.ModPlayerAnimations;
 import net.normlroyal.descendedangel.client.render.AltarRenderer;
 import net.normlroyal.descendedangel.client.render.HaloCurioRenderer;
 import net.normlroyal.descendedangel.client.render.WingCurioRenderer;
+import net.normlroyal.descendedangel.halohierarchy.HaloHierarchyGlowLayer;
 import net.normlroyal.descendedangel.item.ModItems;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
@@ -22,6 +24,10 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
+            // Animations
+            ModPlayerAnimations.load();
+            DescendedAngel.LOGGER.info("Client setup ran, loading player animations");
+
             // Curios halo renderers
             CuriosRendererRegistry.register(ModItems.HALO_T1.get(), HaloCurioRenderer::new);
             CuriosRendererRegistry.register(ModItems.HALO_T2.get(), HaloCurioRenderer::new);
@@ -43,6 +49,18 @@ public class ClientModEvents {
         });
     }
 
+    @SubscribeEvent
+    public static void onAddLayers(EntityRenderersEvent.AddLayers event) {
+        PlayerRenderer defaultRenderer = event.getSkin("default");
+        if (defaultRenderer != null) {
+            defaultRenderer.addLayer(new HaloHierarchyGlowLayer(defaultRenderer));
+        }
+
+        PlayerRenderer slimRenderer = event.getSkin("slim");
+        if (slimRenderer != null) {
+            slimRenderer.addLayer(new HaloHierarchyGlowLayer(slimRenderer));
+        }
+    }
 
 
 }

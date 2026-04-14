@@ -94,11 +94,26 @@ public final class ModNetwork {
                 .consumerMainThread(UnlockAbilitiesS2CPacket::handle)
                 .add();
 
+        CHANNEL.messageBuilder(HaloHierarchyGlowS2CPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(HaloHierarchyGlowS2CPacket::encode)
+                .decoder(HaloHierarchyGlowS2CPacket::decode)
+                .consumerMainThread(HaloHierarchyGlowS2CPacket::handle)
+                .add();
+
+        CHANNEL.messageBuilder(PlayPrayerAnimS2CPacket.class, id++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(PlayPrayerAnimS2CPacket::encode)
+                .decoder(PlayPrayerAnimS2CPacket::decode)
+                .consumerMainThread(PlayPrayerAnimS2CPacket::handle)
+                .add();
 
     }
 
     public static void sendToPlayer(Object packet, ServerPlayer player) {
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
+    }
+
+    public static void sendToTrackingAndSelf(Object packet, ServerPlayer player) {
+        CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), packet);
     }
 
     private ModNetwork() {}
