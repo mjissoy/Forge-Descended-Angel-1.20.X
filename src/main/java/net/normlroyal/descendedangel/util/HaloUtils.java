@@ -5,6 +5,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+import net.normlroyal.descendedangel.halohierarchy.HaloHierarchyGlowState;
 import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
 import net.normlroyal.descendedangel.tags.ModItemTags;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -32,6 +33,14 @@ public class HaloUtils {
         return findEquippedHalo(player)
                 .map(HaloUtils::getHaloTier)
                 .orElse(0);
+    }
+
+    public static int getTierGap(Player viewer, Player target) {
+        return Math.max(0, getEquippedHaloTier(target) - getEquippedHaloTier(viewer));
+    }
+
+    public static boolean isHigherTier(Player viewer, Player target) {
+        return getEquippedHaloTier(target) > getEquippedHaloTier(viewer);
     }
 
 
