@@ -5,6 +5,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.item.ModItems;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -36,46 +37,44 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
         // Material Item Models
-        basicItem(modLoc("angel_feather"));
-        basicItem(modLoc("angel_feather_real"));
-        basicItem(modLoc("demon_heart"));
-        basicItem(modLoc("purified_demon_heart"));
-        basicItem(modLoc("spatial_core"));
-        basicItem(modLoc("void_tear"));
-        basicItem(modLoc("compressed_void"));
-        basicItem(modLoc("void_matrix"));
-        basicItem(modLoc("sacred_ore_ingot"));
-        basicItem(modLoc("sacred_ore_raw"));
-        basicItem(modLoc("sacred_blood"));
-        basicItem(modLoc("angels_tears"));
-
+        basicItem(ModItems.ANGELFEATHER.getId());
+        basicItem(ModItems.REALANGELFEATHER.getId());
+        basicItem(ModItems.DEMONHEART.getId());
+        basicItem(ModItems.REALDEMONHEART.getId());
+        basicItem(ModItems.SPATIALCORE.getId());
+        basicItem(ModItems.VOIDTEAR.getId());
+        basicItem(ModItems.COMPRESSEDVOID.getId());
+        basicItem(ModItems.VOIDMATRIX.getId());
+        basicItem(ModItems.SACREDOREINGOT.getId());
+        basicItem(ModItems.SACREDORERAW.getId());
+        basicItem(ModItems.SACRED_BLOOD.getId());
+        basicItem(ModItems.ANGELS_TEARS.getId());
 
         // Ring and Necklace Item Models
-        basicItem(modLoc("holy_ring"));
-        basicItem(modLoc("cloud_ring"));
-        basicItem(modLoc("flame_ring"));
-        basicItem(modLoc("cure_ring"));
+        basicItem(ModItems.HOLY_RING.getId());
+        basicItem(ModItems.CLOUD_RING.getId());
+        basicItem(ModItems.FLAME_RING.getId());
+        basicItem(ModItems.CURE_RING.getId());
 
-        basicItem(modLoc("holy_necklace"));
-        basicItem(modLoc("messenger_pendant"));
-        basicItem(modLoc("nanos_lantern"));
-        basicItem(modLoc("alchemy_chain"));
+        basicItem(ModItems.HOLY_NECKLACE.getId());
+        basicItem(ModItems.MESSENGER_PENDANT.getId());
+        basicItem(ModItems.LIGHTNESS_NECKLACE.getId());
+        basicItem(ModItems.BOOSTER_NECKLACE.getId());
 
 
         // Equipment
-        basicItem(modLoc("destiny_spear_shaft"));
-        basicItem(modLoc("destiny_spear_head"));
+        basicItem(ModItems.SPEARSHAFT.getId());
+        basicItem(ModItems.SPEARHEAD.getId());
         getBuilder("destiny_spear").parent(builtinEntity());
-        basicItem(modLoc("mark_component1"));
-        basicItem(modLoc("mark_component2"));
-        basicItem(modLoc("mark_component3"));
-        basicItem(modLoc("mark_of_cain"));
-        basicItem(modLoc("purified_mark_of_cain"));
-
+        basicItem(ModItems.MARK_PIECE1.getId());
+        basicItem(ModItems.MARK_PIECE2.getId());
+        basicItem(ModItems.MARK_PIECE3.getId());
+        basicItem(ModItems.MARK_OF_CAIN.getId());
+        basicItem(ModItems.PURIFIED_MARK_OF_CAIN.getId());
 
 
         // Other Items
-        basicItem(modLoc("sacred_writings"));
+        basicItem(ModItems.SACRED_WRITINGS.getId());
         withExistingParent("void_anomaly_spawn_egg", mcLoc("item/template_spawn_egg"));
         withExistingParent("imp_spawn_egg", mcLoc("item/template_spawn_egg"));
         withExistingParent("angel_weeping", mcLoc("item/generated"))
@@ -83,12 +82,12 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
         // Unlock Items
-        basicItem(modLoc("fruit_of_space"));
-        basicItem(modLoc("fruit_of_time"));
-        basicItem(modLoc("fire_shard"));
-        basicItem(modLoc("water_shard"));
-        basicItem(modLoc("earth_shard"));
-        basicItem(modLoc("air_shard"));
+        basicItem(ModItems.SPACE_FRUIT.getId());
+        basicItem(ModItems.TIME_FRUIT.getId());
+        basicItem(ModItems.FIRE_SHARD.getId());
+        basicItem(ModItems.WATER_SHARD.getId());
+        basicItem(ModItems.EARTH_SHARD.getId());
+        basicItem(ModItems.AIR_SHARD.getId());
 
     }
 }
