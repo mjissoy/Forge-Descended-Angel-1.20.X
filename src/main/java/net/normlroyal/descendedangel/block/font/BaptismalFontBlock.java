@@ -88,7 +88,7 @@ public class BaptismalFontBlock extends Block {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        if (stack.is(ModItems.FIRE_SHARD.get())) {
+        if (stack.is(ModItems.FIRE_SHARD.get()) || stack.is(ModItems.AIR_SHARD.get())) {
             if (!state.getValue(HAS_BLOOD)) {
                 if (!level.isClientSide) {
                     player.displayClientMessage(Component.translatable("message.descendedangel.font_requires_blood"), true);
@@ -97,22 +97,29 @@ public class BaptismalFontBlock extends Block {
             }
 
             if (!level.isClientSide) {
+                boolean fire = stack.is(ModItems.FIRE_SHARD.get());
+
                 if (!player.getAbilities().instabuild) {
                     stack.shrink(1);
                 }
 
                 level.setBlock(pos, state.setValue(HAS_BLOOD, false), 3);
 
-                ItemStack empowered = new ItemStack(ModItems.EMPOWERED_FIRE_SHARD.get());
+                ItemStack empowered = new ItemStack(
+                        fire
+                                ? ModItems.EMPOWERED_FIRE_SHARD.get()
+                                : ModItems.EMPOWERED_AIR_SHARD.get()
+                );
+
                 if (!player.getInventory().add(empowered)) {
                     player.drop(empowered, false);
                 }
 
-                level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 1.35F);
+                level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, fire ? 1.35F : 1.65F);
 
                 if (level instanceof ServerLevel sl) {
                     sl.sendParticles(
-                            ParticleTypes.END_ROD,
+                            fire ? ParticleTypes.END_ROD : ParticleTypes.CLOUD,
                             pos.getX() + 0.5,
                             pos.getY() + 1.25,
                             pos.getZ() + 0.5,
@@ -124,7 +131,14 @@ public class BaptismalFontBlock extends Block {
                     );
                 }
 
-                player.displayClientMessage(Component.translatable("message.descendedangel.font_fire_empowered"), true);
+                player.displayClientMessage(
+                        Component.translatable(
+                                fire
+                                        ? "message.descendedangel.font_fire_empowered"
+                                        : "message.descendedangel.font_air_empowered"
+                        ),
+                        true
+                );
             }
 
             return InteractionResult.sidedSuccess(level.isClientSide);

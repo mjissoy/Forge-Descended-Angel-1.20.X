@@ -42,6 +42,9 @@ public final class CooldownSnapshots {
                  SOL_CORONA,
                  PILLARS_OF_RADIANCE,
                  GUST,
+                 VACUUM_VORTEX,
+                 ZEPHYR_SCYTHES,
+                 HEAVENLY_DOWNDRAFT,
                  EARTH_WALL,
                  MIST_VEIL -> {
                 until = sp.getPersistentData().getLong(PowerAbilities.cooldownTag(ability));

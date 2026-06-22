@@ -34,7 +34,9 @@ public class ShardUnlockItem extends Item {
 
         if (!level.isClientSide) {
             var data = player.getPersistentData();
-            if (data.getBoolean(type.tag()) || (type == ShardType.FIRE && PowerAbilities.hasFireEvolution(player))) {
+            if (data.getBoolean(type.tag())
+                    || (type == ShardType.FIRE && PowerAbilities.hasFireEvolution(player))
+                    || (type == ShardType.AIR && PowerAbilities.hasAirEvolution(player))) {
                 if (player instanceof ServerPlayer sp) {
                     sp.displayClientMessage(Component.translatable("message.descendedangel.shard_already_unlocked"), true);
                 }
@@ -64,7 +66,9 @@ public class ShardUnlockItem extends Item {
             var data = sp.getPersistentData();
             String tag = type.tag();
 
-            if (!data.getBoolean(tag) && !(type == ShardType.FIRE && PowerAbilities.hasFireEvolution(sp))) {
+            if (!data.getBoolean(tag)
+                    && !(type == ShardType.FIRE && PowerAbilities.hasFireEvolution(sp))
+                    && !(type == ShardType.AIR && PowerAbilities.hasAirEvolution(sp))) {
                 data.putBoolean(tag, true);
                 AbilityUtils.syncUnlocks(sp);
 

@@ -37,7 +37,7 @@ public class EmpoweredShardUnlockItem extends Item {
                 return InteractionResultHolder.fail(stack);
             }
 
-            if (type != ShardType.FIRE) {
+            if (type != ShardType.FIRE && type != ShardType.AIR) {
                 sp.displayClientMessage(Component.translatable("message.descendedangel.empowered_shard_future"), true);
                 return InteractionResultHolder.fail(stack);
             }
@@ -72,10 +72,7 @@ public class EmpoweredShardUnlockItem extends Item {
                 PowerAbilities.setFireEvolution(sp, selected);
                 AbilityUtils.syncUnlocks(sp);
 
-                ModNetwork.CHANNEL.send(
-                        PacketDistributor.PLAYER.with(() -> sp),
-                        new ShardPopS2CPacket(stack.copyWithCount(1))
-                );
+                popShard(sp, stack);
 
                 sp.displayClientMessage(
                         Component.translatable(
@@ -88,10 +85,41 @@ public class EmpoweredShardUnlockItem extends Item {
                 if (!sp.getAbilities().instabuild) {
                     stack.shrink(1);
                 }
+
+                return stack;
+            }
+
+            if (type == ShardType.AIR) {
+                HaloAbility current = PowerAbilities.currentAirEvolution(sp);
+                HaloAbility selected = rollAirEvolution(level, current);
+
+                PowerAbilities.setAirEvolution(sp, selected);
+                AbilityUtils.syncUnlocks(sp);
+
+                popShard(sp, stack);
+
+                sp.displayClientMessage(
+                        Component.translatable(
+                                "ability.descendedangel.air_evolved",
+                                airEvolutionName(selected)
+                        ),
+                        true
+                );
+
+                if (!sp.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
             }
         }
 
         return stack;
+    }
+
+    private static void popShard(ServerPlayer sp, ItemStack stack) {
+        ModNetwork.CHANNEL.send(
+                PacketDistributor.PLAYER.with(() -> sp),
+                new ShardPopS2CPacket(stack.copyWithCount(1))
+        );
     }
 
     private static HaloAbility rollFireEvolution(Level level, HaloAbility current) {
@@ -112,12 +140,39 @@ public class EmpoweredShardUnlockItem extends Item {
         return selected;
     }
 
+    private static HaloAbility rollAirEvolution(Level level, HaloAbility current) {
+        HaloAbility selected = HaloAbility.VACUUM_VORTEX;
+
+        for (int i = 0; i < 8; i++) {
+            selected = switch (level.random.nextInt(3)) {
+                case 0 -> HaloAbility.VACUUM_VORTEX;
+                case 1 -> HaloAbility.ZEPHYR_SCYTHES;
+                default -> HaloAbility.HEAVENLY_DOWNDRAFT;
+            };
+
+            if (selected != current) {
+                break;
+            }
+        }
+
+        return selected;
+    }
+
     private static Component fireEvolutionName(HaloAbility ability) {
         return switch (ability) {
             case SACRED_FLARE -> Component.translatable("ability.descendedangel.sacred_flare");
             case SOL_CORONA -> Component.translatable("ability.descendedangel.sol_corona");
             case PILLARS_OF_RADIANCE -> Component.translatable("ability.descendedangel.pillars_of_radiance");
             default -> Component.translatable("ability.descendedangel.unknown_fire_evolution");
+        };
+    }
+
+    private static Component airEvolutionName(HaloAbility ability) {
+        return switch (ability) {
+            case VACUUM_VORTEX -> Component.translatable("ability.descendedangel.vacuum_vortex");
+            case ZEPHYR_SCYTHES -> Component.translatable("ability.descendedangel.zephyr_scythes");
+            case HEAVENLY_DOWNDRAFT -> Component.translatable("ability.descendedangel.heavenly_downdraft");
+            default -> Component.translatable("ability.descendedangel.unknown_air_evolution");
         };
     }
 }

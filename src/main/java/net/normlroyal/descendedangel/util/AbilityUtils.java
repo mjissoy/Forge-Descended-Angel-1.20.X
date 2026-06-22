@@ -20,9 +20,15 @@ public final class AbilityUtils {
                         data.getBoolean(PowerAbilities.TAG_FIRE_SACRED_FLARE),
                         data.getBoolean(PowerAbilities.TAG_FIRE_SOL_CORONA),
                         data.getBoolean(PowerAbilities.TAG_FIRE_PILLARS_OF_RADIANCE),
+
                         data.getBoolean(PowerAbilities.TAG_AIR),
+                        data.getBoolean(PowerAbilities.TAG_AIR_VACUUM_VORTEX),
+                        data.getBoolean(PowerAbilities.TAG_AIR_ZEPHYR_SCYTHES),
+                        data.getBoolean(PowerAbilities.TAG_AIR_HEAVENLY_DOWNDRAFT),
+
                         data.getBoolean(PowerAbilities.TAG_EARTH),
                         data.getBoolean(PowerAbilities.TAG_WATER),
+
                         data.getBoolean(DominionAbilities.TAG_SPACE),
                         data.getBoolean(DominionAbilities.TAG_TIME)
                 )

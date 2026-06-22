@@ -10,6 +10,10 @@ public final class ClientUnlockState {
     private static boolean firePillarsOfRadiance;
 
     private static boolean air;
+    private static boolean airVacuumVortex;
+    private static boolean airZephyrScythes;
+    private static boolean airHeavenlyDowndraft;
+
     private static boolean earth;
     private static boolean water;
     private static boolean space;
@@ -20,7 +24,12 @@ public final class ClientUnlockState {
             boolean fireSacredFlareIn,
             boolean fireSolCoronaIn,
             boolean firePillarsOfRadianceIn,
+
             boolean airIn,
+            boolean airVacuumVortexIn,
+            boolean airZephyrScythesIn,
+            boolean airHeavenlyDowndraftIn,
+
             boolean earthIn,
             boolean waterIn,
             boolean spaceIn,
@@ -32,6 +41,10 @@ public final class ClientUnlockState {
         firePillarsOfRadiance = firePillarsOfRadianceIn;
 
         air = airIn;
+        airVacuumVortex = airVacuumVortexIn;
+        airZephyrScythes = airZephyrScythesIn;
+        airHeavenlyDowndraft = airHeavenlyDowndraftIn;
+
         earth = earthIn;
         water = waterIn;
         space = spaceIn;
@@ -46,6 +59,10 @@ public final class ClientUnlockState {
             case PowerAbilities.TAG_FIRE_PILLARS_OF_RADIANCE -> firePillarsOfRadiance;
 
             case PowerAbilities.TAG_AIR -> air;
+            case PowerAbilities.TAG_AIR_VACUUM_VORTEX -> airVacuumVortex;
+            case PowerAbilities.TAG_AIR_ZEPHYR_SCYTHES -> airZephyrScythes;
+            case PowerAbilities.TAG_AIR_HEAVENLY_DOWNDRAFT -> airHeavenlyDowndraft;
+
             case PowerAbilities.TAG_EARTH -> earth;
             case PowerAbilities.TAG_WATER -> water;
 
@@ -63,6 +80,10 @@ public final class ClientUnlockState {
         firePillarsOfRadiance = false;
 
         air = false;
+        airVacuumVortex = false;
+        airZephyrScythes = false;
+        airHeavenlyDowndraft = false;
+
         earth = false;
         water = false;
         space = false;

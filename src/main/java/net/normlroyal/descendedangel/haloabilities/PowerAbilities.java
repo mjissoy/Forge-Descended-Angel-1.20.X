@@ -21,6 +21,7 @@ import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.block.tempwall.TempEarthWallBlock;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.events.FireEvolutionEvents;
+import net.normlroyal.descendedangel.events.WindEvolutionEvents;
 import net.normlroyal.descendedangel.haloabilities.helpers.ClientUnlockState;
 import net.normlroyal.descendedangel.util.HaloUtils;
 import net.normlroyal.descendedangel.util.NetworkUtils;
@@ -36,6 +37,10 @@ public class PowerAbilities {
     public static final String TAG_FIRE_SOL_CORONA = "da_evolved_fire_sol_corona";
     public static final String TAG_FIRE_PILLARS_OF_RADIANCE = "da_evolved_fire_pillars_of_radiance";
 
+    public static final String TAG_AIR_VACUUM_VORTEX = "da_evolved_air_vacuum_vortex";
+    public static final String TAG_AIR_ZEPHYR_SCYTHES = "da_evolved_air_zephyr_scythes";
+    public static final String TAG_AIR_HEAVENLY_DOWNDRAFT = "da_evolved_air_heavenly_downdraft";
+
     private static final String CD_FIREBALL   = "da_cd_power_fireball_until";
     private static final String CD_GUST       = "da_cd_power_gust_until";
     private static final String CD_EARTH_WALL = "da_cd_power_earthwall_until";
@@ -44,6 +49,10 @@ public class PowerAbilities {
     private static final String CD_SACRED_FLARE = "da_cd_power_sacred_flare_until";
     private static final String CD_SOL_CORONA = "da_cd_power_sol_corona_until";
     private static final String CD_PILLARS_OF_RADIANCE = "da_cd_power_pillars_of_radiance_until";
+
+    private static final String CD_VACUUM_VORTEX = "da_cd_power_vacuum_vortex_until";
+    private static final String CD_ZEPHYR_SCYTHES = "da_cd_power_zephyr_scythes_until";
+    private static final String CD_HEAVENLY_DOWNDRAFT = "da_cd_power_heavenly_downdraft_until";
 
     public static boolean tryUse(ServerPlayer sp, HaloAbility ability) {
         int tier = HaloUtils.getEquippedHaloTier(sp);
@@ -78,7 +87,16 @@ public class PowerAbilities {
                 return tryUseFireEvolution(sp, ability, tier, now);
             }
 
+            case VACUUM_VORTEX, ZEPHYR_SCYTHES, HEAVENLY_DOWNDRAFT -> {
+                return tryUseAirEvolution(sp, ability, tier, now);
+            }
+
             case GUST -> {
+                if (hasAirEvolution(sp)) {
+                    NetworkUtils.actionbar(sp, "Your Gust has already evolved.");
+                    return false;
+                }
+
                 if (!data.getBoolean(TAG_AIR)) {
                     NetworkUtils.actionbar(sp, "You have not unlocked Gust");
                     return false;
@@ -238,11 +256,94 @@ public class PowerAbilities {
             case GUST -> CD_GUST;
             case EARTH_WALL -> CD_EARTH_WALL;
             case MIST_VEIL -> CD_MIST_VEIL;
+
             case SACRED_FLARE -> CD_SACRED_FLARE;
             case SOL_CORONA -> CD_SOL_CORONA;
             case PILLARS_OF_RADIANCE -> CD_PILLARS_OF_RADIANCE;
+
+            case VACUUM_VORTEX -> CD_VACUUM_VORTEX;
+            case ZEPHYR_SCYTHES -> CD_ZEPHYR_SCYTHES;
+            case HEAVENLY_DOWNDRAFT -> CD_HEAVENLY_DOWNDRAFT;
+
             default -> "";
         };
+    }
+
+    private static boolean tryUseAirEvolution(ServerPlayer sp, HaloAbility ability, int tier, long now) {
+        if (tier < 7) {
+            NetworkUtils.actionbar(sp, "Wind evolutions require a Cherubim Halo or higher.");
+            return false;
+        }
+
+        var data = sp.getPersistentData();
+
+        if (!data.getBoolean(ability.unlockTag())) {
+            NetworkUtils.actionbar(sp, "You have not unlocked this Wind evolution.");
+            return false;
+        }
+
+        String cooldownTag = cooldownTag(ability);
+
+        if (now < data.getLong(cooldownTag)) {
+            return false;
+        }
+
+        boolean used = switch (ability) {
+            case VACUUM_VORTEX -> {
+                doVacuumVortex(sp, tier);
+                yield true;
+            }
+            case ZEPHYR_SCYTHES -> {
+                doZephyrScythes(sp, tier);
+                yield true;
+            }
+            case HEAVENLY_DOWNDRAFT -> {
+                doHeavenlyDowndraft(sp, tier);
+                yield true;
+            }
+            default -> false;
+        };
+
+        if (!used) {
+            return false;
+        }
+
+        data.putLong(cooldownTag, now + scaledCooldown(sp, ability));
+        return true;
+    }
+
+    public static boolean hasAirEvolution(Player player) {
+        return hasTag(player, TAG_AIR_VACUUM_VORTEX)
+                || hasTag(player, TAG_AIR_ZEPHYR_SCYTHES)
+                || hasTag(player, TAG_AIR_HEAVENLY_DOWNDRAFT);
+    }
+
+    public static HaloAbility currentAirEvolution(Player player) {
+        if (hasTag(player, TAG_AIR_VACUUM_VORTEX)) return HaloAbility.VACUUM_VORTEX;
+        if (hasTag(player, TAG_AIR_ZEPHYR_SCYTHES)) return HaloAbility.ZEPHYR_SCYTHES;
+        if (hasTag(player, TAG_AIR_HEAVENLY_DOWNDRAFT)) return HaloAbility.HEAVENLY_DOWNDRAFT;
+        return null;
+    }
+
+    public static void setAirEvolution(ServerPlayer sp, HaloAbility ability) {
+        if (!isAirEvolution(ability)) {
+            return;
+        }
+
+        var data = sp.getPersistentData();
+
+        data.putBoolean(TAG_AIR, false);
+        data.putBoolean(TAG_AIR_VACUUM_VORTEX, false);
+        data.putBoolean(TAG_AIR_ZEPHYR_SCYTHES, false);
+        data.putBoolean(TAG_AIR_HEAVENLY_DOWNDRAFT, false);
+
+        data.putBoolean(ability.unlockTag(), true);
+    }
+
+    public static boolean isAirEvolution(HaloAbility ability) {
+        return ability == HaloAbility.VACUUM_VORTEX
+                || ability == HaloAbility.ZEPHYR_SCYTHES
+                || ability == HaloAbility.HEAVENLY_DOWNDRAFT;
     }
 
     public static int scaledCooldown(ServerPlayer sp, HaloAbility ability) {
@@ -257,6 +358,10 @@ public class PowerAbilities {
             case SACRED_FLARE -> ModConfigs.COMMON.FIREBALL_COOLDOWN_TICKS.get() + 100;
             case SOL_CORONA -> ModConfigs.COMMON.FIREBALL_COOLDOWN_TICKS.get() + 300;
             case PILLARS_OF_RADIANCE -> ModConfigs.COMMON.FIREBALL_COOLDOWN_TICKS.get() + 400;
+
+            case VACUUM_VORTEX -> ModConfigs.COMMON.GUST_COOLDOWN_TICKS.get() + 240;
+            case ZEPHYR_SCYTHES -> ModConfigs.COMMON.GUST_COOLDOWN_TICKS.get() + 80;
+            case HEAVENLY_DOWNDRAFT -> ModConfigs.COMMON.GUST_COOLDOWN_TICKS.get() + 220;
 
             default -> 20;
         };
@@ -469,6 +574,73 @@ public class PowerAbilities {
                 TempEarthWallBlock.arm(level, p, dur);
             }
         }
+    }
+
+    private static void doVacuumVortex(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        double radius = 6.0D + (0.35D * HaloScaling.mastery(tier));
+
+        float tickDamage = 2.0F + (0.5F * HaloScaling.mastery(tier));
+
+        double launchPower = 2.15D + (0.12D * HaloScaling.mastery(tier));
+        int duration = HaloScaling.scaleIntDuration(70, tier);
+
+        WindEvolutionEvents.schedulePlayerVortex(
+                level,
+                sp,
+                duration,
+                radius,
+                tickDamage,
+                launchPower
+        );
+
+        NetworkUtils.actionbar(sp, "A Vacuum Vortex gathers around you.");
+    }
+
+    private static void doZephyrScythes(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        double range = 18.0D + HaloScaling.mastery(tier);
+        double width = 1.25D;
+        float damage = 8.0F + (2.0F * HaloScaling.mastery(tier));
+        double armorShred = 4.0D + HaloScaling.mastery(tier);
+        int shredDuration = HaloScaling.scaleIntDuration(120, tier);
+
+        WindEvolutionEvents.castZephyrScythes(
+                level,
+                sp,
+                range,
+                width,
+                damage,
+                armorShred,
+                shredDuration
+        );
+
+        NetworkUtils.actionbar(sp, "Zephyr Scythes carve through the air.");
+    }
+
+    private static boolean doHeavenlyDowndraft(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        BlockHitResult hit = traceBlock(sp, 28.0D);
+
+        Vec3 center;
+
+        if (hit.getType() == HitResult.Type.MISS) {
+            center = sp.position().add(0.0D, 0.25D, 0.0D).add(sp.getLookAngle().normalize().scale(14.0D));
+        } else {
+            center = Vec3.atCenterOf(hit.getBlockPos()).add(0.0D, 0.2D, 0.0D);
+        }
+
+        double radius = 6.0D + (0.35D * HaloScaling.mastery(tier));
+        float damage = 5.0F + HaloScaling.mastery(tier);
+        int duration = HaloScaling.scaleIntDuration(90, tier);
+
+        WindEvolutionEvents.scheduleDowndraft(level, center, sp, duration, radius, damage);
+
+        NetworkUtils.actionbar(sp, "Heavenly Downdraft crushes the sky downward.");
+        return true;
     }
 
     private static void doMistVeil(ServerPlayer sp, int dur) {

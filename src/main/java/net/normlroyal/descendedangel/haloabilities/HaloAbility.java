@@ -15,6 +15,11 @@ public enum HaloAbility {
     PILLARS_OF_RADIANCE("fireball", PowerAbilities.TAG_FIRE_PILLARS_OF_RADIANCE, AbilityGroup.POWER, 7),
 
     GUST("gust", PowerAbilities.TAG_AIR, AbilityGroup.POWER, 4),
+
+    VACUUM_VORTEX("gust", PowerAbilities.TAG_AIR_VACUUM_VORTEX, AbilityGroup.POWER, 7),
+    ZEPHYR_SCYTHES("gust", PowerAbilities.TAG_AIR_ZEPHYR_SCYTHES, AbilityGroup.POWER, 7),
+    HEAVENLY_DOWNDRAFT("gust", PowerAbilities.TAG_AIR_HEAVENLY_DOWNDRAFT, AbilityGroup.POWER, 7),
+
     EARTH_WALL("earth_wall", PowerAbilities.TAG_EARTH, AbilityGroup.POWER, 4),
     MIST_VEIL("mist_veil", PowerAbilities.TAG_WATER, AbilityGroup.POWER, 4),
 
@@ -66,6 +71,10 @@ public enum HaloAbility {
             return false;
         }
 
+        if (this == GUST && PowerAbilities.hasAirEvolution(player)) {
+            return false;
+        }
+
         if (player.level().isClientSide) {
             return ClientUnlockState.has(unlockTag);
         }
@@ -75,6 +84,7 @@ public enum HaloAbility {
 
     public boolean isVisibleFor(Player player) {
         if (player == null) return false;
+
         int tier = HaloUtils.getEquippedHaloTier(player);
         return allowedForTier(tier) && isUnlocked(player);
     }

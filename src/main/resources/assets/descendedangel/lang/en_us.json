@@ -190,6 +190,16 @@
   "message.descendedangel.font_fire_empowered": "The Fire Shard has been empowered.",
 
   "message.descendedangel.empowered_shard_requires_cherubim": "This empowered shard requires a Cherubim Halo or higher.",
-  "message.descendedangel.empowered_shard_future": "This empowered shard is not ready yet."
+  "message.descendedangel.empowered_shard_future": "This empowered shard is not ready yet.",
+
+  "item.descendedangel.empowered_air_shard": "Empowered Air Shard",
+
+  "ability.descendedangel.vacuum_vortex": "Vacuum Vortex",
+  "ability.descendedangel.zephyr_scythes": "Zephyr Scythes",
+  "ability.descendedangel.heavenly_downdraft": "Heavenly Downdraft",
+  "ability.descendedangel.unknown_air_evolution": "Unknown Wind Evolution",
+  "ability.descendedangel.air_evolved": "Your Wind Power evolves into %s.",
+
+  "message.descendedangel.font_air_empowered": "The Air Shard has been empowered."
 
 }

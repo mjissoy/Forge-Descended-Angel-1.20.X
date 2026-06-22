@@ -160,6 +160,10 @@ public class ModItems {
             () -> new ShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
     );
 
+    public static final RegistryObject<Item> EMPOWERED_AIR_SHARD = ITEMS.register("empowered_air_shard",
+            () -> new EmpoweredShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
+    );
+
     // Wings
     public static final RegistryObject<Item> WING1 = ITEMS.register("wing_t1",
             () -> new TieredWingItem(1, new Item.Properties()));
