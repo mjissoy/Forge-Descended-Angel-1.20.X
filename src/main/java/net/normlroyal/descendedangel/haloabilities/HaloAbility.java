@@ -8,27 +8,34 @@ import net.normlroyal.descendedangel.haloabilities.helpers.ClientUnlockState;
 import net.normlroyal.descendedangel.util.HaloUtils;
 
 public enum HaloAbility {
-    FIREBALL("fireball", PowerAbilities.TAG_FIRE, AbilityGroup.POWER),
-    GUST("gust", PowerAbilities.TAG_AIR, AbilityGroup.POWER),
-    EARTH_WALL("earth_wall", PowerAbilities.TAG_EARTH, AbilityGroup.POWER),
-    MIST_VEIL("mist_veil", PowerAbilities.TAG_WATER, AbilityGroup.POWER),
+    FIREBALL("fireball", PowerAbilities.TAG_FIRE, AbilityGroup.POWER, 4),
 
-    TELEPORT("teleport", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION),
-    SPACE_CHEST("space_chest", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION),
-    FIELD("slow_field", DominionAbilities.TAG_TIME, AbilityGroup.DOMINION),
-    ACCELERATE("accelerate", DominionAbilities.TAG_TIME, AbilityGroup.DOMINION);
+    SACRED_FLARE("fireball", PowerAbilities.TAG_FIRE_SACRED_FLARE, AbilityGroup.POWER, 7),
+    SOL_CORONA("fireball", PowerAbilities.TAG_FIRE_SOL_CORONA, AbilityGroup.POWER, 7),
+    PILLARS_OF_RADIANCE("fireball", PowerAbilities.TAG_FIRE_PILLARS_OF_RADIANCE, AbilityGroup.POWER, 7),
+
+    GUST("gust", PowerAbilities.TAG_AIR, AbilityGroup.POWER, 4),
+    EARTH_WALL("earth_wall", PowerAbilities.TAG_EARTH, AbilityGroup.POWER, 4),
+    MIST_VEIL("mist_veil", PowerAbilities.TAG_WATER, AbilityGroup.POWER, 4),
+
+    TELEPORT("teleport", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION, 6),
+    SPACE_CHEST("space_chest", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION, 6),
+    FIELD("slow_field", DominionAbilities.TAG_TIME, AbilityGroup.DOMINION, 6),
+    ACCELERATE("accelerate", DominionAbilities.TAG_TIME, AbilityGroup.DOMINION, 6);
 
     private final ResourceLocation icon;
     private final String unlockTag;
     private final AbilityGroup group;
+    private final int minTier;
 
-    HaloAbility(String id, String unlockTag, AbilityGroup group) {
+    HaloAbility(String id, String unlockTag, AbilityGroup group, int minTier) {
         this.icon = new ResourceLocation(
                 DescendedAngel.MOD_ID,
                 "textures/gui/ability_icons/" + id + ".png"
         );
         this.unlockTag = unlockTag;
         this.group = group;
+        this.minTier = minTier;
     }
 
     public ResourceLocation icon() {
@@ -44,6 +51,8 @@ public enum HaloAbility {
     }
 
     public boolean allowedForTier(int tier) {
+        if (tier < minTier) return false;
+
         return switch (group) {
             case POWER -> tier == 4 || tier >= 7;
             case DOMINION -> tier == 6 || tier >= 7;
@@ -52,6 +61,10 @@ public enum HaloAbility {
 
     public boolean isUnlocked(Player player) {
         if (player == null) return false;
+
+        if (this == FIREBALL && PowerAbilities.hasFireEvolution(player)) {
+            return false;
+        }
 
         if (player.level().isClientSide) {
             return ClientUnlockState.has(unlockTag);

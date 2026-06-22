@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.normlroyal.descendedangel.haloabilities.PowerAbilities;
 import net.normlroyal.descendedangel.item.custom.enums.ShardType;
 import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.network.packets.ShardPopS2CPacket;
@@ -33,7 +34,7 @@ public class ShardUnlockItem extends Item {
 
         if (!level.isClientSide) {
             var data = player.getPersistentData();
-            if (data.getBoolean(type.tag())) {
+            if (data.getBoolean(type.tag()) || (type == ShardType.FIRE && PowerAbilities.hasFireEvolution(player))) {
                 if (player instanceof ServerPlayer sp) {
                     sp.displayClientMessage(Component.translatable("message.descendedangel.shard_already_unlocked"), true);
                 }
@@ -63,7 +64,7 @@ public class ShardUnlockItem extends Item {
             var data = sp.getPersistentData();
             String tag = type.tag();
 
-            if (!data.getBoolean(tag)) {
+            if (!data.getBoolean(tag) && !(type == ShardType.FIRE && PowerAbilities.hasFireEvolution(sp))) {
                 data.putBoolean(tag, true);
                 AbilityUtils.syncUnlocks(sp);
 

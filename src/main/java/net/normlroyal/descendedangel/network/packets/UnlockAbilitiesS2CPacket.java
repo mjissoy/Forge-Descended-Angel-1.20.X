@@ -8,6 +8,9 @@ import java.util.function.Supplier;
 
 public record UnlockAbilitiesS2CPacket(
         boolean fire,
+        boolean fireSacredFlare,
+        boolean fireSolCorona,
+        boolean firePillarsOfRadiance,
         boolean air,
         boolean earth,
         boolean water,
@@ -17,6 +20,9 @@ public record UnlockAbilitiesS2CPacket(
 
     public static void encode(UnlockAbilitiesS2CPacket msg, FriendlyByteBuf buf) {
         buf.writeBoolean(msg.fire());
+        buf.writeBoolean(msg.fireSacredFlare());
+        buf.writeBoolean(msg.fireSolCorona());
+        buf.writeBoolean(msg.firePillarsOfRadiance());
         buf.writeBoolean(msg.air());
         buf.writeBoolean(msg.earth());
         buf.writeBoolean(msg.water());
@@ -31,6 +37,9 @@ public record UnlockAbilitiesS2CPacket(
                 buf.readBoolean(),
                 buf.readBoolean(),
                 buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean(),
                 buf.readBoolean()
         );
     }
@@ -39,6 +48,9 @@ public record UnlockAbilitiesS2CPacket(
         ctx.get().enqueueWork(() -> {
             ClientUnlockState.set(
                     msg.fire(),
+                    msg.fireSacredFlare(),
+                    msg.fireSolCorona(),
+                    msg.firePillarsOfRadiance(),
                     msg.air(),
                     msg.earth(),
                     msg.water(),

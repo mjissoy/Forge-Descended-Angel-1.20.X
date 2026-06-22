@@ -77,6 +77,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.SPACE_FRUIT.get());
                         output.accept(ModItems.TIME_FRUIT.get());
                         output.accept(ModItems.FIRE_SHARD.get());
+                        output.accept(ModItems.EMPOWERED_FIRE_SHARD.get());
                         output.accept(ModItems.AIR_SHARD.get());
                         output.accept(ModItems.EARTH_SHARD.get());
                         output.accept(ModItems.WATER_SHARD.get());
@@ -95,6 +96,7 @@ public class ModCreativeModTabs {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(ModItems.ALTAR.get());
+                        output.accept(ModBlocks.BAPTISMAL_FONT.get());
 
                         output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());

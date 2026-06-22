@@ -17,6 +17,9 @@ public final class AbilityUtils {
                 PacketDistributor.PLAYER.with(() -> sp),
                 new UnlockAbilitiesS2CPacket(
                         data.getBoolean(PowerAbilities.TAG_FIRE),
+                        data.getBoolean(PowerAbilities.TAG_FIRE_SACRED_FLARE),
+                        data.getBoolean(PowerAbilities.TAG_FIRE_SOL_CORONA),
+                        data.getBoolean(PowerAbilities.TAG_FIRE_PILLARS_OF_RADIANCE),
                         data.getBoolean(PowerAbilities.TAG_AIR),
                         data.getBoolean(PowerAbilities.TAG_EARTH),
                         data.getBoolean(PowerAbilities.TAG_WATER),
@@ -25,5 +28,4 @@ public final class AbilityUtils {
                 )
         );
     }
-
 }

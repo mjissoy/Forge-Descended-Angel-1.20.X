@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "has_blood=false": {
+      "model": "descendedangel:block/baptismal_font"
+    },
+    "has_blood=true": {
+      "model": "descendedangel:block/baptismal_font"
+    }
+  }
+}

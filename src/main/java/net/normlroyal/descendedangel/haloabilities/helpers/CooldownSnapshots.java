@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.haloabilities.HaloAbility;
 import net.normlroyal.descendedangel.haloabilities.HaloScaling;
+import net.normlroyal.descendedangel.haloabilities.PowerAbilities;
 import net.normlroyal.descendedangel.util.HaloUtils;
 
 public final class CooldownSnapshots {
@@ -16,7 +17,6 @@ public final class CooldownSnapshots {
         int total;
 
         switch (ability) {
-            // Dominion
             case TELEPORT -> {
                 until = sp.getPersistentData().getLong("da_cd_dom_teleport_until");
                 int base = ModConfigs.COMMON.TELEPORT_COOLDOWN_TICKS.get();
@@ -37,27 +37,17 @@ public final class CooldownSnapshots {
                 total = HaloScaling.scaleIntDuration(base, tier);
             }
 
-            // Power
-            case FIREBALL -> {
-                until = sp.getPersistentData().getLong("da_cd_power_fireball_until");
-                int base = ModConfigs.COMMON.FIREBALL_COOLDOWN_TICKS.get();
-                total = (int)Math.max(1, Math.round(base * HaloScaling.cooldownMul(tier)));
+            case FIREBALL,
+                 SACRED_FLARE,
+                 SOL_CORONA,
+                 PILLARS_OF_RADIANCE,
+                 GUST,
+                 EARTH_WALL,
+                 MIST_VEIL -> {
+                until = sp.getPersistentData().getLong(PowerAbilities.cooldownTag(ability));
+                total = PowerAbilities.scaledCooldown(sp, ability);
             }
-            case GUST -> {
-                until = sp.getPersistentData().getLong("da_cd_power_gust_until");
-                int base = ModConfigs.COMMON.GUST_COOLDOWN_TICKS.get();
-                total = (int)Math.max(1, Math.round(base * HaloScaling.cooldownMul(tier)));
-            }
-            case EARTH_WALL -> {
-                until = sp.getPersistentData().getLong("da_cd_power_earthwall_until");
-                int base = ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get();
-                total = (int)Math.max(1, Math.round(base * HaloScaling.cooldownMul(tier)));
-            }
-            case MIST_VEIL -> {
-                until = sp.getPersistentData().getLong("da_cd_power_mist_veil_until");
-                int base = ModConfigs.COMMON.MIST_VEIL_COOLDOWN_TICKS.get();
-                total = (int)Math.max(1, Math.round(base * HaloScaling.cooldownMul(tier)));
-            }
+
             default -> {
                 until = 0;
                 total = 0;

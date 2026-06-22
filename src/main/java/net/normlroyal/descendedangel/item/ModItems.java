@@ -140,15 +140,22 @@ public class ModItems {
     public static final RegistryObject<Item> TIME_FRUIT = ITEMS.register("fruit_of_time",
             () -> new FruitUnlockItem(FruitType.TIME, new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+
     public static final RegistryObject<Item> FIRE_SHARD = ITEMS.register("fire_shard",
             () -> new ShardUnlockItem(ShardType.FIRE, new Item.Properties().stacksTo(1))
     );
+    public static final RegistryObject<Item> EMPOWERED_FIRE_SHARD = ITEMS.register("empowered_fire_shard",
+            () -> new EmpoweredShardUnlockItem(ShardType.FIRE, new Item.Properties().stacksTo(1))
+    );
+
     public static final RegistryObject<Item> WATER_SHARD = ITEMS.register("water_shard",
             () -> new ShardUnlockItem(ShardType.WATER, new Item.Properties().stacksTo(1))
     );
+
     public static final RegistryObject<Item> EARTH_SHARD = ITEMS.register("earth_shard",
             () -> new ShardUnlockItem(ShardType.EARTH, new Item.Properties().stacksTo(1))
     );
+
     public static final RegistryObject<Item> AIR_SHARD = ITEMS.register("air_shard",
             () -> new ShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
     );
