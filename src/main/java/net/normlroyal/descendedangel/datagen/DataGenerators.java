@@ -58,6 +58,9 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
 
+        // Lang
+        generator.addProvider(event.includeClient(), new ModLangProvider(packOutput, DescendedAngel.MOD_ID, "en_us"));
+
 
 
     }
