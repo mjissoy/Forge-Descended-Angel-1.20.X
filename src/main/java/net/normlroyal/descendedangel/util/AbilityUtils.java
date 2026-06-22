@@ -32,6 +32,9 @@ public final class AbilityUtils {
                         data.getBoolean(PowerAbilities.TAG_EARTH_CRYSTAL_CHRYSALIS),
 
                         data.getBoolean(PowerAbilities.TAG_WATER),
+                        data.getBoolean(PowerAbilities.TAG_WATER_MOVING_FIELD_OF_MIST),
+                        data.getBoolean(PowerAbilities.TAG_WATER_SERAPHIC_MIRAGE),
+                        data.getBoolean(PowerAbilities.TAG_WATER_DIVINE_SERENITY),
 
                         data.getBoolean(DominionAbilities.TAG_SPACE),
                         data.getBoolean(DominionAbilities.TAG_TIME)

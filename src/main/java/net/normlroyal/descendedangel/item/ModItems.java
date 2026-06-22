@@ -147,23 +147,21 @@ public class ModItems {
     public static final RegistryObject<Item> EMPOWERED_FIRE_SHARD = ITEMS.register("empowered_fire_shard",
             () -> new EmpoweredShardUnlockItem(ShardType.FIRE, new Item.Properties().stacksTo(1))
     );
-
     public static final RegistryObject<Item> WATER_SHARD = ITEMS.register("water_shard",
             () -> new ShardUnlockItem(ShardType.WATER, new Item.Properties().stacksTo(1))
     );
-
+    public static final RegistryObject<Item> EMPOWERED_WATER_SHARD = ITEMS.register("empowered_water_shard",
+            () -> new EmpoweredShardUnlockItem(ShardType.WATER, new Item.Properties().stacksTo(1))
+    );
     public static final RegistryObject<Item> EARTH_SHARD = ITEMS.register("earth_shard",
             () -> new ShardUnlockItem(ShardType.EARTH, new Item.Properties().stacksTo(1))
     );
-
     public static final RegistryObject<Item> EMPOWERED_EARTH_SHARD = ITEMS.register("empowered_earth_shard",
             () -> new EmpoweredShardUnlockItem(ShardType.EARTH, new Item.Properties().stacksTo(1))
     );
-
     public static final RegistryObject<Item> AIR_SHARD = ITEMS.register("air_shard",
             () -> new ShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
     );
-
     public static final RegistryObject<Item> EMPOWERED_AIR_SHARD = ITEMS.register("empowered_air_shard",
             () -> new EmpoweredShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
     );

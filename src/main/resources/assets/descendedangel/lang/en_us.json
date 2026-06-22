@@ -210,6 +210,16 @@
   "ability.descendedangel.unknown_earth_evolution": "Unknown Earth Evolution",
   "ability.descendedangel.earth_evolved": "Your Earth Power evolves into %s.",
 
-  "message.descendedangel.font_earth_empowered": "The Earth Shard has been empowered."
+  "message.descendedangel.font_earth_empowered": "The Earth Shard has been empowered.",
+
+  "item.descendedangel.empowered_water_shard": "Empowered Water Shard",
+
+  "ability.descendedangel.moving_field_of_mist": "Moving Field of Mist",
+  "ability.descendedangel.seraphic_mirage": "Seraphic Mirage",
+  "ability.descendedangel.divine_serenity": "Divine Serenity",
+  "ability.descendedangel.water_evolved": "Your Water Power evolves into %s.",
+  "ability.descendedangel.unknown_evolution": "Unknown Evolution",
+
+  "message.descendedangel.font_water_empowered": "The Water Shard has been empowered."
 
 }

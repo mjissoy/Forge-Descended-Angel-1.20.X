@@ -22,6 +22,7 @@ import net.normlroyal.descendedangel.block.tempwall.TempEarthWallBlock;
 import net.normlroyal.descendedangel.config.ModConfigs;
 import net.normlroyal.descendedangel.events.EarthEvolutionEvents;
 import net.normlroyal.descendedangel.events.FireEvolutionEvents;
+import net.normlroyal.descendedangel.events.WaterEvolutionEvents;
 import net.normlroyal.descendedangel.events.WindEvolutionEvents;
 import net.normlroyal.descendedangel.haloabilities.helpers.ClientUnlockState;
 import net.normlroyal.descendedangel.util.HaloUtils;
@@ -46,6 +47,10 @@ public class PowerAbilities {
     public static final String TAG_EARTH_AEGIS_PILLAR = "da_evolved_earth_aegis_pillar";
     public static final String TAG_EARTH_CRYSTAL_CHRYSALIS = "da_evolved_earth_crystal_chrysalis";
 
+    public static final String TAG_WATER_MOVING_FIELD_OF_MIST = "da_evolved_water_moving_field_of_mist";
+    public static final String TAG_WATER_SERAPHIC_MIRAGE = "da_evolved_water_seraphic_mirage";
+    public static final String TAG_WATER_DIVINE_SERENITY = "da_evolved_water_divine_serenity";
+
     private static final String CD_FIREBALL   = "da_cd_power_fireball_until";
     private static final String CD_GUST       = "da_cd_power_gust_until";
     private static final String CD_EARTH_WALL = "da_cd_power_earthwall_until";
@@ -62,6 +67,10 @@ public class PowerAbilities {
     private static final String CD_HOLY_BASTION = "da_cd_power_holy_bastion_until";
     private static final String CD_AEGIS_PILLAR = "da_cd_power_aegis_pillar_until";
     private static final String CD_CRYSTAL_CHRYSALIS = "da_cd_power_crystal_chrysalis_until";
+
+    private static final String CD_MOVING_FIELD_OF_MIST = "da_cd_power_moving_field_of_mist_until";
+    private static final String CD_SERAPHIC_MIRAGE = "da_cd_power_seraphic_mirage_until";
+    private static final String CD_DIVINE_SERENITY = "da_cd_power_divine_serenity_until";
 
     public static boolean tryUse(ServerPlayer sp, HaloAbility ability) {
         int tier = HaloUtils.getEquippedHaloTier(sp);
@@ -102,6 +111,10 @@ public class PowerAbilities {
 
             case HOLY_BASTION, AEGIS_PILLAR, CRYSTAL_CHRYSALIS -> {
                 return tryUseEarthEvolution(sp, ability, tier, now);
+            }
+
+            case MOVING_FIELD_OF_MIST, SERAPHIC_MIRAGE, DIVINE_SERENITY -> {
+                return tryUseWaterEvolution(sp, ability, tier, now);
             }
 
             case GUST -> {
@@ -287,6 +300,10 @@ public class PowerAbilities {
             case AEGIS_PILLAR -> CD_AEGIS_PILLAR;
             case CRYSTAL_CHRYSALIS -> CD_CRYSTAL_CHRYSALIS;
 
+            case MOVING_FIELD_OF_MIST -> CD_MOVING_FIELD_OF_MIST;
+            case SERAPHIC_MIRAGE -> CD_SERAPHIC_MIRAGE;
+            case DIVINE_SERENITY -> CD_DIVINE_SERENITY;
+
             default -> "";
         };
     }
@@ -465,6 +482,10 @@ public class PowerAbilities {
             case HOLY_BASTION -> ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get() + 180;
             case AEGIS_PILLAR -> ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get() + 220;
             case CRYSTAL_CHRYSALIS -> ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get() + 360;
+
+            case MOVING_FIELD_OF_MIST -> ModConfigs.COMMON.MIST_VEIL_COOLDOWN_TICKS.get() + 160;
+            case SERAPHIC_MIRAGE -> ModConfigs.COMMON.MIST_VEIL_COOLDOWN_TICKS.get() + 180;
+            case DIVINE_SERENITY -> ModConfigs.COMMON.MIST_VEIL_COOLDOWN_TICKS.get() + 240;
 
             default -> 20;
         };
@@ -669,6 +690,133 @@ public class PowerAbilities {
             spawnGustParticles(level, sp.position(), radius, 3, 24);
             level.sendParticles(ParticleTypes.POOF, sp.getX(), sp.getY() + 0.2, sp.getZ(), 12, 0.2, 0.05, 0.2, 0.0);
         }
+    }
+
+    private static boolean tryUseWaterEvolution(ServerPlayer sp, HaloAbility ability, int tier, long now) {
+        if (tier < 7) {
+            NetworkUtils.actionbar(sp, "Water evolutions require a Cherubim Halo or higher.");
+            return false;
+        }
+
+        var data = sp.getPersistentData();
+
+        if (!data.getBoolean(ability.unlockTag())) {
+            NetworkUtils.actionbar(sp, "You have not unlocked this Water evolution.");
+            return false;
+        }
+
+        String cooldownTag = cooldownTag(ability);
+
+        if (now < data.getLong(cooldownTag)) {
+            return false;
+        }
+
+        boolean used = switch (ability) {
+            case MOVING_FIELD_OF_MIST -> {
+                doMovingFieldOfMist(sp, tier);
+                yield true;
+            }
+            case SERAPHIC_MIRAGE -> {
+                doSeraphicMirage(sp, tier);
+                yield true;
+            }
+            case DIVINE_SERENITY -> {
+                doDivineSerenity(sp, tier);
+                yield true;
+            }
+            default -> false;
+        };
+
+        if (!used) {
+            return false;
+        }
+
+        data.putLong(cooldownTag, now + scaledCooldown(sp, ability));
+        return true;
+    }
+
+    public static boolean hasWaterEvolution(Player player) {
+        return hasTag(player, TAG_WATER_MOVING_FIELD_OF_MIST)
+                || hasTag(player, TAG_WATER_SERAPHIC_MIRAGE)
+                || hasTag(player, TAG_WATER_DIVINE_SERENITY);
+    }
+
+    public static HaloAbility currentWaterEvolution(Player player) {
+        if (hasTag(player, TAG_WATER_MOVING_FIELD_OF_MIST)) return HaloAbility.MOVING_FIELD_OF_MIST;
+        if (hasTag(player, TAG_WATER_SERAPHIC_MIRAGE)) return HaloAbility.SERAPHIC_MIRAGE;
+        if (hasTag(player, TAG_WATER_DIVINE_SERENITY)) return HaloAbility.DIVINE_SERENITY;
+        return null;
+    }
+
+    public static void setWaterEvolution(ServerPlayer sp, HaloAbility ability) {
+        if (!isWaterEvolution(ability)) {
+            return;
+        }
+
+        var data = sp.getPersistentData();
+
+        data.putBoolean(TAG_WATER, false);
+        data.putBoolean(TAG_WATER_MOVING_FIELD_OF_MIST, false);
+        data.putBoolean(TAG_WATER_SERAPHIC_MIRAGE, false);
+        data.putBoolean(TAG_WATER_DIVINE_SERENITY, false);
+
+        data.putBoolean(ability.unlockTag(), true);
+    }
+
+    public static boolean isWaterEvolution(HaloAbility ability) {
+        return ability == HaloAbility.MOVING_FIELD_OF_MIST
+                || ability == HaloAbility.SERAPHIC_MIRAGE
+                || ability == HaloAbility.DIVINE_SERENITY;
+    }
+
+    private static void doMovingFieldOfMist(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        double radius = 4.25D + (0.25D * HaloScaling.mastery(tier));
+        float damage = 3.0F + HaloScaling.mastery(tier);
+        int duration = HaloScaling.scaleIntDuration(180, tier);
+
+        WaterEvolutionEvents.createMovingMistField(
+                level,
+                sp,
+                duration,
+                radius,
+                damage
+        );
+
+        NetworkUtils.actionbar(sp, "A suffocating mist coils around you.");
+    }
+
+    private static void doSeraphicMirage(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        int count = HaloScaling.mastery(tier) >= 2 ? 3 : 2;
+        int duration = HaloScaling.scaleIntDuration(120, tier);
+
+        WaterEvolutionEvents.createSeraphicMirage(
+                level,
+                sp,
+                count,
+                duration
+        );
+
+        NetworkUtils.actionbar(sp, "Seraphic mirages split from your soul.");
+    }
+
+    private static void doDivineSerenity(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        double radius = 9.0D + (0.5D * HaloScaling.mastery(tier));
+        int duration = HaloScaling.scaleIntDuration(140, tier);
+
+        WaterEvolutionEvents.createDivineSerenity(
+                level,
+                sp,
+                duration,
+                radius
+        );
+
+        NetworkUtils.actionbar(sp, "Divine Serenity hushes the battlefield.");
     }
 
     public static void spawnGustParticles(ServerLevel level, Vec3 center, double radius, int rings, int pointsPerRing) {

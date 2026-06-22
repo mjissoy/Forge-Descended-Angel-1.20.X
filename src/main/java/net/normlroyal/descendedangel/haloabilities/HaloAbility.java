@@ -28,6 +28,10 @@ public enum HaloAbility {
 
     MIST_VEIL("mist_veil", PowerAbilities.TAG_WATER, AbilityGroup.POWER, 4),
 
+    MOVING_FIELD_OF_MIST("mist_veil", PowerAbilities.TAG_WATER_MOVING_FIELD_OF_MIST, AbilityGroup.POWER, 7),
+    SERAPHIC_MIRAGE("mist_veil", PowerAbilities.TAG_WATER_SERAPHIC_MIRAGE, AbilityGroup.POWER, 7),
+    DIVINE_SERENITY("mist_veil", PowerAbilities.TAG_WATER_DIVINE_SERENITY, AbilityGroup.POWER, 7),
+
     TELEPORT("teleport", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION, 6),
     SPACE_CHEST("space_chest", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION, 6),
     FIELD("slow_field", DominionAbilities.TAG_TIME, AbilityGroup.DOMINION, 6),
@@ -81,6 +85,10 @@ public enum HaloAbility {
         }
 
         if (this == EARTH_WALL && PowerAbilities.hasEarthEvolution(player)) {
+            return false;
+        }
+
+        if (this == MIST_VEIL && PowerAbilities.hasWaterEvolution(player)) {
             return false;
         }
 

@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.client.render.ImpRenderer;
+import net.normlroyal.descendedangel.client.render.SeraphicMirageRenderer;
 import net.normlroyal.descendedangel.client.render.VoidAnomalyRenderer;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -20,6 +21,10 @@ public class ModEntityRenderers {
         event.registerEntityRenderer(
                 ModEntities.IMP.get(),
                 ImpRenderer::new
+        );
+        event.registerEntityRenderer(
+                ModEntities.SERAPHIC_MIRAGE.get(),
+                SeraphicMirageRenderer::new
         );
     }
 

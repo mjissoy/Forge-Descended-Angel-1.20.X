@@ -25,4 +25,13 @@ public class ModEntities {
                             .sized(0.375F, 0.8125F)
                             .clientTrackingRange(16)
                             .build("imp"));
+
+    public static final RegistryObject<EntityType<SeraphicMirageEntity>> SERAPHIC_MIRAGE =
+            ENTITY_TYPES.register("seraphic_mirage",
+                    () -> EntityType.Builder
+                            .of(SeraphicMirageEntity::new, MobCategory.MISC)
+                            .sized(0.6F, 1.8F)
+                            .clientTrackingRange(16)
+                            .updateInterval(2)
+                            .build("seraphic_mirage"));
 }

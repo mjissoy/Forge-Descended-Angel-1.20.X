@@ -19,6 +19,10 @@ public final class ClientUnlockState {
     private static boolean earthAegisPillar;
     private static boolean earthCrystalChrysalis;
 
+    private static boolean waterMovingFieldOfMist;
+    private static boolean waterSeraphicMirage;
+    private static boolean waterDivineSerenity;
+
     private static boolean water;
     private static boolean space;
     private static boolean time;
@@ -40,6 +44,10 @@ public final class ClientUnlockState {
             boolean earthCrystalChrysalisIn,
 
             boolean waterIn,
+            boolean waterMovingFieldOfMistIn,
+            boolean waterSeraphicMirageIn,
+            boolean waterDivineSerenityIn,
+
             boolean spaceIn,
             boolean timeIn
     ) {
@@ -59,6 +67,10 @@ public final class ClientUnlockState {
         earthCrystalChrysalis = earthCrystalChrysalisIn;
 
         water = waterIn;
+        waterMovingFieldOfMist = waterMovingFieldOfMistIn;
+        waterSeraphicMirage = waterSeraphicMirageIn;
+        waterDivineSerenity = waterDivineSerenityIn;
+
         space = spaceIn;
         time = timeIn;
     }
@@ -81,6 +93,9 @@ public final class ClientUnlockState {
             case PowerAbilities.TAG_EARTH_CRYSTAL_CHRYSALIS -> earthCrystalChrysalis;
 
             case PowerAbilities.TAG_WATER -> water;
+            case PowerAbilities.TAG_WATER_MOVING_FIELD_OF_MIST -> waterMovingFieldOfMist;
+            case PowerAbilities.TAG_WATER_SERAPHIC_MIRAGE -> waterSeraphicMirage;
+            case PowerAbilities.TAG_WATER_DIVINE_SERENITY -> waterDivineSerenity;
 
             case DominionAbilities.TAG_SPACE -> space;
             case DominionAbilities.TAG_TIME -> time;
@@ -106,6 +121,10 @@ public final class ClientUnlockState {
         earthCrystalChrysalis = false;
 
         water = false;
+        waterMovingFieldOfMist = false;
+        waterSeraphicMirage = false;
+        waterDivineSerenity = false;
+
         space = false;
         time = false;
     }

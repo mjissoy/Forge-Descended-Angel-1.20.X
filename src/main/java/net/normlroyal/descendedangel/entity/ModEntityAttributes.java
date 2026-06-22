@@ -15,5 +15,8 @@ public class ModEntityAttributes {
 
         event.put(ModEntities.IMP.get(),
                 ImpEntity.createAttributes().build());
+
+        event.put(ModEntities.SERAPHIC_MIRAGE.get(),
+                SeraphicMirageEntity.createAttributes().build());
     }
 }

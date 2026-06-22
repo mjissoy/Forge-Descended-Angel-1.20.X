@@ -23,6 +23,10 @@ public record UnlockAbilitiesS2CPacket(
         boolean earthCrystalChrysalis,
 
         boolean water,
+        boolean waterMovingFieldOfMist,
+        boolean waterSeraphicMirage ,
+        boolean waterDivineSerenity,
+
         boolean space,
         boolean time
 ) {
@@ -44,6 +48,10 @@ public record UnlockAbilitiesS2CPacket(
         buf.writeBoolean(msg.earthCrystalChrysalis());
 
         buf.writeBoolean(msg.water());
+        buf.writeBoolean(msg.waterMovingFieldOfMist());
+        buf.writeBoolean(msg.waterSeraphicMirage());
+        buf.writeBoolean(msg.waterDivineSerenity());
+
         buf.writeBoolean(msg.space());
         buf.writeBoolean(msg.time());
     }
@@ -66,6 +74,10 @@ public record UnlockAbilitiesS2CPacket(
                 buf.readBoolean(),
 
                 buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean(),
+
                 buf.readBoolean(),
                 buf.readBoolean()
         );
@@ -90,6 +102,10 @@ public record UnlockAbilitiesS2CPacket(
                     msg.earthCrystalChrysalis(),
 
                     msg.water(),
+                    msg.waterMovingFieldOfMist(),
+                    msg.waterSeraphicMirage(),
+                    msg.waterDivineSerenity(),
+
                     msg.space(),
                     msg.time()
             );

@@ -49,7 +49,10 @@ public final class CooldownSnapshots {
                  HOLY_BASTION,
                  AEGIS_PILLAR,
                  CRYSTAL_CHRYSALIS,
-                 MIST_VEIL -> {
+                 MIST_VEIL,
+                 MOVING_FIELD_OF_MIST,
+                 SERAPHIC_MIRAGE,
+                 DIVINE_SERENITY -> {
                 until = sp.getPersistentData().getLong(PowerAbilities.cooldownTag(ability));
                 total = PowerAbilities.scaledCooldown(sp, ability);
             }

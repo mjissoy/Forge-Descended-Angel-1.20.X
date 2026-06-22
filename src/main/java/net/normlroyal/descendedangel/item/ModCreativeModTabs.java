@@ -83,6 +83,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.EARTH_SHARD.get());
                         output.accept(ModItems.EMPOWERED_EARTH_SHARD.get());
                         output.accept(ModItems.WATER_SHARD.get());
+                        output.accept(ModItems.EMPOWERED_WATER_SHARD.get());
                         output.accept(ModItems.SACRED_WRITINGS.get());
 
 

@@ -36,11 +36,6 @@ public class EmpoweredShardUnlockItem extends Item {
                 sp.displayClientMessage(Component.translatable("message.descendedangel.empowered_shard_requires_cherubim"), true);
                 return InteractionResultHolder.fail(stack);
             }
-
-            if (type != ShardType.FIRE && type != ShardType.AIR && type != ShardType.EARTH) {
-                sp.displayClientMessage(Component.translatable("message.descendedangel.empowered_shard_future"), true);
-                return InteractionResultHolder.fail(stack);
-            }
         }
 
         player.startUsingItem(hand);
@@ -65,59 +60,37 @@ public class EmpoweredShardUnlockItem extends Item {
                 return stack;
             }
 
-            if (type == ShardType.FIRE) {
-                HaloAbility selected = rollFireEvolution(level, PowerAbilities.currentFireEvolution(sp));
+            HaloAbility selected = switch (type) {
+                case FIRE -> rollFireEvolution(level, PowerAbilities.currentFireEvolution(sp));
+                case AIR -> rollAirEvolution(level, PowerAbilities.currentAirEvolution(sp));
+                case EARTH -> rollEarthEvolution(level, PowerAbilities.currentEarthEvolution(sp));
+                case WATER -> rollWaterEvolution(level, PowerAbilities.currentWaterEvolution(sp));
+                default -> null;
+            };
 
-                PowerAbilities.setFireEvolution(sp, selected);
-                AbilityUtils.syncUnlocks(sp);
-                popShard(sp, stack);
-
-                sp.displayClientMessage(
-                        Component.translatable("ability.descendedangel.fire_evolved", fireEvolutionName(selected)),
-                        true
-                );
-
-                if (!sp.getAbilities().instabuild) {
-                    stack.shrink(1);
-                }
-
+            if (selected == null) {
+                sp.displayClientMessage(Component.translatable("message.descendedangel.empowered_shard_future"), true);
                 return stack;
             }
 
-            if (type == ShardType.AIR) {
-                HaloAbility selected = rollAirEvolution(level, PowerAbilities.currentAirEvolution(sp));
-
-                PowerAbilities.setAirEvolution(sp, selected);
-                AbilityUtils.syncUnlocks(sp);
-                popShard(sp, stack);
-
-                sp.displayClientMessage(
-                        Component.translatable("ability.descendedangel.air_evolved", airEvolutionName(selected)),
-                        true
-                );
-
-                if (!sp.getAbilities().instabuild) {
-                    stack.shrink(1);
-                }
-
-                return stack;
+            switch (type) {
+                case FIRE -> PowerAbilities.setFireEvolution(sp, selected);
+                case AIR -> PowerAbilities.setAirEvolution(sp, selected);
+                case EARTH -> PowerAbilities.setEarthEvolution(sp, selected);
+                case WATER -> PowerAbilities.setWaterEvolution(sp, selected);
+                default -> {}
             }
 
-            if (type == ShardType.EARTH) {
-                HaloAbility selected = rollEarthEvolution(level, PowerAbilities.currentEarthEvolution(sp));
+            AbilityUtils.syncUnlocks(sp);
+            popShard(sp, stack);
 
-                PowerAbilities.setEarthEvolution(sp, selected);
-                AbilityUtils.syncUnlocks(sp);
-                popShard(sp, stack);
+            sp.displayClientMessage(
+                    Component.translatable(evolutionMessageKey(type), evolutionName(selected)),
+                    true
+            );
 
-                sp.displayClientMessage(
-                        Component.translatable("ability.descendedangel.earth_evolved", earthEvolutionName(selected)),
-                        true
-                );
-
-                if (!sp.getAbilities().instabuild) {
-                    stack.shrink(1);
-                }
+            if (!sp.getAbilities().instabuild) {
+                stack.shrink(1);
             }
         }
 
@@ -141,9 +114,7 @@ public class EmpoweredShardUnlockItem extends Item {
                 default -> HaloAbility.PILLARS_OF_RADIANCE;
             };
 
-            if (selected != current) {
-                break;
-            }
+            if (selected != current) break;
         }
 
         return selected;
@@ -159,9 +130,7 @@ public class EmpoweredShardUnlockItem extends Item {
                 default -> HaloAbility.HEAVENLY_DOWNDRAFT;
             };
 
-            if (selected != current) {
-                break;
-            }
+            if (selected != current) break;
         }
 
         return selected;
@@ -177,38 +146,57 @@ public class EmpoweredShardUnlockItem extends Item {
                 default -> HaloAbility.CRYSTAL_CHRYSALIS;
             };
 
-            if (selected != current) {
-                break;
-            }
+            if (selected != current) break;
         }
 
         return selected;
     }
 
-    private static Component fireEvolutionName(HaloAbility ability) {
+    private static HaloAbility rollWaterEvolution(Level level, HaloAbility current) {
+        HaloAbility selected = HaloAbility.MOVING_FIELD_OF_MIST;
+
+        for (int i = 0; i < 8; i++) {
+            selected = switch (level.random.nextInt(3)) {
+                case 0 -> HaloAbility.MOVING_FIELD_OF_MIST;
+                case 1 -> HaloAbility.SERAPHIC_MIRAGE;
+                default -> HaloAbility.DIVINE_SERENITY;
+            };
+
+            if (selected != current) break;
+        }
+
+        return selected;
+    }
+
+    private static String evolutionMessageKey(ShardType type) {
+        return switch (type) {
+            case FIRE -> "ability.descendedangel.fire_evolved";
+            case AIR -> "ability.descendedangel.air_evolved";
+            case EARTH -> "ability.descendedangel.earth_evolved";
+            case WATER -> "ability.descendedangel.water_evolved";
+            default -> "ability.descendedangel.unknown_evolution";
+        };
+    }
+
+    private static Component evolutionName(HaloAbility ability) {
         return switch (ability) {
             case SACRED_FLARE -> Component.translatable("ability.descendedangel.sacred_flare");
             case SOL_CORONA -> Component.translatable("ability.descendedangel.sol_corona");
             case PILLARS_OF_RADIANCE -> Component.translatable("ability.descendedangel.pillars_of_radiance");
-            default -> Component.translatable("ability.descendedangel.unknown_fire_evolution");
-        };
-    }
 
-    private static Component airEvolutionName(HaloAbility ability) {
-        return switch (ability) {
             case VACUUM_VORTEX -> Component.translatable("ability.descendedangel.vacuum_vortex");
             case ZEPHYR_SCYTHES -> Component.translatable("ability.descendedangel.zephyr_scythes");
             case HEAVENLY_DOWNDRAFT -> Component.translatable("ability.descendedangel.heavenly_downdraft");
-            default -> Component.translatable("ability.descendedangel.unknown_air_evolution");
-        };
-    }
 
-    private static Component earthEvolutionName(HaloAbility ability) {
-        return switch (ability) {
             case HOLY_BASTION -> Component.translatable("ability.descendedangel.holy_bastion");
             case AEGIS_PILLAR -> Component.translatable("ability.descendedangel.aegis_pillar");
             case CRYSTAL_CHRYSALIS -> Component.translatable("ability.descendedangel.crystal_chrysalis");
-            default -> Component.translatable("ability.descendedangel.unknown_earth_evolution");
+
+            case MOVING_FIELD_OF_MIST -> Component.translatable("ability.descendedangel.moving_field_of_mist");
+            case SERAPHIC_MIRAGE -> Component.translatable("ability.descendedangel.seraphic_mirage");
+            case DIVINE_SERENITY -> Component.translatable("ability.descendedangel.divine_serenity");
+
+            default -> Component.translatable("ability.descendedangel.unknown_evolution");
         };
     }
 }

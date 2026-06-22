@@ -90,7 +90,8 @@ public class BaptismalFontBlock extends Block {
 
         if (stack.is(ModItems.FIRE_SHARD.get())
                 || stack.is(ModItems.AIR_SHARD.get())
-                || stack.is(ModItems.EARTH_SHARD.get())) {
+                || stack.is(ModItems.EARTH_SHARD.get())
+                || stack.is(ModItems.WATER_SHARD.get())) {
             if (!state.getValue(HAS_BLOOD)) {
                 if (!level.isClientSide) {
                     player.displayClientMessage(Component.translatable("message.descendedangel.font_requires_blood"), true);
@@ -102,6 +103,7 @@ public class BaptismalFontBlock extends Block {
                 boolean fire = stack.is(ModItems.FIRE_SHARD.get());
                 boolean air = stack.is(ModItems.AIR_SHARD.get());
                 boolean earth = stack.is(ModItems.EARTH_SHARD.get());
+                boolean water = stack.is(ModItems.WATER_SHARD.get());
 
                 if (!player.getAbilities().instabuild) {
                     stack.shrink(1);
@@ -114,7 +116,9 @@ public class BaptismalFontBlock extends Block {
                                 ? ModItems.EMPOWERED_FIRE_SHARD.get()
                                 : air
                                 ? ModItems.EMPOWERED_AIR_SHARD.get()
-                                : ModItems.EMPOWERED_EARTH_SHARD.get()
+                                : earth
+                                ? ModItems.EMPOWERED_EARTH_SHARD.get()
+                                : ModItems.EMPOWERED_WATER_SHARD.get()
                 );
 
                 if (!player.getInventory().add(empowered)) {
@@ -125,7 +129,7 @@ public class BaptismalFontBlock extends Block {
 
                 if (level instanceof ServerLevel sl) {
                     sl.sendParticles(
-                            fire ? ParticleTypes.END_ROD : air ? ParticleTypes.CLOUD : ParticleTypes.ENCHANT,
+                            fire ? ParticleTypes.END_ROD : air ? ParticleTypes.CLOUD : earth ? ParticleTypes.ENCHANT : ParticleTypes.BUBBLE_POP,
                             pos.getX() + 0.5,
                             pos.getY() + 1.25,
                             pos.getZ() + 0.5,
@@ -143,7 +147,9 @@ public class BaptismalFontBlock extends Block {
                                         ? "message.descendedangel.font_fire_empowered"
                                         : air
                                         ? "message.descendedangel.font_air_empowered"
-                                        : "message.descendedangel.font_earth_empowered"
+                                        : earth
+                                        ? "message.descendedangel.font_earth_empowered"
+                                        : "message.descendedangel.font_water_empowered"
                         ),
                         true
                 );
