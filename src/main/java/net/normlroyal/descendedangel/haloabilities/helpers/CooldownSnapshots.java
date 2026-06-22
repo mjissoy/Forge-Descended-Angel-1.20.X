@@ -46,6 +46,9 @@ public final class CooldownSnapshots {
                  ZEPHYR_SCYTHES,
                  HEAVENLY_DOWNDRAFT,
                  EARTH_WALL,
+                 HOLY_BASTION,
+                 AEGIS_PILLAR,
+                 CRYSTAL_CHRYSALIS,
                  MIST_VEIL -> {
                 until = sp.getPersistentData().getLong(PowerAbilities.cooldownTag(ability));
                 total = PowerAbilities.scaledCooldown(sp, ability);

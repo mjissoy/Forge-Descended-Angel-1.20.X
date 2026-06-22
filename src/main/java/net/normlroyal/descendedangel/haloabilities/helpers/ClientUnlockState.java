@@ -15,6 +15,10 @@ public final class ClientUnlockState {
     private static boolean airHeavenlyDowndraft;
 
     private static boolean earth;
+    private static boolean earthHolyBastion;
+    private static boolean earthAegisPillar;
+    private static boolean earthCrystalChrysalis;
+
     private static boolean water;
     private static boolean space;
     private static boolean time;
@@ -31,6 +35,10 @@ public final class ClientUnlockState {
             boolean airHeavenlyDowndraftIn,
 
             boolean earthIn,
+            boolean earthHolyBastionIn,
+            boolean earthAegisPillarIn,
+            boolean earthCrystalChrysalisIn,
+
             boolean waterIn,
             boolean spaceIn,
             boolean timeIn
@@ -46,6 +54,10 @@ public final class ClientUnlockState {
         airHeavenlyDowndraft = airHeavenlyDowndraftIn;
 
         earth = earthIn;
+        earthHolyBastion = earthHolyBastionIn;
+        earthAegisPillar = earthAegisPillarIn;
+        earthCrystalChrysalis = earthCrystalChrysalisIn;
+
         water = waterIn;
         space = spaceIn;
         time = timeIn;
@@ -64,6 +76,10 @@ public final class ClientUnlockState {
             case PowerAbilities.TAG_AIR_HEAVENLY_DOWNDRAFT -> airHeavenlyDowndraft;
 
             case PowerAbilities.TAG_EARTH -> earth;
+            case PowerAbilities.TAG_EARTH_HOLY_BASTION -> earthHolyBastion;
+            case PowerAbilities.TAG_EARTH_AEGIS_PILLAR -> earthAegisPillar;
+            case PowerAbilities.TAG_EARTH_CRYSTAL_CHRYSALIS -> earthCrystalChrysalis;
+
             case PowerAbilities.TAG_WATER -> water;
 
             case DominionAbilities.TAG_SPACE -> space;
@@ -85,6 +101,10 @@ public final class ClientUnlockState {
         airHeavenlyDowndraft = false;
 
         earth = false;
+        earthHolyBastion = false;
+        earthAegisPillar = false;
+        earthCrystalChrysalis = false;
+
         water = false;
         space = false;
         time = false;

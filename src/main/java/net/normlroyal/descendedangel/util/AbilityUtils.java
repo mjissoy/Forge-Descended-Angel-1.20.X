@@ -27,6 +27,10 @@ public final class AbilityUtils {
                         data.getBoolean(PowerAbilities.TAG_AIR_HEAVENLY_DOWNDRAFT),
 
                         data.getBoolean(PowerAbilities.TAG_EARTH),
+                        data.getBoolean(PowerAbilities.TAG_EARTH_HOLY_BASTION),
+                        data.getBoolean(PowerAbilities.TAG_EARTH_AEGIS_PILLAR),
+                        data.getBoolean(PowerAbilities.TAG_EARTH_CRYSTAL_CHRYSALIS),
+
                         data.getBoolean(PowerAbilities.TAG_WATER),
 
                         data.getBoolean(DominionAbilities.TAG_SPACE),

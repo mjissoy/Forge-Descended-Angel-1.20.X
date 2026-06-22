@@ -37,7 +37,7 @@ public class EmpoweredShardUnlockItem extends Item {
                 return InteractionResultHolder.fail(stack);
             }
 
-            if (type != ShardType.FIRE && type != ShardType.AIR) {
+            if (type != ShardType.FIRE && type != ShardType.AIR && type != ShardType.EARTH) {
                 sp.displayClientMessage(Component.translatable("message.descendedangel.empowered_shard_future"), true);
                 return InteractionResultHolder.fail(stack);
             }
@@ -66,19 +66,14 @@ public class EmpoweredShardUnlockItem extends Item {
             }
 
             if (type == ShardType.FIRE) {
-                HaloAbility current = PowerAbilities.currentFireEvolution(sp);
-                HaloAbility selected = rollFireEvolution(level, current);
+                HaloAbility selected = rollFireEvolution(level, PowerAbilities.currentFireEvolution(sp));
 
                 PowerAbilities.setFireEvolution(sp, selected);
                 AbilityUtils.syncUnlocks(sp);
-
                 popShard(sp, stack);
 
                 sp.displayClientMessage(
-                        Component.translatable(
-                                "ability.descendedangel.fire_evolved",
-                                fireEvolutionName(selected)
-                        ),
+                        Component.translatable("ability.descendedangel.fire_evolved", fireEvolutionName(selected)),
                         true
                 );
 
@@ -90,19 +85,33 @@ public class EmpoweredShardUnlockItem extends Item {
             }
 
             if (type == ShardType.AIR) {
-                HaloAbility current = PowerAbilities.currentAirEvolution(sp);
-                HaloAbility selected = rollAirEvolution(level, current);
+                HaloAbility selected = rollAirEvolution(level, PowerAbilities.currentAirEvolution(sp));
 
                 PowerAbilities.setAirEvolution(sp, selected);
                 AbilityUtils.syncUnlocks(sp);
-
                 popShard(sp, stack);
 
                 sp.displayClientMessage(
-                        Component.translatable(
-                                "ability.descendedangel.air_evolved",
-                                airEvolutionName(selected)
-                        ),
+                        Component.translatable("ability.descendedangel.air_evolved", airEvolutionName(selected)),
+                        true
+                );
+
+                if (!sp.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+
+                return stack;
+            }
+
+            if (type == ShardType.EARTH) {
+                HaloAbility selected = rollEarthEvolution(level, PowerAbilities.currentEarthEvolution(sp));
+
+                PowerAbilities.setEarthEvolution(sp, selected);
+                AbilityUtils.syncUnlocks(sp);
+                popShard(sp, stack);
+
+                sp.displayClientMessage(
+                        Component.translatable("ability.descendedangel.earth_evolved", earthEvolutionName(selected)),
                         true
                 );
 
@@ -158,6 +167,24 @@ public class EmpoweredShardUnlockItem extends Item {
         return selected;
     }
 
+    private static HaloAbility rollEarthEvolution(Level level, HaloAbility current) {
+        HaloAbility selected = HaloAbility.HOLY_BASTION;
+
+        for (int i = 0; i < 8; i++) {
+            selected = switch (level.random.nextInt(3)) {
+                case 0 -> HaloAbility.HOLY_BASTION;
+                case 1 -> HaloAbility.AEGIS_PILLAR;
+                default -> HaloAbility.CRYSTAL_CHRYSALIS;
+            };
+
+            if (selected != current) {
+                break;
+            }
+        }
+
+        return selected;
+    }
+
     private static Component fireEvolutionName(HaloAbility ability) {
         return switch (ability) {
             case SACRED_FLARE -> Component.translatable("ability.descendedangel.sacred_flare");
@@ -173,6 +200,15 @@ public class EmpoweredShardUnlockItem extends Item {
             case ZEPHYR_SCYTHES -> Component.translatable("ability.descendedangel.zephyr_scythes");
             case HEAVENLY_DOWNDRAFT -> Component.translatable("ability.descendedangel.heavenly_downdraft");
             default -> Component.translatable("ability.descendedangel.unknown_air_evolution");
+        };
+    }
+
+    private static Component earthEvolutionName(HaloAbility ability) {
+        return switch (ability) {
+            case HOLY_BASTION -> Component.translatable("ability.descendedangel.holy_bastion");
+            case AEGIS_PILLAR -> Component.translatable("ability.descendedangel.aegis_pillar");
+            case CRYSTAL_CHRYSALIS -> Component.translatable("ability.descendedangel.crystal_chrysalis");
+            default -> Component.translatable("ability.descendedangel.unknown_earth_evolution");
         };
     }
 }

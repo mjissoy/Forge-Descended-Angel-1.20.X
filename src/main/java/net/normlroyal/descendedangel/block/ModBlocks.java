@@ -50,6 +50,12 @@ public class ModBlocks {
             )
     );
 
+    public static final RegistryObject<Block> TEMP_HOLY_BLOCK = BLOCKS.register("temp_holy_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(-1.0F, 3600000.0F)
+                    .noLootTable()
+                    .noOcclusion()));
+
     public static final RegistryObject<Block> BLESSED_ROCK = registerBlock("blessed_rock",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANDESITE)));
     public static final RegistryObject<Block> BLESSED_ROCK_SLAB = registerBlock("blessed_rock_slab",

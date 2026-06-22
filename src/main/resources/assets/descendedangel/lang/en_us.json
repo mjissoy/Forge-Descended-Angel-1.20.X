@@ -200,6 +200,16 @@
   "ability.descendedangel.unknown_air_evolution": "Unknown Wind Evolution",
   "ability.descendedangel.air_evolved": "Your Wind Power evolves into %s.",
 
-  "message.descendedangel.font_air_empowered": "The Air Shard has been empowered."
+  "message.descendedangel.font_air_empowered": "The Air Shard has been empowered.",
+
+  "item.descendedangel.empowered_earth_shard": "Empowered Earth Shard",
+
+  "ability.descendedangel.holy_bastion": "Holy Bastion",
+  "ability.descendedangel.aegis_pillar": "Aegis Pillar",
+  "ability.descendedangel.crystal_chrysalis": "Crystal Chrysalis",
+  "ability.descendedangel.unknown_earth_evolution": "Unknown Earth Evolution",
+  "ability.descendedangel.earth_evolved": "Your Earth Power evolves into %s.",
+
+  "message.descendedangel.font_earth_empowered": "The Earth Shard has been empowered."
 
 }

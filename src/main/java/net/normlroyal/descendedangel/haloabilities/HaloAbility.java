@@ -21,6 +21,11 @@ public enum HaloAbility {
     HEAVENLY_DOWNDRAFT("gust", PowerAbilities.TAG_AIR_HEAVENLY_DOWNDRAFT, AbilityGroup.POWER, 7),
 
     EARTH_WALL("earth_wall", PowerAbilities.TAG_EARTH, AbilityGroup.POWER, 4),
+
+    HOLY_BASTION("earth_wall", PowerAbilities.TAG_EARTH_HOLY_BASTION, AbilityGroup.POWER, 7),
+    AEGIS_PILLAR("earth_wall", PowerAbilities.TAG_EARTH_AEGIS_PILLAR, AbilityGroup.POWER, 7),
+    CRYSTAL_CHRYSALIS("earth_wall", PowerAbilities.TAG_EARTH_CRYSTAL_CHRYSALIS, AbilityGroup.POWER, 7),
+
     MIST_VEIL("mist_veil", PowerAbilities.TAG_WATER, AbilityGroup.POWER, 4),
 
     TELEPORT("teleport", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION, 6),
@@ -72,6 +77,10 @@ public enum HaloAbility {
         }
 
         if (this == GUST && PowerAbilities.hasAirEvolution(player)) {
+            return false;
+        }
+
+        if (this == EARTH_WALL && PowerAbilities.hasEarthEvolution(player)) {
             return false;
         }
 

@@ -18,6 +18,10 @@ public record UnlockAbilitiesS2CPacket(
         boolean airHeavenlyDowndraft,
 
         boolean earth,
+        boolean earthHolyBastion,
+        boolean earthAegisPillar,
+        boolean earthCrystalChrysalis,
+
         boolean water,
         boolean space,
         boolean time
@@ -35,6 +39,10 @@ public record UnlockAbilitiesS2CPacket(
         buf.writeBoolean(msg.airHeavenlyDowndraft());
 
         buf.writeBoolean(msg.earth());
+        buf.writeBoolean(msg.earthHolyBastion());
+        buf.writeBoolean(msg.earthAegisPillar());
+        buf.writeBoolean(msg.earthCrystalChrysalis());
+
         buf.writeBoolean(msg.water());
         buf.writeBoolean(msg.space());
         buf.writeBoolean(msg.time());
@@ -55,6 +63,10 @@ public record UnlockAbilitiesS2CPacket(
                 buf.readBoolean(),
                 buf.readBoolean(),
                 buf.readBoolean(),
+                buf.readBoolean(),
+
+                buf.readBoolean(),
+                buf.readBoolean(),
                 buf.readBoolean()
         );
     }
@@ -73,6 +85,10 @@ public record UnlockAbilitiesS2CPacket(
                     msg.airHeavenlyDowndraft(),
 
                     msg.earth(),
+                    msg.earthHolyBastion(),
+                    msg.earthAegisPillar(),
+                    msg.earthCrystalChrysalis(),
+
                     msg.water(),
                     msg.space(),
                     msg.time()

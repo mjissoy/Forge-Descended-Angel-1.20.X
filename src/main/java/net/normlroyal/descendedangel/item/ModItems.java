@@ -156,6 +156,10 @@ public class ModItems {
             () -> new ShardUnlockItem(ShardType.EARTH, new Item.Properties().stacksTo(1))
     );
 
+    public static final RegistryObject<Item> EMPOWERED_EARTH_SHARD = ITEMS.register("empowered_earth_shard",
+            () -> new EmpoweredShardUnlockItem(ShardType.EARTH, new Item.Properties().stacksTo(1))
+    );
+
     public static final RegistryObject<Item> AIR_SHARD = ITEMS.register("air_shard",
             () -> new ShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
     );

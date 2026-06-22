@@ -20,6 +20,7 @@ import net.minecraft.world.phys.Vec3;
 import net.normlroyal.descendedangel.block.ModBlocks;
 import net.normlroyal.descendedangel.block.tempwall.TempEarthWallBlock;
 import net.normlroyal.descendedangel.config.ModConfigs;
+import net.normlroyal.descendedangel.events.EarthEvolutionEvents;
 import net.normlroyal.descendedangel.events.FireEvolutionEvents;
 import net.normlroyal.descendedangel.events.WindEvolutionEvents;
 import net.normlroyal.descendedangel.haloabilities.helpers.ClientUnlockState;
@@ -41,6 +42,10 @@ public class PowerAbilities {
     public static final String TAG_AIR_ZEPHYR_SCYTHES = "da_evolved_air_zephyr_scythes";
     public static final String TAG_AIR_HEAVENLY_DOWNDRAFT = "da_evolved_air_heavenly_downdraft";
 
+    public static final String TAG_EARTH_HOLY_BASTION = "da_evolved_earth_holy_bastion";
+    public static final String TAG_EARTH_AEGIS_PILLAR = "da_evolved_earth_aegis_pillar";
+    public static final String TAG_EARTH_CRYSTAL_CHRYSALIS = "da_evolved_earth_crystal_chrysalis";
+
     private static final String CD_FIREBALL   = "da_cd_power_fireball_until";
     private static final String CD_GUST       = "da_cd_power_gust_until";
     private static final String CD_EARTH_WALL = "da_cd_power_earthwall_until";
@@ -53,6 +58,10 @@ public class PowerAbilities {
     private static final String CD_VACUUM_VORTEX = "da_cd_power_vacuum_vortex_until";
     private static final String CD_ZEPHYR_SCYTHES = "da_cd_power_zephyr_scythes_until";
     private static final String CD_HEAVENLY_DOWNDRAFT = "da_cd_power_heavenly_downdraft_until";
+
+    private static final String CD_HOLY_BASTION = "da_cd_power_holy_bastion_until";
+    private static final String CD_AEGIS_PILLAR = "da_cd_power_aegis_pillar_until";
+    private static final String CD_CRYSTAL_CHRYSALIS = "da_cd_power_crystal_chrysalis_until";
 
     public static boolean tryUse(ServerPlayer sp, HaloAbility ability) {
         int tier = HaloUtils.getEquippedHaloTier(sp);
@@ -91,6 +100,10 @@ public class PowerAbilities {
                 return tryUseAirEvolution(sp, ability, tier, now);
             }
 
+            case HOLY_BASTION, AEGIS_PILLAR, CRYSTAL_CHRYSALIS -> {
+                return tryUseEarthEvolution(sp, ability, tier, now);
+            }
+
             case GUST -> {
                 if (hasAirEvolution(sp)) {
                     NetworkUtils.actionbar(sp, "Your Gust has already evolved.");
@@ -119,6 +132,11 @@ public class PowerAbilities {
             }
 
             case EARTH_WALL -> {
+                if (hasEarthEvolution(sp)) {
+                    NetworkUtils.actionbar(sp, "Your Earth Wall has already evolved.");
+                    return false;
+                }
+
                 if (!data.getBoolean(TAG_EARTH)) {
                     NetworkUtils.actionbar(sp, "You have not unlocked Earth Wall");
                     return false;
@@ -265,6 +283,10 @@ public class PowerAbilities {
             case ZEPHYR_SCYTHES -> CD_ZEPHYR_SCYTHES;
             case HEAVENLY_DOWNDRAFT -> CD_HEAVENLY_DOWNDRAFT;
 
+            case HOLY_BASTION -> CD_HOLY_BASTION;
+            case AEGIS_PILLAR -> CD_AEGIS_PILLAR;
+            case CRYSTAL_CHRYSALIS -> CD_CRYSTAL_CHRYSALIS;
+
             default -> "";
         };
     }
@@ -346,6 +368,83 @@ public class PowerAbilities {
                 || ability == HaloAbility.HEAVENLY_DOWNDRAFT;
     }
 
+    private static boolean tryUseEarthEvolution(ServerPlayer sp, HaloAbility ability, int tier, long now) {
+        if (tier < 7) {
+            NetworkUtils.actionbar(sp, "Earth evolutions require a Cherubim Halo or higher.");
+            return false;
+        }
+
+        var data = sp.getPersistentData();
+
+        if (!data.getBoolean(ability.unlockTag())) {
+            NetworkUtils.actionbar(sp, "You have not unlocked this Earth evolution.");
+            return false;
+        }
+
+        String cooldownTag = cooldownTag(ability);
+
+        if (now < data.getLong(cooldownTag)) {
+            return false;
+        }
+
+        boolean used = switch (ability) {
+            case HOLY_BASTION -> {
+                doHolyBastion(sp, tier);
+                yield true;
+            }
+            case AEGIS_PILLAR -> {
+                doAegisPillar(sp, tier);
+                yield true;
+            }
+            case CRYSTAL_CHRYSALIS -> {
+                doCrystalChrysalis(sp, tier);
+                yield true;
+            }
+            default -> false;
+        };
+
+        if (!used) {
+            return false;
+        }
+
+        data.putLong(cooldownTag, now + scaledCooldown(sp, ability));
+        return true;
+    }
+
+    public static boolean hasEarthEvolution(Player player) {
+        return hasTag(player, TAG_EARTH_HOLY_BASTION)
+                || hasTag(player, TAG_EARTH_AEGIS_PILLAR)
+                || hasTag(player, TAG_EARTH_CRYSTAL_CHRYSALIS);
+    }
+
+    public static HaloAbility currentEarthEvolution(Player player) {
+        if (hasTag(player, TAG_EARTH_HOLY_BASTION)) return HaloAbility.HOLY_BASTION;
+        if (hasTag(player, TAG_EARTH_AEGIS_PILLAR)) return HaloAbility.AEGIS_PILLAR;
+        if (hasTag(player, TAG_EARTH_CRYSTAL_CHRYSALIS)) return HaloAbility.CRYSTAL_CHRYSALIS;
+        return null;
+    }
+
+    public static void setEarthEvolution(ServerPlayer sp, HaloAbility ability) {
+        if (!isEarthEvolution(ability)) {
+            return;
+        }
+
+        var data = sp.getPersistentData();
+
+        data.putBoolean(TAG_EARTH, false);
+        data.putBoolean(TAG_EARTH_HOLY_BASTION, false);
+        data.putBoolean(TAG_EARTH_AEGIS_PILLAR, false);
+        data.putBoolean(TAG_EARTH_CRYSTAL_CHRYSALIS, false);
+
+        data.putBoolean(ability.unlockTag(), true);
+    }
+
+    public static boolean isEarthEvolution(HaloAbility ability) {
+        return ability == HaloAbility.HOLY_BASTION
+                || ability == HaloAbility.AEGIS_PILLAR
+                || ability == HaloAbility.CRYSTAL_CHRYSALIS;
+    }
+
     public static int scaledCooldown(ServerPlayer sp, HaloAbility ability) {
         int tier = HaloUtils.getEquippedHaloTier(sp);
 
@@ -362,6 +461,10 @@ public class PowerAbilities {
             case VACUUM_VORTEX -> ModConfigs.COMMON.GUST_COOLDOWN_TICKS.get() + 240;
             case ZEPHYR_SCYTHES -> ModConfigs.COMMON.GUST_COOLDOWN_TICKS.get() + 80;
             case HEAVENLY_DOWNDRAFT -> ModConfigs.COMMON.GUST_COOLDOWN_TICKS.get() + 220;
+
+            case HOLY_BASTION -> ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get() + 180;
+            case AEGIS_PILLAR -> ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get() + 220;
+            case CRYSTAL_CHRYSALIS -> ModConfigs.COMMON.EARTH_WALL_COOLDOWN_TICKS.get() + 360;
 
             default -> 20;
         };
@@ -477,6 +580,75 @@ public class PowerAbilities {
                 ClipContext.Fluid.NONE,
                 sp
         ));
+    }
+
+    private static void doHolyBastion(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        int mastery = HaloScaling.mastery(tier);
+
+        int width = 11 + mastery * 2;
+        int height = 5 + mastery;
+        int thickness = 2;
+        int duration = HaloScaling.scaleIntDuration(420, tier);
+
+        EarthEvolutionEvents.createHolyBastion(
+                level,
+                sp,
+                width,
+                height,
+                thickness,
+                duration
+        );
+
+        NetworkUtils.actionbar(sp, "Holy Bastion rises before you.");
+    }
+
+    private static void doAegisPillar(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        BlockHitResult hit = traceBlock(sp, 24.0D);
+        BlockPos base;
+
+        if (hit.getType() == HitResult.Type.MISS) {
+            Vec3 look = sp.getLookAngle().normalize();
+            base = sp.blockPosition().offset(
+                    (int)Math.round(look.x * 4.0D),
+                    0,
+                    (int)Math.round(look.z * 4.0D)
+            );
+        } else {
+            base = hit.getBlockPos();
+
+            if (!level.getBlockState(base).isAir()) {
+                base = base.above();
+            }
+        }
+
+        int duration = HaloScaling.scaleIntDuration(360, tier);
+
+        EarthEvolutionEvents.createAegisPillar(
+                level,
+                sp,
+                base,
+                duration
+        );
+
+        NetworkUtils.actionbar(sp, "An Aegis Pillar anchors the ground.");
+    }
+
+    private static void doCrystalChrysalis(ServerPlayer sp, int tier) {
+        ServerLevel level = sp.serverLevel();
+
+        int duration = HaloScaling.scaleIntDuration(120, tier);
+
+        EarthEvolutionEvents.createCrystalChrysalis(
+                level,
+                sp,
+                duration
+        );
+
+        NetworkUtils.actionbar(sp, "Crystal Chrysalis seals you in holy stone.");
     }
 
     private static void doGust(ServerPlayer sp, double radius, double strength) {
