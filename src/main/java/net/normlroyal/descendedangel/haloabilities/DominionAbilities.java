@@ -15,6 +15,15 @@ import net.normlroyal.descendedangel.util.NetworkUtils;
 
 public class DominionAbilities {
 
+    /**
+     * ADD TWO MORE DOMINIONS: PURITY, SANCTIFICATION.
+     * Purity: AoE Healing Ability, Single Target Totem-like Protection Ability.
+     * Sanctification: Large Single Target Damage ability, Block Erasure Ray ability
+     *
+     * <p>Change Dominions so you can only have two,
+     * either being space time, space purity or time purity...</p>
+     */
+
     public static final String TAG_SPACE = "da_unlocked_space";
     public static final String TAG_TIME  = "da_unlocked_time";
 

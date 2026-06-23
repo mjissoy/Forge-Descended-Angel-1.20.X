@@ -85,9 +85,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SPACE_FRUIT.getId());
         basicItem(ModItems.TIME_FRUIT.getId());
         basicItem(ModItems.FIRE_SHARD.getId());
+        basicItem(ModItems.EMPOWERED_FIRE_SHARD.getId());
         basicItem(ModItems.WATER_SHARD.getId());
+        basicItem(ModItems.EMPOWERED_WATER_SHARD.getId());
         basicItem(ModItems.EARTH_SHARD.getId());
+        basicItem(ModItems.EMPOWERED_EARTH_SHARD.getId());
         basicItem(ModItems.AIR_SHARD.getId());
+        basicItem(ModItems.EMPOWERED_AIR_SHARD.getId());
 
     }
 }

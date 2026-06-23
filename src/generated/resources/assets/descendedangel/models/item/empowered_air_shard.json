@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "descendedangel:item/water_shard"
+    "layer0": "descendedangel:item/empowered_air_shard"
   }
 }
