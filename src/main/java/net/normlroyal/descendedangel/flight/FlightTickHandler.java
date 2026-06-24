@@ -13,12 +13,19 @@ public class FlightTickHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent e) {
-        if (e.phase != TickEvent.Phase.END) return;
-        if (!(e.player instanceof ServerPlayer sp)) return;
+        if (e.phase != TickEvent.Phase.END) {
+            return;
+        }
+
+        if (!(e.player instanceof ServerPlayer sp)) {
+            return;
+        }
 
         IFlightData data = FlightData.get(sp);
         FlightState st = data.state();
-        if (!st.active) return;
+        if (!st.active) {
+            return;
+        }
 
         var wings = WingUtils.getEquippedWings(sp);
         if (wings.isEmpty() || !WingLogic.allowsCustomFlight(wings)) {
@@ -26,12 +33,11 @@ public class FlightTickHandler {
             return;
         }
 
-        if (sp.onGround()) {
-            FlightSystem.stopFlight(sp);
-            return;
-        }
-
-        if (sp.isCreative() || sp.isSpectator()) {
+        if (sp.onGround()
+                || !sp.isAlive()
+                || sp.isPassenger()
+                || sp.isCreative()
+                || sp.isSpectator()) {
             FlightSystem.stopFlight(sp);
             return;
         }

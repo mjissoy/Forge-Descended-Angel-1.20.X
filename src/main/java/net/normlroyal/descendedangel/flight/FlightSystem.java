@@ -17,22 +17,27 @@ public final class FlightSystem {
     private FlightSystem() {}
 
     public static FlightInput getInput(ServerPlayer sp) {
-        return INPUTS.getOrDefault(sp.getUUID(), new FlightInput(false, false, false, 1, 1));
+        return INPUTS.getOrDefault(sp.getUUID(), FlightInput.ZERO);
     }
 
     public static void setInput(ServerPlayer sp, FlightInput input) {
-        INPUTS.put(sp.getUUID(), input);
+        INPUTS.put(sp.getUUID(), input == null ? FlightInput.ZERO : input.sanitized());
     }
 
     public static void clear(ServerPlayer sp) {
-        INPUTS.remove(sp.getUUID());
+        if (sp != null) {
+            INPUTS.remove(sp.getUUID());
+        }
     }
 
     public static void stopFlight(ServerPlayer sp) {
         IFlightData data = FlightData.get(sp);
         FlightState st = data.state();
 
-        if (!st.active) return;
+        if (!st.active) {
+            clear(sp);
+            return;
+        }
 
         st.active = false;
         CONTROLLER.onStop(sp, st);

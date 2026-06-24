@@ -15,9 +15,28 @@ public final class FlightData {
         return DATA.computeIfAbsent(sp.getUUID(), id -> new SimpleFlightData());
     }
 
+    public static void clear(ServerPlayer sp) {
+        if (sp != null) {
+            DATA.remove(sp.getUUID());
+        }
+    }
+
+    public static void clear(UUID uuid) {
+        if (uuid != null) {
+            DATA.remove(uuid);
+        }
+    }
+
     private static class SimpleFlightData implements IFlightData {
         private final FlightState state = new FlightState();
-        @Override public FlightState state() { return state; }
-        @Override public void sync(ServerPlayer player) { }
+
+        @Override
+        public FlightState state() {
+            return state;
+        }
+
+        @Override
+        public void sync(ServerPlayer player) {
+        }
     }
 }

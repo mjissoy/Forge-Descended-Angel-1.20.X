@@ -41,13 +41,20 @@ public record FlightInputC2SPacket(
     public static void handle(FlightInputC2SPacket msg, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ServerPlayer sp = ctx.get().getSender();
-            if (sp == null) return;
+            if (sp == null) {
+                return;
+            }
 
             var wings = WingUtils.getEquippedWings(sp);
-            if (wings.isEmpty() || !WingLogic.allowsCustomFlight(wings)) return;
+            if (wings.isEmpty() || !WingLogic.allowsCustomFlight(wings)) {
+                FlightSystem.clear(sp);
+                return;
+            }
 
             IFlightData data = FlightData.get(sp);
-            if (!data.state().active) return;
+            if (!data.state().active) {
+                return;
+            }
 
             FlightSystem.setInput(sp, new FlightInput(
                     msg.ascend(),
@@ -55,7 +62,7 @@ public record FlightInputC2SPacket(
                     msg.boost(),
                     msg.forward(),
                     msg.strafe()
-            ));
+            ).sanitized());
         });
 
         ctx.get().setPacketHandled(true);

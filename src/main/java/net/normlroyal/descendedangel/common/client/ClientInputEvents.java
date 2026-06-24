@@ -9,10 +9,17 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.flight.AngelicFlightController;
+import net.normlroyal.descendedangel.flight.ClientFlightState;
+import net.normlroyal.descendedangel.flight.FlightInput;
 import net.normlroyal.descendedangel.haloabilities.ClientAbilityState;
 import net.normlroyal.descendedangel.haloabilities.HaloAbility;
 import net.normlroyal.descendedangel.network.ModNetwork;
-import net.normlroyal.descendedangel.network.packets.*;
+import net.normlroyal.descendedangel.network.packets.FlightInputC2SPacket;
+import net.normlroyal.descendedangel.network.packets.RequestAbilityCooldownC2SPacket;
+import net.normlroyal.descendedangel.network.packets.ToggleFlightC2SPacket;
+import net.normlroyal.descendedangel.network.packets.TryStartGlideC2SPacket;
+import net.normlroyal.descendedangel.network.packets.UseHaloAbilityC2SPacket;
 import net.normlroyal.descendedangel.util.HaloUtils;
 import net.normlroyal.descendedangel.util.WingLogic;
 import net.normlroyal.descendedangel.util.WingUtils;
@@ -31,15 +38,21 @@ public class ClientInputEvents {
     private static boolean lastDescend = false;
     private static boolean lastBoost = false;
 
-    private static float lastForward = 0f;
-    private static float lastStrafe = 0f;
+    private static float lastForward = 0.0F;
+    private static float lastStrafe = 0.0F;
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+        if (event.phase != TickEvent.Phase.END) {
+            return;
+        }
 
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player == null) return;
+        if (mc.player == null) {
+            ClientFlightState.reset();
+            resetLastFlightInput();
+            return;
+        }
 
         ClientAbilityState.clamp(mc.player);
 
@@ -56,17 +69,17 @@ public class ClientInputEvents {
             HaloAbility selected = ClientAbilityState.get(mc.player);
             if (selected != null) {
                 ModNetwork.CHANNEL.sendToServer(new RequestAbilityCooldownC2SPacket(selected.ordinal()));
-
             }
         }
 
         // Use ability
         while (ClientKeybinds.USE_ABILITY.consumeClick()) {
             HaloAbility selected = ClientAbilityState.get(mc.player);
-            if (selected == null) return;
+            if (selected == null) {
+                return;
+            }
 
             ModNetwork.CHANNEL.sendToServer(new UseHaloAbilityC2SPacket(selected.ordinal()));
-
         }
 
         ticksSinceLastJumpPress++;
@@ -75,7 +88,7 @@ public class ClientInputEvents {
         boolean jumpPressedThisTick = jumpDown && !wasJumpDown;
         wasJumpDown = jumpDown;
 
-        // Custom Flight Toggle
+        // Custom Flight Toggle / T1 Glide
         if (jumpPressedThisTick) {
             ItemStack wings = WingUtils.getEquippedWings(mc.player);
 
@@ -83,14 +96,14 @@ public class ClientInputEvents {
                 int tier = WingLogic.getWingTier(wings);
 
                 if (tier == 1) {
-                    // start elytra glide
+                    // Start elytra-style glide.
                     if (mc.screen == null && canStartGlide(mc.player)) {
                         mc.player.startFallFlying();
                         ModNetwork.CHANNEL.sendToServer(new TryStartGlideC2SPacket());
                     }
                     ticksSinceLastJumpPress = 999;
                 } else if (WingLogic.allowsCustomFlight(wings)) {
-                    // start custom flight
+                    // Start/stop custom flight with the existing double-tap gesture.
                     if (mc.screen == null && !mc.player.isFallFlying()) {
                         if (ticksSinceLastJumpPress <= DOUBLE_TAP_WINDOW_TICKS) {
                             ModNetwork.CHANNEL.sendToServer(new ToggleFlightC2SPacket());
@@ -107,42 +120,87 @@ public class ClientInputEvents {
             }
         }
 
-
-        // Ascend-Descend-Boost while in custom flight
         ItemStack wings = WingUtils.getEquippedWings(mc.player);
-        if (!wings.isEmpty() && WingLogic.allowsCustomFlight(wings)) {
-            boolean ascend = mc.options.keyJump.isDown();
-            boolean descend = mc.options.keyShift.isDown();
-            boolean boost = ClientKeybinds.FLIGHT_BOOST.isDown();
+        boolean hasCustomFlightWings = !wings.isEmpty() && WingLogic.allowsCustomFlight(wings);
 
-            float forward = 0f;
-            if (mc.options.keyUp.isDown()) forward += 1f;
-            if (mc.options.keyDown.isDown()) forward -= 1f;
-
-            float strafe = 0f;
-            if (mc.options.keyLeft.isDown()) strafe -= 1f;
-            if (mc.options.keyRight.isDown()) strafe += 1f;
-
-            if (ascend != lastAscend
-                    || descend != lastDescend
-                    || boost != lastBoost
-                    || forward != lastForward
-                    || strafe != lastStrafe) {
-
-                lastAscend = ascend;
-                lastDescend = descend;
-                lastBoost = boost;
-                lastForward = forward;
-                lastStrafe = strafe;
-
-                ModNetwork.CHANNEL.sendToServer(new FlightInputC2SPacket(
-                        ascend, descend, boost, forward, strafe
-                ));
+        if (!hasCustomFlightWings || !mc.player.isAlive()) {
+            if (ClientFlightState.isActive()) {
+                ClientFlightState.setActive(false);
             }
-        } else {
-            lastAscend = lastDescend = lastBoost = false;
-            lastForward = lastStrafe = 0f;
+            resetLastFlightInput();
+            return;
         }
+
+        FlightInput input = readFlightInput(mc);
+        ClientFlightState.setInput(input);
+
+        if (ClientFlightState.isActive()) {
+            // Multiplayer fix: predict the same motion locally that the server applies authoritatively.
+            // Without this, vanilla client gravity pulls the local player down between server corrections.
+            AngelicFlightController.apply(mc.player, ClientFlightState.state(), input);
+
+            // Send every active tick. This prevents stale input after activation, packet loss, or lag spikes.
+            sendFlightInput(input);
+        } else if (inputChanged(input)) {
+            // Not active yet, but keep the server warm when the user changes keys.
+            sendFlightInput(input);
+        }
+    }
+
+    private static FlightInput readFlightInput(Minecraft mc) {
+        boolean ascend = mc.options.keyJump.isDown();
+        boolean descend = mc.options.keyShift.isDown();
+        boolean boost = ClientKeybinds.FLIGHT_BOOST.isDown();
+
+        float forward = 0.0F;
+        if (mc.options.keyUp.isDown()) {
+            forward += 1.0F;
+        }
+        if (mc.options.keyDown.isDown()) {
+            forward -= 1.0F;
+        }
+
+        float strafe = 0.0F;
+        if (mc.options.keyLeft.isDown()) {
+            strafe -= 1.0F;
+        }
+        if (mc.options.keyRight.isDown()) {
+            strafe += 1.0F;
+        }
+
+        return new FlightInput(ascend, descend, boost, forward, strafe).sanitized();
+    }
+
+    private static boolean inputChanged(FlightInput input) {
+        return input.ascend() != lastAscend
+                || input.descend() != lastDescend
+                || input.boost() != lastBoost
+                || input.forward() != lastForward
+                || input.strafe() != lastStrafe;
+    }
+
+    private static void sendFlightInput(FlightInput input) {
+        lastAscend = input.ascend();
+        lastDescend = input.descend();
+        lastBoost = input.boost();
+        lastForward = input.forward();
+        lastStrafe = input.strafe();
+
+        ModNetwork.CHANNEL.sendToServer(new FlightInputC2SPacket(
+                input.ascend(),
+                input.descend(),
+                input.boost(),
+                input.forward(),
+                input.strafe()
+        ));
+    }
+
+    private static void resetLastFlightInput() {
+        lastAscend = false;
+        lastDescend = false;
+        lastBoost = false;
+        lastForward = 0.0F;
+        lastStrafe = 0.0F;
     }
 
     private static boolean canStartGlide(LocalPlayer player) {
@@ -151,9 +209,6 @@ public class ClientInputEvents {
                 && !player.hasEffect(MobEffects.LEVITATION)
                 && !player.isPassenger()
                 && !player.isFallFlying()
-                && player.getDeltaMovement().y < 0.0;
+                && player.getDeltaMovement().y < 0.0D;
     }
-
 }
-
-
