@@ -7,4 +7,4 @@ in the minecraft world. This is done through the
 implementation of Halos and Wings and other Holy Items
 and structures.
 
-Dependencies: [Geckolib](https://www.curseforge.com/minecraft/mc-mods/geckolib), [Curios API](https://www.curseforge.com/minecraft/mc-mods/curios)
+Dependencies: [Geckolib](https://www.curseforge.com/minecraft/mc-mods/geckolib), [Curios API](https://www.curseforge.com/minecraft/mc-mods/curios), [PlayerAnimator](https://www.curseforge.com/minecraft/mc-mods/playeranimator)

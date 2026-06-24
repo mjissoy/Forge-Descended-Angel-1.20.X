@@ -37,7 +37,6 @@ run-clientalt/
 run-server-*/
 run-server/
 
-# Everything inside run folders is runtime-only
 run*/logs/
 run*/crash-reports/
 run*/screenshots/
