@@ -18,6 +18,22 @@ public class ModEntities {
                             .clientTrackingRange(8)
                             .build("void_anomaly"));
 
+    public static final RegistryObject<EntityType<VoidSkeletonAnomalyEntity>> VOID_SKELETON_ANOMALY =
+            ENTITY_TYPES.register("void_skeleton_anomaly",
+                    () -> EntityType.Builder
+                            .of(VoidSkeletonAnomalyEntity::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.99F)
+                            .clientTrackingRange(8)
+                            .build("void_skeleton_anomaly"));
+
+    public static final RegistryObject<EntityType<VoidSlimeAnomalyEntity>> VOID_SLIME_ANOMALY =
+            ENTITY_TYPES.register("void_slime_anomaly",
+                    () -> EntityType.Builder
+                            .of(VoidSlimeAnomalyEntity::new, MobCategory.MONSTER)
+                            .sized(0.52F, 0.52F)
+                            .clientTrackingRange(8)
+                            .build("void_slime_anomaly"));
+
     public static final RegistryObject<EntityType<ImpEntity>> IMP =
             ENTITY_TYPES.register("imp",
                     () -> EntityType.Builder

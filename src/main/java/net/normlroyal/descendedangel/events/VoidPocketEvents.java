@@ -13,7 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.content.dimension.VoidPocketManager;
-import net.normlroyal.descendedangel.content.entity.VoidAnomalyEntity;
+import net.normlroyal.descendedangel.content.entity.voidanomaly.VoidAnomaly;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class VoidPocketEvents {
@@ -59,17 +59,19 @@ public class VoidPocketEvents {
 
     @SubscribeEvent
     public static void onVoidAnomalyKilled(LivingDeathEvent event) {
-        if (!(event.getEntity() instanceof VoidAnomalyEntity anomaly)) {
+        if (!(event.getEntity() instanceof VoidAnomaly anomaly)) {
             return;
         }
 
-        if (!(anomaly.level() instanceof ServerLevel level) || !VoidPocketManager.isVoidPocket(level)) {
+        Entity entity = event.getEntity();
+
+        if (!(entity.level() instanceof ServerLevel level) || !VoidPocketManager.isVoidPocket(level)) {
             return;
         }
 
         Entity killer = event.getSource().getEntity();
         if (killer instanceof ServerPlayer player) {
-            VoidPocketManager.recordAnomalyKill(level, anomaly.blockPosition(), player);
+            VoidPocketManager.recordAnomalyKill(level, entity.blockPosition(), player, anomaly.getVoidPocketKillValue());
         }
     }
 

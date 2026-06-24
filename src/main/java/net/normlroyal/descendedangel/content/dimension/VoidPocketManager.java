@@ -9,6 +9,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -18,7 +20,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraftforge.network.NetworkHooks;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
 import net.normlroyal.descendedangel.content.entity.ModEntities;
-import net.normlroyal.descendedangel.content.entity.VoidAnomalyEntity;
+import net.normlroyal.descendedangel.content.entity.voidanomaly.VoidAnomaly;
 import net.normlroyal.descendedangel.content.item.ModItems;
 import net.normlroyal.descendedangel.menu.AnchorWaypointMenu;
 
@@ -305,6 +307,10 @@ public class VoidPocketManager {
     }
 
     public static void recordAnomalyKill(ServerLevel level, BlockPos pos, ServerPlayer player) {
+        recordAnomalyKill(level, pos, player, 1);
+    }
+
+    public static void recordAnomalyKill(ServerLevel level, BlockPos pos, ServerPlayer player, int killValue) {
         if (!isVoidPocket(level)) {
             return;
         }
@@ -321,7 +327,7 @@ public class VoidPocketManager {
             return;
         }
 
-        pocket.kills++;
+        pocket.kills += Math.max(1, killValue);
         data.setDirty();
 
         int remaining = Math.max(0, pocket.requiredKills - pocket.kills);
@@ -599,12 +605,16 @@ public class VoidPocketManager {
     }
 
     private static void spawnAnomalyIfNeeded(ServerLevel level, VoidPocketData.Pocket pocket) {
-        int existing = level.getEntities(ModEntities.VOID_ANOMALY.get(), pocket.bounds(), Entity::isAlive).size();
+        int existing = level.getEntitiesOfClass(
+                Entity.class,
+                pocket.bounds(),
+                entity -> entity.isAlive() && entity instanceof VoidAnomaly
+        ).size();
         if (existing >= ANOMALY_CAP) {
             return;
         }
 
-        VoidAnomalyEntity anomaly = ModEntities.VOID_ANOMALY.get().create(level);
+        Mob anomaly = chooseVoidPocketAnomaly(level).create(level);
         if (anomaly == null) {
             return;
         }
@@ -617,5 +627,16 @@ public class VoidPocketManager {
         anomaly.moveTo(x + 0.5D, y, z + 0.5D, level.random.nextFloat() * 360.0F, 0.0F);
         anomaly.setPersistenceRequired();
         level.addFreshEntity(anomaly);
+    }
+
+    private static EntityType<? extends Mob> chooseVoidPocketAnomaly(ServerLevel level) {
+        int roll = level.random.nextInt(100);
+        if (roll < 60) {
+            return ModEntities.VOID_ANOMALY.get();
+        }
+        if (roll < 82) {
+            return ModEntities.VOID_SKELETON_ANOMALY.get();
+        }
+        return ModEntities.VOID_SLIME_ANOMALY.get();
     }
 }

@@ -1,23 +1,20 @@
 package net.normlroyal.descendedangel.content.entity;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
 import net.normlroyal.descendedangel.content.entity.voidanomaly.VoidAnomaly;
 import net.normlroyal.descendedangel.content.entity.voidanomaly.VoidAnomalyBehavior;
 import net.normlroyal.descendedangel.events.useful.HaloUndeadScalingTarget;
 
-public class VoidAnomalyEntity extends Zombie implements VoidAnomaly, HaloUndeadScalingTarget {
+public class VoidSkeletonAnomalyEntity extends Skeleton implements VoidAnomaly, HaloUndeadScalingTarget {
     private int teleportCooldown = 0;
 
-    public VoidAnomalyEntity(EntityType<? extends Zombie> type, Level level) {
+    public VoidSkeletonAnomalyEntity(EntityType<? extends Skeleton> type, Level level) {
         super(type, level);
     }
 
@@ -26,13 +23,13 @@ public class VoidAnomalyEntity extends Zombie implements VoidAnomaly, HaloUndead
         super.aiStep();
 
         if (!level().isClientSide) {
-            VoidAnomalyBehavior.spawnAmbientParticles(this, 2, 0.02F);
+            VoidAnomalyBehavior.spawnAmbientParticles(this, 2, 0.025F);
 
             if (teleportCooldown > 0) {
                 teleportCooldown--;
-            } else if (this.getTarget() != null && random.nextFloat() < 0.05F) {
-                VoidAnomalyBehavior.attemptShortTeleport(this, 5.0D, 1, 48);
-                teleportCooldown = 200;
+            } else if (this.getTarget() != null && random.nextFloat() < 0.04F) {
+                VoidAnomalyBehavior.attemptShortTeleport(this, 8.0D, 2, 42);
+                teleportCooldown = 150;
             }
         }
     }
@@ -42,8 +39,16 @@ public class VoidAnomalyEntity extends Zombie implements VoidAnomaly, HaloUndead
         return VoidAnomalyBehavior.canBeHurt(source) && super.hurt(source, amount);
     }
 
+    @Override
+    public int getVoidPocketKillValue() {
+        return 2;
+    }
+
     public static AttributeSupplier.Builder createAttributes() {
-        return Zombie.createAttributes();
+        return Skeleton.createAttributes()
+                .add(Attributes.MAX_HEALTH, 28.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.30D)
+                .add(Attributes.FOLLOW_RANGE, 28.0D);
     }
 
     @Override
@@ -52,17 +57,7 @@ public class VoidAnomalyEntity extends Zombie implements VoidAnomaly, HaloUndead
     }
 
     @Override
-    protected boolean isSunSensitive() {
+    protected boolean isSunBurnTick() {
         return false;
-    }
-
-    public static boolean canSpawnHere(
-            EntityType<VoidAnomalyEntity> type,
-            ServerLevelAccessor level,
-            MobSpawnType reason,
-            BlockPos pos,
-            RandomSource random
-    ) {
-        return VoidAnomalyBehavior.canDeepDarkSpawn(type, level, reason, pos, random);
     }
 }

@@ -32,6 +32,10 @@ public class ModLangProvider extends LanguageProvider {
         // Entities and spawn eggs
         add("entity.descendedangel.void_anomaly", "Void Anomaly");
         add("item.descendedangel.void_anomaly_spawn_egg", "Void Anomaly Spawn Egg");
+        add("entity.descendedangel.void_skeleton_anomaly", "Void Skeleton Anomaly");
+        add("item.descendedangel.void_skeleton_anomaly_spawn_egg", "Void Skeleton Anomaly Spawn Egg");
+        add("entity.descendedangel.void_slime_anomaly", "Void Slime Anomaly");
+        add("item.descendedangel.void_slime_anomaly_spawn_egg", "Void Slime Anomaly Spawn Egg");
         add("entity.descendedangel.imp", "Imp");
         add("item.descendedangel.imp_spawn_egg", "Imp Spawn Egg");
         add("entity.descendedangel.seraphic_mirage", "Seraphic Mirage");

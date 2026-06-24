@@ -77,6 +77,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         // Other Items
         basicItem(ModItems.SACRED_WRITINGS.getId());
         withExistingParent("void_anomaly_spawn_egg", mcLoc("item/template_spawn_egg"));
+        withExistingParent("void_skeleton_anomaly_spawn_egg", mcLoc("item/template_spawn_egg"));
+        withExistingParent("void_slime_anomaly_spawn_egg", mcLoc("item/template_spawn_egg"));
         withExistingParent("imp_spawn_egg", mcLoc("item/template_spawn_egg"));
         withExistingParent("angel_weeping", mcLoc("item/generated"))
                 .texture("layer0", modLoc("block/angel_weeping"));

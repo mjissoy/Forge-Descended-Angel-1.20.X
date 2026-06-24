@@ -36,6 +36,44 @@ public class ModEntityLootTableProvider extends EntityLootSubProvider {
                         .when(LootItemRandomChanceCondition.randomChance(0.08f))
                         .add(LootItem.lootTableItem(ModItems.VOID_HEART_LINK.get()))
                 ));
+
+        this.add(ModEntities.VOID_SKELETON_ANOMALY.get(),
+                LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0f))
+                        .add(LootItem.lootTableItem(ModItems.VOIDTEAR.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(8.0f, 13.0f)))
+                        )
+                )
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0f))
+                        .when(LootItemRandomChanceCondition.randomChance(0.12f))
+                        .add(LootItem.lootTableItem(ModItems.COMPRESSEDVOID.get()))
+                )
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0f))
+                        .when(LootItemRandomChanceCondition.randomChance(0.04f))
+                        .add(LootItem.lootTableItem(ModItems.VOID_HEART_LINK.get()))
+                ));
+
+        this.add(ModEntities.VOID_SLIME_ANOMALY.get(),
+                LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0f))
+                        .add(LootItem.lootTableItem(ModItems.VOIDTEAR.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(10.0f, 16.0f)))
+                        )
+                )
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0f))
+                        .when(LootItemRandomChanceCondition.randomChance(0.20f))
+                        .add(LootItem.lootTableItem(ModItems.COMPRESSEDVOID.get()))
+                )
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0f))
+                        .when(LootItemRandomChanceCondition.randomChance(0.03f))
+                        .add(LootItem.lootTableItem(ModItems.VOID_HEART_LINK.get()))
+                ));
         this.add(ModEntities.IMP.get(),
                 LootTable.lootTable()
                 .withPool(LootPool.lootPool()
@@ -53,7 +91,9 @@ public class ModEntityLootTableProvider extends EntityLootSubProvider {
     protected Stream<EntityType<?>> getKnownEntityTypes() {
         return Stream.of(
                 ModEntities.IMP.get(),
-                ModEntities.VOID_ANOMALY.get()
+                ModEntities.VOID_ANOMALY.get(),
+                ModEntities.VOID_SKELETON_ANOMALY.get(),
+                ModEntities.VOID_SLIME_ANOMALY.get()
         );
     }
 }

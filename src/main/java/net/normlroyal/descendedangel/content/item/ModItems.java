@@ -117,6 +117,16 @@ public class ModItems {
                     0x320F3B,
                     0x6780AC,
                     new Item.Properties()));
+    public static final RegistryObject<Item> VOID_SKELETON_ANOMALY_SPAWN_EGG = ITEMS.register("void_skeleton_anomaly_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.VOID_SKELETON_ANOMALY,
+                    0x1D0B24,
+                    0x8B95C7,
+                    new Item.Properties()));
+    public static final RegistryObject<Item> VOID_SLIME_ANOMALY_SPAWN_EGG = ITEMS.register("void_slime_anomaly_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.VOID_SLIME_ANOMALY,
+                    0x190826,
+                    0x5BA6B8,
+                    new Item.Properties()));
     public static final RegistryObject<Item> IMP_SPAWN_EGG = ITEMS.register("imp_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.IMP,
                     0x7A1C1C,
