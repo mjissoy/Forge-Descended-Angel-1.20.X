@@ -21,6 +21,22 @@
         }
       ],
       "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "chance": 0.08,
+          "condition": "minecraft:random_chance"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "descendedangel:void_heart_link"
+        }
+      ],
+      "rolls": 1.0
     }
   ],
   "random_sequence": "descendedangel:entities/void_anomaly"

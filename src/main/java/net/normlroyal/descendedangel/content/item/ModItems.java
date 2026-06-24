@@ -3,7 +3,6 @@ package net.normlroyal.descendedangel.content.item;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
-import net.minecraft.world.item.alchemy.Potion;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,7 +12,6 @@ import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
 import net.normlroyal.descendedangel.content.item.custom.*;
 import net.normlroyal.descendedangel.content.entity.ModEntities;
-import net.normlroyal.descendedangel.content.item.custom.*;
 import net.normlroyal.descendedangel.content.item.custom.enums.FruitType;
 import net.normlroyal.descendedangel.content.item.custom.enums.NecklaceVariants;
 import net.normlroyal.descendedangel.content.item.custom.enums.RingVariants;
@@ -35,6 +33,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> VOIDMATRIX= ITEMS.register("void_matrix",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> VOID_HEART_LINK = ITEMS.register("void_heart_link",
+            () -> new VoidHeartLinkItem(new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> DEMONHEART = ITEMS.register("demon_heart",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> REALDEMONHEART = ITEMS.register("purified_demon_heart",

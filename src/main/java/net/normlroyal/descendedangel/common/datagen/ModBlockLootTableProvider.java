@@ -20,6 +20,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         // Blocks
         dropSelf(ModBlocks.BAPTISMAL_FONT.get());
+        dropSelf(ModBlocks.ANGELIC_ANCHOR.get());
 
         dropSelf(ModBlocks.SACRED_INGOT_BLOCK.get());
         dropSelf(ModBlocks.RAW_SACRED_ORE_BLOCK.get());

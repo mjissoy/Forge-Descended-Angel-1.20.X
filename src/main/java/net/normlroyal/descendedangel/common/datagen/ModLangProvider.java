@@ -18,6 +18,7 @@ public class ModLangProvider extends LanguageProvider {
         add("item.descendedangel.void_tear", "Void Droplet");
         add("item.descendedangel.compressed_void", "Void Sphere");
         add("item.descendedangel.void_matrix", "Void Matrix");
+        add("item.descendedangel.void_heart_link", "Void Heart Link");
         add("item.descendedangel.spatial_core", "Core of Space");
         add("item.descendedangel.sacred_writings", "Sacred Text");
         add("item.descendedangel.sacred_blood", "Sacred Blood");
@@ -204,6 +205,7 @@ public class ModLangProvider extends LanguageProvider {
 
         // Baptismal font
         add("block.descendedangel.baptismal_font", "Baptismal Font");
+        add("block.descendedangel.angelic_anchor", "Angelic Anchor");
         add("message.descendedangel.font_already_blooded", "The Baptismal Font is already filled with Sacred Blood.");
         add("message.descendedangel.font_blooded", "The Baptismal Font drinks the Sacred Blood.");
         add("message.descendedangel.font_requires_blood", "The Baptismal Font waits for Sacred Blood.");

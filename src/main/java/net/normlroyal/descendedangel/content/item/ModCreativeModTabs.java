@@ -28,6 +28,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.VOIDTEAR.get());
                         output.accept(ModItems.COMPRESSEDVOID.get());
                         output.accept(ModItems.VOIDMATRIX.get());
+                        output.accept(ModItems.VOID_HEART_LINK.get());
                         output.accept(ModItems.DEMONHEART.get());
                         output.accept(ModItems.REALDEMONHEART.get());
                         output.accept(ModItems.SPATIALCORE.get());
@@ -120,6 +121,7 @@ public class ModCreativeModTabs {
 
                         output.accept(ModItems.ALTAR.get());
                         output.accept(ModBlocks.BAPTISMAL_FONT.get());
+                        output.accept(ModBlocks.ANGELIC_ANCHOR.get());
 
                         output.accept(ModBlocks.SACRED_ORE.get());
                         output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());

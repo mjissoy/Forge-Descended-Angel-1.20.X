@@ -86,6 +86,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.VOID_CAVE_BLOCK.get(),
                 models().cubeAll("void_cave_wall", modLoc("block/void_cave_wall")));
 
+        simpleBlockWithItem(ModBlocks.ANGELIC_ANCHOR.get(),
+                models().cubeAll("angelic_anchor", modLoc("block/void_cave_wall")));
+
         simpleBlock(ModBlocks.ANGEL_WEEPING.get(),
                 models().cross("angel_weeping", blockTexture(ModBlocks.ANGEL_WEEPING.get()))
                         .renderType("cutout"));

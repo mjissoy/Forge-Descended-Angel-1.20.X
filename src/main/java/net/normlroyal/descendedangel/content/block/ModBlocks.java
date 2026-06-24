@@ -12,6 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.content.block.altar.AltarBlock;
+import net.normlroyal.descendedangel.content.block.anchor.AngelicAnchorBlock;
 import net.normlroyal.descendedangel.content.block.font.BaptismalFontBlock;
 import net.normlroyal.descendedangel.content.block.tempwall.TempEarthWallBlock;
 
@@ -40,6 +41,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> BAPTISMAL_FONT = registerBlock("baptismal_font",
             () -> new BaptismalFontBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICKS)
                     .strength(3.5F, 9.0F)
+                    .noOcclusion()));
+
+    public static final RegistryObject<Block> ANGELIC_ANCHOR = registerBlock("angelic_anchor",
+            () -> new AngelicAnchorBlock(BlockBehaviour.Properties.copy(Blocks.LODESTONE)
+                    .strength(4.0F, 1200.0F)
+                    .lightLevel(state -> 8)
                     .noOcclusion()));
 
     public static final RegistryObject<Block> TEMP_EARTH_WALL = registerBlock("temp_earth_wall",

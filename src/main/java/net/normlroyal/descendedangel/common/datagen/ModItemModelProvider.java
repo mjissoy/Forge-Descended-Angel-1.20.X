@@ -45,6 +45,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOIDTEAR.getId());
         basicItem(ModItems.COMPRESSEDVOID.getId());
         basicItem(ModItems.VOIDMATRIX.getId());
+        //basicItem(ModItems.VOID_HEART_LINK.getId());
         basicItem(ModItems.SACREDOREINGOT.getId());
         basicItem(ModItems.SACREDORERAW.getId());
         basicItem(ModItems.SACRED_BLOOD.getId());

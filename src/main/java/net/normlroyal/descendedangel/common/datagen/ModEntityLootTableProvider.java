@@ -30,6 +30,11 @@ public class ModEntityLootTableProvider extends EntityLootSubProvider {
                         .add(LootItem.lootTableItem(ModItems.VOIDTEAR.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(5.0f, 9.0f)))
                         )
+                )
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0f))
+                        .when(LootItemRandomChanceCondition.randomChance(0.08f))
+                        .add(LootItem.lootTableItem(ModItems.VOID_HEART_LINK.get()))
                 ));
         this.add(ModEntities.IMP.get(),
                 LootTable.lootTable()
