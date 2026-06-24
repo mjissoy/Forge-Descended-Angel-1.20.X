@@ -3,6 +3,7 @@ package net.normlroyal.descendedangel.content.item;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,7 +13,7 @@ import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
 import net.normlroyal.descendedangel.content.item.custom.*;
 import net.normlroyal.descendedangel.content.entity.ModEntities;
-import net.normlroyal.descendedangel.item.custom.*;
+import net.normlroyal.descendedangel.content.item.custom.*;
 import net.normlroyal.descendedangel.content.item.custom.enums.FruitType;
 import net.normlroyal.descendedangel.content.item.custom.enums.NecklaceVariants;
 import net.normlroyal.descendedangel.content.item.custom.enums.RingVariants;
@@ -183,7 +184,5 @@ public class ModItems {
 
 
 
-    public static void register(IEventBus eventbus) {
-        ITEMS.register(eventbus);
-    }
+    public static void register(IEventBus eventbus) {ITEMS.register(eventbus);}
 }

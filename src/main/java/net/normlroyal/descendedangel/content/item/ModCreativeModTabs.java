@@ -4,11 +4,15 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
+import net.normlroyal.descendedangel.potions.ModPotions;
 
 public class ModCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS =
@@ -88,6 +92,20 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.EMPOWERED_WATER_SHARD.get());
                         output.accept(ModItems.SACRED_WRITINGS.get());
 
+                        output.accept(makePotion(ModPotions.DIVINE_GRACE.get()));
+                        output.accept(makePotion(ModPotions.STRONG_DIVINE_GRACE.get()));
+
+                        output.accept(makePotion(ModPotions.PROVIDENCE.get()));
+                        output.accept(makePotion(ModPotions.LONG_PROVIDENCE.get()));
+                        output.accept(makePotion(ModPotions.STRONG_PROVIDENCE.get()));
+
+                        output.accept(makePotion(ModPotions.LOCUST_SWARM.get()));
+                        output.accept(makePotion(ModPotions.LONG_LOCUST_SWARM.get()));
+                        output.accept(makePotion(ModPotions.STRONG_LOCUST_SWARM.get()));
+
+                        output.accept(makePotion(ModPotions.BLESSED_FAVOUR.get()));
+                        output.accept(makePotion(ModPotions.LONG_BLESSED_FAVOUR.get()));
+
 
                         output.accept(ModItems.VOID_ANOMALY_SPAWN_EGG.get());
                         output.accept(ModItems.IMP_SPAWN_EGG.get());
@@ -147,5 +165,9 @@ public class ModCreativeModTabs {
 
     public static void register(IEventBus eventbus) {
         CREATIVE_MOD_TABS.register(eventbus);
+    }
+
+    private static ItemStack makePotion(Potion potion) {
+        return PotionUtils.setPotion(new ItemStack(Items.POTION), potion);
     }
 }

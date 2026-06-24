@@ -19,6 +19,7 @@ import net.normlroyal.descendedangel.common.config.ModGameRules;
 import net.normlroyal.descendedangel.common.config.lootmodifier.ModLootModifiers;
 import net.normlroyal.descendedangel.content.entity.ModEntities;
 import net.normlroyal.descendedangel.content.item.custom.writings.WritTypeRegistry;
+import net.normlroyal.descendedangel.content.recipe.ModBrewingRecipes;
 import net.normlroyal.descendedangel.menu.ModMenus;
 import net.normlroyal.descendedangel.common.config.ModConfigs;
 import net.normlroyal.descendedangel.content.item.ModCreativeModTabs;
@@ -27,6 +28,8 @@ import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.content.particle.ModParticles;
 import net.normlroyal.descendedangel.content.recipe.ModRecipeSerializers;
 import net.normlroyal.descendedangel.content.recipe.ModRecipeTypes;
+import net.normlroyal.descendedangel.potions.ModEffects;
+import net.normlroyal.descendedangel.potions.ModPotions;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -61,6 +64,9 @@ public class DescendedAngel
         ModLootModifiers.register(modEventBus);
         ModNetwork.registerPackets();
 
+        ModEffects.MOB_EFFECTS.register(modEventBus);
+        ModPotions.POTIONS.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -72,6 +78,7 @@ public class DescendedAngel
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        ModBrewingRecipes.register(event);
         event.enqueueWork(() -> {
             WritTypeRegistry.registerDefaults();
 

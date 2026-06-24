@@ -257,5 +257,31 @@ public class ModLangProvider extends LanguageProvider {
         // Resonance Damage Type
         add("death.attack.resonance", "%1$s was shattered by sacred resonance.");
         add("death.attack.resonance.player", "%1$s was shattered by %2$s's sacred resonance.");
+
+        // Potion Related
+        add("effect.descendedangel.divine_grace", "Divine Grace");
+        add("effect.descendedangel.providence", "Providence");
+        add("effect.descendedangel.locust_swarm", "Locust Swarm");
+        add("effect.descendedangel.blessed_favour", "Blessed Favour");
+
+        add("item.minecraft.potion.effect.divine_grace", "Potion of Divine Grace");
+        add("item.minecraft.splash_potion.effect.divine_grace", "Splash Potion of Divine Grace");
+        add("item.minecraft.lingering_potion.effect.divine_grace", "Lingering Potion of Divine Grace");
+        add("item.minecraft.tipped_arrow.effect.divine_grace", "Arrow of Divine Grace");
+
+        add("item.minecraft.potion.effect.providence", "Potion of Providence");
+        add("item.minecraft.splash_potion.effect.providence", "Splash Potion of Providence");
+        add("item.minecraft.lingering_potion.effect.providence", "Lingering Potion of Providence");
+        add("item.minecraft.tipped_arrow.effect.providence", "Arrow of Providence");
+
+        add("item.minecraft.potion.effect.locust_swarm", "Potion of Locust Swarm");
+        add("item.minecraft.splash_potion.effect.locust_swarm", "Splash Potion of Locust Swarm");
+        add("item.minecraft.lingering_potion.effect.locust_swarm", "Lingering Potion of Locust Swarm");
+        add("item.minecraft.tipped_arrow.effect.locust_swarm", "Arrow of Locust Swarm");
+
+        add("item.minecraft.potion.effect.blessed_favour", "Potion of Blessed Favour");
+        add("item.minecraft.splash_potion.effect.blessed_favour", "Splash Potion of Blessed Favour");
+        add("item.minecraft.lingering_potion.effect.blessed_favour", "Lingering Potion of Blessed Favour");
+        add("item.minecraft.tipped_arrow.effect.blessed_favour", "Arrow of Blessed Favour");
     }
 }
