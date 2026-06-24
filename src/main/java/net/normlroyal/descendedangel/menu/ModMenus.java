@@ -16,6 +16,9 @@ public class ModMenus {
     public static final RegistryObject<MenuType<AltarMenu>> ALTAR_MENU =
             MENUS.register("altar_menu", () -> IForgeMenuType.create(AltarMenu::new));
 
+    public static final RegistryObject<MenuType<AnchorWaypointMenu>> ANCHOR_WAYPOINT_MENU =
+            MENUS.register("anchor_waypoint_menu", () -> IForgeMenuType.create(AnchorWaypointMenu::new));
+
     private ModMenus() {}
 
     public static void register(IEventBus eventBus) {

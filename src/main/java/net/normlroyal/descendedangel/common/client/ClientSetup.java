@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.common.client.screen.AltarScreen;
+import net.normlroyal.descendedangel.common.client.screen.AnchorWaypointScreen;
 import net.normlroyal.descendedangel.menu.ModMenus;
 
 
@@ -20,6 +21,10 @@ public final class ClientSetup {
             net.minecraft.client.gui.screens.MenuScreens.register(
                     ModMenus.ALTAR_MENU.get(),
                     AltarScreen::new
+            );
+            net.minecraft.client.gui.screens.MenuScreens.register(
+                    ModMenus.ANCHOR_WAYPOINT_MENU.get(),
+                    AnchorWaypointScreen::new
             );
         });
     }

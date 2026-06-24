@@ -14,8 +14,11 @@ import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -111,6 +114,7 @@ public class VoidPocketData extends SavedData {
                 returnAnchorPos,
                 false,
                 false,
+                false,
                 0,
                 DEFAULT_REQUIRED_KILLS,
                 player.level().getGameTime(),
@@ -136,6 +140,35 @@ public class VoidPocketData extends SavedData {
         return pockets.values();
     }
 
+    public List<Anchor> anchorsFor(UUID playerId) {
+        List<Anchor> visible = new ArrayList<>();
+        for (Anchor anchor : anchors.values()) {
+            if (anchor.owner == null || anchor.owner.equals(playerId)) {
+                visible.add(anchor);
+            }
+        }
+        visible.sort(Comparator
+                .comparing((Anchor anchor) -> anchor.dimension.location().toString())
+                .thenComparingInt(anchor -> anchor.pos.getX())
+                .thenComparingInt(anchor -> anchor.pos.getY())
+                .thenComparingInt(anchor -> anchor.pos.getZ()));
+        return visible;
+    }
+
+    public boolean isSameAnchor(Anchor anchor, ResourceKey<Level> dimension, BlockPos pos) {
+        return anchor.dimension.equals(dimension) && anchor.pos.equals(pos);
+    }
+
+    public List<Anchor> anchorsInPocket(Pocket pocket) {
+        List<Anchor> result = new ArrayList<>();
+        for (Anchor anchor : anchors.values()) {
+            if (anchor.dimension.equals(ModDimensions.VOID_POCKET_LEVEL) && pocket.contains(anchor.pos)) {
+                result.add(anchor);
+            }
+        }
+        return result;
+    }
+
     public void removePocket(UUID id) {
         pockets.remove(id);
         anchors.values().forEach(anchor -> {
@@ -150,10 +183,15 @@ public class VoidPocketData extends SavedData {
         String key = anchorKey(dimension, pos);
         Anchor anchor = anchors.get(key);
         if (anchor == null) {
-            anchor = new Anchor(dimension, pos.immutable(), owner, null);
+            anchor = new Anchor(dimension, pos.immutable(), owner, null, defaultAnchorName(dimension, pos));
             anchors.put(key, anchor);
-        } else if (owner != null && anchor.owner == null) {
-            anchor.owner = owner;
+        } else {
+            if (owner != null && anchor.owner == null) {
+                anchor.owner = owner;
+            }
+            if (anchor.name == null || anchor.name.isBlank()) {
+                anchor.name = defaultAnchorName(dimension, pos);
+            }
         }
         setDirty();
         return anchor;
@@ -213,6 +251,7 @@ public class VoidPocketData extends SavedData {
         public BlockPos returnAnchorPos;
         public boolean preserved;
         public boolean completed;
+        public boolean generated;
         public int kills;
         public final int requiredKills;
         public final long createdGameTime;
@@ -231,6 +270,7 @@ public class VoidPocketData extends SavedData {
                 @Nullable BlockPos returnAnchorPos,
                 boolean preserved,
                 boolean completed,
+                boolean generated,
                 int kills,
                 int requiredKills,
                 long createdGameTime,
@@ -248,6 +288,7 @@ public class VoidPocketData extends SavedData {
             this.returnAnchorPos = returnAnchorPos;
             this.preserved = preserved;
             this.completed = completed;
+            this.generated = generated;
             this.kills = kills;
             this.requiredKills = requiredKills;
             this.createdGameTime = createdGameTime;
@@ -291,6 +332,7 @@ public class VoidPocketData extends SavedData {
             tag.putFloat("ReturnPitch", returnPitch);
             tag.putBoolean("Preserved", preserved);
             tag.putBoolean("Completed", completed);
+            tag.putBoolean("Generated", generated);
             tag.putInt("Kills", kills);
             tag.putInt("RequiredKills", requiredKills);
             tag.putLong("CreatedGameTime", createdGameTime);
@@ -323,6 +365,7 @@ public class VoidPocketData extends SavedData {
                     returnAnchor,
                     tag.getBoolean("Preserved"),
                     tag.getBoolean("Completed"),
+                    tag.getBoolean("Generated"),
                     tag.getInt("Kills"),
                     Math.max(1, tag.getInt("RequiredKills")),
                     tag.getLong("CreatedGameTime"),
@@ -338,22 +381,32 @@ public class VoidPocketData extends SavedData {
         public UUID owner;
         @Nullable
         public UUID pocketId;
+        public String name;
 
-        public Anchor(ResourceKey<Level> dimension, BlockPos pos, @Nullable UUID owner, @Nullable UUID pocketId) {
+        public Anchor(ResourceKey<Level> dimension, BlockPos pos, @Nullable UUID owner, @Nullable UUID pocketId, String name) {
             this.dimension = dimension;
             this.pos = pos;
             this.owner = owner;
             this.pocketId = pocketId;
+            this.name = name;
         }
 
         public String key() {
             return anchorKey(dimension, pos);
         }
 
+        public String displayName() {
+            if (name != null && !name.isBlank()) {
+                return name;
+            }
+            return defaultAnchorName(dimension, pos);
+        }
+
         public CompoundTag save() {
             CompoundTag tag = new CompoundTag();
             tag.putString("Dimension", dimension.location().toString());
             writeBlockPos(tag, "Pos", pos);
+            tag.putString("Name", displayName());
             if (owner != null) {
                 tag.putUUID("Owner", owner);
             }
@@ -370,16 +423,26 @@ public class VoidPocketData extends SavedData {
                 return null;
             }
 
+            ResourceKey<Level> dimension = ResourceKey.create(Registries.DIMENSION, dimensionId);
+            BlockPos pos = readBlockPos(tag, "Pos");
             UUID owner = tag.hasUUID("Owner") ? tag.getUUID("Owner") : null;
             UUID pocketId = tag.hasUUID("PocketId") ? tag.getUUID("PocketId") : null;
+            String name = tag.contains("Name", Tag.TAG_STRING) ? tag.getString("Name") : defaultAnchorName(dimension, pos);
 
-            return new Anchor(
-                    ResourceKey.create(Registries.DIMENSION, dimensionId),
-                    readBlockPos(tag, "Pos"),
-                    owner,
-                    pocketId
-            );
+            return new Anchor(dimension, pos, owner, pocketId, name);
         }
+    }
+
+    private static String defaultAnchorName(ResourceKey<Level> dimension, BlockPos pos) {
+        String path = dimension.location().getPath();
+        String prettyDimension = switch (path) {
+            case "overworld" -> "Overworld";
+            case "the_nether" -> "Nether";
+            case "the_end" -> "End";
+            case "void_pocket" -> "Void Pocket";
+            default -> path.replace('_', ' ');
+        };
+        return prettyDimension + " Anchor " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
     }
 
     private static void writeBlockPos(CompoundTag tag, String prefix, BlockPos pos) {

@@ -81,6 +81,7 @@ public class ModLangProvider extends LanguageProvider {
 
         // Altar
         add("container.descendedangel.altar", "Altar");
+        add("container.descendedangel.angelic_anchor", "Angelic Anchor");
         add("block.descendedangel.altar", "Altar");
         add("jei.descendedangel.altar_rite", "Altar Rite");
         add("altar.descendedangel.ascendance", "Ascend");

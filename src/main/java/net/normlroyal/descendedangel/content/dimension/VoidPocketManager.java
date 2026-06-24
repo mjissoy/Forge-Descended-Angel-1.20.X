@@ -2,22 +2,28 @@ package net.normlroyal.descendedangel.content.dimension;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.network.NetworkHooks;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
 import net.normlroyal.descendedangel.content.entity.ModEntities;
 import net.normlroyal.descendedangel.content.entity.VoidAnomalyEntity;
 import net.normlroyal.descendedangel.content.item.ModItems;
+import net.normlroyal.descendedangel.menu.AnchorWaypointMenu;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class VoidPocketManager {
@@ -71,7 +77,7 @@ public class VoidPocketManager {
             return;
         }
 
-        generateChamber(voidLevel, pocket);
+        ensureChamber(voidLevel, pocket);
         teleportToPocket(player, voidLevel, pocket);
         player.displayClientMessage(Component.literal("The anchor pulls you into its preserved void.").withStyle(ChatFormatting.LIGHT_PURPLE), true);
     }
@@ -83,26 +89,132 @@ public class VoidPocketManager {
         }
 
         VoidPocketData data = VoidPocketData.get(server);
-
-        if (isVoidPocket(player.level())) {
-            preserveAndExit(player, anchorPos);
+        VoidPocketData.Anchor sourceAnchor = data.registerAnchor(player.level().dimension(), anchorPos, player.getUUID());
+        if (sourceAnchor.owner != null && !sourceAnchor.owner.equals(player.getUUID())) {
+            player.displayClientMessage(Component.literal("This Angelic Anchor does not answer to you.").withStyle(ChatFormatting.GRAY), true);
             return;
         }
 
-        data.getAnchor(player.level().dimension(), anchorPos).ifPresentOrElse(anchor -> {
-            if (anchor.pocketId == null) {
-                player.displayClientMessage(Component.literal("This Angelic Anchor is not linked to a void pocket yet.").withStyle(ChatFormatting.GRAY), true);
-                return;
+        if (isVoidPocket(player.level())) {
+            preservePocketAtAnchor(player, data, anchorPos, sourceAnchor);
+        }
+
+        openAnchorMenu(player, anchorPos);
+    }
+
+    public static void openAnchorMenu(ServerPlayer player, BlockPos sourcePos) {
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return;
+        }
+
+        List<AnchorWaypointMenu.Entry> entries = buildWaypointEntries(player, sourcePos);
+        Component title = Component.translatable("container.descendedangel.angelic_anchor");
+
+        NetworkHooks.openScreen(
+                player,
+                new SimpleMenuProvider(
+                        (id, inventory, menuPlayer) -> new AnchorWaypointMenu(id, inventory, sourcePos, entries),
+                        title
+                ),
+                buf -> {
+                    buf.writeBlockPos(sourcePos);
+                    AnchorWaypointMenu.writeEntries(buf, entries);
+                }
+        );
+    }
+
+    public static List<AnchorWaypointMenu.Entry> buildWaypointEntries(ServerPlayer player, BlockPos sourcePos) {
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return List.of();
+        }
+
+        VoidPocketData data = VoidPocketData.get(server);
+        ResourceKey<Level> sourceDimension = player.level().dimension();
+        List<AnchorWaypointMenu.Entry> entries = new ArrayList<>();
+
+        for (VoidPocketData.Anchor anchor : data.anchorsFor(player.getUUID())) {
+            if (data.isSameAnchor(anchor, sourceDimension, sourcePos)) {
+                continue;
+            }
+            if (!isAnchorDestinationValid(server, data, anchor)) {
+                continue;
             }
 
-            data.getPocket(anchor.pocketId).ifPresentOrElse(pocket -> {
-                if (!pocket.preserved) {
-                    player.displayClientMessage(Component.literal("The linked pocket has already collapsed.").withStyle(ChatFormatting.GRAY), true);
-                    return;
-                }
-                enterExistingPocket(player, pocket);
-            }, () -> player.displayClientMessage(Component.literal("The linked pocket has faded away.").withStyle(ChatFormatting.GRAY), true));
-        }, () -> player.displayClientMessage(Component.literal("This anchor has not awakened yet.").withStyle(ChatFormatting.GRAY), true));
+            AnchorTeleportCost cost = calculateTeleportCost(sourceDimension, sourcePos, anchor.dimension, anchor.pos);
+            entries.add(new AnchorWaypointMenu.Entry(
+                    anchor.dimension,
+                    anchor.pos,
+                    anchor.displayName(),
+                    dimensionLabel(anchor.dimension),
+                    distanceLabel(sourceDimension, sourcePos, anchor.dimension, anchor.pos),
+                    anchor.dimension.equals(ModDimensions.VOID_POCKET_LEVEL),
+                    cost
+            ));
+        }
+
+        return entries;
+    }
+
+    public static void teleportBetweenAnchors(ServerPlayer player, BlockPos sourcePos, ResourceKey<Level> targetDimension, BlockPos targetPos) {
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return;
+        }
+
+        VoidPocketData data = VoidPocketData.get(server);
+        Optional<VoidPocketData.Anchor> sourceAnchorOptional = data.getAnchor(player.level().dimension(), sourcePos);
+        Optional<VoidPocketData.Anchor> targetAnchorOptional = data.getAnchor(targetDimension, targetPos);
+
+        if (sourceAnchorOptional.isEmpty()) {
+            player.displayClientMessage(Component.literal("The anchor beneath this menu has gone silent.").withStyle(ChatFormatting.GRAY), true);
+            return;
+        }
+
+        VoidPocketData.Anchor sourceAnchor = sourceAnchorOptional.get();
+        if (sourceAnchor.owner != null && !sourceAnchor.owner.equals(player.getUUID())) {
+            player.displayClientMessage(Component.literal("This Angelic Anchor does not answer to you.").withStyle(ChatFormatting.GRAY), true);
+            return;
+        }
+
+        if (targetAnchorOptional.isEmpty()) {
+            player.displayClientMessage(Component.literal("That waypoint has faded.").withStyle(ChatFormatting.GRAY), true);
+            return;
+        }
+
+        VoidPocketData.Anchor targetAnchor = targetAnchorOptional.get();
+        if (targetAnchor.owner != null && !targetAnchor.owner.equals(player.getUUID())) {
+            player.displayClientMessage(Component.literal("That waypoint is not yours.").withStyle(ChatFormatting.GRAY), true);
+            return;
+        }
+
+        if (!isAnchorDestinationValid(server, data, targetAnchor)) {
+            player.displayClientMessage(Component.literal("That waypoint is unstable.").withStyle(ChatFormatting.GRAY), true);
+            return;
+        }
+
+        AnchorTeleportCost cost = calculateTeleportCost(player.level().dimension(), sourcePos, targetDimension, targetPos);
+        if (!cost.canAfford(player)) {
+            player.displayClientMessage(Component.literal("The anchor requires " + cost.label() + ".").withStyle(ChatFormatting.RED), true);
+            return;
+        }
+
+        ServerLevel targetLevel = server.getLevel(targetDimension);
+        if (targetLevel == null) {
+            player.displayClientMessage(Component.literal("That destination dimension is missing.").withStyle(ChatFormatting.RED), true);
+            return;
+        }
+
+        if (targetDimension.equals(ModDimensions.VOID_POCKET_LEVEL)) {
+            data.findPocketAt(targetPos).ifPresent(pocket -> ensureChamber(targetLevel, pocket));
+        }
+
+        cost.consume(player);
+        BlockPos arrival = findArrivalPos(targetLevel, targetPos);
+        player.teleportTo(targetLevel, arrival.getX() + 0.5D, arrival.getY(), arrival.getZ() + 0.5D, player.getYRot(), player.getXRot());
+        player.fallDistance = 0.0F;
+        player.displayClientMessage(Component.literal("The Angelic Anchor carries you through the waypoint lattice.").withStyle(ChatFormatting.AQUA), true);
     }
 
     public static void registerAnchor(Level level, BlockPos pos, Entity placer) {
@@ -262,6 +374,100 @@ public class VoidPocketManager {
         }
     }
 
+    private static void preservePocketAtAnchor(ServerPlayer player, VoidPocketData data, BlockPos anchorPos, VoidPocketData.Anchor anchor) {
+        Optional<VoidPocketData.Pocket> pocketOptional = data.findPocketAt(anchorPos);
+        if (pocketOptional.isEmpty()) {
+            pocketOptional = data.findPocketAt(player.blockPosition());
+        }
+
+        if (pocketOptional.isEmpty()) {
+            player.displayClientMessage(Component.literal("The anchor finds no pocket to preserve.").withStyle(ChatFormatting.GRAY), true);
+            return;
+        }
+
+        VoidPocketData.Pocket pocket = pocketOptional.get();
+        anchor.pocketId = pocket.id;
+        pocket.preserved = true;
+        data.linkReturnAnchor(pocket);
+        data.setDirty();
+    }
+
+    private static boolean isAnchorDestinationValid(MinecraftServer server, VoidPocketData data, VoidPocketData.Anchor anchor) {
+        if (!anchor.dimension.equals(ModDimensions.VOID_POCKET_LEVEL)) {
+            return true;
+        }
+
+        Optional<VoidPocketData.Pocket> pocket = data.findPocketAt(anchor.pos);
+        return pocket.isPresent() && pocket.get().preserved;
+    }
+
+    private static AnchorTeleportCost calculateTeleportCost(
+            ResourceKey<Level> sourceDimension,
+            BlockPos sourcePos,
+            ResourceKey<Level> targetDimension,
+            BlockPos targetPos
+    ) {
+        boolean crossDimension = !sourceDimension.equals(targetDimension);
+        boolean sourceIsVoidPocket = sourceDimension.equals(ModDimensions.VOID_POCKET_LEVEL);
+        boolean targetIsVoidPocket = targetDimension.equals(ModDimensions.VOID_POCKET_LEVEL);
+        boolean touchesVoidPocket = sourceIsVoidPocket || targetIsVoidPocket;
+
+        double distance = crossDimension ? 0.0D : Math.sqrt(sourcePos.distSqr(targetPos));
+
+        int voidTears;
+        int compressedVoid;
+        int voidMatrix;
+
+        if (crossDimension) {
+            voidTears = 6;
+            compressedVoid = 1;
+            voidMatrix = 0;
+
+            if (touchesVoidPocket) {
+                voidTears = 4;
+                compressedVoid = 0;
+                voidMatrix = 0;
+            }
+        } else {
+            voidTears = 1 + Mth.ceil(distance / 768.0D);
+            compressedVoid = distance >= 2048.0D ? Mth.ceil((distance - 2048.0D) / 3072.0D) : 0;
+            voidMatrix = distance >= 12000.0D ? Math.max(1, Mth.floor(distance / 12000.0D)) : 0;
+        }
+
+        return new AnchorTeleportCost(voidTears, compressedVoid, voidMatrix);
+    }
+
+    private static String distanceLabel(ResourceKey<Level> sourceDimension, BlockPos sourcePos, ResourceKey<Level> targetDimension, BlockPos targetPos) {
+        if (!sourceDimension.equals(targetDimension)) {
+            return "Cross-dimensional";
+        }
+        int distance = Mth.floor(Math.sqrt(sourcePos.distSqr(targetPos)));
+        return distance + " blocks away";
+    }
+
+    private static String dimensionLabel(ResourceKey<Level> dimension) {
+        String path = dimension.location().getPath();
+        return switch (path) {
+            case "overworld" -> "Overworld";
+            case "the_nether" -> "Nether";
+            case "the_end" -> "End";
+            case "void_pocket" -> "Void Pocket";
+            default -> path.replace('_', ' ');
+        };
+    }
+
+    private static BlockPos findArrivalPos(ServerLevel level, BlockPos anchorPos) {
+        BlockPos candidate = anchorPos.above();
+        for (int i = 0; i < 6; i++) {
+            if (level.getBlockState(candidate).getCollisionShape(level, candidate).isEmpty()
+                    && level.getBlockState(candidate.above()).getCollisionShape(level, candidate.above()).isEmpty()) {
+                return candidate;
+            }
+            candidate = candidate.above();
+        }
+        return anchorPos.above();
+    }
+
     private static void exitPocket(ServerPlayer player, VoidPocketData.Pocket pocket, Component message) {
         MinecraftServer server = player.getServer();
         if (server == null) {
@@ -315,9 +521,23 @@ public class VoidPocketManager {
         player.fallDistance = 0.0F;
     }
 
+    private static void ensureChamber(ServerLevel level, VoidPocketData.Pocket pocket) {
+        if (!pocket.generated) {
+            generateChamber(level, pocket);
+            return;
+        }
+
+        restorePocketAnchors(level, pocket);
+    }
+
     private static void generateChamber(ServerLevel level, VoidPocketData.Pocket pocket) {
         BlockState shell = ModBlocks.VOID_CAVE_BLOCK.get().defaultBlockState();
         BlockState air = Blocks.AIR.defaultBlockState();
+        VoidPocketData data = VoidPocketData.get(level.getServer());
+        java.util.HashSet<BlockPos> protectedAnchors = new java.util.HashSet<>();
+        for (VoidPocketData.Anchor anchor : data.anchorsInPocket(pocket)) {
+            protectedAnchors.add(anchor.pos);
+        }
 
         int minX = pocket.center.getX() - VoidPocketData.HORIZONTAL_RADIUS;
         int maxX = pocket.center.getX() + VoidPocketData.HORIZONTAL_RADIUS;
@@ -332,14 +552,35 @@ public class VoidPocketManager {
                 for (int z = minZ; z <= maxZ; z++) {
                     boolean boundary = x == minX || x == maxX || y == minY || y == maxY || z == minZ || z == maxZ;
                     mutable.set(x, y, z);
+                    if (protectedAnchors.contains(mutable) || level.getBlockState(mutable).is(ModBlocks.ANGELIC_ANCHOR.get())) {
+                        continue;
+                    }
                     level.setBlock(mutable, boundary ? shell : air, 3);
                 }
             }
         }
 
         BlockPos entry = pocket.entryPos();
-        level.setBlock(entry, air, 3);
-        level.setBlock(entry.above(), air, 3);
+        if (!protectedAnchors.contains(entry) && !level.getBlockState(entry).is(ModBlocks.ANGELIC_ANCHOR.get())) {
+            level.setBlock(entry, air, 3);
+        }
+        if (!protectedAnchors.contains(entry.above()) && !level.getBlockState(entry.above()).is(ModBlocks.ANGELIC_ANCHOR.get())) {
+            level.setBlock(entry.above(), air, 3);
+        }
+
+        restorePocketAnchors(level, pocket);
+        pocket.generated = true;
+        data.setDirty();
+    }
+
+    private static void restorePocketAnchors(ServerLevel level, VoidPocketData.Pocket pocket) {
+        VoidPocketData data = VoidPocketData.get(level.getServer());
+        for (VoidPocketData.Anchor anchor : data.anchorsInPocket(pocket)) {
+            BlockState current = level.getBlockState(anchor.pos);
+            if (!current.is(ModBlocks.ANGELIC_ANCHOR.get())) {
+                level.setBlock(anchor.pos, ModBlocks.ANGELIC_ANCHOR.get().defaultBlockState(), 3);
+            }
+        }
     }
 
     private static void clearChamber(ServerLevel level, VoidPocketData.Pocket pocket) {
