@@ -5,7 +5,7 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.client.animation.PrayerAnimationController;
+import net.normlroyal.descendedangel.common.client.animation.PrayerAnimationController;
 
 import java.util.UUID;
 import java.util.function.Supplier;

@@ -2,8 +2,8 @@ package net.normlroyal.descendedangel.menu;
 
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import net.normlroyal.descendedangel.block.altar.AltarBlockEntity;
-import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
+import net.normlroyal.descendedangel.content.block.altar.AltarBlockEntity;
+import net.normlroyal.descendedangel.content.item.custom.TieredHaloItem;
 
 public class HaloSlot extends SlotItemHandler {
     private final AltarBlockEntity be;

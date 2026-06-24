@@ -1,0 +1,126 @@
+package net.normlroyal.descendedangel.content.item.custom;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.normlroyal.descendedangel.common.client.render.WingItemRenderer;
+import net.normlroyal.descendedangel.events.useful.WingRenderContext;
+import net.normlroyal.descendedangel.flight.ClientFlightState;
+import net.normlroyal.descendedangel.util.IWingItem;
+import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
+
+import java.util.List;
+
+public class TieredWingItem extends Item implements GeoItem, IWingItem, ICurioItem {
+
+
+    private final int tier;
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+
+    public TieredWingItem(int tier, Properties props) {
+        super(props);
+        this.tier = tier;
+    }
+
+    public int getTier() { return tier; }
+    @Override public int wingTier() { return tier; }
+    @Override public AnimatableInstanceCache getAnimatableInstanceCache() { return cache; }
+
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        // pass
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        if (tier != 1) return;
+
+        LivingEntity e = slotContext.entity();
+        if (e instanceof Player p && p.isFallFlying()) {
+            p.stopFallFlying();
+        }
+    }
+
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "controller", 0, state -> {
+            LivingEntity e = WingRenderContext.getEntity();
+            if (e == null) return PlayState.STOP;
+
+            var c = state.getController();
+            String prefix = "animation.wing_t" + tier + ".";
+
+            boolean customFlying = false;
+            if (tier >= 2) {
+                customFlying = ClientFlightState.isActive();
+            }
+
+            if (e.isFallFlying() || customFlying) {
+                c.setAnimation(RawAnimation.begin().thenLoop(prefix + "flying"));
+                return PlayState.CONTINUE;
+            }
+
+            c.setAnimation(RawAnimation.begin().thenLoop(prefix + "open_idle"));
+            return PlayState.CONTINUE;
+        }));
+    }
+
+    @Override
+    public void initializeClient(java.util.function.Consumer<net.minecraftforge.client.extensions.common.IClientItemExtensions> consumer) {
+        consumer.accept(new net.minecraftforge.client.extensions.common.IClientItemExtensions() {
+            private WingItemRenderer renderer;
+
+            @Override
+            public net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (this.renderer == null) {
+                    this.renderer = new WingItemRenderer();
+                }
+                return this.renderer;
+            }
+        });
+    }
+
+    @Override
+    public void appendHoverText(
+            ItemStack stack,
+            @Nullable Level level,
+            List<Component> tooltip,
+            TooltipFlag flag
+    ) {
+        super.appendHoverText(stack, level, tooltip, flag);
+
+
+        if (Screen.hasShiftDown()) {
+
+            tooltip.add(
+                    Component.translatable("tooltip.descendedangel.wing_t" + tier + ".lore")
+                            .withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)
+            );
+        } else {
+            tooltip.add(
+                    Component.translatable("tooltip.descendedangel.halo.hold_shift")
+                            .withStyle(ChatFormatting.DARK_GRAY)
+            );
+        }
+
+        tooltip.add(Component.empty());
+
+    }
+
+}

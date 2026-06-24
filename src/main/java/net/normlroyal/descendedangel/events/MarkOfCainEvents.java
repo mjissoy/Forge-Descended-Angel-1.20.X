@@ -11,7 +11,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.item.custom.MarkOfCainItem;
+import net.normlroyal.descendedangel.content.item.custom.MarkOfCainItem;
 import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.network.packets.PlayMarkActivationS2CPacket;
 

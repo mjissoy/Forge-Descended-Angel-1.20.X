@@ -11,7 +11,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.client.ClientKeybinds;
+import net.normlroyal.descendedangel.common.client.ClientKeybinds;
 import net.normlroyal.descendedangel.flight.ClientFlightState;
 import net.normlroyal.descendedangel.flight.WingFlightStats;
 import net.normlroyal.descendedangel.util.WingLogic;

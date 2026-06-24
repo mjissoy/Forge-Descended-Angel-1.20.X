@@ -1,0 +1,189 @@
+package net.normlroyal.descendedangel.content.item;
+
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
+import net.minecraftforge.common.ForgeSpawnEggItem;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+import net.normlroyal.descendedangel.DescendedAngel;
+import net.normlroyal.descendedangel.content.block.ModBlocks;
+import net.normlroyal.descendedangel.content.item.custom.*;
+import net.normlroyal.descendedangel.content.entity.ModEntities;
+import net.normlroyal.descendedangel.item.custom.*;
+import net.normlroyal.descendedangel.content.item.custom.enums.FruitType;
+import net.normlroyal.descendedangel.content.item.custom.enums.NecklaceVariants;
+import net.normlroyal.descendedangel.content.item.custom.enums.RingVariants;
+import net.normlroyal.descendedangel.content.item.custom.enums.ShardType;
+import net.normlroyal.descendedangel.content.item.custom.writings.SacredWritingsItem;
+
+public class ModItems {
+    public static final DeferredRegister<Item> ITEMS =
+            DeferredRegister.create(ForgeRegistries.ITEMS, DescendedAngel.MOD_ID);
+
+    // Materials
+    public static final RegistryObject<Item> ANGELFEATHER = ITEMS.register("angel_feather",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REALANGELFEATHER = ITEMS.register("angel_feather_real",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> VOIDTEAR = ITEMS.register("void_tear",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COMPRESSEDVOID = ITEMS.register("compressed_void",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> VOIDMATRIX= ITEMS.register("void_matrix",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DEMONHEART = ITEMS.register("demon_heart",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REALDEMONHEART = ITEMS.register("purified_demon_heart",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SPATIALCORE = ITEMS.register("spatial_core",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SACRED_BLOOD = ITEMS.register("sacred_blood",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ANGELS_TEARS = ITEMS.register("angels_tears",
+            () -> new Item(new Item.Properties()));
+
+    // Ores
+    public static final RegistryObject<Item> SACREDOREINGOT = ITEMS.register("sacred_ore_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SACREDORERAW = ITEMS.register("sacred_ore_raw",
+            () -> new Item(new Item.Properties()));
+
+    // Halos
+    public static final RegistryObject<Item> HALO_T1 = ITEMS.register("halo_t1",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 1));
+    public static final RegistryObject<Item> HALO_T2 = ITEMS.register("halo_t2",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 2));
+    public static final RegistryObject<Item> HALO_T3 = ITEMS.register("halo_t3",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 3));
+    public static final RegistryObject<Item> HALO_T4 = ITEMS.register("halo_t4",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 4));
+    public static final RegistryObject<Item> HALO_T5 = ITEMS.register("halo_t5",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 5));
+    public static final RegistryObject<Item> HALO_T6 = ITEMS.register("halo_t6",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 6));
+    public static final RegistryObject<Item> HALO_T7 = ITEMS.register("halo_t7",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 7));
+    public static final RegistryObject<Item> HALO_T8 = ITEMS.register("halo_t8",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 8));
+    public static final RegistryObject<Item> HALO_T9 = ITEMS.register("halo_t9",
+            () -> new TieredHaloItem(new Item.Properties().stacksTo(1), 9));
+
+    // Equipment
+    public static final RegistryObject<Item> SPEARSHAFT = ITEMS.register("destiny_spear_shaft",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SPEARHEAD = ITEMS.register("destiny_spear_head",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DESTINY_SPEAR = ITEMS.register("destiny_spear",
+            () -> new DestinySpearItem(
+                    Tiers.NETHERITE,
+                    5,
+                    -2.6F,
+                    new Item.Properties().stacksTo(1).durability(4062)
+            )
+    );
+
+    // Trinkets
+    public static final RegistryObject<Item> HOLY_RING = ITEMS.register("holy_ring",
+            () -> new RingCuriosItem(RingVariants.HOLY, new Item.Properties()));
+    public static final RegistryObject<Item> CLOUD_RING = ITEMS.register("cloud_ring",
+            () -> new RingCuriosItem(RingVariants.CLOUD, new Item.Properties()));
+    public static final RegistryObject<Item> FLAME_RING = ITEMS.register("flame_ring",
+            () -> new RingCuriosItem(RingVariants.FLAME, new Item.Properties()));
+    public static final RegistryObject<Item> CURE_RING = ITEMS.register("cure_ring",
+            () -> new RingCuriosItem(RingVariants.CURE, new Item.Properties()));
+
+    public static final RegistryObject<Item> HOLY_NECKLACE = ITEMS.register("holy_necklace",
+            () -> new NecklaceCuriosItem(NecklaceVariants.HOLY, new Item.Properties()));
+    public static final RegistryObject<Item> MESSENGER_PENDANT = ITEMS.register("messenger_pendant",
+            () -> new NecklaceCuriosItem(NecklaceVariants.MESSENGER, new Item.Properties()));
+    public static final RegistryObject<Item> LIGHTNESS_NECKLACE = ITEMS.register("nanos_lantern",
+            () -> new NecklaceCuriosItem(NecklaceVariants.LIGHTNESS, new Item.Properties()));
+    public static final RegistryObject<Item> BOOSTER_NECKLACE = ITEMS.register("alchemy_chain",
+            () -> new NecklaceCuriosItem(NecklaceVariants.BOOSTER, new Item.Properties()));
+
+    // Altar Item
+    public static final RegistryObject<Item> ALTAR = ITEMS.register("altar",
+            () -> new AltarItem(ModBlocks.ALTAR.get(), new Item.Properties()));
+
+    // Other Items
+    public static final RegistryObject<Item> SACRED_WRITINGS = ITEMS.register("sacred_writings",
+            () -> new SacredWritingsItem(new Item.Properties()));
+    public static final RegistryObject<Item> VOID_ANOMALY_SPAWN_EGG = ITEMS.register("void_anomaly_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.VOID_ANOMALY,
+                    0x320F3B,
+                    0x6780AC,
+                    new Item.Properties()));
+    public static final RegistryObject<Item> IMP_SPAWN_EGG = ITEMS.register("imp_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.IMP,
+                    0x7A1C1C,
+                    0xD46B2E,
+                    new Item.Properties()));
+
+    public static final RegistryObject<Item> MARK_PIECE1 = ITEMS.register("mark_component1",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MARK_PIECE2 = ITEMS.register("mark_component2",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MARK_PIECE3 = ITEMS.register("mark_component3",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MARK_OF_CAIN = ITEMS.register("mark_of_cain",
+            () -> new MarkOfCainItem(new Item.Properties()));
+    public static final RegistryObject<Item> PURIFIED_MARK_OF_CAIN = ITEMS.register("purified_mark_of_cain",
+            () -> new PurifiedMarkOfCainItem(new Item.Properties()));
+
+
+    // Ability Items
+    public static final RegistryObject<Item> SPACE_FRUIT = ITEMS.register("fruit_of_space",
+            () -> new FruitUnlockItem(FruitType.SPACE, new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+    public static final RegistryObject<Item> TIME_FRUIT = ITEMS.register("fruit_of_time",
+            () -> new FruitUnlockItem(FruitType.TIME, new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+    public static final RegistryObject<Item> CELESTIAL_FRUIT = ITEMS.register("fruit_of_celestial",
+            () -> new FruitUnlockItem(FruitType.CELESTIAL, new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+    public static final RegistryObject<Item> RESONANCE_FRUIT = ITEMS.register("fruit_of_resonance",
+            () -> new FruitUnlockItem(FruitType.RESONANCE, new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+
+    public static final RegistryObject<Item> FIRE_SHARD = ITEMS.register("fire_shard",
+            () -> new ShardUnlockItem(ShardType.FIRE, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> EMPOWERED_FIRE_SHARD = ITEMS.register("empowered_fire_shard",
+            () -> new EmpoweredShardUnlockItem(ShardType.FIRE, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> WATER_SHARD = ITEMS.register("water_shard",
+            () -> new ShardUnlockItem(ShardType.WATER, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> EMPOWERED_WATER_SHARD = ITEMS.register("empowered_water_shard",
+            () -> new EmpoweredShardUnlockItem(ShardType.WATER, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> EARTH_SHARD = ITEMS.register("earth_shard",
+            () -> new ShardUnlockItem(ShardType.EARTH, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> EMPOWERED_EARTH_SHARD = ITEMS.register("empowered_earth_shard",
+            () -> new EmpoweredShardUnlockItem(ShardType.EARTH, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> AIR_SHARD = ITEMS.register("air_shard",
+            () -> new ShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
+    );
+    public static final RegistryObject<Item> EMPOWERED_AIR_SHARD = ITEMS.register("empowered_air_shard",
+            () -> new EmpoweredShardUnlockItem(ShardType.AIR, new Item.Properties().stacksTo(1))
+    );
+
+    // Wings
+    public static final RegistryObject<Item> WING1 = ITEMS.register("wing_t1",
+            () -> new TieredWingItem(1, new Item.Properties()));
+    public static final RegistryObject<Item> WING2 = ITEMS.register("wing_t2",
+            () -> new TieredWingItem(2, new Item.Properties()));
+    public static final RegistryObject<Item> WING3 = ITEMS.register("wing_t3",
+            () -> new TieredWingItem(3, new Item.Properties()));
+
+
+
+    public static void register(IEventBus eventbus) {
+        ITEMS.register(eventbus);
+    }
+}

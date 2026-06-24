@@ -12,7 +12,7 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
-import net.normlroyal.descendedangel.block.altar.AltarBlockEntity;
+import net.normlroyal.descendedangel.content.block.altar.AltarBlockEntity;
 import org.slf4j.Logger;
 
 

@@ -6,10 +6,9 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.config.ModGameRules;
 import net.normlroyal.descendedangel.haloabilities.DominionAbilities;
 import net.normlroyal.descendedangel.haloabilities.PowerAbilities;
-import net.normlroyal.descendedangel.halohierarchy.HaloHierarchyGlowSync;
+import net.normlroyal.descendedangel.common.halohierarchy.HaloHierarchyGlowSync;
 import net.normlroyal.descendedangel.util.AbilityUtils;
 
 

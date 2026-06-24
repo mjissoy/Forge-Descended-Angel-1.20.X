@@ -14,9 +14,9 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.config.ModConfigs;
-import net.normlroyal.descendedangel.item.ModItems;
-import net.normlroyal.descendedangel.particle.ModParticles;
+import net.normlroyal.descendedangel.common.config.ModConfigs;
+import net.normlroyal.descendedangel.content.item.ModItems;
+import net.normlroyal.descendedangel.content.particle.ModParticles;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class VoidTouchedEvents {

@@ -1,13 +1,9 @@
 package net.normlroyal.descendedangel.util;
 
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
-import net.normlroyal.descendedangel.halohierarchy.HaloHierarchyGlowState;
-import net.normlroyal.descendedangel.item.custom.TieredHaloItem;
-import net.normlroyal.descendedangel.tags.ModItemTags;
+import net.normlroyal.descendedangel.content.item.custom.TieredHaloItem;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
@@ -17,7 +13,7 @@ public class HaloUtils {
 
     public static Optional<ItemStack> findEquippedHalo(Player player) {
         return CuriosApi.getCuriosHelper()
-                .findFirstCurio(player, stack -> stack.is(ModItemTags.HALOS))
+                .findFirstCurio(player, stack -> stack.is(ModTags.HALOS))
                 .map(SlotResult::stack);
     }
 

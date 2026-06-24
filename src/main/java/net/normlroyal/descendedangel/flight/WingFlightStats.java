@@ -1,6 +1,6 @@
 package net.normlroyal.descendedangel.flight;
 
-import net.normlroyal.descendedangel.config.ModConfigs;
+import net.normlroyal.descendedangel.common.config.ModConfigs;
 
 public class WingFlightStats {
     private WingFlightStats() {}

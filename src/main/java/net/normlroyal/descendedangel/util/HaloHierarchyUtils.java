@@ -3,7 +3,7 @@ package net.normlroyal.descendedangel.util;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
-import net.normlroyal.descendedangel.halohierarchy.HaloHierarchyGlowState;
+import net.normlroyal.descendedangel.common.halohierarchy.HaloHierarchyGlowState;
 
 public class HaloHierarchyUtils {
 

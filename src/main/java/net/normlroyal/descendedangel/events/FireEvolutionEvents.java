@@ -22,7 +22,7 @@ import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.entity.ModEntities;
+import net.normlroyal.descendedangel.content.entity.ModEntities;
 import net.normlroyal.descendedangel.events.useful.HaloUndeadScalingTarget;
 
 import java.util.ArrayList;

@@ -4,7 +4,7 @@ import net.minecraftforge.event.OnDatapackSyncEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.item.custom.writings.SacredWritReloadListener;
+import net.normlroyal.descendedangel.content.item.custom.writings.SacredWritReloadListener;
 import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.network.packets.SyncWritDisplaysS2CPacket;
 

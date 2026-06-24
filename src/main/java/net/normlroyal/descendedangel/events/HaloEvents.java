@@ -7,7 +7,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.config.ModConfigs;
+import net.normlroyal.descendedangel.common.config.ModConfigs;
 import net.normlroyal.descendedangel.events.useful.HaloUndeadScalingTarget;
 import net.normlroyal.descendedangel.util.HaloUtils;
 

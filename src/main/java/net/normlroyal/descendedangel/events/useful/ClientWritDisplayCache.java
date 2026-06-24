@@ -1,7 +1,7 @@
 package net.normlroyal.descendedangel.events.useful;
 
 import net.minecraft.resources.ResourceLocation;
-import net.normlroyal.descendedangel.item.custom.writings.WritDisplay;
+import net.normlroyal.descendedangel.content.item.custom.writings.WritDisplay;
 
 import java.util.HashMap;
 import java.util.Map;

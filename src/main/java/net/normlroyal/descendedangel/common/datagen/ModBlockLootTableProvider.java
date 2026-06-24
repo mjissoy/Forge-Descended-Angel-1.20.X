@@ -1,0 +1,74 @@
+package net.normlroyal.descendedangel.common.datagen;
+
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.RegistryObject;
+import net.normlroyal.descendedangel.content.block.ModBlocks;
+import net.normlroyal.descendedangel.content.item.ModItems;
+
+import java.util.Set;
+
+public class ModBlockLootTableProvider extends BlockLootSubProvider {
+
+    public ModBlockLootTableProvider() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    }
+
+    @Override
+    protected void generate() {
+
+        // Blocks
+        dropSelf(ModBlocks.BAPTISMAL_FONT.get());
+
+        dropSelf(ModBlocks.SACRED_INGOT_BLOCK.get());
+        dropSelf(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
+
+        dropSelf(ModBlocks.BLESSED_ROCK.get());
+        dropSelf(ModBlocks.BLESSED_ROCK_STAIR.get());
+        dropSelf(ModBlocks.BLESSED_ROCK_WALL.get());
+        dropSelf(ModBlocks.BLESSED_ROCK_BRICKS.get());
+        dropSelf(ModBlocks.MOSSY_BLESSED_ROCK_BRICKS.get());
+        dropSelf(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get());
+        dropSelf(ModBlocks.BLESSED_ROCK_BRICKS_WALL.get());
+        dropSelf(ModBlocks.POLISHED_BLESSED_ROCK.get());
+        dropSelf(ModBlocks.POLISHED_BLESSED_ROCK_WALL.get());
+        dropSelf(ModBlocks.POLISHED_BLESSED_ROCK_STAIR.get());
+
+        dropSelf(ModBlocks.ASHEN_ROCK.get());
+        dropSelf(ModBlocks.ASHEN_ROCK_STAIR.get());
+        dropSelf(ModBlocks.ASHEN_ROCK_WALL.get());
+        dropSelf(ModBlocks.ASHEN_ROCK_BRICKS.get());
+        dropSelf(ModBlocks.MOSSY_ASHEN_ROCK_BRICKS.get());
+        dropSelf(ModBlocks.ASHEN_ROCK_BRICKS_STAIR.get());
+        dropSelf(ModBlocks.ASHEN_ROCK_BRICKS_WALL.get());
+        dropSelf(ModBlocks.POLISHED_ASHEN_ROCK.get());
+        dropSelf(ModBlocks.POLISHED_ASHEN_ROCK_WALL.get());
+        dropSelf(ModBlocks.POLISHED_ASHEN_ROCK_STAIR.get());
+
+        add(ModBlocks.BLESSED_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.BLESSED_ROCK_SLAB.get()));
+        add(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get(), block -> createSlabItemTable(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get()));
+        add(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.POLISHED_BLESSED_ROCK_SLAB.get()));
+        add(ModBlocks.ASHEN_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.ASHEN_ROCK_SLAB.get()));
+        add(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get(), block -> createSlabItemTable(ModBlocks.ASHEN_ROCK_BRICKS_SLAB.get()));
+        add(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get(), block -> createSlabItemTable(ModBlocks.POLISHED_ASHEN_ROCK_SLAB.get()));
+
+        dropSelf(ModBlocks.ANGEL_WEEPING.get());
+        add(ModBlocks.POTTED_ANGEL_WEEPING.get(),
+                block -> createPotFlowerItemTable(ModBlocks.ANGEL_WEEPING.get()));
+
+        // Ores
+        add(ModBlocks.SACRED_ORE.get(), block -> createOreDrop(ModBlocks.SACRED_ORE.get(), ModItems.SACREDORERAW.get()));
+
+        add(ModBlocks.ALTAR.get(), noDrop());
+        add(ModBlocks.VOID_CAVE_BLOCK.get(), noDrop());
+    }
+
+    @Override
+    protected Iterable<Block> getKnownBlocks() {
+        return ModBlocks.BLOCKS.getEntries()
+                .stream()
+                .map(RegistryObject::get)
+                .toList();
+    }
+}

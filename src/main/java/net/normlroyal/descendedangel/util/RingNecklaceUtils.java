@@ -3,8 +3,8 @@ package net.normlroyal.descendedangel.util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
-import net.normlroyal.descendedangel.item.custom.enums.RingVariants;
+import net.normlroyal.descendedangel.content.item.custom.enums.NecklaceVariants;
+import net.normlroyal.descendedangel.content.item.custom.enums.RingVariants;
 import top.theillusivec4.curios.api.CuriosApi;
 
 public final class RingNecklaceUtils {

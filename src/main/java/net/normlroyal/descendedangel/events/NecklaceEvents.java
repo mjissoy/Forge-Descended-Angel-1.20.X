@@ -12,7 +12,7 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.item.custom.enums.NecklaceVariants;
+import net.normlroyal.descendedangel.content.item.custom.enums.NecklaceVariants;
 import net.normlroyal.descendedangel.util.RingNecklaceUtils;
 
 @Mod.EventBusSubscriber(modid = DescendedAngel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)

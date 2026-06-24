@@ -2,7 +2,7 @@ package net.normlroyal.descendedangel.network.packets;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
-import net.normlroyal.descendedangel.halohierarchy.HaloHierarchyGlowState;
+import net.normlroyal.descendedangel.common.halohierarchy.HaloHierarchyGlowState;
 
 import java.util.function.Supplier;
 

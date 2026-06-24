@@ -26,7 +26,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.block.ModBlocks;
+import net.normlroyal.descendedangel.content.block.ModBlocks;
 
 import java.util.ArrayList;
 import java.util.HashSet;

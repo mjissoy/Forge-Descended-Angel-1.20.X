@@ -9,7 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.*;
-import net.normlroyal.descendedangel.config.ModConfigs;
+import net.normlroyal.descendedangel.common.config.ModConfigs;
 import net.normlroyal.descendedangel.events.DominionEventHandlers;
 import net.normlroyal.descendedangel.util.HaloUtils;
 import net.normlroyal.descendedangel.util.NetworkUtils;

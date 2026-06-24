@@ -11,7 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.flight.ClientFlightState;
-import net.normlroyal.descendedangel.particle.ModParticles;
+import net.normlroyal.descendedangel.content.particle.ModParticles;
 import net.normlroyal.descendedangel.util.WingLogic;
 import net.normlroyal.descendedangel.util.WingUtils;
 
