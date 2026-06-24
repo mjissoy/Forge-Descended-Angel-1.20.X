@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.worldgen.subs;
+package net.normlroyal.descendedangel.common.datagen.worldgen.subs;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;

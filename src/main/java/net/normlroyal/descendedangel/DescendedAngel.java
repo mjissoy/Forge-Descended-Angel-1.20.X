@@ -28,8 +28,8 @@ import net.normlroyal.descendedangel.network.ModNetwork;
 import net.normlroyal.descendedangel.content.particle.ModParticles;
 import net.normlroyal.descendedangel.content.recipe.ModRecipeSerializers;
 import net.normlroyal.descendedangel.content.recipe.ModRecipeTypes;
-import net.normlroyal.descendedangel.potions.ModEffects;
-import net.normlroyal.descendedangel.potions.ModPotions;
+import net.normlroyal.descendedangel.content.potions.ModEffects;
+import net.normlroyal.descendedangel.content.potions.ModPotions;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 

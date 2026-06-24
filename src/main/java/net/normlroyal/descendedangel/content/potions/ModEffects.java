@@ -1,14 +1,14 @@
-package net.normlroyal.descendedangel.potions;
+package net.normlroyal.descendedangel.content.potions;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.potions.custom.BlessedFavourEffect;
-import net.normlroyal.descendedangel.potions.custom.DivineGraceEffect;
-import net.normlroyal.descendedangel.potions.custom.LocustSwarmEffect;
-import net.normlroyal.descendedangel.potions.custom.ProvidenceEffect;
+import net.normlroyal.descendedangel.content.potions.custom.BlessedFavourEffect;
+import net.normlroyal.descendedangel.content.potions.custom.DivineGraceEffect;
+import net.normlroyal.descendedangel.content.potions.custom.LocustSwarmEffect;
+import net.normlroyal.descendedangel.content.potions.custom.ProvidenceEffect;
 
 
 public class ModEffects {

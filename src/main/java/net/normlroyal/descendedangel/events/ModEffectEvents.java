@@ -15,7 +15,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.potions.ModEffects;
+import net.normlroyal.descendedangel.content.potions.ModEffects;
 
 import java.util.ArrayList;
 import java.util.Collection;

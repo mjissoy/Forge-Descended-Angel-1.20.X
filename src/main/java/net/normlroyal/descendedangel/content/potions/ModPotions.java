@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.potions;
+package net.normlroyal.descendedangel.content.potions;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.alchemy.Potion;

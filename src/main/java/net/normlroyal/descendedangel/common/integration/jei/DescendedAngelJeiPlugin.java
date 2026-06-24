@@ -21,7 +21,7 @@ import net.normlroyal.descendedangel.content.block.ModBlocks;
 import net.normlroyal.descendedangel.content.item.ModItems;
 import net.normlroyal.descendedangel.content.recipe.AltarRiteRecipe;
 import net.normlroyal.descendedangel.content.recipe.ModRecipeTypes;
-import net.normlroyal.descendedangel.potions.ModPotions;
+import net.normlroyal.descendedangel.content.potions.ModPotions;
 
 import java.util.ArrayList;
 import java.util.List;

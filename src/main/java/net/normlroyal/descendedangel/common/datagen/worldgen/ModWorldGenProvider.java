@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.worldgen;
+package net.normlroyal.descendedangel.common.datagen.worldgen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
@@ -7,7 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.worldgen.subs.*;
+import net.normlroyal.descendedangel.common.datagen.worldgen.subs.*;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;

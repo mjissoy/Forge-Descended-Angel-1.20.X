@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.worldgen.subs;
+package net.normlroyal.descendedangel.common.datagen.worldgen.subs;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderGetter;

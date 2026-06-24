@@ -10,8 +10,8 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.normlroyal.descendedangel.DescendedAngel;
-import net.normlroyal.descendedangel.worldgen.ModBiomeTagsProvider;
-import net.normlroyal.descendedangel.worldgen.ModWorldGenProvider;
+import net.normlroyal.descendedangel.common.datagen.worldgen.ModBiomeTagsProvider;
+import net.normlroyal.descendedangel.common.datagen.worldgen.ModWorldGenProvider;
 
 import java.util.Collections;
 import java.util.List;

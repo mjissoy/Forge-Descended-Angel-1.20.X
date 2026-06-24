@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.worldgen.subs;
+package net.normlroyal.descendedangel.common.datagen.worldgen.subs;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

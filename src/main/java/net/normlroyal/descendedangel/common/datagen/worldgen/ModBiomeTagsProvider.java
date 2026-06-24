@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.worldgen;
+package net.normlroyal.descendedangel.common.datagen.worldgen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

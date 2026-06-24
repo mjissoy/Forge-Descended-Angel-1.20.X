@@ -7,7 +7,7 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
 import net.normlroyal.descendedangel.content.item.ModItems;
-import net.normlroyal.descendedangel.potions.ModPotions;
+import net.normlroyal.descendedangel.content.potions.ModPotions;
 
 public class ModBrewingRecipes {
     public static void register(FMLCommonSetupEvent event) {

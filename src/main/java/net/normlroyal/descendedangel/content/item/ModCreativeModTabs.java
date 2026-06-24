@@ -12,7 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
-import net.normlroyal.descendedangel.potions.ModPotions;
+import net.normlroyal.descendedangel.content.potions.ModPotions;
 
 public class ModCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS =

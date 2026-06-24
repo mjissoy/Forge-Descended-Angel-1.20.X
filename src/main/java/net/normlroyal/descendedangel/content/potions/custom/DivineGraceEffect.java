@@ -1,4 +1,4 @@
-package net.normlroyal.descendedangel.potions.custom;
+package net.normlroyal.descendedangel.content.potions.custom;
 
 import net.minecraft.world.effect.InstantenousMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
