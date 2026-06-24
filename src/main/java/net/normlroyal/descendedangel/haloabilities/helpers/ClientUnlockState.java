@@ -19,13 +19,15 @@ public final class ClientUnlockState {
     private static boolean earthAegisPillar;
     private static boolean earthCrystalChrysalis;
 
+    private static boolean water;
     private static boolean waterMovingFieldOfMist;
     private static boolean waterSeraphicMirage;
     private static boolean waterDivineSerenity;
 
-    private static boolean water;
     private static boolean space;
     private static boolean time;
+    private static boolean celestial;
+    private static boolean resonance;
 
     public static void set(
             boolean fireIn,
@@ -49,7 +51,9 @@ public final class ClientUnlockState {
             boolean waterDivineSerenityIn,
 
             boolean spaceIn,
-            boolean timeIn
+            boolean timeIn,
+            boolean celestialIn,
+            boolean resonanceIn
     ) {
         fire = fireIn;
         fireSacredFlare = fireSacredFlareIn;
@@ -73,6 +77,8 @@ public final class ClientUnlockState {
 
         space = spaceIn;
         time = timeIn;
+        celestial = celestialIn;
+        resonance = resonanceIn;
     }
 
     public static boolean has(String tag) {
@@ -99,6 +105,8 @@ public final class ClientUnlockState {
 
             case DominionAbilities.TAG_SPACE -> space;
             case DominionAbilities.TAG_TIME -> time;
+            case DominionAbilities.TAG_CELESTIAL -> celestial;
+            case DominionAbilities.TAG_RESONANCE -> resonance;
 
             default -> false;
         };
@@ -127,6 +135,8 @@ public final class ClientUnlockState {
 
         space = false;
         time = false;
+        celestial = false;
+        resonance = false;
     }
 
     private ClientUnlockState() {}

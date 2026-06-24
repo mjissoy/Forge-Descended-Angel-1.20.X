@@ -76,6 +76,8 @@ public class ModCreativeModTabs {
 
                         output.accept(ModItems.SPACE_FRUIT.get());
                         output.accept(ModItems.TIME_FRUIT.get());
+                        output.accept(ModItems.CELESTIAL_FRUIT.get());
+                        output.accept(ModItems.RESONANCE_FRUIT.get());
                         output.accept(ModItems.FIRE_SHARD.get());
                         output.accept(ModItems.EMPOWERED_FIRE_SHARD.get());
                         output.accept(ModItems.AIR_SHARD.get());

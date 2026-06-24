@@ -59,6 +59,26 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                     )
             );
 
+            add("fruit_of_celestial_bastion_treasure",
+                    new AddItemModifier(
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/bastion_treasure")).build(),
+                                    LootItemRandomChanceCondition.randomChance(0.10f).build()
+                            },
+                            ModItems.CELESTIAL_FRUIT.get()
+                    )
+            );
+
+            add("fruit_of_resonance_bastion_treasure",
+                    new AddItemModifier(
+                            new LootItemCondition[] {
+                                    LootTableIdCondition.builder(new ResourceLocation("minecraft", "chests/bastion_treasure")).build(),
+                                    LootItemRandomChanceCondition.randomChance(0.10f).build()
+                            },
+                            ModItems.RESONANCE_FRUIT.get()
+                    )
+            );
+
             // Desert Pyramid Shards Injection
             add("desert_pyramid_shards",
                     new RandomShardLootModifier(

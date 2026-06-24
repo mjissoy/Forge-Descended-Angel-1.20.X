@@ -37,7 +37,9 @@ public final class AbilityUtils {
                         data.getBoolean(PowerAbilities.TAG_WATER_DIVINE_SERENITY),
 
                         data.getBoolean(DominionAbilities.TAG_SPACE),
-                        data.getBoolean(DominionAbilities.TAG_TIME)
+                        data.getBoolean(DominionAbilities.TAG_TIME),
+                        data.getBoolean(DominionAbilities.TAG_CELESTIAL),
+                        data.getBoolean(DominionAbilities.TAG_RESONANCE)
                 )
         );
     }

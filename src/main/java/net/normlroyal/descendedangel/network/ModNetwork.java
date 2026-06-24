@@ -10,7 +10,7 @@ import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.network.packets.*;
 
 public final class ModNetwork {
-    private static final String PROTOCOL = "5";
+    private static final String PROTOCOL = "6";
 
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(DescendedAngel.MOD_ID, "main"),

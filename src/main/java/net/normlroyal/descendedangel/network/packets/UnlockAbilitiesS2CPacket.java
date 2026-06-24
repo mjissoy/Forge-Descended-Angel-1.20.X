@@ -24,11 +24,13 @@ public record UnlockAbilitiesS2CPacket(
 
         boolean water,
         boolean waterMovingFieldOfMist,
-        boolean waterSeraphicMirage ,
+        boolean waterSeraphicMirage,
         boolean waterDivineSerenity,
 
         boolean space,
-        boolean time
+        boolean time,
+        boolean celestial,
+        boolean resonance
 ) {
 
     public static void encode(UnlockAbilitiesS2CPacket msg, FriendlyByteBuf buf) {
@@ -54,6 +56,8 @@ public record UnlockAbilitiesS2CPacket(
 
         buf.writeBoolean(msg.space());
         buf.writeBoolean(msg.time());
+        buf.writeBoolean(msg.celestial());
+        buf.writeBoolean(msg.resonance());
     }
 
     public static UnlockAbilitiesS2CPacket decode(FriendlyByteBuf buf) {
@@ -79,37 +83,39 @@ public record UnlockAbilitiesS2CPacket(
                 buf.readBoolean(),
 
                 buf.readBoolean(),
+                buf.readBoolean(),
+                buf.readBoolean(),
                 buf.readBoolean()
         );
     }
 
     public static void handle(UnlockAbilitiesS2CPacket msg, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ClientUnlockState.set(
-                    msg.fire(),
-                    msg.fireSacredFlare(),
-                    msg.fireSolCorona(),
-                    msg.firePillarsOfRadiance(),
+        ctx.get().enqueueWork(() -> ClientUnlockState.set(
+                msg.fire(),
+                msg.fireSacredFlare(),
+                msg.fireSolCorona(),
+                msg.firePillarsOfRadiance(),
 
-                    msg.air(),
-                    msg.airVacuumVortex(),
-                    msg.airZephyrScythes(),
-                    msg.airHeavenlyDowndraft(),
+                msg.air(),
+                msg.airVacuumVortex(),
+                msg.airZephyrScythes(),
+                msg.airHeavenlyDowndraft(),
 
-                    msg.earth(),
-                    msg.earthHolyBastion(),
-                    msg.earthAegisPillar(),
-                    msg.earthCrystalChrysalis(),
+                msg.earth(),
+                msg.earthHolyBastion(),
+                msg.earthAegisPillar(),
+                msg.earthCrystalChrysalis(),
 
-                    msg.water(),
-                    msg.waterMovingFieldOfMist(),
-                    msg.waterSeraphicMirage(),
-                    msg.waterDivineSerenity(),
+                msg.water(),
+                msg.waterMovingFieldOfMist(),
+                msg.waterSeraphicMirage(),
+                msg.waterDivineSerenity(),
 
-                    msg.space(),
-                    msg.time()
-            );
-        });
+                msg.space(),
+                msg.time(),
+                msg.celestial(),
+                msg.resonance()
+        ));
 
         ctx.get().setPacketHandled(true);
     }

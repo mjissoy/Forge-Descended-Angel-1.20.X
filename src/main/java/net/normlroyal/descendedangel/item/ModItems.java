@@ -140,6 +140,12 @@ public class ModItems {
     public static final RegistryObject<Item> TIME_FRUIT = ITEMS.register("fruit_of_time",
             () -> new FruitUnlockItem(FruitType.TIME, new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+    public static final RegistryObject<Item> CELESTIAL_FRUIT = ITEMS.register("fruit_of_celestial",
+            () -> new FruitUnlockItem(FruitType.CELESTIAL, new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
+    public static final RegistryObject<Item> RESONANCE_FRUIT = ITEMS.register("fruit_of_resonance",
+            () -> new FruitUnlockItem(FruitType.RESONANCE, new Item.Properties().food(
+                    new FoodProperties.Builder().nutrition(4).saturationMod(2.4F).alwaysEat().build())));
 
     public static final RegistryObject<Item> FIRE_SHARD = ITEMS.register("fire_shard",
             () -> new ShardUnlockItem(ShardType.FIRE, new Item.Properties().stacksTo(1))

@@ -84,6 +84,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         // Unlock Items
         basicItem(ModItems.SPACE_FRUIT.getId());
         basicItem(ModItems.TIME_FRUIT.getId());
+        basicItem(ModItems.CELESTIAL_FRUIT.getId());
+        basicItem(ModItems.RESONANCE_FRUIT.getId());
         basicItem(ModItems.FIRE_SHARD.getId());
         basicItem(ModItems.EMPOWERED_FIRE_SHARD.getId());
         basicItem(ModItems.WATER_SHARD.getId());

@@ -4,15 +4,17 @@ import net.normlroyal.descendedangel.haloabilities.DominionAbilities;
 
 public enum FruitType {
     SPACE(DominionAbilities.TAG_SPACE),
-    TIME(DominionAbilities.TAG_TIME);
+    TIME(DominionAbilities.TAG_TIME),
+    CELESTIAL(DominionAbilities.TAG_CELESTIAL),
+    RESONANCE(DominionAbilities.TAG_RESONANCE);
 
-    private final String unlockTag;
+    private final String tag;
 
-    FruitType(String unlockTag) {
-        this.unlockTag = unlockTag;
+    FruitType(String tag) {
+        this.tag = tag;
     }
 
     public String tag() {
-        return unlockTag;
+        return tag;
     }
 }

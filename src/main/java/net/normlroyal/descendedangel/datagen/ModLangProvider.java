@@ -170,17 +170,24 @@ public class ModLangProvider extends LanguageProvider {
         add("altar_jei.halo_t9.name", "Requires Seraphim Halo");
 
         // Base ability unlock messages
-        add("ability.descendedangel.space", "The Dominion of Space floods Your Divinity.");
-        add("ability.descendedangel.time", "The Dominion of Time floods Your Divinity.");
+        add("ability.descendedangel.space", "The Dominion of Space shatters around the layers of Your Divinity.");
+        add("ability.descendedangel.time", "The Dominion of Time streams into the river of Your Divinity.");
+        add("ability.descendedangel.celestial", "The Dominion of Celestial radiance opens above Your Divinity.");
+        add("ability.descendedangel.resonance", "The Dominion of Resonance rings through Your Divinity.");
         add("ability.descendedangel.fire", "The Power of Fire strengthens Your Divinity.");
         add("ability.descendedangel.water", "The Power of Water strengthens Your Divinity.");
         add("ability.descendedangel.earth", "The Power of Earth strengthens Your Divinity.");
         add("ability.descendedangel.air", "The Power of Air strengthens Your Divinity.");
         add("message.descendedangel.shard_already_unlocked", "Your Divinity has traces of this Power already.");
+        add("message.descendedangel.dominion_limit_reached", "Your Divinity can only bear two Dominions.");
+        add("message.descendedangel.dominion_already_unlocked", "Your Divinity already bears this Dominion.");
+
 
         // Ability unlock items
         add("item.descendedangel.fruit_of_space", "Fruit of Space");
         add("item.descendedangel.fruit_of_time", "Fruit of Time");
+        add("item.descendedangel.fruit_of_celestial", "Fruit of Celestial");
+        add("item.descendedangel.fruit_of_resonance", "Fruit of Resonance");
         add("item.descendedangel.fire_shard", "Fire Shard");
         add("item.descendedangel.water_shard", "Water Shard");
         add("item.descendedangel.earth_shard", "Earth Shard");
@@ -240,5 +247,15 @@ public class ModLangProvider extends LanguageProvider {
         add("ability.descendedangel.divine_serenity", "Divine Serenity");
         add("ability.descendedangel.water_evolved", "Your Water Power evolves into %s.");
         add("ability.descendedangel.unknown_evolution", "Unknown Evolution");
+
+        // Celestial and Resonance Abilities
+        add("ability.descendedangel.astral_lance", "Astral Lance");
+        add("ability.descendedangel.heavens_map", "Heaven's Map");
+        add("ability.descendedangel.resonance_pulse", "Resonance Pulse");
+        add("ability.descendedangel.sacred_silence", "Sacred Silence");
+
+        // Resonance Damage Type
+        add("death.attack.resonance", "%1$s was shattered by sacred resonance.");
+        add("death.attack.resonance.player", "%1$s was shattered by %2$s's sacred resonance.");
     }
 }

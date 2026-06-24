@@ -34,8 +34,15 @@ public enum HaloAbility {
 
     TELEPORT("teleport", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION, 6),
     SPACE_CHEST("space_chest", DominionAbilities.TAG_SPACE, AbilityGroup.DOMINION, 6),
+
     FIELD("slow_field", DominionAbilities.TAG_TIME, AbilityGroup.DOMINION, 6),
-    ACCELERATE("accelerate", DominionAbilities.TAG_TIME, AbilityGroup.DOMINION, 6);
+    ACCELERATE("accelerate", DominionAbilities.TAG_TIME, AbilityGroup.DOMINION, 6),
+
+    ASTRAL_LANCE("astral_lance", DominionAbilities.TAG_CELESTIAL, AbilityGroup.DOMINION, 6),
+    HEAVENS_MAP("heavens_map", DominionAbilities.TAG_CELESTIAL, AbilityGroup.DOMINION, 6),
+
+    RESONANCE_PULSE("resonance_pulse", DominionAbilities.TAG_RESONANCE, AbilityGroup.DOMINION, 6),
+    SACRED_SILENCE("sacred_silence", DominionAbilities.TAG_RESONANCE, AbilityGroup.DOMINION, 6);
 
     private final ResourceLocation icon;
     private final String unlockTag;
