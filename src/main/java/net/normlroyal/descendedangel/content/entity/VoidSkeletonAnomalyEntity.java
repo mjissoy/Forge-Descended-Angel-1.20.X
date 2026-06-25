@@ -2,10 +2,13 @@ package net.normlroyal.descendedangel.content.entity;
 
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.normlroyal.descendedangel.content.entity.voidanomaly.VoidAnomaly;
 import net.normlroyal.descendedangel.content.entity.voidanomaly.VoidAnomalyBehavior;
@@ -16,6 +19,8 @@ public class VoidSkeletonAnomalyEntity extends Skeleton implements VoidAnomaly, 
 
     public VoidSkeletonAnomalyEntity(EntityType<? extends Skeleton> type, Level level) {
         super(type, level);
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
+        this.setDropChance(EquipmentSlot.MAINHAND, 0.0F);
     }
 
     @Override
@@ -46,9 +51,9 @@ public class VoidSkeletonAnomalyEntity extends Skeleton implements VoidAnomaly, 
 
     public static AttributeSupplier.Builder createAttributes() {
         return Skeleton.createAttributes()
-                .add(Attributes.MAX_HEALTH, 28.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.30D)
-                .add(Attributes.FOLLOW_RANGE, 28.0D);
+                .add(Attributes.MAX_HEALTH, 16.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.27D)
+                .add(Attributes.FOLLOW_RANGE, 32.0D);
     }
 
     @Override

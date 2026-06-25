@@ -26,8 +26,8 @@ import java.util.UUID;
 public class VoidPocketData extends SavedData {
     public static final String DATA_NAME = "descendedangel_void_pockets";
 
-    public static final int HORIZONTAL_RADIUS = 16;
-    public static final int HALF_HEIGHT = 7;
+    public static final int HORIZONTAL_RADIUS = 32;
+    public static final int HALF_HEIGHT = 24;
     public static final int DEFAULT_REQUIRED_KILLS = 12;
 
     private final Map<UUID, Pocket> pockets = new HashMap<>();
@@ -296,7 +296,7 @@ public class VoidPocketData extends SavedData {
         }
 
         public BlockPos entryPos() {
-            return center.offset(0, -HALF_HEIGHT + 2, 0);
+            return center.offset(0, 7, 0);
         }
 
         public AABB bounds() {

@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class VoidPocketManager {
-    private static final int ANOMALY_CAP = 5;
+    private static final int ANOMALY_CAP = 7;
     private static final int SPAWN_PADDING = 3;
 
     private VoidPocketManager() {
@@ -375,7 +375,9 @@ public class VoidPocketManager {
             return;
         }
 
-        if (!pocket.completed && player.tickCount % 80 == 0) {
+        int spawnInterval = pocket.completed ? 120 : 80;
+
+        if (player.tickCount % spawnInterval == 0) {
             spawnAnomalyIfNeeded(level, pocket);
         }
     }
@@ -537,46 +539,215 @@ public class VoidPocketManager {
     }
 
     private static void generateChamber(ServerLevel level, VoidPocketData.Pocket pocket) {
-        BlockState shell = ModBlocks.VOID_CAVE_BLOCK.get().defaultBlockState();
+        BlockState voidBlock = ModBlocks.VOID_CAVE_BLOCK.get().defaultBlockState();
         BlockState air = Blocks.AIR.defaultBlockState();
+
         VoidPocketData data = VoidPocketData.get(level.getServer());
+
         java.util.HashSet<BlockPos> protectedAnchors = new java.util.HashSet<>();
         for (VoidPocketData.Anchor anchor : data.anchorsInPocket(pocket)) {
             protectedAnchors.add(anchor.pos);
         }
 
-        int minX = pocket.center.getX() - VoidPocketData.HORIZONTAL_RADIUS;
-        int maxX = pocket.center.getX() + VoidPocketData.HORIZONTAL_RADIUS;
-        int minY = pocket.center.getY() - VoidPocketData.HALF_HEIGHT;
-        int maxY = pocket.center.getY() + VoidPocketData.HALF_HEIGHT;
-        int minZ = pocket.center.getZ() - VoidPocketData.HORIZONTAL_RADIUS;
-        int maxZ = pocket.center.getZ() + VoidPocketData.HORIZONTAL_RADIUS;
+        clearPocketVolume(level, pocket, protectedAnchors);
 
+        long seed = pocket.id.getMostSignificantBits() ^ pocket.id.getLeastSignificantBits();
+        java.util.Random random = new java.util.Random(seed);
+
+        buildMainVoidIsland(level, pocket, voidBlock, protectedAnchors, random);
+        buildSideIslands(level, pocket, voidBlock, protectedAnchors, random);
+        buildEntryPlatform(level, pocket, voidBlock, air, protectedAnchors);
+        carveSurfaceDepressions(level, pocket, air, protectedAnchors, random);
+
+        restorePocketAnchors(level, pocket);
+
+        pocket.generated = true;
+        data.setDirty();
+    }
+
+    private static void clearPocketVolume(
+            ServerLevel level,
+            VoidPocketData.Pocket pocket,
+            java.util.Set<BlockPos> protectedAnchors
+    ) {
+        BlockState air = Blocks.AIR.defaultBlockState();
+        AABB bounds = pocket.bounds();
         BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
-        for (int x = minX; x <= maxX; x++) {
-            for (int y = minY; y <= maxY; y++) {
-                for (int z = minZ; z <= maxZ; z++) {
-                    boolean boundary = x == minX || x == maxX || y == minY || y == maxY || z == minZ || z == maxZ;
+
+        for (int x = Mth.floor(bounds.minX); x < Mth.floor(bounds.maxX); x++) {
+            for (int y = Mth.floor(bounds.minY); y < Mth.floor(bounds.maxY); y++) {
+                for (int z = Mth.floor(bounds.minZ); z < Mth.floor(bounds.maxZ); z++) {
                     mutable.set(x, y, z);
                     if (protectedAnchors.contains(mutable) || level.getBlockState(mutable).is(ModBlocks.ANGELIC_ANCHOR.get())) {
                         continue;
                     }
-                    level.setBlock(mutable, boundary ? shell : air, 3);
+                    level.setBlock(mutable, air, 3);
                 }
             }
         }
+    }
 
+    private static void buildMainVoidIsland(
+            ServerLevel level,
+            VoidPocketData.Pocket pocket,
+            BlockState block,
+            java.util.Set<BlockPos> protectedAnchors,
+            java.util.Random random
+    ) {
+        BlockPos center = pocket.center;
+
+        placeIslandBlob(level, center.offset(0, 0, 0), 18, 7, 14, block, protectedAnchors, random);
+        placeIslandBlob(level, center.offset(7, -1, 3), 10, 5, 8, block, protectedAnchors, random);
+        placeIslandBlob(level, center.offset(-8, -1, -4), 9, 5, 7, block, protectedAnchors, random);
+        placeIslandBlob(level, center.offset(2, 1, -8), 8, 4, 6, block, protectedAnchors, random);
+
+        for (int i = 0; i < 18; i++) {
+            int x = center.getX() + random.nextInt(29) - 14;
+            int z = center.getZ() + random.nextInt(25) - 12;
+            int length = 2 + random.nextInt(5);
+
+            for (int y = center.getY() - 5; y > center.getY() - 5 - length; y--) {
+                BlockPos pos = new BlockPos(x, y, z);
+                if (!protectedAnchors.contains(pos)) {
+                    level.setBlock(pos, block, 3);
+                }
+            }
+        }
+    }
+
+    private static void buildSideIslands(
+            ServerLevel level,
+            VoidPocketData.Pocket pocket,
+            BlockState block,
+            java.util.Set<BlockPos> protectedAnchors,
+            java.util.Random random
+    ) {
+        int count = 1 + random.nextInt(3);
+
+        for (int i = 0; i < count; i++) {
+            double angle = random.nextDouble() * Math.PI * 2.0D;
+            int distance = 20 + random.nextInt(8);
+
+            int x = pocket.center.getX() + Mth.floor(Math.cos(angle) * distance);
+            int z = pocket.center.getZ() + Mth.floor(Math.sin(angle) * distance);
+            int y = pocket.center.getY() + random.nextInt(7) - 3;
+
+            BlockPos sideCenter = new BlockPos(x, y, z);
+
+            placeIslandBlob(
+                    level,
+                    sideCenter,
+                    5 + random.nextInt(4),
+                    3 + random.nextInt(2),
+                    5 + random.nextInt(4),
+                    block,
+                    protectedAnchors,
+                    random
+            );
+        }
+    }
+
+    private static void buildEntryPlatform(
+            ServerLevel level,
+            VoidPocketData.Pocket pocket,
+            BlockState block,
+            BlockState air,
+            java.util.Set<BlockPos> protectedAnchors
+    ) {
         BlockPos entry = pocket.entryPos();
-        if (!protectedAnchors.contains(entry) && !level.getBlockState(entry).is(ModBlocks.ANGELIC_ANCHOR.get())) {
-            level.setBlock(entry, air, 3);
-        }
-        if (!protectedAnchors.contains(entry.above()) && !level.getBlockState(entry.above()).is(ModBlocks.ANGELIC_ANCHOR.get())) {
-            level.setBlock(entry.above(), air, 3);
-        }
+        BlockPos floorCenter = entry.below();
 
-        restorePocketAnchors(level, pocket);
-        pocket.generated = true;
-        data.setDirty();
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+
+        for (int x = -3; x <= 3; x++) {
+            for (int z = -3; z <= 3; z++) {
+                if (x * x + z * z <= 10) {
+                    BlockPos floor = floorCenter.offset(x, 0, z);
+                    mutable.set(floor);
+
+                    if (!protectedAnchors.contains(mutable) && !level.getBlockState(mutable).is(ModBlocks.ANGELIC_ANCHOR.get())) {
+                        level.setBlock(mutable, block, 3);
+                        level.setBlock(floor.above(), air, 3);
+                        level.setBlock(floor.above(2), air, 3);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void carveSurfaceDepressions(
+            ServerLevel level,
+            VoidPocketData.Pocket pocket,
+            BlockState air,
+            java.util.Set<BlockPos> protectedAnchors,
+            java.util.Random random
+    ) {
+        int count = 2 + random.nextInt(3);
+
+        for (int i = 0; i < count; i++) {
+            BlockPos center = pocket.center.offset(
+                    random.nextInt(21) - 10,
+                    4 + random.nextInt(2),
+                    random.nextInt(17) - 8
+            );
+
+            int radius = 2 + random.nextInt(3);
+
+            for (int x = -radius; x <= radius; x++) {
+                for (int z = -radius; z <= radius; z++) {
+                    if (x * x + z * z > radius * radius) {
+                        continue;
+                    }
+
+                    BlockPos pos = center.offset(x, 0, z);
+                    if (!protectedAnchors.contains(pos) && !level.getBlockState(pos).is(ModBlocks.ANGELIC_ANCHOR.get())) {
+                        level.setBlock(pos, air, 3);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void placeIslandBlob(
+            ServerLevel level,
+            BlockPos center,
+            int radiusX,
+            int radiusY,
+            int radiusZ,
+            BlockState block,
+            java.util.Set<BlockPos> protectedAnchors,
+            java.util.Random random
+    ) {
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+
+        for (int x = -radiusX; x <= radiusX; x++) {
+            for (int y = -radiusY; y <= radiusY; y++) {
+                for (int z = -radiusZ; z <= radiusZ; z++) {
+                    double nx = x / (double) radiusX;
+                    double ny = y / (double) radiusY;
+                    double nz = z / (double) radiusZ;
+
+                    double distance = nx * nx + ny * ny + nz * nz;
+
+                    if (y > 2) {
+                        distance += y * 0.08D;
+                    }
+                    if (y < -2) {
+                        distance -= 0.10D;
+                    }
+
+                    double roughness = ((x * 734287 + y * 912931 + z * 438289) & 15) / 100.0D;
+
+                    if (distance <= 1.0D - roughness) {
+                        BlockPos pos = center.offset(x, y, z);
+                        mutable.set(pos);
+                        if (!protectedAnchors.contains(mutable) && !level.getBlockState(mutable).is(ModBlocks.ANGELIC_ANCHOR.get())) {
+                            level.setBlock(mutable, block, 3);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private static void restorePocketAnchors(ServerLevel level, VoidPocketData.Pocket pocket) {
@@ -610,7 +781,10 @@ public class VoidPocketManager {
                 pocket.bounds(),
                 entity -> entity.isAlive() && entity instanceof VoidAnomaly
         ).size();
-        if (existing >= ANOMALY_CAP) {
+
+        int cap = pocket.completed ? Math.max(3, ANOMALY_CAP - 2) : ANOMALY_CAP;
+
+        if (existing >= cap) {
             return;
         }
 
@@ -619,14 +793,44 @@ public class VoidPocketManager {
             return;
         }
 
-        int range = VoidPocketData.HORIZONTAL_RADIUS - SPAWN_PADDING;
-        int x = pocket.center.getX() + level.random.nextInt(range * 2 + 1) - range;
-        int z = pocket.center.getZ() + level.random.nextInt(range * 2 + 1) - range;
-        int y = pocket.center.getY() - VoidPocketData.HALF_HEIGHT + 1;
+        Optional<BlockPos> spawnPos = findIslandSpawnPos(level, pocket);
+        if (spawnPos.isEmpty()) {
+            return;
+        }
 
-        anomaly.moveTo(x + 0.5D, y, z + 0.5D, level.random.nextFloat() * 360.0F, 0.0F);
+        BlockPos pos = spawnPos.get();
+        anomaly.moveTo(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, level.random.nextFloat() * 360.0F, 0.0F);
         anomaly.setPersistenceRequired();
         level.addFreshEntity(anomaly);
+    }
+
+    private static Optional<BlockPos> findIslandSpawnPos(ServerLevel level, VoidPocketData.Pocket pocket) {
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+
+        for (int attempt = 0; attempt < 48; attempt++) {
+            int range = VoidPocketData.HORIZONTAL_RADIUS - SPAWN_PADDING;
+            int x = pocket.center.getX() + level.random.nextInt(range * 2 + 1) - range;
+            int z = pocket.center.getZ() + level.random.nextInt(range * 2 + 1) - range;
+
+            for (int y = pocket.center.getY() + 12; y >= pocket.center.getY() - 14; y--) {
+                mutable.set(x, y, z);
+
+                BlockPos floor = mutable.below();
+                boolean solidFloor = !level.getBlockState(floor).getCollisionShape(level, floor).isEmpty();
+                boolean feetClear = level.getBlockState(mutable).getCollisionShape(level, mutable).isEmpty();
+                boolean headClear = level.getBlockState(mutable.above()).getCollisionShape(level, mutable.above()).isEmpty();
+
+                if (solidFloor && feetClear && headClear) {
+                    if (mutable.distSqr(pocket.entryPos()) < 64.0D) {
+                        continue;
+                    }
+
+                    return Optional.of(mutable.immutable());
+                }
+            }
+        }
+
+        return Optional.empty();
     }
 
     private static EntityType<? extends Mob> chooseVoidPocketAnomaly(ServerLevel level) {
