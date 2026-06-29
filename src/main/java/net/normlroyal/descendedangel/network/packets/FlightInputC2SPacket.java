@@ -47,12 +47,15 @@ public record FlightInputC2SPacket(
 
             var wings = WingUtils.getEquippedWings(sp);
             if (wings.isEmpty() || !WingLogic.allowsCustomFlight(wings)) {
-                FlightSystem.clear(sp);
+                FlightSystem.clearAndSync(sp);
+                FlightData.clear(sp);
                 return;
             }
 
             IFlightData data = FlightData.get(sp);
             if (!data.state().active) {
+
+                FlightSystem.syncInactive(sp);
                 return;
             }
 

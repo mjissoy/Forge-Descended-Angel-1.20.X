@@ -30,23 +30,41 @@ public final class FlightSystem {
         }
     }
 
+    public static void syncInactive(ServerPlayer sp) {
+        if (sp == null) {
+            return;
+        }
+
+        ModNetwork.CHANNEL.send(
+                PacketDistributor.PLAYER.with(() -> sp),
+                new FlightActiveS2CPacket(false)
+        );
+    }
+
+    public static void clearAndSync(ServerPlayer sp) {
+        clear(sp);
+        if (sp != null) {
+            IFlightData data = FlightData.get(sp);
+            data.state().active = false;
+            data.state().resetMotion();
+            syncInactive(sp);
+            data.sync(sp);
+        }
+    }
+
     public static void stopFlight(ServerPlayer sp) {
         IFlightData data = FlightData.get(sp);
         FlightState st = data.state();
 
         if (!st.active) {
-            clear(sp);
+            clearAndSync(sp);
             return;
         }
 
         st.active = false;
         CONTROLLER.onStop(sp, st);
         clear(sp);
-
-        ModNetwork.CHANNEL.send(
-                PacketDistributor.PLAYER.with(() -> sp),
-                new FlightActiveS2CPacket(false)
-        );
+        syncInactive(sp);
 
         data.sync(sp);
     }

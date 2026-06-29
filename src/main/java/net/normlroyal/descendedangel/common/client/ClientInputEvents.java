@@ -62,7 +62,6 @@ public class ClientInputEvents {
             ClientAbilityState.reset();
         }
 
-        // Cycle ability
         while (ClientKeybinds.OPEN_WHEEL.consumeClick()) {
             ClientAbilityState.cycle(mc.player);
 
@@ -72,7 +71,6 @@ public class ClientInputEvents {
             }
         }
 
-        // Use ability
         while (ClientKeybinds.USE_ABILITY.consumeClick()) {
             HaloAbility selected = ClientAbilityState.get(mc.player);
             if (selected == null) {
@@ -88,7 +86,6 @@ public class ClientInputEvents {
         boolean jumpPressedThisTick = jumpDown && !wasJumpDown;
         wasJumpDown = jumpDown;
 
-        // Custom Flight Toggle / T1 Glide
         if (jumpPressedThisTick) {
             ItemStack wings = WingUtils.getEquippedWings(mc.player);
 
@@ -96,14 +93,12 @@ public class ClientInputEvents {
                 int tier = WingLogic.getWingTier(wings);
 
                 if (tier == 1) {
-                    // Start elytra-style glide.
                     if (mc.screen == null && canStartGlide(mc.player)) {
                         mc.player.startFallFlying();
                         ModNetwork.CHANNEL.sendToServer(new TryStartGlideC2SPacket());
                     }
                     ticksSinceLastJumpPress = 999;
                 } else if (WingLogic.allowsCustomFlight(wings)) {
-                    // Start/stop custom flight with the existing double-tap gesture.
                     if (mc.screen == null && !mc.player.isFallFlying()) {
                         if (ticksSinceLastJumpPress <= DOUBLE_TAP_WINDOW_TICKS) {
                             ModNetwork.CHANNEL.sendToServer(new ToggleFlightC2SPacket());
@@ -131,18 +126,20 @@ public class ClientInputEvents {
             return;
         }
 
+        if (ClientFlightState.isActive() && !canKeepCustomFlight(mc.player)) {
+            ClientFlightState.setActive(false);
+            resetLastFlightInput();
+            return;
+        }
+
         FlightInput input = readFlightInput(mc);
         ClientFlightState.setInput(input);
 
         if (ClientFlightState.isActive()) {
-            // Multiplayer fix: predict the same motion locally that the server applies authoritatively.
-            // Without this, vanilla client gravity pulls the local player down between server corrections.
             AngelicFlightController.apply(mc.player, ClientFlightState.state(), input);
 
-            // Send every active tick. This prevents stale input after activation, packet loss, or lag spikes.
             sendFlightInput(input);
         } else if (inputChanged(input)) {
-            // Not active yet, but keep the server warm when the user changes keys.
             sendFlightInput(input);
         }
     }
@@ -210,5 +207,14 @@ public class ClientInputEvents {
                 && !player.isPassenger()
                 && !player.isFallFlying()
                 && player.getDeltaMovement().y < 0.0D;
+    }
+
+    private static boolean canKeepCustomFlight(LocalPlayer player) {
+        return player != null
+                && player.isAlive()
+                && !player.onGround()
+                && !player.isPassenger()
+                && !player.isCreative()
+                && !player.isSpectator();
     }
 }

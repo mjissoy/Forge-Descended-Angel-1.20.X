@@ -24,14 +24,12 @@ public class PlayerCommonEvents {
         var oldData = event.getOriginal().getPersistentData();
         var newData = event.getEntity().getPersistentData();
 
-        // Copy every current unlock tag, including evolved powers and new dominions.
-        // Duplicate tags are harmless because several abilities share the same unlock family.
         for (HaloAbility ability : HaloAbility.values()) {
             copyBool(oldData, newData, ability.unlockTag());
         }
 
         if (event.getEntity() instanceof ServerPlayer sp) {
-            FlightSystem.clear(sp);
+            FlightSystem.clearAndSync(sp);
             FlightData.clear(sp);
             AbilityUtils.syncUnlocks(sp);
         }
@@ -40,8 +38,7 @@ public class PlayerCommonEvents {
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer sp) {
-            // Prevent stale static flight state from a previous server session.
-            FlightSystem.clear(sp);
+            FlightSystem.clearAndSync(sp);
             FlightData.clear(sp);
 
             AbilityUtils.syncUnlocks(sp);
@@ -60,7 +57,7 @@ public class PlayerCommonEvents {
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer sp) {
-            FlightSystem.clear(sp);
+            FlightSystem.clearAndSync(sp);
             FlightData.clear(sp);
             HaloHierarchyGlowSync.syncToPlayer(sp);
         }
@@ -69,7 +66,8 @@ public class PlayerCommonEvents {
     @SubscribeEvent
     public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer sp) {
-            FlightSystem.stopFlight(sp);
+            FlightSystem.clearAndSync(sp);
+            FlightData.clear(sp);
             HaloHierarchyGlowSync.syncToPlayer(sp);
         }
     }
