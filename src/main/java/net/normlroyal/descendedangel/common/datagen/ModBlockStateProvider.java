@@ -1,5 +1,6 @@
 package net.normlroyal.descendedangel.common.datagen;
 
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -7,10 +8,13 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.normlroyal.descendedangel.DescendedAngel;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
+import net.normlroyal.descendedangel.content.block.void_decorations.VoidVineBlock;
+import net.normlroyal.descendedangel.content.block.void_decorations.VoidVinePlantBlock;
 
 import java.util.Objects;
 
@@ -83,6 +87,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.TEMP_EARTH_WALL.get(),
                 models().cubeAll("temp_earth_wall", modLoc("block/temp_earth_wall")));
 
+        simpleBlockWithItem(ModBlocks.TEMP_HOLY_BLOCK.get(),
+                models().cubeAll("temp_holy_block", modLoc("block/temp_holy_block")));
+
         simpleBlockWithItem(ModBlocks.VOID_CAVE_BLOCK.get(),
                 models().cubeAll("void_cave_wall", modLoc("block/void_cave_wall")));
 
@@ -99,6 +106,43 @@ public class ModBlockStateProvider extends BlockStateProvider {
                                 "plant",
                                 blockTexture(ModBlocks.ANGEL_WEEPING.get()))
                         .renderType("cutout"));
+
+        simpleCrossBlockWithGeneratedItem(ModBlocks.VOID_GRASS.get(), "void_grass");
+
+        ModelFile voidVine = models().cross("void_vine", modLoc("block/void_vine"))
+                .renderType("cutout");
+
+        getVariantBuilder(ModBlocks.VOID_VINE.get())
+                .partialState()
+                .with(VoidVineBlock.GROWTH_DIRECTION, Direction.UP)
+                .modelForState()
+                .modelFile(voidVine)
+                .addModel()
+                .partialState()
+                .with(VoidVineBlock.GROWTH_DIRECTION, Direction.DOWN)
+                .modelForState()
+                .modelFile(voidVine)
+                .rotationX(180)
+                .addModel();
+
+        itemModels().withExistingParent("void_vine", mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/void_vine"));
+
+        ModelFile voidVinePlant = models().cross("void_vine_plant", modLoc("block/void_vine_plant"))
+                .renderType("cutout");
+
+        getVariantBuilder(ModBlocks.VOID_VINE_PLANT.get())
+                .partialState()
+                .with(VoidVinePlantBlock.GROWTH_DIRECTION, Direction.UP)
+                .modelForState()
+                .modelFile(voidVinePlant)
+                .addModel()
+                .partialState()
+                .with(VoidVinePlantBlock.GROWTH_DIRECTION, Direction.DOWN)
+                .modelForState()
+                .modelFile(voidVinePlant)
+                .rotationX(180)
+                .addModel();
 
         simpleBlockWithItem(ModBlocks.MOSSY_BLESSED_ROCK_BRICKS.get(),
                 models().cubeAll("mossy_blessed_rock_bricks", modLoc("block/mossy_blessed_rock_bricks")));
@@ -126,5 +170,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ForgeRegistries.BLOCKS.getKey(b),
                 "Block not registered: " + b
         ).getPath();
+    }
+
+    private void simpleCrossBlockWithGeneratedItem(Block block, String textureName) {
+        String blockName = name(block);
+
+        simpleBlock(block, models().cross(blockName, modLoc("block/" + textureName))
+                .renderType("cutout"));
+
+        itemModels().withExistingParent(blockName, mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/" + textureName));
     }
 }

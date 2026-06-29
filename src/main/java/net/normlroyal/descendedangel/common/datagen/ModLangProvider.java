@@ -42,7 +42,10 @@ public class ModLangProvider extends LanguageProvider {
 
         // Plants and decorative blocks
         add("block.descendedangel.angel_weeping", "Angel Weeping");
-
+        add("block.descendedangel.void_grass", "Void Grass");
+        add("block.descendedangel.void_vine", "Void Vine");
+        add("block.descendedangel.void_vine_plant", "Void Vine Stem");
+        
         // Sacred ore set
         add("item.descendedangel.sacred_ore_ingot", "Sacred Ingot");
         add("item.descendedangel.sacred_ore_raw", "Raw Sacred Ore");

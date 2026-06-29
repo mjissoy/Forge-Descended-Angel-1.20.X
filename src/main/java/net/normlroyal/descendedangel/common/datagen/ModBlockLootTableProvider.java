@@ -58,6 +58,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.POTTED_ANGEL_WEEPING.get(),
                 block -> createPotFlowerItemTable(ModBlocks.ANGEL_WEEPING.get()));
 
+        dropSelf(ModBlocks.VOID_GRASS.get());
+        dropSelf(ModBlocks.VOID_VINE.get());
+        dropOther(ModBlocks.VOID_VINE_PLANT.get(), ModBlocks.VOID_VINE.get());
+
         // Ores
         add(ModBlocks.SACRED_ORE.get(), block -> createOreDrop(ModBlocks.SACRED_ORE.get(), ModItems.SACREDORERAW.get()));
 

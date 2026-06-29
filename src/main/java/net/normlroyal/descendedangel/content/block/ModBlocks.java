@@ -6,6 +6,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,6 +16,9 @@ import net.normlroyal.descendedangel.content.block.altar.AltarBlock;
 import net.normlroyal.descendedangel.content.block.anchor.AngelicAnchorBlock;
 import net.normlroyal.descendedangel.content.block.font.BaptismalFontBlock;
 import net.normlroyal.descendedangel.content.block.tempwall.TempEarthWallBlock;
+import net.normlroyal.descendedangel.content.block.void_decorations.VoidGrassBlock;
+import net.normlroyal.descendedangel.content.block.void_decorations.VoidVineBlock;
+import net.normlroyal.descendedangel.content.block.void_decorations.VoidVinePlantBlock;
 
 import java.util.function.Supplier;
 
@@ -143,6 +147,29 @@ public class ModBlocks {
                     ANGEL_WEEPING,
                     BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION)
             ));
+
+    public static final RegistryObject<Block> VOID_GRASS = registerBlock("void_grass",
+            () -> new VoidGrassBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .noCollission()
+                    .instabreak()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final RegistryObject<Block> VOID_VINE = registerBlock("void_vine",
+            () -> new VoidVineBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .noCollission()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.WEEPING_VINES)));
+
+    public static final RegistryObject<Block> VOID_VINE_PLANT = BLOCKS.register("void_vine_plant",
+            () -> new VoidVinePlantBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .noCollission()
+                    .instabreak()
+                    .sound(SoundType.WEEPING_VINES)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

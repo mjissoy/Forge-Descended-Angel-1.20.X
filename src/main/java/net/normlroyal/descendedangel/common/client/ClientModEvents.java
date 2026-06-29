@@ -1,5 +1,7 @@
 package net.normlroyal.descendedangel.common.client;
 
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,6 +16,7 @@ import net.normlroyal.descendedangel.common.client.render.AltarRenderer;
 import net.normlroyal.descendedangel.common.client.render.HaloCurioRenderer;
 import net.normlroyal.descendedangel.common.client.render.WingCurioRenderer;
 import net.normlroyal.descendedangel.common.halohierarchy.HaloHierarchyGlowLayer;
+import net.normlroyal.descendedangel.content.block.ModBlocks;
 import net.normlroyal.descendedangel.content.item.ModItems;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
@@ -46,6 +49,11 @@ public class ClientModEvents {
             CuriosRendererRegistry.register(ModItems.WING1.get(), WingCurioRenderer::new);
             CuriosRendererRegistry.register(ModItems.WING2.get(), WingCurioRenderer::new);
             CuriosRendererRegistry.register(ModItems.WING3.get(), WingCurioRenderer::new);
+
+            // Void Decorations
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_GRASS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_VINE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_VINE_PLANT.get(), RenderType.cutout());
         });
     }
 

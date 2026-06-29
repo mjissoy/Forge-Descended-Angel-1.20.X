@@ -129,7 +129,6 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.RAW_SACRED_ORE_BLOCK.get());
                         output.accept(ModBlocks.SACRED_INGOT_BLOCK.get());
 
-
                         output.accept(ModBlocks.BLESSED_ROCK.get());
                         output.accept(ModBlocks.BLESSED_ROCK_STAIR.get());
                         output.accept(ModBlocks.BLESSED_ROCK_SLAB.get());
@@ -143,7 +142,6 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.BLESSED_ROCK_BRICKS_STAIR.get());
                         output.accept(ModBlocks.BLESSED_ROCK_BRICKS_SLAB.get());
                         output.accept(ModBlocks.BLESSED_ROCK_BRICKS_WALL.get());
-
 
                         output.accept(ModBlocks.ASHEN_ROCK.get());
                         output.accept(ModBlocks.ASHEN_ROCK_STAIR.get());
@@ -161,8 +159,9 @@ public class ModCreativeModTabs {
 
                         output.accept(ModBlocks.ANGEL_WEEPING.get());
 
-
                         output.accept(ModBlocks.VOID_CAVE_BLOCK.get());
+                        output.accept(ModBlocks.VOID_GRASS.get());
+                        output.accept(ModBlocks.VOID_VINE.get());
 
                     })
                     .build());
