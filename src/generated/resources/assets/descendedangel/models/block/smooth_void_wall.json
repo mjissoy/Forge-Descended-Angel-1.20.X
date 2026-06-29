@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "descendedangel:block/smooth_void_wall"
+  }
+}

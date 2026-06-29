@@ -2,6 +2,7 @@ package net.normlroyal.descendedangel.content.dimension;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
@@ -19,11 +20,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.network.NetworkHooks;
 import net.normlroyal.descendedangel.content.block.ModBlocks;
+import net.normlroyal.descendedangel.content.block.void_decorations.VoidVineBlock;
+import net.normlroyal.descendedangel.content.block.void_decorations.VoidVinePlantBlock;
 import net.normlroyal.descendedangel.content.entity.ModEntities;
 import net.normlroyal.descendedangel.content.entity.voidanomaly.VoidAnomaly;
 import net.normlroyal.descendedangel.content.item.ModItems;
 import net.normlroyal.descendedangel.menu.AnchorWaypointMenu;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -557,7 +561,10 @@ public class VoidPocketManager {
         buildMainVoidIsland(level, pocket, voidBlock, protectedAnchors, random);
         buildSideIslands(level, pocket, voidBlock, protectedAnchors, random);
         buildEntryPlatform(level, pocket, voidBlock, air, protectedAnchors);
+        addAshenRuinScars(level, pocket, protectedAnchors, random);
         carveSurfaceDepressions(level, pocket, air, protectedAnchors, random);
+
+        decorateVoidPocketFlora(level, pocket, protectedAnchors, random);
 
         restorePocketAnchors(level, pocket);
 
@@ -609,7 +616,7 @@ public class VoidPocketManager {
             for (int y = center.getY() - 5; y > center.getY() - 5 - length; y--) {
                 BlockPos pos = new BlockPos(x, y, z);
                 if (!protectedAnchors.contains(pos)) {
-                    level.setBlock(pos, block, 3);
+                    level.setBlock(pos, ModBlocks.VOID_CAVE_BLOCK.get().defaultBlockState(), 3);
                 }
             }
         }
@@ -666,13 +673,69 @@ public class VoidPocketManager {
                     mutable.set(floor);
 
                     if (!protectedAnchors.contains(mutable) && !level.getBlockState(mutable).is(ModBlocks.ANGELIC_ANCHOR.get())) {
-                        level.setBlock(mutable, block, 3);
+                        BlockState platformBlock = Math.abs(x) <= 1 && Math.abs(z) <= 1
+                                ? ModBlocks.VOID_WALL_BRICKS.get().defaultBlockState()
+                                : ModBlocks.VOID_CAVE_BLOCK.get().defaultBlockState();
+
+                        level.setBlock(mutable, platformBlock, 3);
                         level.setBlock(floor.above(), air, 3);
                         level.setBlock(floor.above(2), air, 3);
                     }
                 }
             }
         }
+    }
+
+    private static void addAshenRuinScars(
+            ServerLevel level,
+            VoidPocketData.Pocket pocket,
+            java.util.Set<BlockPos> protectedAnchors,
+            java.util.Random random
+    ) {
+        int scarCount = 3 + random.nextInt(4);
+
+        for (int i = 0; i < scarCount; i++) {
+            BlockPos start = pocket.center.offset(
+                    random.nextInt(25) - 12,
+                    7,
+                    random.nextInt(21) - 10
+            );
+
+            Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(level.random);
+            int length = 4 + random.nextInt(8);
+
+            BlockPos pos = start;
+            for (int step = 0; step < length; step++) {
+                BlockPos surface = findSurfaceBelow(level, pos, pocket);
+                if (surface != null && !protectedAnchors.contains(surface)) {
+                    BlockState scarBlock = random.nextBoolean()
+                            ? ModBlocks.VOID_WALL_BRICKS.get().defaultBlockState()
+                            : ModBlocks.SMOOTH_VOID_WALL.get().defaultBlockState();
+
+                    level.setBlock(surface, scarBlock, 3);
+                }
+
+                pos = pos.relative(direction).offset(
+                        random.nextInt(3) - 1,
+                        0,
+                        random.nextInt(3) - 1
+                );
+            }
+        }
+    }
+
+    @Nullable
+    private static BlockPos findSurfaceBelow(ServerLevel level, BlockPos start, VoidPocketData.Pocket pocket) {
+        for (int y = start.getY(); y >= pocket.center.getY() - 8; y--) {
+            BlockPos pos = new BlockPos(start.getX(), y, start.getZ());
+            BlockPos above = pos.above();
+
+            if (level.getBlockState(pos).is(ModBlocks.VOID_CAVE_BLOCK.get()) && level.isEmptyBlock(above)) {
+                return pos;
+            }
+        }
+
+        return null;
     }
 
     private static void carveSurfaceDepressions(
@@ -742,7 +805,51 @@ public class VoidPocketManager {
                         BlockPos pos = center.offset(x, y, z);
                         mutable.set(pos);
                         if (!protectedAnchors.contains(mutable) && !level.getBlockState(mutable).is(ModBlocks.ANGELIC_ANCHOR.get())) {
-                            level.setBlock(mutable, block, 3);
+                            boolean surfaceLike = y >= -1;
+                            BlockState chosenBlock = chooseIslandBlock(random, y, surfaceLike);
+                            level.setBlock(mutable, chosenBlock, 3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private static void decorateVoidPocketFlora(
+            ServerLevel level,
+            VoidPocketData.Pocket pocket,
+            java.util.Set<BlockPos> protectedAnchors,
+            java.util.Random random
+    ) {
+        AABB bounds = pocket.bounds();
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
+
+        for (int x = Mth.floor(bounds.minX) + 2; x < Mth.floor(bounds.maxX) - 2; x++) {
+            for (int y = Mth.floor(bounds.minY) + 2; y < Mth.floor(bounds.maxY) - 2; y++) {
+                for (int z = Mth.floor(bounds.minZ) + 2; z < Mth.floor(bounds.maxZ) - 2; z++) {
+                    mutable.set(x, y, z);
+
+                    if (protectedAnchors.contains(mutable)) {
+                        continue;
+                    }
+
+                    BlockPos pos = mutable.immutable();
+
+                    if (pos.distSqr(pocket.entryPos()) < 25.0D) {
+                        continue;
+                    }
+
+                    if (isVoidSurface(level, pos.below()) && level.isEmptyBlock(pos)) {
+                        if (random.nextFloat() < 0.045F) {
+                            level.setBlock(pos, ModBlocks.VOID_GRASS.get().defaultBlockState(), 3);
+                        } else if (random.nextFloat() < 0.008F) {
+                            placeVoidVine(level, pos, Direction.UP, 1 + random.nextInt(4));
+                        }
+                    }
+
+                    if (isVoidSurface(level, pos.above()) && level.isEmptyBlock(pos)) {
+                        if (random.nextFloat() < 0.015F) {
+                            placeVoidVine(level, pos, Direction.DOWN, 2 + random.nextInt(6));
                         }
                     }
                 }
@@ -833,6 +940,30 @@ public class VoidPocketManager {
         return Optional.empty();
     }
 
+    private static BlockState chooseIslandBlock(java.util.Random random, int localY, boolean surfaceLike) {
+        if (surfaceLike) {
+            int roll = random.nextInt(100);
+
+            if (roll < 82) {
+                return ModBlocks.VOID_CAVE_BLOCK.get().defaultBlockState();
+            }
+            if (roll < 93) {
+                return ModBlocks.VOID_WALL_BRICKS.get().defaultBlockState();
+            }
+            return ModBlocks.SMOOTH_VOID_WALL.get().defaultBlockState();
+        }
+
+        int roll = random.nextInt(100);
+
+        if (roll < 92) {
+            return ModBlocks.VOID_CAVE_BLOCK.get().defaultBlockState();
+        }
+        if (roll < 97) {
+            return ModBlocks.VOID_WALL_BRICKS.get().defaultBlockState();
+        }
+        return ModBlocks.SMOOTH_VOID_WALL.get().defaultBlockState();
+    }
+
     private static EntityType<? extends Mob> chooseVoidPocketAnomaly(ServerLevel level) {
         int roll = level.random.nextInt(100);
         if (roll < 60) {
@@ -842,5 +973,45 @@ public class VoidPocketManager {
             return ModEntities.VOID_SKELETON_ANOMALY.get();
         }
         return ModEntities.VOID_SLIME_ANOMALY.get();
+    }
+
+    private static boolean isVoidSurface(ServerLevel level, BlockPos pos) {
+        return level.getBlockState(pos).is(ModBlocks.VOID_CAVE_BLOCK.get());
+    }
+
+    private static void placeVoidVine(ServerLevel level, BlockPos startPos, Direction growthDirection, int length) {
+        if (growthDirection != Direction.UP && growthDirection != Direction.DOWN) {
+            return;
+        }
+
+        length = Mth.clamp(length, 1, 12);
+
+        for (int i = 0; i < length; i++) {
+            BlockPos pos = startPos.relative(growthDirection, i);
+
+            if (!level.isEmptyBlock(pos)) {
+                return;
+            }
+
+            boolean isHead = i == length - 1;
+
+            if (isHead) {
+                level.setBlock(
+                        pos,
+                        ModBlocks.VOID_VINE.get()
+                                .defaultBlockState()
+                                .setValue(VoidVineBlock.GROWTH_DIRECTION, growthDirection),
+                        3
+                );
+            } else {
+                level.setBlock(
+                        pos,
+                        ModBlocks.VOID_VINE_PLANT.get()
+                                .defaultBlockState()
+                                .setValue(VoidVinePlantBlock.GROWTH_DIRECTION, growthDirection),
+                        3
+                );
+            }
+        }
     }
 }

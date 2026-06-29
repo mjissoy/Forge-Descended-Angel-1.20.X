@@ -45,7 +45,7 @@ public class ModLangProvider extends LanguageProvider {
         add("block.descendedangel.void_grass", "Void Grass");
         add("block.descendedangel.void_vine", "Void Vine");
         add("block.descendedangel.void_vine_plant", "Void Vine Stem");
-        
+
         // Sacred ore set
         add("item.descendedangel.sacred_ore_ingot", "Sacred Ingot");
         add("item.descendedangel.sacred_ore_raw", "Raw Sacred Ore");
@@ -85,6 +85,8 @@ public class ModLangProvider extends LanguageProvider {
 
         // Void blocks
         add("block.descendedangel.void_cave_wall", "Void Wall");
+        add("block.descendedangel.void_wall_bricks", "Void Wall Bricks");
+        add("block.descendedangel.smooth_void_wall", "Smooth Void Wall");
 
         // Altar
         add("container.descendedangel.altar", "Altar");

@@ -92,6 +92,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.VOID_CAVE_BLOCK.get(),
                 models().cubeAll("void_cave_wall", modLoc("block/void_cave_wall")));
+        simpleBlockWithItem(ModBlocks.VOID_WALL_BRICKS.get(),
+                models().cubeAll("void_wall_bricks", modLoc("block/void_wall_bricks")));
+        simpleBlockWithItem(ModBlocks.SMOOTH_VOID_WALL.get(),
+                models().cubeAll("smooth_void_wall", modLoc("block/smooth_void_wall")));
 
         simpleBlockWithItem(ModBlocks.ANGELIC_ANCHOR.get(),
                 models().cubeAll("angelic_anchor", modLoc("block/void_cave_wall")));

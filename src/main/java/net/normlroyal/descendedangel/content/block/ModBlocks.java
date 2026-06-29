@@ -134,6 +134,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> VOID_CAVE_BLOCK = registerBlock("void_cave_wall",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE)));
+    public static final RegistryObject<Block> VOID_WALL_BRICKS = registerBlock("void_wall_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(ModBlocks.ASHEN_ROCK_BRICKS.get())));
+    public static final RegistryObject<Block> SMOOTH_VOID_WALL = registerBlock("smooth_void_wall",
+            () -> new Block(BlockBehaviour.Properties.copy(ModBlocks.POLISHED_ASHEN_ROCK.get())));
 
     public static final RegistryObject<Block> ANGEL_WEEPING = registerBlock("angel_weeping",
             () -> new FlowerBlock(

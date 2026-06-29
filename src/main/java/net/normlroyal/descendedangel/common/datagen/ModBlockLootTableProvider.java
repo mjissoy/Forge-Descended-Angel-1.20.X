@@ -66,7 +66,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.SACRED_ORE.get(), block -> createOreDrop(ModBlocks.SACRED_ORE.get(), ModItems.SACREDORERAW.get()));
 
         add(ModBlocks.ALTAR.get(), noDrop());
-        add(ModBlocks.VOID_CAVE_BLOCK.get(), noDrop());
+
+
+        dropSelf(ModBlocks.VOID_CAVE_BLOCK.get());
+        dropSelf(ModBlocks.VOID_WALL_BRICKS.get());
+        dropSelf(ModBlocks.SMOOTH_VOID_WALL.get());
     }
 
     @Override

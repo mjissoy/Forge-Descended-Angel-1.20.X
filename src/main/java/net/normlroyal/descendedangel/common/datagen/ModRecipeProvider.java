@@ -222,6 +222,26 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(out,  new ResourceLocation(DescendedAngel.MOD_ID, "polished_ashen_rock_wall_crafting")
                 );
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.VOID_WALL_BRICKS.get(), 4)
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', ModBlocks.VOID_CAVE_BLOCK.get())
+                .unlockedBy("has_void_wall",
+                        has(ModBlocks.VOID_CAVE_BLOCK.get()))
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "void_wall_bricks_crafting")
+                );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        ModBlocks.SMOOTH_VOID_WALL.get(), 4)
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', ModBlocks.VOID_WALL_BRICKS.get())
+                .unlockedBy("has_void_wall",
+                        has(ModBlocks.VOID_CAVE_BLOCK.get()))
+                .save(out, new ResourceLocation(DescendedAngel.MOD_ID, "smooth_void_wall_crafting")
+                );
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ANGELS_TEARS.get())
                 .requires(ModBlocks.ANGEL_WEEPING.get())
                 .requires(Items.GLASS_BOTTLE)

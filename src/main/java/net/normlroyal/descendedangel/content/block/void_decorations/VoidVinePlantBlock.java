@@ -32,7 +32,8 @@ public class VoidVinePlantBlock extends BushBlock {
         BlockPos supportPos = pos.relative(growthDirection.getOpposite());
         BlockState support = level.getBlockState(supportPos);
 
-        return support.is(ModBlocks.VOID_VINE.get())
+        return support.is(ModBlocks.VOID_CAVE_BLOCK.get())
+                || support.is(ModBlocks.VOID_VINE.get())
                 || support.is(ModBlocks.VOID_VINE_PLANT.get())
                 || support.isFaceSturdy(level, supportPos, growthDirection);
     }

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "descendedangel:void_cave_wall"
+          "name": "descendedangel:smooth_void_wall"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "descendedangel:blocks/void_cave_wall"
+  "random_sequence": "descendedangel:blocks/smooth_void_wall"
 }
